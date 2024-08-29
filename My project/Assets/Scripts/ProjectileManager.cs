@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
-    public GameObject[] projectilePrefabs; // Array pra guardar os prefabs
+    public GameObject[] projectilePrefabs; // Array dos prefabs dos projéteis
     public Transform shootingPoint;
     public float projectileSpeed;
+    public GameObject player;
     private playermovement playerMovement;
-    private int selectedProjectileIndex = 0; // Index pra guardar projétil atual
+    private int selectedProjectileIndex = 0;
 
     void Start()
     {
-        playerMovement = FindObjectOfType<playermovement>();
+        if (player == null)
+        {
+            player = FindObjectOfType<playermovement>().gameObject;
+        }
+        playerMovement = player.GetComponent<playermovement>();
     }
 
     public void SetProjectileType(int index)
@@ -37,6 +42,8 @@ public class ProjectileManager : MonoBehaviour
             {
                 projectileScript.direction = direction.normalized;
                 projectileScript.speed = projectileSpeed;
+
+                projectileScript.Initialize(player);
             }
         }
     }
