@@ -27,7 +27,7 @@ public abstract class BaseProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }    
+    }
 
     //Inicializa o projétil com o atirador
     public void Initialize(GameObject shooter)
