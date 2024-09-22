@@ -16,7 +16,7 @@ public abstract class BaseProjectile : MonoBehaviour
         {
             rb.velocity = direction * speed;
         }
-
+        
         timer = lifetime;
     }
 
@@ -41,6 +41,7 @@ public abstract class BaseProjectile : MonoBehaviour
                 Physics2D.IgnoreCollision(projectileCollider, shooterCollider);
             }
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

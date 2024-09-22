@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class playermovement : MonoBehaviour
 {
     public float moveSpeed;
@@ -11,16 +10,25 @@ public class playermovement : MonoBehaviour
 
     private Vector2 moveDirection;
     private Vector2 lastDirection; // Track the last direction the player moved
-
-    // Update is called once per frame
     void Update()
     {
-        ProcessInputs();
+        //Check if the game isPaused here and the FixedUpdate() below
+        if (Time.timeScale != 0) 
+        {
+            ProcessInputs();
+        }
     }
 
     void FixedUpdate() 
     {
-        Move();
+        if (Time.timeScale != 0) 
+        {
+            Move();
+        }
+        else
+        {
+            rb.velocity = Vector2.zero; //Prevents player from moving
+        }
     }
 
     void ProcessInputs()
@@ -32,14 +40,12 @@ public class playermovement : MonoBehaviour
 
         if (moveDirection != Vector2.zero)
         {
-            lastDirection = moveDirection; // Update last direction when moving
+            lastDirection = moveDirection;
         }
 
         animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.y);
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
-        animator.SetFloat("Horizontal", lastDirection.x);
-        animator.SetFloat("Vertical", lastDirection.y);
     }
 
     void Move()
