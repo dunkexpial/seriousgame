@@ -31,22 +31,37 @@ public class playermovement : MonoBehaviour
         }
     }
 
-    void ProcessInputs()
+  void ProcessInputs()
+{
+    float moveX = Input.GetAxisRaw("Horizontal");
+    float moveY = Input.GetAxisRaw("Vertical");
+
+    moveDirection = new Vector2(moveX, moveY).normalized;
+
+    if (moveDirection != Vector2.zero)
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        moveDirection = new Vector2(moveX, moveY).normalized;
-
-        if (moveDirection != Vector2.zero)
-        {
-            lastDirection = moveDirection;
-        }
-
+        lastDirection = moveDirection;
+        // Update animator with the current movement
         animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.y);
-        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+        
+        // Update the last movement direction for idle animations
+        animator.SetFloat("LastX", moveDirection.x);
+        animator.SetFloat("LastY", moveDirection.y);
     }
+    else
+    {
+        // If idle, update the animator with the last direction the player was moving
+        animator.SetFloat("Horizontal", 0);
+        animator.SetFloat("Vertical", 0);
+
+        // Keep last movement direction for idle animations
+        animator.SetFloat("LastX", lastDirection.x);
+        animator.SetFloat("LastY", lastDirection.y);
+    }
+
+    animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+}
 
     void Move()
     {

@@ -5,7 +5,7 @@ public class PaperBallProjectile : BaseProjectile
     protected override void Start()
     {
         damageAmount = 2; // Set the damage specific to this type of projectile
-        speed = 5f;
+        speed = 500f;
         base.Start();
         // CARACTERISTICAS DO PROJETIL
     }
