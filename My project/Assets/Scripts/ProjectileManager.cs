@@ -28,6 +28,12 @@ public class ProjectileManager : MonoBehaviour
 
     public void Shoot()
     {
+        
+        if (Time.timeScale == 0)
+        {
+            return; //Check if the game isPaused, if it is return nothing = stop shooting 
+        }
+
         Vector2 direction = playerMovement.GetMoveDirection();
         if (direction == Vector2.zero)
         {

@@ -5,7 +5,7 @@ public class EraserProjectile : BaseProjectile
     protected override void Start()
     {
         damageAmount = 5; // Set the damage specific to this type of projectile
-        speed = 200f;
+        speed = 2f;
         base.Start();
         // CARACTERISTICAS DO PROJETIL
     }
