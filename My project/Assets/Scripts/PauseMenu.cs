@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -50,14 +51,14 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Loading Menu");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(fast_travel.mm);
     }
 
-    public void QuitGame()
+    public void RestartGame()
     {
-        Debug.Log("Descansar, que o pai não é de ferro");
+        Debug.Log("Restarting level1");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene(fast_travel.lvl1);
 
     }
 }

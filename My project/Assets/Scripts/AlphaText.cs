@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    public string nextSceneName = "SampleScene"; // Nome da cena a ser carregada
+    // public string nextSceneName = "SampleScene"; // Nome da cena a ser carregada
 
     void Update()
     {
@@ -13,7 +13,7 @@ public class StartGame : MonoBehaviour
         if (Input.anyKeyDown) 
         {
             Debug.Log("Key pressed, trying to load SampleScene");
-            SceneManager.LoadScene(nextSceneName); 
+            SceneManager.LoadScene(fast_travel.lvl1); 
         }
     }
 }

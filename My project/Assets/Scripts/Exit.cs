@@ -20,7 +20,7 @@ public class SceneChangeOnHover : MonoBehaviour
         {
             Debug.Log("Player entrou no trigger de transição de cena.");
     
-            SceneManager.LoadScene("SecondLevel");
+            SceneManager.LoadScene(fast_travel.lvl2);
         }
     }
 }
