@@ -10,12 +10,13 @@ public class PlayerCollision : MonoBehaviour
 
     void Start()
     {
-        healthManager = FindObjectOfType<HealthManager>(); //Acess Health manager and restart the regen timer
+        healthManager = FindObjectOfType<HealthManager>();  //Acess Health manager and restart the regen timer 
+                                                            //It's "access", there's two Cs in that. ~JV
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
 
-        if(collision.transform.tag == "Enemy" || collision.transform.tag == "EnemyTag")
+        if(collision.transform.tag == "Enemy")
         {
             
             HealthManager.health--;

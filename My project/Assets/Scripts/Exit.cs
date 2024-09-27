@@ -6,8 +6,8 @@ public class SceneChangeOnHover : MonoBehaviour
 
     // private void OnTriggerEnter(Collider other)
     // {
-    //     // Verifica se o objeto que entrou tem a tag "PlayerTag"
-    //     if (other.CompareTag("PlayerTag"))
+    //     // Verifica se o objeto que entrou tem a tag "Player"
+    //     if (other.CompareTag("Player"))
     //     {
     //         Debug.Log("Player entrou no trigger de transição de cena.");
     
@@ -16,7 +16,7 @@ public class SceneChangeOnHover : MonoBehaviour
     // }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerTag"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Player entrou no trigger de transição de cena.");
     

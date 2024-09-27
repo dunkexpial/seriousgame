@@ -2,20 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class playermovement : MonoBehaviour
 {
     public float moveSpeed;
     public Rigidbody2D rb;
     public Animator animator;
-
     private Vector2 moveDirection;
-    private Vector2 lastDirection; // Track the last direction the player moved
+    private Vector2 lastDirection;
+
     void Update()
     {
-        //Check if the game isPaused here and the FixedUpdate() below
         if (Time.timeScale != 0) 
         {
             ProcessInputs();
+            UpdateLastDirectionByCursor();
+            
+            // Trigger shooting animation on mouse click
+            if (Input.GetMouseButtonDown(0))
+            {
+                PlayShootingAnimation();
+            }
         }
     }
 
@@ -27,45 +34,66 @@ public class playermovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector2.zero; //Prevents player from moving
+            rb.velocity = Vector2.zero; // Prevent player from moving
         }
     }
 
-  void ProcessInputs()
-{
-    float moveX = Input.GetAxisRaw("Horizontal");
-    float moveY = Input.GetAxisRaw("Vertical");
-
-    moveDirection = new Vector2(moveX, moveY).normalized;
-
-    if (moveDirection != Vector2.zero)
+    void ProcessInputs()
     {
-        lastDirection = moveDirection;
-        // Update animator with the current movement
-        animator.SetFloat("Horizontal", moveDirection.x);
-        animator.SetFloat("Vertical", moveDirection.y);
-        
-        // Update the last movement direction for idle animations
-        animator.SetFloat("LastX", moveDirection.x);
-        animator.SetFloat("LastY", moveDirection.y);
-    }
-    else
-    {
-        // If idle, update the animator with the last direction the player was moving
-        animator.SetFloat("Horizontal", 0);
-        animator.SetFloat("Vertical", 0);
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        // Keep last movement direction for idle animations
-        animator.SetFloat("LastX", lastDirection.x);
-        animator.SetFloat("LastY", lastDirection.y);
-    }
+        moveDirection = new Vector2(moveX, moveY).normalized;
 
-    animator.SetFloat("Speed", moveDirection.sqrMagnitude);
-}
+        if (moveDirection != Vector2.zero)
+        {
+            lastDirection = moveDirection;
+
+            // Update animator with the current movement
+            animator.SetFloat("Horizontal", moveDirection.x);
+            animator.SetFloat("Vertical", moveDirection.y);
+            animator.SetFloat("LastX", moveDirection.x);
+            animator.SetFloat("LastY", moveDirection.y);
+        }
+        else
+        {
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("LastX", lastDirection.x);
+            animator.SetFloat("LastY", lastDirection.y);
+            // This is probably shit code that I'm too tired to fix now
+        }
+
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+    }
 
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+    }
+
+    void UpdateLastDirectionByCursor()
+    {
+        // Gets the cursor position
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 cursorDirection = (mousePosition - transform.position).normalized;
+
+        // Update lastDirection based on the cursor's direction
+        if (cursorDirection != Vector2.zero)
+        {
+            lastDirection = cursorDirection;
+        }
+    }
+
+    void PlayShootingAnimation()
+    {
+        // Set the animator's shooting trigger to start the shooting animation
+        animator.SetTrigger("Shoot");
+
+        // Update the animator with the shooting direction 
+        // TO DO: REDO THIS PART SO IT PLAYS THE ANIMATION FOR THE MOUSE DIRECTION, NOT MOVEMENT DIRECTION
+        animator.SetFloat("LastX", lastDirection.x);
+        animator.SetFloat("LastY", lastDirection.y);
     }
 
     public Vector2 GetMoveDirection()

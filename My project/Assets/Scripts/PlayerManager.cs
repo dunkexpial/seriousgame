@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
 {
     public static bool GameOver;
     public GameObject GameOverScreen;
-
     private void Awake()
     {
         GameOver = false; 
