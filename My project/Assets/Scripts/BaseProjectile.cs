@@ -54,7 +54,7 @@ public abstract class BaseProjectile : MonoBehaviour
             Destroy(gameObject);
         }
         // Check if it hits any object with a certain tag (i'm yet to decide for certain)
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("ProjObstacle"))
         {
             Destroy(gameObject);
             return; // no need to check for collision with enemies, it's already destroyed
@@ -70,7 +70,7 @@ public abstract class BaseProjectile : MonoBehaviour
             Destroy(gameObject);
         }
         // Check if it hits any object with a certain tag (i'm yet to decide for certain)
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("ProjObstacle"))
         {
             Destroy(gameObject);
             return; // no need to check for collision with enemies, it's already destroyed
