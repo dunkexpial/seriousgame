@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    
     public static bool GameOver;
     public GameObject GameOverScreen;
     private void Awake()
@@ -13,19 +14,13 @@ public class PlayerManager : MonoBehaviour
         GameOver = false; 
         Time.timeScale = 1f;  
     }
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         //Display a message you died and a button to restar the level
         if (GameOver)
         {
             GameOverScreen.SetActive(true);
-        }
+        } 
     }
 
     public void RestartLevel()
