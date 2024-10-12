@@ -1,18 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class playermovement : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
+
+    // Property that provides access to the DialogueUI component.
+    // This property is read-only, allowing other classes to read the value of the private variable dialogueUI,
+    // but they cannot change it directly. This helps maintain encapsulation.
+    public DialogueUI DialogueUI => dialogueUI;
+
+    // Property that allows access to and modification of an object that implements the IInteractable interface.
+    // This property has both a get method for reading and a set method for writing, 
+    // enabling other parts of the code to both obtain the current value and set a new value for Interactable.
+    // This is useful for storing a reference to any object that can be interacted with, such as NPCs or objects in the game.
+    public IInteractable Interactable { get; set; }
+
     public float moveSpeed;
     public Rigidbody2D rb;
     public Animator animator;
     private Vector2 moveDirection;
     private Vector2 lastDirection;
 
+
+
     void Update()
     {
+        //Basically player interact with the NPC and stop moving
+
+        // Checks if the dialogue box is open.
+        // If the dialogue box is open, it does nothing and returns immediately,
+        // preventing the player from moving while the conversation with the NPC is happening.
+        if (dialogueUI.isOpen) return;
+
+        // This is the key the player should press to interact with the NPC.
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Checks if there is a referenced interactable object (Interactable) for the player.
+            // This ensures that the player only tries to interact if there is actually something to interact with.
+            if (Interactable != null)
+            {
+                // Calls the Interact method of the interactable object,
+                // passing the player reference (this) as an argument, so the object knows who is interacting.
+                Interactable.Interact(player: this);
+            }
+        }
+
         if (Time.timeScale != 0) 
         {
             ProcessInputs();

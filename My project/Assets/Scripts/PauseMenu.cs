@@ -58,6 +58,7 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Restarting level1");
         Time.timeScale = 1f;
+        Physics2D.IgnoreLayerCollision(6,7, false); //Now the player Actually atke damage after restart
         SceneManager.LoadScene(fast_travel.lvl1);
 
     }
