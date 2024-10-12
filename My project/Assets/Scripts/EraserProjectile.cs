@@ -6,6 +6,7 @@ public class EraserProjectile : BaseProjectile
     {
         damageAmount = 5; // Set the damage specific to this type of projectile
         speed = 200f;
+        spinSpeed = 1000f;
         base.Start();
         // CARACTERISTICAS DO PROJETIL
     }
