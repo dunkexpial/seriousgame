@@ -61,7 +61,7 @@ public class playermovement : MonoBehaviour
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("LastX", lastDirection.x);
             animator.SetFloat("LastY", lastDirection.y);
-            // This is probably shit code that I'm too tired to fix now
+            // This is probably s*** code that I'm too tired to fix now
         }
 
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);

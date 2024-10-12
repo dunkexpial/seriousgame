@@ -12,6 +12,7 @@ public class AIMovement : MonoBehaviour
 
     // LayerMask to ignore enemy collisions
     public LayerMask layerMask;
+    public Animator animator;
 
     // Editable target raycast position on the player
     Vector2 playerTargetPositionOffset = new Vector2(0, -12);
@@ -37,7 +38,20 @@ public class AIMovement : MonoBehaviour
 
         if ((distance < radius) && hasLineOfSight)
         {
+            // Move AI towards the player
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+            // Pass the movement direction to the Animator
+            animator.SetFloat("enemyX", direction.x);
+            animator.SetFloat("enemyY", direction.y);
+            animator.SetFloat("Moving", 1);
+        }
+        else
+        {
+            // If not moving, set x and y to 0 to trigger idle animations
+            animator.SetFloat("enemyX", 0);
+            animator.SetFloat("enemyY", 0);
+            animator.SetFloat("Moving", 0);
         }
     }
 

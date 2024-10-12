@@ -8,6 +8,7 @@ public abstract class BaseProjectile : MonoBehaviour
     public int damageAmount = 0;
     private float timer;
     private Collider2D shooterCollider;
+    public float spinSpeed = 360f;
 
     protected virtual void Start()
     {
@@ -16,6 +17,8 @@ public abstract class BaseProjectile : MonoBehaviour
         {
             rb.velocity = direction * speed;
         }
+
+        SetInitialRotation(direction);
         
         timer = lifetime;
     }
@@ -27,9 +30,20 @@ public abstract class BaseProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Rotate the projectile based on spin speed
+        transform.Rotate(Vector3.forward, spinSpeed * Time.deltaTime);
     }
 
-    //Inicializa o projétil com o atirador
+    // Sets the initial rotation of the projectile based on the shooting direction, this MF took me more than an  hour of googling to figure out
+
+    private void SetInitialRotation(Vector2 shootingDirection)
+    {
+        float angle = Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
+    // Initializes the projectile with the shooter
     public void Initialize(GameObject shooter)
     {
         shooterCollider = shooter.GetComponent<Collider2D>();
@@ -41,12 +55,11 @@ public abstract class BaseProjectile : MonoBehaviour
                 Physics2D.IgnoreCollision(projectileCollider, shooterCollider);
             }
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Sistema de dano e destruir ao colidir
+        // Damage system and destroy on collision
         AttributesManager targetAttributes = collision.gameObject.GetComponent<AttributesManager>();
         if (targetAttributes != null)
         {

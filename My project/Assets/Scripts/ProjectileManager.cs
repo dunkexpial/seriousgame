@@ -7,7 +7,10 @@ public class ProjectileManager : MonoBehaviour
     public float projectileSpeed;
     public GameObject player;
     private playermovement playerMovement;
-    private int selectedProjectileIndex = 0;
+    public int selectedProjectileIndex = 0;
+
+    // Animator component reference
+    private Animator animator;
 
     void Start()
     {
@@ -16,6 +19,9 @@ public class ProjectileManager : MonoBehaviour
             player = FindObjectOfType<playermovement>().gameObject;
         }
         playerMovement = player.GetComponent<playermovement>();
+        
+        // Get the Animator component
+        animator = player.GetComponent<Animator>();
     }
 
     public void SetProjectileType(int index)
@@ -38,6 +44,9 @@ public class ProjectileManager : MonoBehaviour
         
         // Calculate the direction from the shooting point to the mouse position
         Vector2 direction = (mousePosition - shootingPoint.position).normalized;
+
+        animator.SetFloat("MouseX", direction.x);
+        animator.SetFloat("MouseY", direction.y);
 
         if (direction != Vector2.zero)
         {
