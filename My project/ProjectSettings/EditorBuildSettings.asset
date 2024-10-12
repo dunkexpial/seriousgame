@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstLevel.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 0
-    path: Assets/Scenes/FastTravel.unity
-    guid: b180677cac46d3045a7d374d3c8ae612
-  - enabled: 0
     path: Assets/Scenes/SecondLevel.unity
     guid: 54f1b7eb937ec1e418c5bf27320dd4c0
   - enabled: 0

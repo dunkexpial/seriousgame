@@ -53,6 +53,12 @@ public abstract class BaseProjectile : MonoBehaviour
             targetAttributes.TakeDamage(damageAmount);
             Destroy(gameObject);
         }
+        // Check if it hits any object with a certain tag (i'm yet to decide for certain)
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+            return; // no need to check for collision with enemies, it's already destroyed
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,6 +68,12 @@ public abstract class BaseProjectile : MonoBehaviour
         {
             targetAttributes.TakeDamage(damageAmount);
             Destroy(gameObject);
+        }
+        // Check if it hits any object with a certain tag (i'm yet to decide for certain)
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+            return; // no need to check for collision with enemies, it's already destroyed
         }
     }
 }
