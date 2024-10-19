@@ -8,7 +8,10 @@ public class PaperPlaneProjectile : BaseProjectile
         speed = 500f;
         spinSpeed = 0f;
         base.Start();
-        // CARACTERISTICAS DO PROJETIL
+    }
+    
+    private void OnDestroy() {
+        
     }
 
     protected override void Update()
