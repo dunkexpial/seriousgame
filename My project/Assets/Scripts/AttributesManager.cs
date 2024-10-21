@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttributesManager : MonoBehaviour
 {
+    public GameObject[] bossDrop;
     public int health;
     public int attack;
 
@@ -12,6 +13,7 @@ public class AttributesManager : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
+            itemDrop();
             Destroy(gameObject);
         }
     }
@@ -22,6 +24,17 @@ public class AttributesManager : MonoBehaviour
         if(atm != null)
         {
             atm.TakeDamage(attack);
+        }
+    }
+
+    private void itemDrop()
+    {
+        for (int i = 0; i < bossDrop.Length; i++)
+        {
+            if (bossDrop[i])
+            {
+                Instantiate(bossDrop[i], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            }
         }
     }
 }
