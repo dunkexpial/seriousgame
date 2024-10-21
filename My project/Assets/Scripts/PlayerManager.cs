@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     
     public static bool GameOver;
     public GameObject GameOverScreen;
+    public GameObject iventorySlots;
+
     private void Awake()
     {
         GameOver = false; 
@@ -19,6 +21,9 @@ public class PlayerManager : MonoBehaviour
         if (GameOver)
         {
             GameOverScreen.SetActive(true);
+            
+            iventorySlots.SetActive(false);
+
         } 
     }
 
