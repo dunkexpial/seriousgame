@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
     public GameObject[] projectilePrefabs; // Array dos prefabs dos projéteis
     public Transform shootingPoint;
     public float projectileSpeed;
     public GameObject player;
     private playermovement playerMovement;
     public int selectedProjectileIndex = 0;
+    public DialogueUI DialogueUI => dialogueUI;
 
     // Animator component reference
     private Animator animator;
@@ -34,6 +36,8 @@ public class ProjectileManager : MonoBehaviour
 
     public void Shoot()
     {
+        if (dialogueUI.isOpen) return;
+        
         if (Time.timeScale == 0)
         {
             return; // Check if the game is paused, if it is return nothing = stop shooting 
