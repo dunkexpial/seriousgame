@@ -175,8 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDrop:
-  - {fileID: 4737247319397967086, guid: bf938d7767cd4ef4d845b1f53e036652, type: 3}
+  bossDrop: []
   health: 10
   attack: 1
 --- !u!114 &1549463768266137196
