@@ -14,9 +14,9 @@ public class PlayerCollision : MonoBehaviour
                                                             //It's "access", there's two Cs in that. ~JV
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-
-    if (collision.transform.tag == "Enemy" || collision.transform.tag == "EnemyProjectile")
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile")
         {
             HealthManager.health--;
             healthManager.ResetRegenTimer();
@@ -31,12 +31,13 @@ public class PlayerCollision : MonoBehaviour
                 StartCoroutine(TakeDamage());
             }
 
-            if (collision.transform.tag == "EnemyProjectile")
+            if (collider.transform.tag == "EnemyProjectile")
             {
-                Destroy(collision.gameObject);
+                Destroy(collider.gameObject);
             }
         }
     }
+
 
     IEnumerator TakeDamage()
     {

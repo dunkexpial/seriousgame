@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1549463768266137196}
   - component: {fileID: 2739401685674574794}
   - component: {fileID: 1744736639733388007}
-  - component: {fileID: 5830882027920381840}
   - component: {fileID: 3124028579380839988}
   m_Layer: 7
   m_Name: EnemyRangedTest
@@ -69,7 +68,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -176,6 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDrop:
+  - {fileID: 4737247319397967086, guid: bf938d7767cd4ef4d845b1f53e036652, type: 3}
   health: 10
   attack: 1
 --- !u!114 &1549463768266137196
@@ -226,24 +227,13 @@ MonoBehaviour:
   speed: 30
   radius: 150
   inRange: 60
+  ghostProjectile: {fileID: 637174100589294369, guid: c0ae17270edaeb04482870370d2066ec, type: 3}
+  ghostProjPos: {fileID: 7760119308992193523}
   layerMask:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 2739401685674574794}
---- !u!114 &5830882027920381840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475629041016757149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc17ef03edf20843a85c7788a29d6f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghostProjectile: {fileID: 637174100589294369, guid: c0ae17270edaeb04482870370d2066ec, type: 3}
-  ghostProjPos: {fileID: 7760119308992193523}
+  shootCooldown: 0.5
 --- !u!114 &3124028579380839988
 MonoBehaviour:
   m_ObjectHideFlags: 0

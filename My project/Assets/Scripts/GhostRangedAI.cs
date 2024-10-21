@@ -7,33 +7,33 @@ public class GhostRangedAI : MonoBehaviour
     public float speed;
     public float radius;
     public float inRange;
+    public GameObject ghostProjectile;
+    public Transform ghostProjPos;
+    public LayerMask layerMask;
+    public Animator animator;
+
     private GameObject player;
     private float distance;
     private bool hasLineOfSight = false;
 
-    // LayerMask to ignore enemy collisions
-    public LayerMask layerMask;
-    public Animator animator;
-
-    // Editable target raycast position on the player
     Vector2 playerTargetPositionOffset = new Vector2(0, -12);
-
-    // Variables to store the last direction the ghost moved
     private float lastX;
     private float lastY;
 
+    private float shootTimer;
+    public float shootCooldown = 0.5f; // Time between shots
+
     void Start()
     {
-        // Encontra o GameObject com a tag "PlayerTag"
+        // Find the GameObject with the tag "PlayerTag"
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (player == null)
         {
-            // Loop até encontrar o player
+            // Loop until finding the player
             player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
         }
@@ -54,7 +54,18 @@ public class GhostRangedAI : MonoBehaviour
             animator.SetFloat("enemyX", direction.x);
             animator.SetFloat("enemyY", direction.y);
             animator.SetFloat("Moving", 1);
+
         }
+        // Shooting logic: only shoot if within the radius
+        if (distance < radius && hasLineOfSight)
+            {
+                shootTimer += Time.deltaTime;
+                if (shootTimer >= shootCooldown)
+                {
+                    shoot();
+                    shootTimer = 0;
+                }
+            }
         else
         {
             // If not moving, set movement to 0 but use lastX and lastY for idle direction
@@ -87,5 +98,10 @@ public class GhostRangedAI : MonoBehaviour
                 Debug.DrawRay(transform.position, targetPosition - (Vector2)transform.position, Color.red);
             }
         }
+    }
+
+    void shoot()
+    {
+        Instantiate(ghostProjectile, ghostProjPos.position, Quaternion.identity);
     }
 }

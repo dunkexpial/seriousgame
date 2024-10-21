@@ -7,7 +7,8 @@ public class EnemyProjectile : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rb;
     public float speed;
-    // Start is called before the first frame update
+    public float lifespan = 5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,11 +23,15 @@ public class EnemyProjectile : MonoBehaviour
         // Calculate the rotation to face the direction of movement
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        Destroy(gameObject, lifespan);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        
+        if (collider.CompareTag("ProjObstacle"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

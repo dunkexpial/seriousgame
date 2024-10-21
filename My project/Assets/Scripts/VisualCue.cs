@@ -10,7 +10,7 @@ public class VisualCue : MonoBehaviour
     [SerializeField] private Sprite sprite;
     private bool playerInRange; 
 
-    private IventoryManager iventoryManager;
+    private InventoryManager iventoryManager;
 
     private void Awake() 
     {
@@ -21,7 +21,7 @@ public class VisualCue : MonoBehaviour
     private void Start()
     {
         //Find the Canvas then, it gets the component of type IventoryManager attached to that GameObject and assigns it to the iventoryManager variable.
-        iventoryManager = GameObject.Find("Canvas").GetComponent<IventoryManager>();
+        iventoryManager = GameObject.Find("Canvas").GetComponent<InventoryManager>();
     }
     private void Update()
     {
