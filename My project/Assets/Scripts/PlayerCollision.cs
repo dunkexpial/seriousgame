@@ -16,12 +16,9 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
 
-        if(collision.transform.tag == "Enemy")
+    if (collision.transform.tag == "Enemy" || collision.transform.tag == "EnemyProjectile")
         {
-            
             HealthManager.health--;
-
-            
             healthManager.ResetRegenTimer();
 
             if (HealthManager.health <= 0)
@@ -32,6 +29,11 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 StartCoroutine(TakeDamage());
+            }
+
+            if (collision.transform.tag == "EnemyProjectile")
+            {
+                Destroy(collision.gameObject);
             }
         }
     }

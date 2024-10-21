@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIMovement : MonoBehaviour
+public class GhostRangedAI : MonoBehaviour
 {
     public float speed;
     public float radius;
+    public float inRange;
     private GameObject player;
     private float distance;
     private bool hasLineOfSight = false;
@@ -16,6 +17,10 @@ public class AIMovement : MonoBehaviour
 
     // Editable target raycast position on the player
     Vector2 playerTargetPositionOffset = new Vector2(0, -12);
+
+    // Variables to store the last direction the ghost moved
+    private float lastX;
+    private float lastY;
 
     void Start()
     {
@@ -36,10 +41,14 @@ public class AIMovement : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        if ((distance < radius) && hasLineOfSight)
+        if (distance < radius && hasLineOfSight && distance > inRange)
         {
             // Move AI towards the player
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+            // Save the last direction the ghost moved
+            lastX = direction.x;
+            lastY = direction.y;
 
             // Pass the movement direction to the Animator
             animator.SetFloat("enemyX", direction.x);
@@ -48,10 +57,14 @@ public class AIMovement : MonoBehaviour
         }
         else
         {
-            // If not moving, set x and y to 0 to trigger idle animations
+            // If not moving, set movement to 0 but use lastX and lastY for idle direction
             animator.SetFloat("enemyX", 0);
             animator.SetFloat("enemyY", 0);
             animator.SetFloat("Moving", 0);
+
+            // Set the last movement direction
+            animator.SetFloat("lastX", lastX);
+            animator.SetFloat("lastY", lastY);
         }
     }
 
