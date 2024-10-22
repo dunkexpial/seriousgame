@@ -16,7 +16,7 @@ public class GhostRangedAI : MonoBehaviour
     private float distance;
     private bool hasLineOfSight = false;
 
-    Vector2 playerTargetPositionOffset = new Vector2(0, -12);
+    Vector2 playerTargetPositionOffset = new Vector2(0, 0);
     private float lastX;
     private float lastY;
 

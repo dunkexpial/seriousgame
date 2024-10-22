@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour
 
         if (projectileManager.selectedProjectileIndex  == 0)
         {
-            fireRate = 0.5f;
+            fireRate = 0.35f;
         }
         else if (projectileManager.selectedProjectileIndex == 1)
         {

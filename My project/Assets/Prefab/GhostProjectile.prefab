@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4620163445893403897}
   - component: {fileID: 1609873430195141555}
   - component: {fileID: 796027120585647325}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GhostProjectile
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}

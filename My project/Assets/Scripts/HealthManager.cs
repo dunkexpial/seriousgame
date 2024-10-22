@@ -88,8 +88,5 @@ public class HealthManager : MonoBehaviour
         {
             heart.enabled = true;
         }
-
     }
 }
-
-

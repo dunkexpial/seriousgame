@@ -15,7 +15,7 @@ public class GhostAI : MonoBehaviour
     public Animator animator;
 
     // Editable target raycast position on the player
-    Vector2 playerTargetPositionOffset = new Vector2(0, -12);
+    Vector2 playerTargetPositionOffset = new Vector2(0, 0);
 
     // Variables to store the last direction the ghost moved
     private float lastX;
