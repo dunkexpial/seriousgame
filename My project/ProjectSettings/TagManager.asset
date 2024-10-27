@@ -10,6 +10,7 @@ TagManager:
   - ProjObstacle
   - EnemyProjectile
   - PlayerTarget
+  - LevelBoss
   layers:
   - Default
   - TransparentFX

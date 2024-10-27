@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6381316549925657805}
   - component: {fileID: 4060375771410500687}
   - component: {fileID: -8432006273162380287}
+  - component: {fileID: -6598370947899143752}
   m_Layer: 0
   m_Name: PaperBall
   m_TagString: ProjectileTag
@@ -165,4 +166,18 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.01
+--- !u!114 &-6598370947899143752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660336288068593288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3dce95a39ae0b48a16629889642160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
+  smokeLifetime: 0.25

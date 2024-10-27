@@ -1,22 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
-
 
 public class PlayerCollision : MonoBehaviour
 {
     private HealthManager healthManager;
+    private bool isInvincible = false;
 
     void Start()
     {
-        healthManager = FindObjectOfType<HealthManager>();  //Acess Health manager and restart the regen timer 
-                                                            //It's "access", there's two Cs in that. ~JV
+        healthManager = FindObjectOfType<HealthManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile")
+        // Check if player is invincible before applying damage
+        if ((collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile") && !isInvincible)
         {
             HealthManager.health--;
             healthManager.ResetRegenTimer();
@@ -28,7 +26,7 @@ public class PlayerCollision : MonoBehaviour
             }
             else
             {
-                StartCoroutine(TakeDamage());
+                StartCoroutine(TakeDamage());  // Trigger invincibility and damage effects
             }
 
             if (collider.transform.tag == "EnemyProjectile")
@@ -38,16 +36,14 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-
     IEnumerator TakeDamage()
     {
-        Physics2D.IgnoreLayerCollision(6,7);
-        GetComponent<Animator>().SetLayerWeight(1,1); //TakeDamage animation
-        yield return new WaitForSeconds(2);
-        GetComponent<Animator>().SetLayerWeight(1,0);
-        Physics2D.IgnoreLayerCollision(6,7, false);
+        isInvincible = true;  // Activate invincibility
+        GetComponent<Animator>().SetLayerWeight(1, 1);
 
-        //This function will take the layers of the player and enemy. Then After the player take damage the colilision
-        //will be disabled, and guarateen 2s of invincibility to the player
+        yield return new WaitForSeconds(2);
+
+        GetComponent<Animator>().SetLayerWeight(1, 0);
+        isInvincible = false;  // End invincibility
     }
 }

@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e364b8dddf8ba1947895f1c99a5e6818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 8
+  spawnRateMin: 0.1
+  spawnRateMax: 10
   enemyPrefabs:
-  - {fileID: 5475629041016757149, guid: de4c7093795ff9742b674136bd98f8cb, type: 3}
-  - {fileID: 5475629041016757149, guid: b02e84e05d530dc48bfc389f794beb25, type: 3}
+  - {fileID: 7444085534275883118, guid: 5c2183099828fdd42ad157e05044f469, type: 3}
   canSpawn: 1
   spawnRangeX: 30
   spawnRangeY: 30
+  checkRadius: 150
+  maxEnemiesInRadius: 5
+  minDistanceToPlayer: 30
