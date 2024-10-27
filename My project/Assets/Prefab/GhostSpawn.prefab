@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3090782180251676438}
   - component: {fileID: 7240106813685814418}
   - component: {fileID: 151991715700149858}
+  - component: {fileID: -8757808646901857684}
   m_Layer: 0
   m_Name: GhostSpawn
   m_TagString: Enemy
@@ -124,3 +125,17 @@ MonoBehaviour:
   - {fileID: 5475629041016757149, guid: b02e84e05d530dc48bfc389f794beb25, type: 3}
   spawnDelay: 0.9
   destroyDelay: 0.8
+--- !u!114 &-8757808646901857684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444085534275883118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3dce95a39ae0b48a16629889642160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6586032776864093336, guid: 3230f6854b753db4eb529565e2892622, type: 3}
+  smokeLifetime: 0.5

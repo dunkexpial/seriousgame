@@ -49,8 +49,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 7444085534275883118, guid: 5c2183099828fdd42ad157e05044f469, type: 3}
   canSpawn: 1
-  spawnRangeX: 30
-  spawnRangeY: 30
+  spawnRangeX: 50
+  spawnRangeY: 50
   checkRadius: 150
   maxEnemiesInRadius: 5
   minDistanceToPlayer: 30
