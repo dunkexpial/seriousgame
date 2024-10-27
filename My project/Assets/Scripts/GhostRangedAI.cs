@@ -21,11 +21,23 @@ public class GhostRangedAI : MonoBehaviour
     private float lastY;
 
     private float shootTimer;
-    public float shootCooldown = 0.5f; // Time between shots
+    public float shootCooldown = 0.5f;
+
+    private Vector2[] raycastOffsets = new Vector2[]
+    {
+        new Vector2(0, -2f),
+        new Vector2(5.49f, -2f),
+        new Vector2(-5.49f, -2f),
+        new Vector2(0, 13.49f),
+        new Vector2(0, -17.49f),
+        new Vector2(5.49f, 13.49f),
+        new Vector2(-5.49f, 13.49f),
+        new Vector2(5.49f, -17.49f),
+        new Vector2(-5.49f, -17.49f)
+    };
 
     void Start()
     {
-        // Find the GameObject with the tag "PlayerTag"
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -33,7 +45,6 @@ public class GhostRangedAI : MonoBehaviour
     {
         if (player == null)
         {
-            // Loop until finding the player
             player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
         }
@@ -43,37 +54,31 @@ public class GhostRangedAI : MonoBehaviour
 
         if (distance < radius && hasLineOfSight && distance > inRange)
         {
-            // Move AI towards the player
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
-            // Save the last direction the ghost moved
             lastX = direction.x;
             lastY = direction.y;
 
-            // Pass the movement direction to the Animator
             animator.SetFloat("enemyX", direction.x);
             animator.SetFloat("enemyY", direction.y);
             animator.SetFloat("Moving", 1);
-
         }
-        // Shooting logic: only shoot if within the radius
+
         if (distance < radius && hasLineOfSight)
+        {
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= shootCooldown)
             {
-                shootTimer += Time.deltaTime;
-                if (shootTimer >= shootCooldown)
-                {
-                    shoot();
-                    shootTimer = 0;
-                }
+                shoot();
+                shootTimer = 0;
             }
+        }
         else
         {
-            // If not moving, set movement to 0 but use lastX and lastY for idle direction
             animator.SetFloat("enemyX", 0);
             animator.SetFloat("enemyY", 0);
             animator.SetFloat("Moving", 0);
 
-            // Set the last movement direction
             animator.SetFloat("lastX", lastX);
             animator.SetFloat("lastY", lastY);
         }
@@ -81,17 +86,18 @@ public class GhostRangedAI : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        // Calculate the target position on the player based on the offset
-        Vector2 targetPosition = (Vector2)player.transform.position + playerTargetPositionOffset;
+        hasLineOfSight = false;
 
-        // Check for raycast
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, Mathf.Infinity, layerMask);
-        if(ray.collider != null)
+        foreach (Vector2 offset in raycastOffsets)
         {
-            hasLineOfSight = ray.collider.CompareTag("Player");
-            if(hasLineOfSight)
+            Vector2 targetPosition = (Vector2)player.transform.position + playerTargetPositionOffset + offset;
+            RaycastHit2D ray = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, Mathf.Infinity, layerMask);
+
+            if(ray.collider != null && ray.collider.CompareTag("Player"))
             {
+                hasLineOfSight = true;
                 Debug.DrawRay(transform.position, targetPosition - (Vector2)transform.position, Color.green);
+                break;
             }
             else
             {
