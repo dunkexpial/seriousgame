@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private HealthManager healthManager;
-    public AudioClip damageClip;  // Som de dano
-    private AudioSource audioSource;
+private HealthManager healthManager;
+public AudioClip damageClip;  // Som de dano
+private AudioSource audioSource;
 
     void Start()
     {
@@ -50,5 +50,5 @@ public class PlayerCollision : MonoBehaviour
             audioSource.PlayOneShot(damageClip);  // Toca o som de dano
         }
     }
- }
+}
 }
