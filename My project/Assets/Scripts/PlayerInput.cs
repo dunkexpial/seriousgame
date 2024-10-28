@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
     public ProjectileManager projectileManager;
     // The 3 following variables could be either configurable in unity or a fixed value here, I'll see to that later in the game's development
     public Animator animator;
     private float fireRate = 0.5f;
     private float nextFireTime = 0f;
+    public DialogueUI DialogueUI => dialogueUI;
 
     // Adicionando o SoundManager
    public AudioClip[] eraserShootClips;  // Array de clips de áudio
 
     void Update()
     {
+        if (dialogueUI.isOpen) return;
+
         // Handle projectile type selection with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -37,7 +41,7 @@ public class PlayerInput : MonoBehaviour
 
         if (projectileManager.selectedProjectileIndex  == 0)
         {
-            fireRate = 0.5f;
+            fireRate = 0.35f;
         }
         else if (projectileManager.selectedProjectileIndex == 1)
         {
@@ -55,7 +59,6 @@ public class PlayerInput : MonoBehaviour
         {
             fireRate = 1.2f;
         }
-
 
         // Check if the fire button is held down and if enough time has passed since the last shot
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime) 

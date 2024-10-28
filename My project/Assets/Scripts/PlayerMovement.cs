@@ -17,7 +17,7 @@ public class playermovement : MonoBehaviour
     // This property has both a get method for reading and a set method for writing, 
     // enabling other parts of the code to both obtain the current value and set a new value for Interactable.
     // This is useful for storing a reference to any object that can be interacted with, such as NPCs or objects in the game.
-    public IInteractable Interactable { get; set; }
+    public Interactable Interactable { get; set; }
 
     public float moveSpeed;
     public Rigidbody2D rb;

@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+
+    public GameObject iventorySlots;
     public bool isPaused;
     public AudioSource backgroundMusic;  // Música de fundo
 
@@ -21,6 +23,16 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+
+        if (Time.timeScale == 0)
+        {
+            iventorySlots.SetActive(false);
+        }
+        else
+        {
+            iventorySlots.SetActive(true);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -69,7 +81,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Physics2D.IgnoreLayerCollision(6,7, false); //Now the player Actually atke damage after restart
         SceneManager.LoadScene(fast_travel.lvl1);
-
     }
-}
 
+}

@@ -22,6 +22,16 @@ public class HealthManager : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            HideHearts(); 
+            return; 
+        }
+        else
+        {
+            ShowHearts(); 
+        }
+
         //Basically the for loop change the index of the healt bar into different sprites [full ,empty]
         //Every time it takes damage or heal
         foreach (Image img in hearts)
@@ -62,5 +72,21 @@ public class HealthManager : MonoBehaviour
             StopCoroutine(regenCoroutine); //Stop the current 5f 
         }
         isRegenerating = false; //Timer restart to 5f regenerate again
+    }
+
+    private void HideHearts()
+    {
+        foreach (Image heart in hearts)
+        {
+            heart.enabled = false;
+        }
+    }
+
+    private void ShowHearts()
+    {
+        foreach (Image heart in hearts)
+        {
+            heart.enabled = true;
+        }
     }
 }

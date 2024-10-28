@@ -4,21 +4,20 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     private HealthManager healthManager;
-    private bool isInvincible = false;
     public AudioClip damageClip;  // Som de dano
     private AudioSource audioSource;
 
     void Start()
     {
-        healthManager = FindObjectOfType<HealthManager>();
-       	audioSource = GetComponent<AudioSource>();  // Obtém o AudioSource do jogador
+        healthManager = FindObjectOfType<HealthManager>();  //Acess Health manager and restart the regen timer 
+        audioSource = GetComponent<AudioSource>();  // Obtém o AudioSource do jogador                                                    //It's "access", there's two Cs in that. ~JV
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        // Check if player is invincible before applying damage
-        if ((collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile") && !isInvincible)
+    private void OnCollisionEnter2D(Collision2D collision) {
+
+        if(collision.transform.tag == "Enemy")
         {
+            
             HealthManager.health--;
             healthManager.ResetRegenTimer();
 
@@ -29,13 +28,8 @@ public class PlayerCollision : MonoBehaviour
             }
             else
             {
-		PlayDamageSound();  // Toca o som de dano
-                StartCoroutine(TakeDamage());  // Trigger invincibility and damage effects
-            }
-
-            if (collider.transform.tag == "EnemyProjectile")
-            {
-                Destroy(collider.gameObject);
+                StartCoroutine(TakeDamage());   
+                PlayDamageSound();  // Toca o som de dano
             }
         }
     }
@@ -46,9 +40,11 @@ public class PlayerCollision : MonoBehaviour
         GetComponent<Animator>().SetLayerWeight(1, 1);
 
         yield return new WaitForSeconds(2);
+        GetComponent<Animator>().SetLayerWeight(1,0);
+        Physics2D.IgnoreLayerCollision(6,7, false);
 
-        GetComponent<Animator>().SetLayerWeight(1, 0);
-        isInvincible = false;  // End invincibility
+        //This function will take the layers of the player and enemy. Then After the player take damage the colilision
+        //will be disabled, and guarateen 2s of invincibility to the player
     }
     private void PlayDamageSound()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueActivator : MonoBehaviour, IInteractable
+public class DialogueActivator : MonoBehaviour, Interactable
 {
     // Dialogue object associated with the NPC that triggers the dialogue
     [SerializeField] private DialogueObject dialogueObject;
