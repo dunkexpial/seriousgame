@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:My project/Assets/Animation/effects/SmallSmokeEffect.anim.meta
 guid: 27b06ccdab902764abc28f14c2217344
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
+========
+guid: a4fe34104815f3942b84965a61606c03
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+>>>>>>>> main:My project/Assets/Animation/effects/SmallSmokeEffect.controller.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

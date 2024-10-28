@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:My project/Assets/Animation/effects/GhostSpawn.controller.meta
 guid: 147d55a61c6215142a1592f53a99df0a
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
+========
+guid: 27b06ccdab902764abc28f14c2217344
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>>> main:My project/Assets/Animation/effects/SmallSmokeEffect.anim.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

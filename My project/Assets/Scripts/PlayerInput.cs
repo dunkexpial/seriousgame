@@ -10,9 +10,6 @@ public class PlayerInput : MonoBehaviour
     private float nextFireTime = 0f;
     public DialogueUI DialogueUI => dialogueUI;
 
-    // Adicionando o SoundManager
-   public AudioClip[] eraserShootClips;  // Array de clips de áudio
-
     void Update()
     {
         if (dialogueUI.isOpen) return;
@@ -67,21 +64,9 @@ public class PlayerInput : MonoBehaviour
             
             // Trigger the shooting animation
             animator.SetTrigger("Shoot"); // This has to be the name of the trigger parameter in the animator!!
-
-            PlayRandomShootSound();  // Toca som aleatório
             
             // Update the next fire time
             nextFireTime = Time.time + fireRate;
-
-        }
-        
-    }
-   // Função para tocar som de disparo aleatório
-    private void PlayRandomShootSound()
-    {
-        if (SoundManager.instance != null)
-        {
-            SoundManager.instance.PlayRandomSound(eraserShootClips);
         }
     }
 }

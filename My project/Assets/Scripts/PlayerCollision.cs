@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();  //Acess Health manager and restart the regen timer 
-        audioSource = GetComponent<AudioSource>();  // Obtém o AudioSource do jogador                                                    //It's "access", there's two Cs in that. ~JV
+        audioSource = GetComponent<AudioSource>();  // Obtém o AudioSource do jogador                                                   
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -28,7 +28,7 @@ public class PlayerCollision : MonoBehaviour
             }
             else
             {
-                StartCoroutine(TakeDamage());   
+                StartCoroutine(TakeDamage());
                 PlayDamageSound();  // Toca o som de dano
             }
         }
@@ -40,11 +40,9 @@ public class PlayerCollision : MonoBehaviour
         GetComponent<Animator>().SetLayerWeight(1, 1);
 
         yield return new WaitForSeconds(2);
-        GetComponent<Animator>().SetLayerWeight(1,0);
-        Physics2D.IgnoreLayerCollision(6,7, false);
 
-        //This function will take the layers of the player and enemy. Then After the player take damage the colilision
-        //will be disabled, and guarateen 2s of invincibility to the player
+        GetComponent<Animator>().SetLayerWeight(1, 0);
+        isInvincible = false;  // End invincibility
     }
     private void PlayDamageSound()
     {
