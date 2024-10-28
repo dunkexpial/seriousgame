@@ -50,4 +50,5 @@ public class PlayerCollision : MonoBehaviour
             audioSource.PlayOneShot(damageClip);  // Toca o som de dano
         }
     }
+ }
 }
