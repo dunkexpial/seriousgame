@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject iventorySlots;
     public bool isPaused;
+    public AudioSource backgroundMusic;  // Música de fundo
 
     void Start()
     {
@@ -50,6 +51,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+         if (backgroundMusic != null)
+        {
+            backgroundMusic.Pause();  // Pausa a música
+        }
     }
 
     public void ResumeGame()
@@ -57,6 +62,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.UnPause();  // Retoma a música
+        }
     }
 
     public void LoadMenu()
