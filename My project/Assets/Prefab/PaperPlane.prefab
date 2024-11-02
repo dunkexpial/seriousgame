@@ -302,5 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3dce95a39ae0b48a16629889642160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
-  smokeLifetime: 0.25
+  createSmokePrefab: {fileID: 0}
+  destroySmokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
+  createSmokeLifetime: 0.5
+  destroySmokeLifetime: 0.25

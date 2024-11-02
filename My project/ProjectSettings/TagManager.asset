@@ -11,6 +11,10 @@ TagManager:
   - EnemyProjectile
   - PlayerTarget
   - LevelBoss
+  - MagnetTop
+  - MagnetBottom
+  - Boss1Core
+  - Boss1Head
   layers:
   - Default
   - TransparentFX
