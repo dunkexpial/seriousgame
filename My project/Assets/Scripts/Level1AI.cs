@@ -23,12 +23,12 @@ public class Level1AI : MonoBehaviour
         new Vector2(0, -2f),
         new Vector2(5.49f, -2f),
         new Vector2(-5.49f, -2f),
-        new Vector2(0, 13.49f),
-        new Vector2(0, -17.49f),
-        new Vector2(5.49f, 13.49f),
-        new Vector2(-5.49f, 13.49f),
-        new Vector2(5.49f, -17.49f),
-        new Vector2(-5.49f, -17.49f)
+        new Vector2(0, 3.49f),
+        new Vector2(0, -5.49f),
+        new Vector2(5.49f, 3.49f),
+        new Vector2(-5.49f, 3.49f),
+        new Vector2(5.49f, -5.49f),
+        new Vector2(-5.49f, -5.49f)
     };
 
     void Start()

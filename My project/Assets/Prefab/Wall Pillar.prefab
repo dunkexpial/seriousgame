@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4851374382683956436
+--- !u!1 &2630820515264693359
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6593557230794851486}
-  - component: {fileID: 6659317855262593299}
-  - component: {fileID: 6498587140364351997}
-  m_Layer: 0
-  m_Name: ProjCollider
+  - component: {fileID: 1648189769219775054}
+  - component: {fileID: 7250775070915762050}
+  m_Layer: 3
+  m_Name: ProjObstacle
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6593557230794851486
+--- !u!4 &1648189769219775054
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851374382683956436}
+  m_GameObject: {fileID: 2630820515264693359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354808446908338547}
+  m_Father: {fileID: 7810349073198963500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6659317855262593299
+--- !u!61 &7250775070915762050
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851374382683956436}
+  m_GameObject: {fileID: 2630820515264693359}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -65,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.02}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,23 +75,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.08}
+  m_Size: {x: 0.64, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &6498587140364351997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851374382683956436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fafa7d5bd72c44446a492875b92abed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagToIgnore1: Player
-  tagToIgnore2: ProjObstacle
---- !u!1 &7161317825669987448
+--- !u!1 &4487236872862405273
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,39 +85,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 354808446908338547}
-  - component: {fileID: 7075991923260064171}
-  - component: {fileID: 1962444715368236815}
-  m_Layer: 3
-  m_Name: wooden_wall_h
+  - component: {fileID: 7810349073198963500}
+  - component: {fileID: 5762182455217183316}
+  - component: {fileID: 1575550325154269440}
+  m_Layer: 0
+  m_Name: Wall Pillar
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &354808446908338547
+--- !u!4 &7810349073198963500
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7161317825669987448}
+  m_GameObject: {fileID: 4487236872862405273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -480, y: 4, z: 1.4280901}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 504, y: 120, z: 0.2794332}
+  m_LocalScale: {x: 40, y: 62.5, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6593557230794851486}
+  - {fileID: 1648189769219775054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7075991923260064171
+--- !u!212 &5762182455217183316
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7161317825669987448}
+  m_GameObject: {fileID: 4487236872862405273}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -167,24 +152,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9b7d27b0381c98c45a9f77c58fc412d4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 66987bee51a8796479ed0cd89d9dc66a, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.48}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1962444715368236815
+--- !u!61 &1575550325154269440
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7161317825669987448}
+  m_GameObject: {fileID: 4487236872862405273}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -210,16 +195,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09}
+  m_Offset: {x: 0, y: -0.12}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.04, y: 0.04, z: 0.04, w: 0.04}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 0.4}
-    newSize: {x: 0.64, y: 0.48}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.22}
+  m_Size: {x: 0.64, y: 0.4}
   m_EdgeRadius: 0

@@ -15,6 +15,7 @@ TagManager:
   - MagnetBottom
   - Boss1Core
   - Boss1Head
+  - Boss1Field
   layers:
   - Default
   - TransparentFX

@@ -7,11 +7,10 @@ public class Lvl1BossHeadShooting : MonoBehaviour
     public float shootingInterval = 0.5f; // Time between individual shots
     public float startAngle = 0f; // Starting angle in degrees
     public float endAngle = 90f; // Ending angle in degrees
-    public float shootingDuration = 5f; // Total duration for which shooting occurs
+    public float projectileLifetime = 5f; // Lifetime of the projectile
     public string targetTag = "None"; // The tag of the target to check for
 
     private Coroutine shootingCoroutine; // Store the current shooting coroutine
-    private float shootingEndTime; // Store the time when shooting should stop
 
     private void Update()
     {
@@ -21,7 +20,6 @@ public class Lvl1BossHeadShooting : MonoBehaviour
             // If no object with the target tag is found and not currently shooting, start the shooting event
             if (shootingCoroutine == null)
             {
-                shootingEndTime = Time.time + shootingDuration; // Set the end time for shooting
                 shootingCoroutine = StartCoroutine(ShootingEvent());
             }
         }
@@ -38,13 +36,11 @@ public class Lvl1BossHeadShooting : MonoBehaviour
 
     private IEnumerator ShootingEvent()
     {
-        while (Time.time < shootingEndTime) // Continue shooting until the timer expires
+        while (true) // Continue shooting indefinitely
         {
             ShootProjectile(); // Shoot a projectile
             yield return new WaitForSeconds(shootingInterval); // Wait for the next shot
         }
-
-        shootingCoroutine = null; // Reset the coroutine reference when finished
     }
 
     private void ShootProjectile()
@@ -56,14 +52,19 @@ public class Lvl1BossHeadShooting : MonoBehaviour
         GameObject projectilePrefab = projectilePrefabs[Random.Range(0, projectilePrefabs.Length)];
 
         // Instantiate the projectile
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0, 0, randomAngle));
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
         // Calculate the direction based on the random angle
-        Vector2 direction = Quaternion.Euler(0, 0, randomAngle) * Vector2.right; // Adjust direction based on angle
-        rb.velocity = direction * 100f; // Set the velocity (100f can be adjusted based on desired speed)
+        Vector2 direction = Quaternion.Euler(0, 0, randomAngle) * Vector2.right;
 
-        // Optionally, you can destroy the projectile after a certain time
-        Destroy(projectile, 5f); // Destroy after 5 seconds
+        // Apply the direction to the projectile's Rigidbody2D if needed or store it in the projectile script
+        HeadProjectileExtra projectileScript = projectile.GetComponent<HeadProjectileExtra>();
+        if (projectileScript != null)
+        {
+            projectileScript.SetDirection(direction); // Add a method in HeadProjectileExtra to set initial direction
+        }
+
+        // Destroy the projectile after the specified lifetime
+        Destroy(projectile, projectileLifetime);
     }
 }

@@ -14612,10 +14612,10 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  shootingInterval: 0.15
-  startAngle: 90
-  endAngle: 270
-  shootingDuration: 5
+  shootingInterval: 0.5
+  startAngle: 135
+  endAngle: 235
+  projectileLifetime: 10
   targetTag: MagnetBottom
 --- !u!1 &2664783269027351843
 GameObject:
@@ -15362,7 +15362,7 @@ GameObject:
   - component: {fileID: 3731510326448887912}
   m_Layer: 0
   m_Name: BossForceFieldBlur
-  m_TagString: Untagged
+  m_TagString: Boss1Field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15540,6 +15540,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2778331933655108730}
+  - {fileID: 2641596881965471725}
   m_Father: {fileID: 4684486694044177711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5885718003731024367
@@ -15707,7 +15708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDrop: []
+  bossDrop:
+  - {fileID: 684137585055459000, guid: 82f6f0ed7d46dbc4ab3d0da4da1c063d, type: 3}
   health: 50
   attack: 1
   damageColorDuration: 0.1
@@ -16129,7 +16131,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 4
+      minMaxState: 1
       minColor: {r: 1, g: 0, b: 0, a: 1}
       maxColor: {r: 0.47058824, g: 0.47058824, b: 1, a: 1}
       maxGradient:
@@ -16142,8 +16144,8 @@ ParticleSystem:
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
+        ctime0: 32768
+        ctime1: 32833
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -20799,11 +20801,63 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  shootingInterval: 0.15
-  startAngle: 90
-  endAngle: 270
-  shootingDuration: 5
+  shootingInterval: 0.5
+  startAngle: 135
+  endAngle: 235
+  projectileLifetime: 10
   targetTag: MagnetTop
+--- !u!1 &6688068118894876193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2641596881965471725}
+  - component: {fileID: 1660333105930524151}
+  m_Layer: 7
+  m_Name: Shootpoint
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2641596881965471725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688068118894876193}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8481875879563991210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660333105930524151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688068118894876193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a6f09013f594949b1acf68abd7d7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefabs:
+  - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
+  - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
+  shootingInterval: 0.1
+  startAngle: 135
+  endAngle: 235
+  projectileLifetime: 10
+  targetTag: Boss1Field
 --- !u!1 &6766316165712487721
 GameObject:
   m_ObjectHideFlags: 0
@@ -21206,7 +21260,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 4
+      minMaxState: 1
       minColor: {r: 1, g: 0, b: 0, a: 1}
       maxColor: {r: 0.47058824, g: 0.47058824, b: 1, a: 1}
       maxGradient:
@@ -21219,8 +21273,8 @@ ParticleSystem:
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
+        ctime0: 32768
+        ctime1: 32833
         ctime2: 0
         ctime3: 0
         ctime4: 0
