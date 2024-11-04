@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1609873430195141555}
   - component: {fileID: 796027120585647325}
   - component: {fileID: 4945061409652961036}
-  - component: {fileID: -4683390584510607784}
   m_Layer: 7
   m_Name: MagnitProjectile
   m_TagString: EnemyProjectile
@@ -31,10 +30,11 @@ Transform:
   m_GameObject: {fileID: 637174100589294369}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1205441997356502004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1184845392069033615
@@ -165,7 +165,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.5
 --- !u!114 &4945061409652961036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,14 +182,46 @@ MonoBehaviour:
   destroySmokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
   createSmokeLifetime: 0.5
   destroySmokeLifetime: 0.25
---- !u!96 &-4683390584510607784
+--- !u!1 &712656083256922329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205441997356502004}
+  - component: {fileID: 7142252020351054902}
+  m_Layer: 7
+  m_Name: Particle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1205441997356502004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712656083256922329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 126305679462903894}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!96 &7142252020351054902
 TrailRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637174100589294369}
+  m_GameObject: {fileID: 712656083256922329}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

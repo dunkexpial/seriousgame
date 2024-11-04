@@ -2,21 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level1AI : MonoBehaviour
+public class BasicRangedAI : MonoBehaviour
 {
     public float speed;
     public float radius;
+    public float inRange;
+    public GameObject ghostProjectile;
+    public GameObject ghostProjPos; // Changed to GameObject
+    public LayerMask layerMask;
+    public Animator animator;
+
     private GameObject player;
     private float distance;
     private bool hasLineOfSight = false;
 
-    public LayerMask layerMask;
-    public Animator animator;
-
-    public Vector2 playerTargetPositionOffset = new Vector2(0, 0);
-
+    private Vector2 playerTargetPositionOffset = new Vector2(0, 0);
     private float lastX;
     private float lastY;
+
+    private float shootTimer;
+    public float shootCooldown = 0.5f;
+
+    // Float effect variables
+    public float floatAmplitude = 2f;
+    public float floatFrequency = 2f;
+    private Vector3 basePosition; // Position without float effect
 
     private Vector2[] raycastOffsets = new Vector2[]
     {
@@ -34,6 +44,7 @@ public class Level1AI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        basePosition = transform.position; // Set the initial base position
     }
 
     void Update()
@@ -47,9 +58,10 @@ public class Level1AI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        if ((distance < radius) && hasLineOfSight)
+        // Only update basePosition if moving towards the player
+        if (distance < radius && hasLineOfSight && distance > inRange)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            basePosition = Vector2.MoveTowards(basePosition, player.transform.position, speed * Time.deltaTime);
 
             lastX = direction.x;
             lastY = direction.y;
@@ -66,6 +78,25 @@ public class Level1AI : MonoBehaviour
 
             animator.SetFloat("lastX", lastX);
             animator.SetFloat("lastY", lastY);
+        }
+
+        // Calculate floating effect as a temporary offset
+        float floatOffsetY = Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
+        Vector3 visualPosition = basePosition;
+        visualPosition.y += floatOffsetY;
+
+        // Apply the floating position visually
+        transform.position = visualPosition;
+
+        // Shooting logic
+        if (distance < radius && hasLineOfSight)
+        {
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= shootCooldown)
+            {
+                shoot();
+                shootTimer = 0;
+            }
         }
     }
 
@@ -88,6 +119,19 @@ public class Level1AI : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, targetPosition - (Vector2)transform.position, Color.red);
             }
+        }
+    }
+
+    void shoot()
+    {
+        // Check if ghostProjPos is assigned before shooting
+        if (ghostProjPos != null)
+        {
+            Instantiate(ghostProjectile, ghostProjPos.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("No shooting point assigned for ghostProjPos!");
         }
     }
 }

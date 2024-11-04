@@ -4,18 +4,20 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     private HealthManager healthManager;
-    private bool isInvincible = false;
+    public bool isInvincible = false;
 
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         // Check if player is invincible before applying damage
-        if ((collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile") && !isInvincible)
+        if ((collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile"))
         {
+            if (!isInvincible)
+            {
             HealthManager.health--;
             healthManager.ResetRegenTimer();
 
@@ -27,6 +29,7 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 StartCoroutine(TakeDamage());  // Trigger invincibility and damage effects
+            }
             }
 
             if (collider.transform.tag == "EnemyProjectile")

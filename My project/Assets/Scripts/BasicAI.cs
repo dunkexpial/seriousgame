@@ -2,31 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level1RangedAI : MonoBehaviour
+public class BasicAI : MonoBehaviour
 {
     public float speed;
     public float radius;
-    public float inRange;
-    public GameObject ghostProjectile;
-    public GameObject ghostProjPos; // Changed to GameObject
-    public LayerMask layerMask;
-    public Animator animator;
-
     private GameObject player;
     private float distance;
     private bool hasLineOfSight = false;
 
-    private Vector2 playerTargetPositionOffset = new Vector2(0, 0);
+    public LayerMask layerMask;
+    public Animator animator;
+
+    public Vector2 playerTargetPositionOffset = new Vector2(0, 0);
+
     private float lastX;
     private float lastY;
-
-    private float shootTimer;
-    public float shootCooldown = 0.5f;
-
-    // Float effect variables
-    public float floatAmplitude = 2f;
-    public float floatFrequency = 2f;
-    private Vector3 startPos;
 
     private Vector2[] raycastOffsets = new Vector2[]
     {
@@ -44,7 +34,6 @@ public class Level1RangedAI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        startPos = transform.position; // Set the starting position for the floating effect
     }
 
     void Update()
@@ -58,11 +47,7 @@ public class Level1RangedAI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        // Floating effect calculation
-        float newY = startPos.y + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-
-        if (distance < radius && hasLineOfSight && distance > inRange)
+        if ((distance < radius) && hasLineOfSight)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
@@ -72,16 +57,6 @@ public class Level1RangedAI : MonoBehaviour
             animator.SetFloat("enemyX", direction.x);
             animator.SetFloat("enemyY", direction.y);
             animator.SetFloat("Moving", 1);
-        }
-
-        if (distance < radius && hasLineOfSight)
-        {
-            shootTimer += Time.deltaTime;
-            if (shootTimer >= shootCooldown)
-            {
-                shoot();
-                shootTimer = 0;
-            }
         }
         else
         {
@@ -113,19 +88,6 @@ public class Level1RangedAI : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, targetPosition - (Vector2)transform.position, Color.red);
             }
-        }
-    }
-
-    void shoot()
-    {
-        // Check if ghostProjPos is assigned before shooting
-        if (ghostProjPos != null)
-        {
-            Instantiate(ghostProjectile, ghostProjPos.transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("No shooting point assigned for ghostProjPos!");
         }
     }
 }
