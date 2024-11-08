@@ -15,36 +15,31 @@ public class EnemyProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        // Get the particle system child object
         particleSystemChild = transform.GetChild(0);
 
-        // Calculate the direction from the projectile to the player
         Vector3 direction = (player.transform.position - transform.position).normalized;
 
-        // Set the velocity of the projectile towards the player
         rb.velocity = direction * speed;
 
         // Calculate the rotation to face the direction of movement
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Destroy the projectile after its lifespan
         Destroy(gameObject, lifespan);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("ProjObstacle") || collider.CompareTag("Player"))
-        {
+    {   
+        if (collider.CompareTag("ProjObstacle") || collider.CompareTag("Player"))   //Implementing && !playerCollision.isInvincible here
+        {                                                                           //Just. doesnt. fucking. fix. the. particle. detection
             // Detach the particle system so it stays when the projectile is destroyed
             if (particleSystemChild != null)
             {
                 particleSystemChild.parent = null;
-                particleSystemChild.localScale = Vector3.one; // Reset scale
-                Destroy(particleSystemChild.gameObject, 2f); // Optional cleanup time
+                particleSystemChild.localScale = Vector3.one;
+                Destroy(particleSystemChild.gameObject, 2f);
             }
 
-            // Destroy the projectile only if it hits an obstacle
             if (collider.CompareTag("ProjObstacle"))
             {
                 Destroy(gameObject);

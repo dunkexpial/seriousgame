@@ -14,7 +14,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider)
     {
         // Check if player is invincible before applying damage
-        if ((collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile"))
+        if (collider.transform.tag == "Enemy" || collider.transform.tag == "EnemyProjectile")
         {
             if (!isInvincible)
             {
