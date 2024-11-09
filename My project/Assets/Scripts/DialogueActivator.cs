@@ -35,7 +35,7 @@ public class DialogueActivator : MonoBehaviour, Interactable
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // Checks if the object that entered the area has the "Player" tag and if it's the player
-        if (collider.CompareTag("Player") && collider.TryGetComponent(out playermovement player))
+        if (collider.CompareTag("Player") && collider.TryGetComponent(out PlayerMovement player))
         {
             playerInRange = true; // Player is in range, quite obvious
             player.Interactable = this; // Set this object as interactable by the player
@@ -47,7 +47,7 @@ public class DialogueActivator : MonoBehaviour, Interactable
     private void OnTriggerExit2D(Collider2D collider)
     {
         // Checks if the object that left the area is the player
-        if (collider.CompareTag("Player") && collider.TryGetComponent(out playermovement player))
+        if (collider.CompareTag("Player") && collider.TryGetComponent(out PlayerMovement player))
         {
             playerInRange = false; //Player out of the range, quite obvious
 
@@ -62,7 +62,7 @@ public class DialogueActivator : MonoBehaviour, Interactable
     }
 
     // Interaction function, called when the player presses the interaction button
-    public void Interact(playermovement player)
+    public void Interact(PlayerMovement player)
     {
         // Disable the visual cue when the dialogue starts
         visualCue.SetActive(false);

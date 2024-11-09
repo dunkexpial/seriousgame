@@ -8,6 +8,7 @@ public class HeadProjectileExtra : MonoBehaviour
     public float detectionRadius = 3f;  // Distance at which projectile targets player
     private bool hasUpdatedDirection = false;  // To ensure direction is only updated once
     private Transform playerTransform;
+    private PlayerCollision playerCollision;  // Reference to check player invincibility
     private Vector2 direction;
 
     public GameObject childPrefab;  // Prefab to instantiate as a child
@@ -15,7 +16,12 @@ public class HeadProjectileExtra : MonoBehaviour
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+            playerCollision = player.GetComponent<PlayerCollision>();
+        }
 
         // Get the particle system child object (assuming it's the first child)
         particleSystemChild = transform.GetChild(0);
@@ -53,7 +59,7 @@ public class HeadProjectileExtra : MonoBehaviour
     {
         // Instantiate the child prefab as a child of the projectile
         GameObject child = Instantiate(childPrefab, transform.position, Quaternion.identity);
-        
+
         // Set the parent to be the first child of the projectile
         if (particleSystemChild != null) // Ensure the particle system child exists
         {
@@ -63,21 +69,32 @@ public class HeadProjectileExtra : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("ProjObstacle") || collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && playerCollision != null)
         {
-            // Detach the particle system so it stays when the projectile is destroyed
-            if (particleSystemChild != null)
+            // Check if the player is invincible
+            if (playerCollision.isInvincible)
             {
-                particleSystemChild.parent = null;
-                particleSystemChild.localScale = Vector3.one; // Reset scale if necessary
-                Destroy(particleSystemChild.gameObject, 2f); // Optional cleanup time
+                DetachParticles();
+                Destroy(gameObject);  // Destroy the projectile even if player is invincible
+                return;
             }
+        }
 
-            // Destroy the projectile only if it hits an obstacle
-            if (collider.CompareTag("ProjObstacle"))
-            {
-                Destroy(gameObject);
-            }
+        // Handle collisions with obstacles and the player
+        if (collider.CompareTag("ProjObstacle"))
+        {
+            DetachParticles();
+            Destroy(gameObject);  // Destroy on obstacle hit
+        }
+    }
+
+    private void DetachParticles()
+    {
+        if (particleSystemChild != null)
+        {
+            particleSystemChild.parent = null;
+            particleSystemChild.localScale = Vector3.one; // Reset scale if necessary
+            Destroy(particleSystemChild.gameObject, 2f); // Optional cleanup time
         }
     }
 }

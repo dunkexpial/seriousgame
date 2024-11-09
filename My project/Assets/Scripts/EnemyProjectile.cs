@@ -8,14 +8,11 @@ public class EnemyProjectile : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     public float lifespan = 5f;
-    private Transform particleSystemChild;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-
-        particleSystemChild = transform.GetChild(0);
 
         Vector3 direction = (player.transform.position - transform.position).normalized;
 
@@ -30,20 +27,22 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {   
-        if (collider.CompareTag("ProjObstacle") || collider.CompareTag("Player"))   //Implementing && !playerCollision.isInvincible here
-        {                                                                           //Just. doesnt. fucking. fix. the. particle. detection
-            // Detach the particle system so it stays when the projectile is destroyed
-            if (particleSystemChild != null)
-            {
-                particleSystemChild.parent = null;
-                particleSystemChild.localScale = Vector3.one;
-                Destroy(particleSystemChild.gameObject, 2f);
-            }
+        if (collider.CompareTag("ProjObstacle"))
+        {
+            // Only detach particles here if the projectile hits an obstacle
+            DetachParticles();
+            Destroy(gameObject); // Destroy on obstacle hit
+        }
+    }
 
-            if (collider.CompareTag("ProjObstacle"))
-            {
-                Destroy(gameObject);
-            }
+    private void DetachParticles()
+    {
+        Transform particleSystemChild = transform.childCount > 0 ? transform.GetChild(0) : null;
+        if (particleSystemChild != null)
+        {
+            particleSystemChild.parent = null;
+            particleSystemChild.localScale = Vector3.one;
+            Destroy(particleSystemChild.gameObject, 2f);
         }
     }
 }

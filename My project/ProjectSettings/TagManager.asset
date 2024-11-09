@@ -16,6 +16,7 @@ TagManager:
   - Boss1Core
   - Boss1Head
   - Boss1Field
+  - FreezeProjectile
   layers:
   - Default
   - TransparentFX

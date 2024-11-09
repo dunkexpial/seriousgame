@@ -4,15 +4,24 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private DialogueUI dialogueUI;
     public ProjectileManager projectileManager;
-    // The 3 following variables could be either configurable in unity or a fixed value here, I'll see to that later in the game's development
     public Animator animator;
+    private PlayerMovement playerMovement;
     private float fireRate = 0.5f;
     private float nextFireTime = 0f;
     public DialogueUI DialogueUI => dialogueUI;
 
+    void Start()
+    {
+        // Get the PlayerMovement component to check if the player is frozen
+        playerMovement = GetComponent<PlayerMovement>();
+    }
+
     void Update()
     {
         if (dialogueUI.isOpen) return;
+
+        // Prevent shooting if the player is frozen
+        if (playerMovement != null && playerMovement.isFrozen) return;
 
         // Handle projectile type selection with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -36,35 +45,34 @@ public class PlayerInput : MonoBehaviour
             projectileManager.SetProjectileType(4);
         }
 
-        if (projectileManager.selectedProjectileIndex  == 0)
+        // Set the fire rate based on the selected projectile type
+        switch (projectileManager.selectedProjectileIndex)
         {
-            fireRate = 0.35f;
-        }
-        else if (projectileManager.selectedProjectileIndex == 1)
-        {
-            fireRate = 0.2f;
-        }
-        else if (projectileManager.selectedProjectileIndex == 2)
-        {
-            fireRate = 1f;
-        }
-        else if (projectileManager.selectedProjectileIndex == 3)
-        {
-            fireRate = 0.7f;
-        }
-        else if (projectileManager.selectedProjectileIndex == 4)
-        {
-            fireRate = 1.2f;
+            case 0:
+                fireRate = 0.35f;
+                break;
+            case 1:
+                fireRate = 0.2f;
+                break;
+            case 2:
+                fireRate = 1f;
+                break;
+            case 3:
+                fireRate = 0.7f;
+                break;
+            case 4:
+                fireRate = 1.2f;
+                break;
         }
 
         // Check if the fire button is held down and if enough time has passed since the last shot
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTime) 
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             projectileManager.Shoot();
-            
+
             // Trigger the shooting animation
-            animator.SetTrigger("Shoot"); // This has to be the name of the trigger parameter in the animator!!
-            
+            animator.SetTrigger("Shoot");
+
             // Update the next fire time
             nextFireTime = Time.time + fireRate;
         }

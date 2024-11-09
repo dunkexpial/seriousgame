@@ -10,7 +10,7 @@ public interface Interactable
     // The Interact method allows a player to interact with an object.
     // The 'player' parameter represents the player attempting to interact.
     // Classes that implement this interface need to define how this interaction occurs.
-    void Interact(playermovement player);
+    void Interact(PlayerMovement player);
 }
 
 

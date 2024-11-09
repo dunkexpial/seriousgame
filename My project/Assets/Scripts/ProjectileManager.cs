@@ -7,7 +7,7 @@ public class ProjectileManager : MonoBehaviour
     public Transform shootingPoint;
     public float projectileSpeed;
     public GameObject player;
-    private playermovement playerMovement;
+    private PlayerMovement playerMovement;
     public int selectedProjectileIndex = 0;
     public DialogueUI DialogueUI => dialogueUI;
 
@@ -18,9 +18,9 @@ public class ProjectileManager : MonoBehaviour
     {
         if (player == null)
         {
-            player = FindObjectOfType<playermovement>().gameObject;
+            player = FindObjectOfType<PlayerMovement>().gameObject;
         }
-        playerMovement = player.GetComponent<playermovement>();
+        playerMovement = player.GetComponent<PlayerMovement>();
         
         // Get the Animator component
         animator = player.GetComponent<Animator>();
