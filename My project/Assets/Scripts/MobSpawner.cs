@@ -76,4 +76,14 @@ public class MobSpawner : MonoBehaviour
         }
         return false;
     }
+
+    // This method draws a gizmo box in the scene view to visualize spawn area
+    private void OnDrawGizmos()
+    {
+        // Set the gizmo color to a semi-transparent yellow to make it visible in the scene
+        Gizmos.color = new Color(1f, 1f, 0f, 0.3f); // RGBA (yellow, 30% opacity)
+
+        // Draw a wireframe box that represents the spawn area
+        Gizmos.DrawWireCube(transform.position, new Vector3(spawnRangeX * 2, spawnRangeY * 2, 0f));
+    }
 }

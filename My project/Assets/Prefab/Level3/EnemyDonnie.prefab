@@ -82,7 +82,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7811830266500152931}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 2028837959259129673}
-  shootCooldown: 1
+  shootCooldown: 3
   floatAmplitude: 0
   floatFrequency: 0
 --- !u!114 &-1095868626058045907
@@ -258,9 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createSmokePrefab: {fileID: 0}
-  destroySmokePrefab: {fileID: 6586032776864093336, guid: 3230f6854b753db4eb529565e2892622, type: 3}
+  destroySmokePrefab: {fileID: 5399713483127888893, guid: 98ac3793ea3e9314fb278aea6bddfad7, type: 3}
   createSmokeLifetime: 0.5
-  destroySmokeLifetime: 0.5
+  destroySmokeLifetime: 3
 --- !u!95 &2028837959259129673
 Animator:
   serializedVersion: 5

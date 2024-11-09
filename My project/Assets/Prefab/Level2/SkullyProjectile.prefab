@@ -180,9 +180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createSmokePrefab: {fileID: 0}
-  destroySmokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
+  destroySmokePrefab: {fileID: 5399713483127888893, guid: d39220db39e02f746b01a71972ed5c7c, type: 3}
   createSmokeLifetime: 0.5
-  destroySmokeLifetime: 0.25
+  destroySmokeLifetime: 0.5
 --- !u!95 &22045798404612295
 Animator:
   serializedVersion: 5

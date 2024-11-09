@@ -4883,7 +4883,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960036149205230038}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -4983,7 +4983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  radius: 150
+  radius: 200
   layerMask:
     serializedVersion: 2
     m_Bits: 72
@@ -5062,9 +5062,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createSmokePrefab: {fileID: 0}
-  destroySmokePrefab: {fileID: 6586032776864093336, guid: 3230f6854b753db4eb529565e2892622, type: 3}
+  destroySmokePrefab: {fileID: 5399713483127888893, guid: b93a48c3084dd6043af725cdc2e7414e, type: 3}
   createSmokeLifetime: 0.5
-  destroySmokeLifetime: 0.5
+  destroySmokeLifetime: 3
 --- !u!61 &1327317817089773276
 BoxCollider2D:
   m_ObjectHideFlags: 0
