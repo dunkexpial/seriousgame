@@ -19,20 +19,14 @@ public class RandomSpawner : MonoBehaviour
         {
             playerTransform = player.transform;
         }
-        else
-        {
-            Debug.LogWarning("Player not found! Make sure the player has the 'Player' tag.");
-        }
 
         StartCoroutine(SpawnRandomObject());
     }
 
     private IEnumerator SpawnRandomObject()
     {
-        // Wait for the specified spawn delay before spawning the first object
         yield return new WaitForSeconds(spawnDelay);
 
-        // Check if there are any prefabs in the array
         if (prefabs.Length > 0)
         {
             if (isBoss && playerTransform != null)
@@ -40,11 +34,10 @@ public class RandomSpawner : MonoBehaviour
                 // Wait until player is within the spawn distance
                 while (Vector3.Distance(transform.position, playerTransform.position) > spawnDistance)
                 {
-                    yield return null; // Check again in the next frame
+                    yield return null;
                 }
             }
 
-            // Spawn the object once the conditions are met
             SpawnPrefab();
         }
 

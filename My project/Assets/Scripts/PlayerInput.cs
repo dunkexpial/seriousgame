@@ -20,10 +20,9 @@ public class PlayerInput : MonoBehaviour
     {
         if (dialogueUI.isOpen) return;
 
-        // Prevent shooting if the player is frozen
+        // Prevent shooting if the player is frozen HERE
         if (playerMovement != null && playerMovement.isFrozen) return;
 
-        // Handle projectile type selection with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             projectileManager.SetProjectileType(0);

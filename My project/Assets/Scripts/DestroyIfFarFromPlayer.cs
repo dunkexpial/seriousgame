@@ -12,10 +12,6 @@ public class DestroyIfFarFromPlayer : MonoBehaviour
         {
             playerTransform = player.transform;
         }
-        else
-        {
-            Debug.LogError("Player object not found. Make sure the player has the tag 'Player'.");
-        }
     }
 
     void Update()

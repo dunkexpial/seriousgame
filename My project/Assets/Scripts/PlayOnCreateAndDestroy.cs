@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayOnCreateAndDestroy : MonoBehaviour
 {
-    [SerializeField] private GameObject createSmokePrefab; // Smoke prefab for creation
-    [SerializeField] private GameObject destroySmokePrefab; // Smoke prefab for destruction
-    [SerializeField] private float createSmokeLifetime = 0.5f; // Creation animation duration
-    [SerializeField] private float destroySmokeLifetime = 0.5f; // Destruction animation duration
+    [SerializeField] private GameObject createSmokePrefab;
+    [SerializeField] private GameObject destroySmokePrefab;
+    [SerializeField] private float createSmokeLifetime = 0.5f;
+    [SerializeField] private float destroySmokeLifetime = 0.5f;
 
     void Start()
     {

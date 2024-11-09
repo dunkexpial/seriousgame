@@ -36,13 +36,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen)
         {
-            animator.speed = 0; // Freeze animation
-            rb.velocity = Vector2.zero; // Stop movement
+            animator.speed = 0;
+            rb.velocity = Vector2.zero;
             return;
         }
         else
         {
-            animator.speed = 1; // Resume animation
+            animator.speed = 1;
         }
 
         if (dialogueUI.isOpen)

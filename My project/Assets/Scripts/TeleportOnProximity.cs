@@ -3,27 +3,22 @@ using UnityEngine;
 
 public class TeleportOnProximity : MonoBehaviour
 {
-    public float teleportRadius = 200f; // Distance within which teleporting can occur
-    public float safeDistanceFromPlayer = 80f; // Minimum distance from player after teleport
-    public string obstacleTag = "Obstacle"; // Tag for obstacles (e.g., walls)
-    public GameObject teleportMarkerPrefab; // Prefab to spawn at the teleport start and end positions
-    public float teleportChance = 0.1f; // 10% chance of teleporting each second
-    public float markerLifetime = 0.5f; // Lifetime of the teleport markers in seconds
+    public float teleportRadius = 200f;
+    public float safeDistanceFromPlayer = 80f;
+    public string obstacleTag = "Obstacle";
+    public GameObject teleportMarkerPrefab;
+    public float teleportChance = 0.1f;
+    public float markerLifetime = 0.5f;
 
     private Transform playerTransform;
 
     void Start()
     {
-        // Find the player GameObject by tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
             StartCoroutine(TeleportCheckRoutine());
-        }
-        else
-        {
-            Debug.LogError("Player not found in the scene. Make sure the player is tagged as 'Player'.");
         }
     }
 
@@ -77,7 +72,6 @@ public class TeleportOnProximity : MonoBehaviour
         {
             GameObject startMarker = Instantiate(teleportMarkerPrefab, startPosition, Quaternion.identity);
 
-            // Destroy the markers after `markerLifetime` seconds
             Destroy(startMarker, markerLifetime);
         }
     }

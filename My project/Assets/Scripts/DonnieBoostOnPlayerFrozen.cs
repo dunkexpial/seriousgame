@@ -22,20 +22,12 @@ public class AIBoostOnPlayerFrozen : MonoBehaviour
             originalSpeed = aiScript.speed;
             originalAnimSpeed = aiScript.animator.speed;
         }
-        else
-        {
-            Debug.LogError("BasicRangedAI component not found on this GameObject!");
-        }
 
         // Find the player and automatically get the playerMovement component
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerMovement = player.GetComponent<PlayerMovement>();
-        }
-        else
-        {
-            Debug.LogError("Player GameObject with tag 'Player' not found!");
         }
     }
 
