@@ -29,7 +29,8 @@ public class PlayerManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(fast_travel.lvl1);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
 
     }
 }
