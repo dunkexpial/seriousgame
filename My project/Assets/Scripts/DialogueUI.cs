@@ -8,7 +8,7 @@ public class DialogueUI : MonoBehaviour
     // Reference to the dialogue box (UI) and the text that will be displayed in the interface.
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private playermovement Playermovement;
+    [SerializeField] private PlayerMovement Playermovement;
 
     // Indicates whether the dialogue box is open or not.
     public bool isOpen { get; private set; }

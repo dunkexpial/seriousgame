@@ -124,4 +124,4 @@ MonoBehaviour:
   spawnDelay: 3
   destroyDelay: 0.8
   isBoss: 1
-  spawnDistance: 200
+  spawnDistance: 5000

@@ -15,6 +15,7 @@ public class BasicRangedAI : MonoBehaviour
     private GameObject player;
     private float distance;
     private bool hasLineOfSight = false;
+    private bool hadLineOfSightLastFrame = false; // New variable to track previous line of sight
 
     private Vector2 playerTargetPositionOffset = new Vector2(0, 0);
     private float lastX;
@@ -91,6 +92,12 @@ public class BasicRangedAI : MonoBehaviour
         // Shooting logic
         if (distance < radius && hasLineOfSight)
         {
+            // If line of sight was gained this frame, reset shoot timer to 0 for an immediate shot
+            if (!hadLineOfSightLastFrame)
+            {
+                shootTimer = shootCooldown; // Allow immediate shoot
+            }
+
             shootTimer += Time.deltaTime;
             if (shootTimer >= shootCooldown)
             {
@@ -98,6 +105,9 @@ public class BasicRangedAI : MonoBehaviour
                 shootTimer = 0;
             }
         }
+
+        // Update last frame line of sight status
+        hadLineOfSightLastFrame = hasLineOfSight;
     }
 
     private void FixedUpdate() 

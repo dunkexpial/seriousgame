@@ -8,7 +8,7 @@ public class BasicAI : MonoBehaviour
     public float radius;
     private GameObject player;
     private float distance;
-    private bool hasLineOfSight = false;
+    public bool hasLineOfSight = false;
 
     public LayerMask layerMask;
     public Animator animator;

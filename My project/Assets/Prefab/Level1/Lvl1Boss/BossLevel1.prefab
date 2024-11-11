@@ -14627,14 +14627,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4424654236224024324}
   - component: {fileID: 4123908473413975161}
-  - component: {fileID: 4416429527371247779}
   - component: {fileID: 7160596187871025069}
   - component: {fileID: 3553035994944537227}
-  - component: {fileID: 4610136872805743522}
   - component: {fileID: 3159135330158744563}
   - component: {fileID: 2526975776042314239}
   - component: {fileID: 8665617856954728823}
   - component: {fileID: 4507567076590954633}
+  - component: {fileID: 5556734466325224006}
   m_Layer: 7
   m_Name: BossMagnetTop
   m_TagString: Enemy
@@ -14651,7 +14650,7 @@ Transform:
   m_GameObject: {fileID: 2664783269027351843}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40, y: 45, z: 0}
+  m_LocalPosition: {x: -40, y: 80, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -14711,20 +14710,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4416429527371247779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2664783269027351843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05915805e1b0114469d215cd1e48a5c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatAmplitude: 4
-  floatFrequency: 2
 --- !u!60 &7160596187871025069
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -14818,18 +14803,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4610136872805743522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2664783269027351843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadfdbb140fda304db2849cba3cac78d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3159135330158744563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14860,7 +14833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   angleOffset: -90
-  rotationSpeed: 1
+  rotationSpeed: 5
 --- !u!114 &8665617856954728823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14891,6 +14864,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredTags:
   - Boss1Core
+--- !u!114 &5556734466325224006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664783269027351843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af13bbf943d6a2e429aba8f3efe9d9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName1: TopPoint1
+  objectName2: TopPoint2
 --- !u!1 &2957989034939989188
 GameObject:
   m_ObjectHideFlags: 0
@@ -14901,14 +14888,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4437118785546680575}
   - component: {fileID: 27237381832386453}
-  - component: {fileID: 507729063071039482}
+  - component: {fileID: 5440666200693855535}
   - component: {fileID: 592540802589342117}
-  - component: {fileID: 3176809161391846158}
   - component: {fileID: 1047780331042175181}
   - component: {fileID: 8950949453429578320}
   - component: {fileID: 6036936809115334191}
-  - component: {fileID: 5440666200693855535}
   - component: {fileID: 3766672127775959100}
+  - component: {fileID: 3139901185314960071}
   m_Layer: 7
   m_Name: BossMagnetBottom
   m_TagString: Enemy
@@ -14924,8 +14910,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2957989034939989188}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: -45, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -40, y: -80, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -14985,106 +14971,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &507729063071039482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2957989034939989188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05915805e1b0114469d215cd1e48a5c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatAmplitude: 4
-  floatFrequency: 2
---- !u!50 &592540802589342117
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2957989034939989188}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &3176809161391846158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2957989034939989188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadfdbb140fda304db2849cba3cac78d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1047780331042175181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2957989034939989188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossDrop: []
-  health: 250
-  attack: 1
-  damageColorDuration: 0.1
---- !u!114 &8950949453429578320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2957989034939989188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf1399e3fb648b428803cbc5db37bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  angleOffset: -90
-  rotationSpeed: 1
---- !u!114 &6036936809115334191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2957989034939989188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a3dce95a39ae0b48a16629889642160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  createSmokePrefab: {fileID: 0}
-  destroySmokePrefab: {fileID: 6586032776864093336, guid: 3230f6854b753db4eb529565e2892622, type: 3}
-  createSmokeLifetime: 0.5
-  destroySmokeLifetime: 0.5
 --- !u!60 &5440666200693855535
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15114,7 +15000,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -15149,6 +15035,80 @@ PolygonCollider2D:
       - {x: -0.02, y: -0.17}
       - {x: -0.099999994, y: -0.21}
   m_UseDelaunayMesh: 0
+--- !u!50 &592540802589342117
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957989034939989188}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1047780331042175181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957989034939989188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossDrop: []
+  health: 250
+  attack: 1
+  damageColorDuration: 0.1
+--- !u!114 &8950949453429578320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957989034939989188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf1399e3fb648b428803cbc5db37bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  angleOffset: -90
+  rotationSpeed: 5
+--- !u!114 &6036936809115334191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957989034939989188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3dce95a39ae0b48a16629889642160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createSmokePrefab: {fileID: 0}
+  destroySmokePrefab: {fileID: 6586032776864093336, guid: 3230f6854b753db4eb529565e2892622, type: 3}
+  createSmokeLifetime: 0.5
+  destroySmokeLifetime: 0.5
 --- !u!114 &3766672127775959100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15163,6 +15123,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredTags:
   - Boss1Core
+--- !u!114 &3139901185314960071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957989034939989188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af13bbf943d6a2e429aba8f3efe9d9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName1: BottomPoint1
+  objectName2: BottomPoint2
 --- !u!1 &3309555029072938735
 GameObject:
   m_ObjectHideFlags: 0
@@ -15194,7 +15168,7 @@ Transform:
   m_GameObject: {fileID: 3309555029072938735}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 44, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -15301,7 +15275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 300
+  health: 400
   attack: 0
   damageColorDuration: 0.05
 --- !u!114 &3018089548799980902
@@ -15535,7 +15509,7 @@ Transform:
   m_GameObject: {fileID: 6173674407491241946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 44, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -15764,7 +15738,7 @@ Transform:
   m_GameObject: {fileID: 6358519164154123829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -45, z: 0}
+  m_LocalPosition: {x: 0, y: -80, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -20853,7 +20827,7 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  shootingInterval: 0.1
+  shootingInterval: 0.2
   startAngle: 135
   endAngle: 235
   projectileLifetime: 10
@@ -20893,7 +20867,7 @@ Transform:
   m_GameObject: {fileID: 6766316165712487721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 45, z: 0}
+  m_LocalPosition: {x: 0, y: 80, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:

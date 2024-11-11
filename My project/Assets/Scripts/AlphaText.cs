@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
     public static string lvl1 = "FirstLevel";
+    public static string lvl2 = "SecondLevel";
     // public string nextSceneName = "SampleScene"; // Nome da cena a ser carregada
     void Update()
     {
@@ -13,7 +14,7 @@ public class StartGame : MonoBehaviour
         if (Input.anyKeyDown)
         {
             Debug.Log("Key pressed, trying to load SampleScene");
-            SceneManager.LoadScene(lvl1); 
+            SceneManager.LoadScene(lvl2); 
         }
     }
 }

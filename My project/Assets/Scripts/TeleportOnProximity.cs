@@ -11,14 +11,26 @@ public class TeleportOnProximity : MonoBehaviour
     public float markerLifetime = 0.5f;
 
     private Transform playerTransform;
+    private BasicAI basicAI; // Reference to the BasicAI component
 
     void Start()
     {
+        // Find the player object by tag and the BasicAI component
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
+        }
+
+        basicAI = GetComponent<BasicAI>(); // Get the BasicAI component attached to this GameObject
+
+        if (playerTransform != null && basicAI != null)
+        {
             StartCoroutine(TeleportCheckRoutine());
+        }
+        else
+        {
+            Debug.LogError("Player or BasicAI component not found!");
         }
     }
 
@@ -30,8 +42,8 @@ public class TeleportOnProximity : MonoBehaviour
 
             if (playerTransform != null && Vector2.Distance(transform.position, playerTransform.position) <= teleportRadius)
             {
-                // Random chance for teleportation to occur
-                if (Random.value <= teleportChance)
+                // Only proceed if the AI has line of sight to the player
+                if (basicAI.hasLineOfSight && Random.value <= teleportChance)
                 {
                     Vector2 teleportPosition = FindSafeTeleportPosition();
                     if (teleportPosition != Vector2.zero)

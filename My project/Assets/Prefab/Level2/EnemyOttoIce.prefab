@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 70
   radius: 200
+  hasLineOfSight: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 72
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9df380120765445a2d2705e4653cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyDistance: 350
+  destroyDistance: 300
 --- !u!114 &9083609313795807340
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9df380120765445a2d2705e4653cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyDistance: 350
+  destroyDistance: 300
 --- !u!114 &6382526015031238226
 MonoBehaviour:
   m_ObjectHideFlags: 0
