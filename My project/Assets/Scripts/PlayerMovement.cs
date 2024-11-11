@@ -25,8 +25,6 @@ public class playermovement : MonoBehaviour
     private Vector2 moveDirection;
     private Vector2 lastDirection;
 
-
-
     void Update()
     {
         //Basically player interact with the NPC and stop moving
@@ -35,6 +33,7 @@ public class playermovement : MonoBehaviour
         // If the dialogue box is open, it does nothing and returns immediately,
         // preventing the player from moving while the conversation with the NPC is happening.
         if (dialogueUI.isOpen) return;
+
 
         // This is the key the player should press to interact with the NPC.
         if (Input.GetKeyDown(KeyCode.E))
@@ -61,7 +60,6 @@ public class playermovement : MonoBehaviour
             }
         }
     }
-
     void FixedUpdate() 
     {
         if (Time.timeScale != 0) 

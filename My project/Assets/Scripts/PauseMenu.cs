@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static string mm = "MainMenu";
     public GameObject pauseMenu;
-
     public GameObject iventorySlots;
     public bool isPaused;
 
@@ -63,15 +63,16 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Loading Menu");
         Time.timeScale = 1f;
-        SceneManager.LoadScene(fast_travel.mm);
+        SceneManager.LoadScene(mm);
     }
 
     public void RestartGame()
     {
         Debug.Log("Restarting level1");
         Time.timeScale = 1f;
-        Physics2D.IgnoreLayerCollision(6,7, false); //Now the player Actually atke damage after restart
-        SceneManager.LoadScene(fast_travel.lvl1);
+        Physics2D.IgnoreLayerCollision(6,7, false); //Now the player Actually take damage after restart
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
 }

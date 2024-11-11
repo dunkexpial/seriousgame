@@ -8,6 +8,7 @@ public class DialogueUI : MonoBehaviour
     // Reference to the dialogue box (UI) and the text that will be displayed in the interface.
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private playermovement Playermovement;
 
     // Indicates whether the dialogue box is open or not.
     public bool isOpen { get; private set; }
@@ -29,6 +30,7 @@ public class DialogueUI : MonoBehaviour
     {
         isOpen = true;  // Set that the dialogue is open.
         dialogueBox.SetActive(true);  // Activate the dialogue box.
+        
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
