@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 10
+  health: 20
   attack: 1
   damageColorDuration: 0.1
 --- !u!114 &2851858146033950667
@@ -202,9 +202,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 2028837959259129673}
-  shootCooldown: 3
-  floatAmplitude: 0
-  floatFrequency: 0
+  shootCooldown: 1
 --- !u!114 &-1095868626058045907
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,11 +24,6 @@ public class BasicRangedAI : MonoBehaviour
     private float shootTimer;
     public float shootCooldown = 0.5f;
 
-    // Float effect variables
-    public float floatAmplitude = 2f;
-    public float floatFrequency = 2f;
-    private Vector3 basePosition; // Position without float effect
-
     private Vector2[] raycastOffsets = new Vector2[]
     {
         new Vector2(0, -2f),
@@ -45,7 +40,6 @@ public class BasicRangedAI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        basePosition = transform.position; // Set the initial base position
     }
 
     void Update()
@@ -59,10 +53,9 @@ public class BasicRangedAI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        // Only update basePosition if moving towards the player
         if (distance < radius && hasLineOfSight && distance > inRange)
         {
-            basePosition = Vector2.MoveTowards(basePosition, player.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
             lastX = direction.x;
             lastY = direction.y;
@@ -81,18 +74,9 @@ public class BasicRangedAI : MonoBehaviour
             animator.SetFloat("lastY", lastY);
         }
 
-        // Calculate floating effect as a temporary offset
-        float floatOffsetY = Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
-        Vector3 visualPosition = basePosition;
-        visualPosition.y += floatOffsetY;
-
-        // Apply the floating position visually
-        transform.position = visualPosition;
-
         // Shooting logic
         if (distance < radius && hasLineOfSight)
         {
-            // If line of sight was gained this frame, reset shoot timer to 0 for an immediate shot
             if (!hadLineOfSightLastFrame)
             {
                 shootTimer = shootCooldown; // Allow immediate shoot
@@ -106,7 +90,6 @@ public class BasicRangedAI : MonoBehaviour
             }
         }
 
-        // Update last frame line of sight status
         hadLineOfSightLastFrame = hasLineOfSight;
     }
 
@@ -134,7 +117,6 @@ public class BasicRangedAI : MonoBehaviour
 
     void shoot()
     {
-        // Check if ghostProjPos is assigned before shooting
         if (ghostProjPos != null)
         {
             Instantiate(ghostProjectile, ghostProjPos.transform.position, Quaternion.identity);

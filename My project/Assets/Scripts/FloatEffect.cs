@@ -5,19 +5,20 @@ public class FloatEffect : MonoBehaviour
     public float floatAmplitude = 2f;
     public float floatFrequency = 2f;
 
-    private Vector3 startPos;
+    private Vector3 startLocalPos;
 
     void Start()
     {
-        startPos = transform.position;
+        // Store the initial local position relative to the parent
+        startLocalPos = transform.localPosition;
     }
 
     void Update()
     {
-        // Calculate new Y position
-        float newY = startPos.y + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
-        
-        // Apply the new position
-        transform.position = new Vector3(startPos.x, newY, startPos.z);
+        // Calculate new Y position relative to the parent
+        float newY = startLocalPos.y + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
+
+        // Apply the new local position
+        transform.localPosition = new Vector3(startLocalPos.x, newY, startLocalPos.z);
     }
 }

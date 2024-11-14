@@ -8,15 +8,18 @@ public class AttributesManager : MonoBehaviour
     public int health;
     public int attack;
     public float damageColorDuration = 0.1f; // Duration of the red color effect
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor;
+    private SpriteRenderer[] spriteRenderers;
+    private Dictionary<SpriteRenderer, Color> originalColors = new Dictionary<SpriteRenderer, Color>();
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        // Get all SpriteRenderers, including those of child objects
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        
+        // Store original colors for each SpriteRenderer
+        foreach (var sr in spriteRenderers)
         {
-            originalColor = spriteRenderer.color;
+            originalColors[sr] = sr.color;
         }
     }
 
@@ -37,7 +40,7 @@ public class AttributesManager : MonoBehaviour
     public void DealDamage(GameObject target)
     {
         var atm = target.GetComponent<AttributesManager>();
-        if(atm != null)
+        if (atm != null)
         {
             atm.TakeDamage(attack);
         }
@@ -56,16 +59,22 @@ public class AttributesManager : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
-        if (spriteRenderer != null)
+        // Change color to red for each SpriteRenderer
+        foreach (var sr in spriteRenderers)
         {
-            // Change color to red
-            spriteRenderer.color = Color.red;
+            sr.color = Color.red;
+        }
 
-            // Wait for the specified duration
-            yield return new WaitForSeconds(damageColorDuration);
+        // Wait for the specified duration
+        yield return new WaitForSeconds(damageColorDuration);
 
-            // Revert to original color
-            spriteRenderer.color = originalColor;
+        // Revert each SpriteRenderer to its original color
+        foreach (var sr in spriteRenderers)
+        {
+            if (originalColors.TryGetValue(sr, out Color originalColor))
+            {
+                sr.color = originalColor;
+            }
         }
     }
 }

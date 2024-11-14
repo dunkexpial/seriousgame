@@ -6,9 +6,11 @@ public class TeleportOnProximity : MonoBehaviour
     public float teleportRadius = 200f;
     public float safeDistanceFromPlayer = 80f;
     public string obstacleTag = "Obstacle";
+    public string projectileTag = "ProjectileTag"; // Tag for projectiles
     public GameObject teleportMarkerPrefab;
     public float teleportChance = 0.1f;
     public float markerLifetime = 0.5f;
+    public float projectileProximityRadius = 10f; // Distance at which projectiles can trigger teleport
 
     private Transform playerTransform;
     private BasicAI basicAI; // Reference to the BasicAI component
@@ -46,6 +48,21 @@ public class TeleportOnProximity : MonoBehaviour
                 if (basicAI.hasLineOfSight && Random.value <= teleportChance)
                 {
                     Vector2 teleportPosition = FindSafeTeleportPosition();
+
+                    // Check if the teleport position is closer to the player than the AI's current position
+                    if (teleportPosition != Vector2.zero && Vector2.Distance(teleportPosition, playerTransform.position) < Vector2.Distance(transform.position, playerTransform.position))
+                    {
+                        SpawnTeleportMarkers(transform.position, teleportPosition);
+                        transform.position = teleportPosition;
+                    }
+                }
+
+                // Check if projectiles are nearby and allow teleport if they are close enough
+                Collider2D projectile = Physics2D.OverlapCircle(transform.position, projectileProximityRadius, LayerMask.GetMask(projectileTag));
+                if (projectile != null && Random.value <= teleportChance)
+                {
+                    Vector2 teleportPosition = FindSafeTeleportPosition();
+
                     if (teleportPosition != Vector2.zero)
                     {
                         SpawnTeleportMarkers(transform.position, teleportPosition);

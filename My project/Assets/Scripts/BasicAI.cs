@@ -77,7 +77,17 @@ public class BasicAI : MonoBehaviour
         {
             // Move to the last seen position
             transform.position = Vector2.MoveTowards(this.transform.position, lastSeenPosition, speed * Time.deltaTime);
-            animator.SetFloat("Moving", 1);
+
+            // Check if the AI has reached the last seen position
+            if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
+            {
+                // Stop moving and update the animator
+                animator.SetFloat("Moving", 0);
+            }
+            else
+            {
+                animator.SetFloat("Moving", 1);
+            }
         }
         else
         {

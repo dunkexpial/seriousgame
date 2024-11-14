@@ -5139,9 +5139,11 @@ MonoBehaviour:
   teleportRadius: 200
   safeDistanceFromPlayer: 60
   obstacleTag: Obstacle
+  projectileTag: ProjectileTag
   teleportMarkerPrefab: {fileID: 5397887125862687942, guid: 1777c574b93e4284d9404ce241305836, type: 3}
-  teleportChance: 0.3
+  teleportChance: 1
   markerLifetime: 2
+  projectileProximityRadius: 25
 --- !u!1 &7899234407721013860
 GameObject:
   m_ObjectHideFlags: 0
