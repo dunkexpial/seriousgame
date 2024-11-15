@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private Vector2 lastDirection;
     private bool _isFrozen = false;
+    public bool isSlowed = false; // New flag for slow effect
 
     public bool isFrozen
     {
@@ -39,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
             animator.speed = 0;
             rb.velocity = Vector2.zero;
             return;
+        }
+        else if (isSlowed)
+        {
+            animator.speed = 0.5f;
         }
         else
         {

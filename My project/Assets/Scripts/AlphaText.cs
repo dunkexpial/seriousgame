@@ -14,7 +14,7 @@ public class StartGame : MonoBehaviour
         if (Input.anyKeyDown)
         {
             Debug.Log("Key pressed, trying to load SampleScene");
-            SceneManager.LoadScene(lvl2); 
+            SceneManager.LoadScene(lvl1); 
         }
     }
 }

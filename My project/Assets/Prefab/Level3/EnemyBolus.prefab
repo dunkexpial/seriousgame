@@ -4873,6 +4873,7 @@ GameObject:
   - component: {fileID: 8644097341394731005}
   - component: {fileID: 2894633154946019113}
   - component: {fileID: 6670982504318799750}
+  - component: {fileID: -8400054593970880152}
   m_Layer: 7
   m_Name: EnemyBolus
   m_TagString: Enemy
@@ -5144,6 +5145,22 @@ MonoBehaviour:
   teleportChance: 1
   markerLifetime: 2
   projectileProximityRadius: 25
+--- !u!114 &-8400054593970880152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618336323034428135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f9920e086295443a7627b7cee1ff7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avoidanceDistance: 0.5
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &7899234407721013860
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ TagManager:
   - Boss1Head
   - Boss1Field
   - FreezeProjectile
+  - IceProjectile
+  - FireProjectile
+  - Boss2FMP
+  - Boss2IMP
   layers:
   - Default
   - TransparentFX

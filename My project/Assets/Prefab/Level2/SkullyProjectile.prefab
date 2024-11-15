@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 22045798404612295}
   m_Layer: 7
   m_Name: SkullyProjectile
-  m_TagString: EnemyProjectile
+  m_TagString: FireProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

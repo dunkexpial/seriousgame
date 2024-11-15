@@ -23,6 +23,8 @@ public class BasicRangedAI : MonoBehaviour
 
     private float shootTimer;
     public float shootCooldown = 0.5f;
+    float sightDelay = 0.5f; // Delay after seeing the player before shooting
+    float sightTimer = 0f; // Time spent with line of sight
 
     private Vector2[] raycastOffsets = new Vector2[]
     {
@@ -74,20 +76,26 @@ public class BasicRangedAI : MonoBehaviour
             animator.SetFloat("lastY", lastY);
         }
 
-        // Shooting logic
         if (distance < radius && hasLineOfSight)
         {
-            if (!hadLineOfSightLastFrame)
-            {
-                shootTimer = shootCooldown; // Allow immediate shoot
-            }
+            // Increment the sight timer while the enemy has line of sight
+            sightTimer += Time.deltaTime;
 
-            shootTimer += Time.deltaTime;
-            if (shootTimer >= shootCooldown)
+            if (sightTimer >= sightDelay)
             {
-                shoot();
-                shootTimer = 0;
+                shootTimer += Time.deltaTime;
+                if (shootTimer >= shootCooldown)
+                {
+                    shoot();
+                    shootTimer = 0;
+                }
             }
+        }
+        else
+        {
+            // Reset timers when line of sight is lost
+            sightTimer = 0;
+            shootTimer = shootCooldown; // Reset the cooldown so that it doesn't shoot immediately upon regaining sight
         }
 
         hadLineOfSightLastFrame = hasLineOfSight;

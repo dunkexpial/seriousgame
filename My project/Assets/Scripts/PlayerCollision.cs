@@ -5,17 +5,23 @@ public class PlayerCollision : MonoBehaviour
 {
     private HealthManager healthManager;
     private PlayerMovement playerMovement;
+    private Animator animator;
     public bool isInvincible = false;
+    public GameObject slowEffectPrefab;
+    public GameObject doubleDamageEffectPrefab;
 
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
         playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.CompareTag("Enemy") || collider.CompareTag("EnemyProjectile") || collider.CompareTag("FreezeProjectile"))
+        if (collider.CompareTag("Enemy") || collider.CompareTag("EnemyProjectile") || 
+            collider.CompareTag("FreezeProjectile") || collider.CompareTag("IceProjectile") || 
+            collider.CompareTag("FireProjectile"))
         {
             if (!isInvincible)
             {
@@ -23,7 +29,8 @@ public class PlayerCollision : MonoBehaviour
                 {
                     HealthManager.health--;
                 }
-                else if (collider.CompareTag("EnemyProjectile") || collider.CompareTag("FreezeProjectile"))
+                else if (collider.CompareTag("EnemyProjectile") || collider.CompareTag("FreezeProjectile") ||
+                         collider.CompareTag("IceProjectile") || collider.CompareTag("FireProjectile"))
                 {
                     HealthManager.health--;
 
@@ -31,11 +38,13 @@ public class PlayerCollision : MonoBehaviour
 
                     if (collider.CompareTag("FreezeProjectile"))
                     {
-                        playerMovement.isFrozen = true; // Freeze the player
-                        StartCoroutine(UnfreezePlayerAfterDelay(1.0f)); // Unfreeze after delay
+                        playerMovement.isFrozen = true;
+                        StartCoroutine(UnfreezePlayerAfterDelay(1.0f));
                     }
 
-                    StartCoroutine(HandleProjectileHit(collider.gameObject)); // Destroy projectile after detaching particles
+                    HandleSpecialProjectileEffects(collider.gameObject);
+
+                    StartCoroutine(HandleProjectileHit(collider.gameObject));
                 }
 
                 healthManager.ResetRegenTimer();
@@ -53,6 +62,39 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void HandleSpecialProjectileEffects(GameObject projectile)
+    {
+        // Slow effect for IceProjectile
+        if (projectile.CompareTag("IceProjectile"))
+        {
+            playerMovement.moveSpeed = 50f; // Halve the speed
+            playerMovement.isSlowed = true;
+            GameObject slowEffect = Instantiate(slowEffectPrefab, transform);
+            StartCoroutine(RemoveEffectAfterInvincibility(slowEffect));
+        }
+        // Double damage effect for FireProjectile
+        else if (projectile.CompareTag("FireProjectile"))
+        {
+            GameObject doubleDamageEffect = Instantiate(doubleDamageEffectPrefab, transform);
+            StartCoroutine(DoubleDamageSequence());
+            StartCoroutine(RemoveEffectAfterInvincibility(doubleDamageEffect));
+        }
+    }
+
+    private IEnumerator DoubleDamageSequence()
+    {
+        yield return new WaitForSeconds(1f); // Delay for second damage instance
+        HealthManager.health--;
+        
+        healthManager.ResetRegenTimer();
+
+        if (HealthManager.health <= 0)
+        {
+            PlayerManager.GameOver = true;
+            gameObject.SetActive(false);
+        }
+    }
+
     private void DetachAndDestroyParticles(GameObject projectile)
     {
         Transform particleSystemChild = projectile.transform.childCount > 0 ? projectile.transform.GetChild(0) : null;
@@ -64,13 +106,13 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    IEnumerator HandleProjectileHit(GameObject projectile)
+    private IEnumerator HandleProjectileHit(GameObject projectile)
     {
         yield return null;
         Destroy(projectile);
     }
 
-    IEnumerator TakeDamage()
+    private IEnumerator TakeDamage()
     {
         isInvincible = true;
         GetComponent<Animator>().SetLayerWeight(1, 1);
@@ -78,12 +120,20 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         GetComponent<Animator>().SetLayerWeight(1, 0);
+        playerMovement.moveSpeed = 100f; // Reset speed to normal
+        playerMovement.isSlowed = false;
         isInvincible = false;
     }
 
-    IEnumerator UnfreezePlayerAfterDelay(float delay)
+    private IEnumerator UnfreezePlayerAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        playerMovement.isFrozen = false; // Unfreeze the player
+        playerMovement.isFrozen = false;
+    }
+
+    private IEnumerator RemoveEffectAfterInvincibility(GameObject effect)
+    {
+        yield return new WaitForSeconds(2); // Invincibility duration
+        Destroy(effect);
     }
 }

@@ -2,20 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lvl1BossShooting : MonoBehaviour
+public class BossShooting : MonoBehaviour
 {
     public GameObject[] projectiles; // Array of projectile prefabs
     public float baseShootingInterval = 1f; // Base time between shots
     public float shootingIntervalVariance = 0.5f; // Variance for shooting interval
     private float nextShootTime; // Time when the next shot can be fired
+    private GameObject player; // Reference to the player
 
     void Start()
     {
-        nextShootTime = Time.time; // Initialize the next shoot time
+        // Add a random initial delay for the first shot
+        nextShootTime = Time.time + Random.Range(0, baseShootingInterval);
+        player = GameObject.FindGameObjectWithTag("Player"); // Find player at the start
     }
 
     void Update()
     {
+        // Stop shooting if no player is found
+        if (player == null)
+        {
+            return; // Exit early if player is not found
+        }
+
         // Check if it's time to shoot
         if (Time.time >= nextShootTime)
         {
@@ -27,6 +36,8 @@ public class Lvl1BossShooting : MonoBehaviour
 
     void Shoot()
     {
+        if (player == null) return; // Ensure the player is still found before shooting
+
         int projectileIndex = Random.Range(0, projectiles.Length);
         GameObject projectilePrefab = projectiles[projectileIndex];
 
@@ -35,7 +46,7 @@ public class Lvl1BossShooting : MonoBehaviour
         EnemyProjectile enemyProjectile = projectile.GetComponent<EnemyProjectile>();
         if (enemyProjectile != null)
         {
-            enemyProjectile.player = GameObject.FindGameObjectWithTag("Player");
+            enemyProjectile.player = player;
 
             Vector3 direction = (enemyProjectile.player.transform.position - transform.position).normalized;
 

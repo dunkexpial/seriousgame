@@ -14962,6 +14962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName1: TopPoint1
   objectName2: TopPoint2
+  maxSpeed: 800
+  minSpeed: 10
 --- !u!1 &2957989034939989188
 GameObject:
   m_ObjectHideFlags: 0
@@ -15221,6 +15223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName1: BottomPoint1
   objectName2: BottomPoint2
+  maxSpeed: 800
+  minSpeed: 10
 --- !u!1 &3227844472392802577
 GameObject:
   m_ObjectHideFlags: 0
