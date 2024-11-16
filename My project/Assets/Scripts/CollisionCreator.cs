@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
+[ExecuteInEditMode]
 public class ReplaceAllTiles : MonoBehaviour
 {
     private Tilemap tilemap;               // Reference to the Tilemap component on this GameObject
@@ -24,6 +28,10 @@ public class ReplaceAllTiles : MonoBehaviour
         BoundsInt bounds = tilemap.cellBounds;
         TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
 
+        #if UNITY_EDITOR
+        Undo.RecordObject(tilemap, "Replace All Tiles"); // Record the tilemap for undo
+        #endif
+
         for (int x = 0; x < bounds.size.x; x++)
         {
             for (int y = 0; y < bounds.size.y; y++)
@@ -38,5 +46,9 @@ public class ReplaceAllTiles : MonoBehaviour
                 }
             }
         }
+
+        #if UNITY_EDITOR
+        EditorUtility.SetDirty(tilemap); // Mark tilemap as dirty to save changes
+        #endif
     }
 }

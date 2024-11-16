@@ -17,6 +17,7 @@ TagManager:
   - Boss1Head
   - Boss1Field
   - FreezeProjectile
+  - Portal
   layers:
   - Default
   - TransparentFX

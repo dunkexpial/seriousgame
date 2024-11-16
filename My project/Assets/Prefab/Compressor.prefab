@@ -162,6 +162,7 @@ MonoBehaviour:
   visualCue: {fileID: 8402426892181468548}
   itemName: Compressor
   sprite: {fileID: 21300000, guid: 51f09d3db48a7154282de9465ad2b500, type: 3}
+  nextScene: {fileID: 4169996109374862918, guid: 02866bd697cdb8649960556f0be601d7, type: 3}
 --- !u!1 &8402426892181468548
 GameObject:
   m_ObjectHideFlags: 0
