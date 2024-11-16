@@ -21,6 +21,7 @@ TagManager:
   - FireProjectile
   - Boss2FMP
   - Boss2IMP
+  - Portal
   layers:
   - Default
   - TransparentFX
