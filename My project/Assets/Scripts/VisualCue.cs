@@ -9,9 +9,7 @@ public class VisualCue : MonoBehaviour
     [SerializeField] private string itemName;
     [SerializeField] private Sprite sprite;
     private bool playerInRange; 
-
     private InventoryManager iventoryManager;
-
     private void Awake() 
     {
         playerInRange = false; // The player is not in range at the start
@@ -32,9 +30,18 @@ public class VisualCue : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 //Add slot sprite 
-                iventoryManager.AddItem(itemName, sprite);
-                // i'll destroy it for now, i'll figure out how to save the items to the next scene
+                iventoryManager.AddItem(itemName, sprite);// i'll destroy it for now, i'll figure out how to save the items to the next scene
                 Destroy(gameObject);
+
+                // Calls the portal Singleton's ActivatePortal method
+                if (SceneChangeOnHover.instance != null)
+                {
+                    SceneChangeOnHover.instance.ActivePortal();
+                }
+                else
+                {
+                    Debug.LogError("Portal not found!");
+                }     
             }
         }
         else

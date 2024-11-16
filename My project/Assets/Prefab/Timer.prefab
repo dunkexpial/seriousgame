@@ -246,3 +246,4 @@ MonoBehaviour:
   visualCue: {fileID: 1353701793007225297}
   itemName: Timer
   sprite: {fileID: 21300000, guid: 419327142041fa74e9e7dab85b5899b5, type: 3}
+  nextScene: {fileID: 4169996109374862918, guid: 02866bd697cdb8649960556f0be601d7, type: 3}

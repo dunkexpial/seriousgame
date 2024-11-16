@@ -246,3 +246,4 @@ MonoBehaviour:
   visualCue: {fileID: 2890772544373922561}
   itemName: Control Panel
   sprite: {fileID: 21300000, guid: 866147a6a3a599742b3205b078f0849a, type: 3}
+  nextScene: {fileID: 4169996109374862918, guid: 02866bd697cdb8649960556f0be601d7, type: 3}

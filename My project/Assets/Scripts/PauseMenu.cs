@@ -12,7 +12,9 @@ public class PauseMenu : MonoBehaviour
     public static string mm = "MainMenu";
     public GameObject pauseMenu;
     public GameObject iventorySlots;
+    public GameObject healthBar;
     public bool isPaused;
+    public Vector3 respawnCoordinates;
 
     void Start()
     {
@@ -22,15 +24,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-
-        if (Time.timeScale == 0)
-        {
-            iventorySlots.SetActive(false);
-        }
-        else
-        {
-            iventorySlots.SetActive(true);
-        }
+        iventorySlots.SetActive(!isPaused);
+        healthBar.SetActive(!isPaused);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -71,8 +66,30 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Restarting level1");
         Time.timeScale = 1f;
         Physics2D.IgnoreLayerCollision(6,7, false); //Now the player Actually take damage after restart
+
+        pauseMenu.SetActive(false);
+        iventorySlots.SetActive(false);
+        healthBar.SetActive(false);
+        isPaused = false;
+
+        HealthManager.health = 5;
+
         Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.sceneLoaded += OnSceneReloaded;
         SceneManager.LoadScene(currentScene.name);
+
     }
+
+    private void OnSceneReloaded(Scene scene, LoadSceneMode mode)
+    {
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            player.transform.position = respawnCoordinates;
+        }
+        SceneManager.sceneLoaded -= OnSceneReloaded;
+    }
+
 
 }
