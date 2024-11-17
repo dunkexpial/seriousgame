@@ -16,19 +16,6 @@ public class MoveBetweenTaggedObjects : MonoBehaviour
         // Find all objects with the specified tag and store them in the array
         targets = GameObject.FindGameObjectsWithTag(targetTag);
 
-        // Check if there are any targets found
-        if (targets.Length == 0)
-        {
-            Debug.LogError($"No objects with the tag '{targetTag}' found in the scene!");
-            return;
-        }
-
-        // Debug log the found targets
-        foreach (var target in targets)
-        {
-            Debug.Log($"Found target: {target.name} at {target.transform.position}");
-        }
-
         // Start the movement coroutine
         StartCoroutine(MoveToRandomTarget());
     }
@@ -37,14 +24,10 @@ public class MoveBetweenTaggedObjects : MonoBehaviour
     {
         while (true) // Infinite loop to ensure it keeps moving
         {
-            Debug.Log("Starting new movement cycle...");
             isMoving = true;
 
             // Choose a random target from the list of targets
             currentTarget = targets[Random.Range(0, targets.Length)].transform;
-
-            // Debug the current target
-            Debug.Log($"Moving towards target: {currentTarget.name} at position {currentTarget.position}");
 
             // Store the starting position for progress calculation
             Vector2 startPosition = transform.position;
@@ -80,23 +63,14 @@ public class MoveBetweenTaggedObjects : MonoBehaviour
                 // Move the object towards the target
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
 
-                // Debugging movement progress
-                Debug.Log($"Moving to {targetPosition}. Current position: {transform.position}, Speed: {currentSpeed}, Distance Traveled: {distanceTraveled}");
-
                 yield return null;  // Wait until the next frame
             }
 
             // Directly set the position to the target to avoid small floating-point errors
             transform.position = targetPosition;
 
-            // Debug when the target is reached
-            Debug.Log($"Reached target: {currentTarget.name} at {transform.position}");
-
             // Wait for a random duration before moving to the next target
             yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
-
-            // Debug the wait time
-            Debug.Log("Waiting before moving to next target...");
 
             isMoving = false;
         }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossShooting : MonoBehaviour
@@ -9,6 +8,8 @@ public class BossShooting : MonoBehaviour
     public float shootingIntervalVariance = 0.5f; // Variance for shooting interval
     private float nextShootTime; // Time when the next shot can be fired
     private GameObject player; // Reference to the player
+    public string ignoreTag = "IgnoreTag";  // Optional tag to ignore for starting shooting
+    public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
 
     void Start()
     {
@@ -23,6 +24,16 @@ public class BossShooting : MonoBehaviour
         if (player == null)
         {
             return; // Exit early if player is not found
+        }
+
+        // Only check for objects with the ignore tag if checkForTags is true
+        if (checkForTags)
+        {
+            GameObject[] objectsToIgnore = GameObject.FindGameObjectsWithTag(ignoreTag);
+            if (objectsToIgnore.Length > 0)
+            {
+                return; // Don't shoot if there are objects with the ignore tag
+            }
         }
 
         // Check if it's time to shoot

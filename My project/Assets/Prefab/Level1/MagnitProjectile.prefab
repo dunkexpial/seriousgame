@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 250
+  speed: 350
   lifespan: 5
 --- !u!58 &796027120585647325
 CircleCollider2D:
@@ -255,7 +255,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:

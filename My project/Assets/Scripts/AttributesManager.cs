@@ -10,6 +10,8 @@ public class AttributesManager : MonoBehaviour
     public float damageColorDuration = 0.1f; // Duration of the red color effect
     private SpriteRenderer[] spriteRenderers;
     private Dictionary<SpriteRenderer, Color> originalColors = new Dictionary<SpriteRenderer, Color>();
+    
+    [Range(0f, 1f)] public float dropChance = 1f; // Chance of item drop (default 100%)
 
     private void Start()
     {
@@ -48,11 +50,15 @@ public class AttributesManager : MonoBehaviour
 
     private void itemDrop()
     {
-        for (int i = 0; i < bossDrop.Length; i++)
+        // Check if the drop chance is met
+        if (Random.value <= dropChance)
         {
-            if (bossDrop[i])
+            for (int i = 0; i < bossDrop.Length; i++)
             {
-                Instantiate(bossDrop[i], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                if (bossDrop[i])
+                {
+                    Instantiate(bossDrop[i], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                }
             }
         }
     }

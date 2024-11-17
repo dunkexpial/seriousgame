@@ -328,3 +328,4 @@ MonoBehaviour:
   increasedSpeed: 300
   detectionRadius: 125
   childPrefab: {fileID: 1678163245548598275, guid: 1b6557fe2ec3bab4baff5560cea4fd5c, type: 3}
+  shootingInaccuracy: 0.2

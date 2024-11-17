@@ -10,6 +10,9 @@ public class PlayerCollision : MonoBehaviour
     public GameObject slowEffectPrefab;
     public GameObject doubleDamageEffectPrefab;
 
+    private GameObject activeSlowEffect;
+    private GameObject activeDoubleDamageEffect;
+
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
@@ -21,7 +24,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collider.CompareTag("Enemy") || collider.CompareTag("EnemyProjectile") || 
             collider.CompareTag("FreezeProjectile") || collider.CompareTag("IceProjectile") || 
-            collider.CompareTag("FireProjectile"))
+            collider.CompareTag("FireProjectile") && HealthManager.health > 0)
         {
             if (!isInvincible)
             {
@@ -47,10 +50,10 @@ public class PlayerCollision : MonoBehaviour
                     StartCoroutine(HandleProjectileHit(collider.gameObject));
                 }
 
-                healthManager.ResetRegenTimer();
-
                 if (HealthManager.health <= 0)
                 {
+                    GetComponent<Animator>().SetLayerWeight(1, 0);
+                    HandleGameOverCleanup();
                     PlayerManager.GameOver = true;
                     gameObject.SetActive(false);
                 }
@@ -59,6 +62,12 @@ public class PlayerCollision : MonoBehaviour
                     StartCoroutine(TakeDamage());
                 }
             }
+        }
+
+        if (collider.CompareTag("Heart") && HealthManager.health < 5)
+        {
+            HealthManager.health++;
+            Destroy(collider.gameObject);
         }
     }
 
@@ -69,27 +78,27 @@ public class PlayerCollision : MonoBehaviour
         {
             playerMovement.moveSpeed = 50f; // Halve the speed
             playerMovement.isSlowed = true;
-            GameObject slowEffect = Instantiate(slowEffectPrefab, transform);
-            StartCoroutine(RemoveEffectAfterInvincibility(slowEffect));
+            activeSlowEffect = Instantiate(slowEffectPrefab, transform);
         }
         // Double damage effect for FireProjectile
         else if (projectile.CompareTag("FireProjectile"))
         {
-            GameObject doubleDamageEffect = Instantiate(doubleDamageEffectPrefab, transform);
+            activeDoubleDamageEffect = Instantiate(doubleDamageEffectPrefab, transform);
             StartCoroutine(DoubleDamageSequence());
-            StartCoroutine(RemoveEffectAfterInvincibility(doubleDamageEffect));
         }
     }
 
     private IEnumerator DoubleDamageSequence()
     {
         yield return new WaitForSeconds(1f); // Delay for second damage instance
-        HealthManager.health--;
-        
-        healthManager.ResetRegenTimer();
-
+        if (HealthManager.health > 0) // Ensure no extra damage is applied after death
+        {
+            HealthManager.health--;
+        }
         if (HealthManager.health <= 0)
         {
+            GetComponent<Animator>().SetLayerWeight(1, 0);
+            HandleGameOverCleanup();
             PlayerManager.GameOver = true;
             gameObject.SetActive(false);
         }
@@ -119,6 +128,9 @@ public class PlayerCollision : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        // Cleanup effects if invincibility ends and the player didn’t die
+        CleanupEffects();
+
         GetComponent<Animator>().SetLayerWeight(1, 0);
         playerMovement.moveSpeed = 100f; // Reset speed to normal
         playerMovement.isSlowed = false;
@@ -131,9 +143,29 @@ public class PlayerCollision : MonoBehaviour
         playerMovement.isFrozen = false;
     }
 
-    private IEnumerator RemoveEffectAfterInvincibility(GameObject effect)
+    private void HandleGameOverCleanup()
     {
-        yield return new WaitForSeconds(2); // Invincibility duration
-        Destroy(effect);
+        // Reset player movement speed and states
+        playerMovement.moveSpeed = 100f;
+        playerMovement.isSlowed = false;
+        playerMovement.isFrozen = false;
+
+        // Destroy active effects
+        CleanupEffects();
+    }
+
+    private void CleanupEffects()
+    {
+        if (activeSlowEffect != null)
+        {
+            Destroy(activeSlowEffect);
+            activeSlowEffect = null;
+        }
+
+        if (activeDoubleDamageEffect != null)
+        {
+            Destroy(activeDoubleDamageEffect);
+            activeDoubleDamageEffect = null;
+        }
     }
 }

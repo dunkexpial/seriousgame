@@ -10,38 +10,31 @@ public class ReplaceAllTiles : MonoBehaviour
     private Tilemap tilemap;               // Reference to the Tilemap component on this GameObject
     public TileBase replacementTile;       // Tile to replace all tiles with
 
-    void Start()
+    // This method is no longer called automatically
+    public void ReplaceTiles()
     {
-        tilemap = GetComponent<Tilemap>(); // Get the Tilemap component on this GameObject
-        if (tilemap != null)
-        {
-            ReplaceTiles();
-        }
-        else
+        tilemap = GetComponent<Tilemap>();
+        if (tilemap == null)
         {
             Debug.LogError("Tilemap component not found on this GameObject.");
+            return;
         }
-    }
 
-    void ReplaceTiles()
-    {
         BoundsInt bounds = tilemap.cellBounds;
-        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
 
         #if UNITY_EDITOR
         Undo.RecordObject(tilemap, "Replace All Tiles"); // Record the tilemap for undo
         #endif
 
-        for (int x = 0; x < bounds.size.x; x++)
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
-            for (int y = 0; y < bounds.size.y; y++)
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
             {
-                Vector3Int tilePosition = new Vector3Int(bounds.xMin + x, bounds.yMin + y, 0);
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
 
-                // Check if there is a tile at this position
+                // Replace only if a tile exists at this position
                 if (tilemap.HasTile(tilePosition))
                 {
-                    // Replace with the replacement tile
                     tilemap.SetTile(tilePosition, replacementTile);
                 }
             }
@@ -50,5 +43,25 @@ public class ReplaceAllTiles : MonoBehaviour
         #if UNITY_EDITOR
         EditorUtility.SetDirty(tilemap); // Mark tilemap as dirty to save changes
         #endif
+
+        Debug.Log("Tiles replaced successfully.");
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(ReplaceAllTiles))]
+public class ReplaceAllTilesEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        ReplaceAllTiles script = (ReplaceAllTiles)target;
+
+        if (GUILayout.Button("Replace Tiles"))
+        {
+            script.ReplaceTiles();
+        }
+    }
+}
+#endif

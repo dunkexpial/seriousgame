@@ -23,7 +23,6 @@ public class MoveBetweenObjects : MonoBehaviour
         // Debug if the objects are found
         if (target1 == null)
         {
-            Debug.LogError($"Target object '{objectName1}' not found!");
         }
         else
         {
@@ -59,7 +58,6 @@ public class MoveBetweenObjects : MonoBehaviour
         {
             // Randomize the move speed each time the object starts moving
             moveSpeed = Random.Range(minSpeed*20, maxSpeed);
-            Debug.Log($"Move speed set to: {moveSpeed}");
             isMoving = true;
         }
     }
@@ -76,9 +74,6 @@ public class MoveBetweenObjects : MonoBehaviour
             float halfwayPoint = journeyLength / 2;
             float currentSpeed = 0f;  // Start speed at 0
             float distanceTraveled = 0f;  // Track the distance traveled
-
-            // Debug current target and position
-            Debug.Log($"Moving towards {currentTarget.name} at {currentTarget.position}");
 
             // Move towards the current target
             while (distanceTraveled < journeyLength)
@@ -104,17 +99,11 @@ public class MoveBetweenObjects : MonoBehaviour
                 // Move the object towards the target
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
 
-                // Optionally log position to verify movement
-                Debug.Log($"Current position: {transform.position}, Speed: {currentSpeed}, Distance Traveled: {distanceTraveled}");
-
                 yield return null;  // Wait until the next frame
             }
 
             // Directly set the position to the target to avoid small floating-point errors
             transform.position = targetPosition;
-
-            // Debug when the target is reached
-            Debug.Log($"Reached {currentTarget.name} at position {transform.position}");
 
             // Once we reach the target, pick the next target and wait a moment before moving again
             currentTarget = (currentTarget == target1) ? target2 : target1;

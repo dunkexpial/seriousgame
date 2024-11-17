@@ -219,10 +219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDrop: []
+  bossDrop:
+  - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
   health: 10
   attack: 1
   damageColorDuration: 0.1
+  dropChance: 0.1
 --- !u!114 &3868203795233203398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9df380120765445a2d2705e4653cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyDistance: 300
+  threshold: 0.1
 --- !u!114 &1004807310006312162
 MonoBehaviour:
   m_ObjectHideFlags: 0

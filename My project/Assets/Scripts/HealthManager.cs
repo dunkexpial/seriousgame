@@ -6,19 +6,14 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     public static int health = 5;
-    public Image[] hearts; //Each index represent a heart in the graphical interface (UI).
+    public Image[] hearts; //Each index represents a heart in the graphical interface (UI).
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public float regenDelay = 5f; //it takes 5s to start regenerating
-    private bool isRegenerating = false;
-    private Coroutine regenCoroutine; 
 
-     void Awake() {
+    void Awake() {
         health = 5;
-        //After the player die the static of the health will be 0
-        //Awake function solve this issue, and the player have all 5 hearts back
+        //After the player dies, the static health is reset to 0, but we set it back to 5 in Awake.
     }
-    
 
     void Update()
     {
@@ -32,8 +27,7 @@ public class HealthManager : MonoBehaviour
             ShowHearts(); 
         }
 
-        //Basically the for loop change the index of the healt bar into different sprites [full ,empty]
-        //Every time it takes damage or heal
+        // Update heart UI based on current health
         foreach (Image img in hearts)
         {
             img.sprite = emptyHeart;
@@ -42,36 +36,6 @@ public class HealthManager : MonoBehaviour
         {
             hearts[i].sprite = fullHeart;
         }
-
-        if (health < 5 && !isRegenerating)
-        {
-            regenCoroutine = StartCoroutine(RegenHealth());
-        }
-        
-    }
-
-    IEnumerator RegenHealth()
-    {
-        isRegenerating = true;
-        yield return new WaitForSeconds(regenDelay); //Wait 5 seconds to start regenarating
-
-        if (health < 5) 
-        {
-            health++;
-        }
-
-        isRegenerating = false; //Allow to regenate again. This mf took me 1 hour to discover why the player wasn't regenerating again. >:(
-    }
-
-    public void ResetRegenTimer()
-    {
-        //This function will reset the timer if the player takes damage within the 5s required to regenerate 
-        //It was worth it? NO!! But i can and i did it 
-        if (regenCoroutine != null)
-        {
-            StopCoroutine(regenCoroutine); //Stop the current 5f 
-        }
-        isRegenerating = false; //Timer restart to 5f regenerate again
     }
 
     private void HideHearts()

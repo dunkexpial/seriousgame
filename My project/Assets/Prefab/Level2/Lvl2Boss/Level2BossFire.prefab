@@ -4895,7 +4895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 200
+  health: 400
   attack: 10
   damageColorDuration: 0.1
 --- !u!70 &2311134178747120465
@@ -10412,8 +10412,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 4
-  shootingIntervalVariance: 4
+  baseShootingInterval: 3
+  shootingIntervalVariance: 2
+  ignoreTag: IgnoreTag
+  checkForTags: 0
 --- !u!199 &8681838343733090928
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -15259,8 +15261,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 4
-  shootingIntervalVariance: 4
+  baseShootingInterval: 3
+  shootingIntervalVariance: 2
+  ignoreTag: IgnoreTag
+  checkForTags: 0
 --- !u!199 &5482922227700969290
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -20106,8 +20110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 4
-  shootingIntervalVariance: 4
+  baseShootingInterval: 3
+  shootingIntervalVariance: 2
+  ignoreTag: IgnoreTag
+  checkForTags: 0
 --- !u!199 &8186266948167503595
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -25037,8 +25043,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 4
-  shootingIntervalVariance: 4
+  baseShootingInterval: 3
+  shootingIntervalVariance: 2
+  ignoreTag: IgnoreTag
+  checkForTags: 0
 --- !u!199 &8609444474254858301
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -34714,8 +34722,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 4
-  shootingIntervalVariance: 4
+  baseShootingInterval: 3
+  shootingIntervalVariance: 2
+  ignoreTag: IgnoreTag
+  checkForTags: 0
 --- !u!199 &1345550848891398997
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -39561,8 +39571,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 4
-  shootingIntervalVariance: 4
+  baseShootingInterval: 3
+  shootingIntervalVariance: 2
+  ignoreTag: IgnoreTag
+  checkForTags: 0
 --- !u!199 &4564709955441200047
 ParticleSystemRenderer:
   serializedVersion: 6

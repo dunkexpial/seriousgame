@@ -22,6 +22,8 @@ TagManager:
   - Boss2FMP
   - Boss2IMP
   - Portal
+  - PortalTag
+  - Heart
   layers:
   - Default
   - TransparentFX

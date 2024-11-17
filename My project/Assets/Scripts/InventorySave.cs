@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventorySave : MonoBehaviour
 {
-    private static GameObject[] persistentObjects = new GameObject[2];
+    private static GameObject[] persistentObjects = new GameObject[3];
     public int objectIndex;
 
     void Awake()
