@@ -14,7 +14,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject iventorySlots;
     public GameObject healthBar;
     public bool isPaused;
-    public Vector3 respawnCoordinates;
 
     void Start()
     {
@@ -72,24 +71,9 @@ public class PauseMenu : MonoBehaviour
         healthBar.SetActive(false);
         isPaused = false;
 
-        HealthManager.health = 5;
-
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.sceneLoaded += OnSceneReloaded;
         SceneManager.LoadScene(currentScene.name);
 
     }
-
-    private void OnSceneReloaded(Scene scene, LoadSceneMode mode)
-    {
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            player.transform.position = respawnCoordinates;
-        }
-        SceneManager.sceneLoaded -= OnSceneReloaded;
-    }
-
 
 }
