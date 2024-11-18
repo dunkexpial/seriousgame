@@ -5004,7 +5004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  health: 10
+  health: 15
   attack: 1
   damageColorDuration: 0.1
   dropChance: 0.1
@@ -5032,7 +5032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1991c5c9420c96a468738c1a90859b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 80
   radius: 200
   inRange: 60
   ghostProjectile: {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
@@ -5041,7 +5041,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 3914986122140214406}
-  shootCooldown: 3
+  shootCooldown: 1
 --- !u!114 &8260175634477121688
 MonoBehaviour:
   m_ObjectHideFlags: 0

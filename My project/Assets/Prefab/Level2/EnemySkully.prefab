@@ -5041,7 +5041,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 3914986122140214406}
-  shootCooldown: 3
+  shootCooldown: 2
 --- !u!114 &8260175634477121688
 MonoBehaviour:
   m_ObjectHideFlags: 0
