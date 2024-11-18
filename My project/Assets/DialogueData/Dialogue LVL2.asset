@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcde56388f3a4574fb9d3684d07625d2, type: 3}
+  m_Name: Dialogue LVL2
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Excelente trabalho, Kelvin! Voc\xEA conseguiu a Bobina Magn\xE9tica Estabilizadora!
+    Agora a m\xE1quina de sorvete est\xE1... 20% mais funcional. Nada de sorvete
+    ainda, mas um passo de cada vez!"
+  - "O pr\xF3ximo vil\xE3o est\xE1 nessa f\xE1brica. \xC9 l\xE1 que vive Thermion,
+    o mestre da energia! Ele \xE9 uma figura peculiar... meio gelo, meio fogo, totalmente
+    imprevis\xEDvel. E, para piorar, ele tem a Turbina T\xE9rmica Regenerativa, a
+    segunda pe\xE7a da m\xE1quina."
+  - "Agora escute, Kelvin. O Thermion vai testar o quanto voc\xEA entende sobre energia.
+    Ele adora brincar com calor e frio, e, como voc\xEA deve lembrar das aulas, energia
+    t\xE9rmica \xE9 o que faz as part\xEDculas se mexerem. Quanto mais calor, mais
+    r\xE1pido elas se movem. Quanto mais frio, mais elas congelam no lugar. \xC9
+    simples... mas tamb\xE9m perigoso."
+  - "Imagine que o gelo e o fogo s\xE3o como dois lados opostos da mesma moeda. Se
+    voc\xEA ficar muito tempo no lado do gelo, vai congelar. Se for para o lado do
+    fogo, pode virar churrasco. Voc\xEA precisa achar o equil\xEDbrio perfeito entre
+    os dois para derrot\xE1-lo.\n\"Ele entrega a Kelvin um pequeno term\xF4metro
+    digital com bot\xF5es.\""
+  - "Este \xE9 o Termo-Regulador. Com ele, voc\xEA pode monitorar sua temperatura
+    corporal e ajustar sua estrat\xE9gia. N\xE3o adianta lutar contra fogo com fogo
+    ou tentar congelar o gelo. Use o ambiente ao seu favor e lembre-se: energia nunca
+    se perde, apenas se transforma. Vamos transformar essa batalha em mais uma vit\xF3ria!\n\"Ele
+    acena confiante enquanto Kelvin parte para a f\xE1brica de gelo.\""
+  responses: []

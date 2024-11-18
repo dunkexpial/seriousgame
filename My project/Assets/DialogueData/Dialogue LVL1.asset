@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcde56388f3a4574fb9d3684d07625d2, type: 3}
+  m_Name: Dialogue LVL1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Kelvin Celcius! Meu querido aprendiz. Vejo que sua magn\xEDfica m\xE1quina de
+    sorvete... est\xE1 em um estado lastim\xE1vel. Deixe-me dar uma olhada.\n\n\"O
+    professor ajusta seus \xF3culos, inspeciona a m\xE1quina e balan\xE7a a cabe\xE7a
+    dramaticamente.\""
+  - "Ah\xE1, eu sabia! As cinco pe\xE7as principais est\xE3o completamente danificadas!
+    Sem elas, a m\xE1quina de sorvete n\xE3o vai fazer nem gelo raspado, quanto mais
+    sorvete."
+  - "Essas pe\xE7as s\xE3o raras, muito raras... e, infelizmente, elas foram parar
+    nas m\xE3os de cinco vil\xF5es espalhados por a\xED. Vil\xF5es que, por coincid\xEAncia
+    ou pura ironia do destino, dominarama  f\xEDsica e conceitos que v\xE3o desafiar
+    sua mente."
+  - "O primeiro vil\xE3o est\xE1 bem aqui na escola. \xC9 o terr\xEDvel Magnet\xF3n,
+    o mestre de magnetismo e gravidade! Ele usa campos magn\xE9ticos para atrair
+    todo tipo de coisa \u2014 at\xE9 a minha lancheira desapareceu! \u2014 e controla
+    a gravidade como se fosse um brinquedo."
+  - "Magnetismo \xE9 fascinante! S\xE3o for\xE7as invis\xEDveis que fazem com que
+    certos materiais \u2014 como ferro \u2014 se atraiam ou se afastem. J\xE1 a gravidade...
+    Bem, \xE9 o que mant\xE9m seus p\xE9s no ch\xE3o e o sorvete na casquinha. Imagina
+    se o Magnet\xF3n resolvesse desligar a gravidade? O sorvete sairia voando! N\xE3o
+    podemos permitir isso!"
+  - "Para derrot\xE1-lo, voc\xEA vai precisar entender como essas for\xE7as funcionam.
+    Ele vai tentar te confundir com campos magn\xE9ticos opostos e alterar a gravidade
+    para que voc\xEA flutue sem controle. Use sua intelig\xEAncia e observe como
+    os objetos ao seu redor reagem. Ah, e cuidado com o im\xE3 gigante dele!"
+  - "Aqui est\xE1 um 'Desmagnetizador Port\xE1til' que pode te ajudar em algumas
+    situa\xE7\xF5es... ou pelo menos evitar que voc\xEA vire um im\xE3 humano. Agora
+    v\xE1, e traga de volta a primeira pe\xE7a da m\xE1quina de sorvetes! Confio
+    em voc\xEA!"
+  responses: []
