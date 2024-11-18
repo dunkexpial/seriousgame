@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
-  radius: 150
+  radius: 999
   hasLineOfSight: 0
   layerMask:
     serializedVersion: 2

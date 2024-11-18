@@ -5117,7 +5117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  radius: 150
+  radius: 999
   inRange: 60
   ghostProjectile: {fileID: 637174100589294369, guid: c0ae17270edaeb04482870370d2066ec, type: 3}
   ghostProjPos: {fileID: 5590882171903390801}
