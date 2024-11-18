@@ -12,35 +12,59 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
-        // Check if the levelNames and buttons array lengths match
         if (levelButtons.Length != levelNames.Length)
         {
             Debug.LogError("Number of buttons and levels do not match!");
             return;
         }
 
-        // Initialize the fade image (start fully transparent)
+        // Initialize fade image (start fully transparent)
         if (fadeImage != null)
         {
-            fadeImage.color = new Color(0, 0, 0, 0); // Transparent initially
+            fadeImage.color = new Color(0, 0, 0, 0);
         }
 
-        // Set up the buttons and listeners
+        // Retrieve the highest unlocked level from PlayerPrefs
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        // Set up buttons and their states
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            int index = i; // Cache the index to avoid closure issues
-            levelButtons[i].onClick.AddListener(() =>
-            {
-                Debug.Log($"Button {levelNames[index]} clicked!");
-                StartCoroutine(FadeAndLoadLevel(levelNames[index])); // Fade before loading
-            });
+            int index = i; // Cache the index for listener
+            bool isUnlocked = (i + 1) <= unlockedLevel;
 
-            Debug.Log($"Button {levelNames[i]} set up with listener.");
+            levelButtons[i].interactable = isUnlocked; // Lock or unlock the button
+
+            // Add listener for button click
+            if (isUnlocked)
+            {
+                levelButtons[i].onClick.AddListener(() =>
+                {
+                    Debug.Log($"Button {levelNames[index]} clicked!");
+                    StartCoroutine(FadeAndLoadLevel(levelNames[index]));
+                });
+            }
+            else
+            {
+                Debug.Log($"Button {levelNames[index]} is locked.");
+            }
         }
 
-        // Optionally, start with a fade-in effect when the scene starts
-        StartCoroutine(Fade(0f, 0f));  // Ensure the fade effect is ready if needed
+        // Start with fade-in effect
+        StartCoroutine(Fade(0f, 0f));
     }
+
+    public void UnlockNextLevel(int currentLevel)
+    {
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        if (currentLevel >= unlockedLevel)
+        {
+            PlayerPrefs.SetInt("UnlockedLevel", currentLevel + 1);
+            PlayerPrefs.Save(); // Save immediately to persist data
+            Debug.Log($"Unlocked level {currentLevel + 1}");
+        }
+    }
+
 
     private IEnumerator FadeAndLoadLevel(string levelName)
     {

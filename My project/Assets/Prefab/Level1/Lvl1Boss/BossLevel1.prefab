@@ -14905,7 +14905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 250
+  health: 1
   attack: 1
   damageColorDuration: 0.1
   dropChance: 1
@@ -15165,7 +15165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 250
+  health: 1
   attack: 1
   damageColorDuration: 0.1
   dropChance: 1
@@ -16079,7 +16079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 684137585055459000, guid: 82f6f0ed7d46dbc4ab3d0da4da1c063d, type: 3}
-  health: 100
+  health: 1
   attack: 1
   damageColorDuration: 0.1
   dropChance: 1
@@ -16295,7 +16295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 150
+  health: 1
   attack: 1
   damageColorDuration: 0.1
   dropChance: 1
@@ -21523,7 +21523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 150
+  health: 1
   attack: 1
   damageColorDuration: 0.1
   dropChance: 1
