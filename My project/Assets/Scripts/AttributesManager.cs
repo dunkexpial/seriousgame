@@ -48,7 +48,7 @@ public class AttributesManager : MonoBehaviour
         }
     }
 
-    private void itemDrop()
+    public void itemDrop()
     {
         // Check if the drop chance is met
         if (Random.value <= dropChance)
