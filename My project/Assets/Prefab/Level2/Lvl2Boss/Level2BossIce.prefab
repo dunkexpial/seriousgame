@@ -29669,6 +29669,7 @@ MonoBehaviour:
   health: 400
   attack: 10
   damageColorDuration: 0.1
+  dropChance: 1
 --- !u!70 &3293273343591313620
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -44501,7 +44502,7 @@ GameObject:
   - component: {fileID: 3832238878546112034}
   m_Layer: 0
   m_Name: Visual
-  m_TagString: Untagged
+  m_TagString: IceBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 - Energizado
+  m_text: "2 - F\xE1brica"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
   m_sharedMaterial: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4 - Acelerado
+  m_text: 4 - Campo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
   m_sharedMaterial: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
@@ -1003,7 +1003,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1 - Magnetizado
+  m_text: '1 - Escola
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
   m_sharedMaterial: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
@@ -1138,7 +1140,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OMNIPHYSIS
+  m_text: 'OmniPhysis
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
   m_sharedMaterial: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
@@ -1376,7 +1380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5 - ??????
+  m_text: 5 - Final
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
   m_sharedMaterial: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
@@ -1941,7 +1945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3 - Paralisado
+  m_text: "3 - Observat\xF3rio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
   m_sharedMaterial: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}

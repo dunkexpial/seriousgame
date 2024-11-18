@@ -25,6 +25,8 @@ TagManager:
   - PortalTag
   - Heart
   - Boss3TpPoint
+  - FireBoss
+  - IceBoss
   layers:
   - Default
   - TransparentFX
