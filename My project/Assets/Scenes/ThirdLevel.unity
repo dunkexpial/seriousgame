@@ -8499,6 +8499,30 @@ PrefabInstance:
       propertyPath: m_text
       value: Level 2 - Energizado
       objectReference: {fileID: 0}
+    - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
+    - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
+    - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456686331266077238, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: levelItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 456686331266077238, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: levelItems.Array.data[0].itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 679a0b66f9d53bd439705f43a64860d8, type: 3}
+    - target: {fileID: 456686331266077238, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: levelItems.Array.data[1].itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51f09d3db48a7154282de9465ad2b500, type: 3}
     - target: {fileID: 790783777719889709, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

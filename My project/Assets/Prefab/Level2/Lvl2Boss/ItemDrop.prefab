@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fef2d93e0e64bd4b9bcbd09a1e19214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 5028407266140401135, guid: 5b5abf396a2d9a44ca9232427a4aa4a2, type: 3}
+  prefabToSpawn: {fileID: 684137585055459000, guid: 82f6f0ed7d46dbc4ab3d0da4da1c063d, type: 3}
   tagsToCheck:
   - IceBoss
   - FireBoss
