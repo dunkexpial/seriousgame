@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 1960036149205230038, guid: 75e23fddadf116a4ca23d5cf7aa18623, type: 3}
-  - {fileID: 3983045728492309811, guid: f22080772af16b245b7bd577f2ceae86, type: 3}
+  - {fileID: 2738157599985678782, guid: a89a256780da7b94da47eb1cff554286, type: 3}
   - {fileID: 1576528401196774879, guid: 97ddc4710281f2c4aa4a202a569156c1, type: 3}
   - {fileID: 1576528401196774879, guid: b8ed726a174569742b7b3064c8ecac93, type: 3}
   spawnDelay: 0.9
