@@ -14,6 +14,9 @@ public class Lvl3BossLogic : MonoBehaviour
     public string scriptNameToAdd2 = "ProjectileBehavior2"; // Name of the second script (component) to add to projectiles
     public string scriptNameToRemove = "ProjectileOldBehavior"; // Name of the script (component) to remove from projectiles
     public GameObject prefabToSpawn; // The prefab to spawn as a child of the projectile
+    public float teleportYOffset = 2f; // Adjust this value to set the desired Y offset
+    private PlayOnCreateAndDestroy playOnCreateAndDestroy;
+    private AttributesManager attributesManager;
 
     private Type scriptTypeToAdd1;
     private Type scriptTypeToAdd2;
@@ -65,8 +68,6 @@ public class Lvl3BossLogic : MonoBehaviour
                 // Check if within elliptical range
                 if ((normalizedX * normalizedX + normalizedY * normalizedY) <= 1f)
                 {
-                    Debug.Log("Projectile within stop range: " + projectile.name);
-
                     // Add first script
                     if (scriptTypeToAdd1 != null && projectile.GetComponent(scriptTypeToAdd1) == null)
                         projectile.AddComponent(scriptTypeToAdd1);
@@ -95,14 +96,21 @@ public class Lvl3BossLogic : MonoBehaviour
         }
     }
 
-    void Teleport()
+    public void Teleport()
     {
+        Debug.Log("Teleporting...");
         // Find all objects with the target tag
         GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(targetTag);
 
         // If there are no objects with the tag, exit early
-        if (targetObjects.Length == 0) return;
-
+        if (targetObjects.Length == 0)
+        {
+            attributesManager.itemDrop();
+            playOnCreateAndDestroy.PlayDestroySmokeEffect();
+            Destroy(gameObject);
+            return;
+        }
+        
         // Filter out the object the boss is already on
         GameObject currentTarget = null;
         foreach (GameObject obj in targetObjects)
@@ -127,8 +135,9 @@ public class Lvl3BossLogic : MonoBehaviour
         // Save the current position of the boss
         Vector3 oldPosition = transform.position;
 
-        // Move the boss to the new target's position
-        transform.position = newTarget.transform.position;
+        // Move the boss to the new target's position, applying the Y offset
+        Vector3 targetPosition = newTarget.transform.position;
+        transform.position = new Vector3(targetPosition.x, targetPosition.y + teleportYOffset, targetPosition.z);
 
         // Spawn the teleport effect at the old position (where the boss was)
         if (teleportEffectPrefab != null)

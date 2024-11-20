@@ -6,12 +6,17 @@ public class PlayerInput : MonoBehaviour
     public ProjectileManager projectileManager;
     public Animator animator;
     private PlayerMovement playerMovement;
-    private float fireRate = 0.5f;
-    private float nextFireTime = 0f;
+
+    private float[] fireRates = { 0.35f, 0.2f, 1f, 0.7f, 1.2f }; // Fire rates for each projectile type
+    private float[] nextFireTimes; // Timers for each projectile type
+
     public DialogueUI DialogueUI => dialogueUI;
 
     void Start()
     {
+        // Initialize the nextFireTimes array with the same length as the fireRates array
+        nextFireTimes = new float[fireRates.Length];
+
         // Get the PlayerMovement component to check if the player is frozen
         playerMovement = GetComponent<PlayerMovement>();
     }
@@ -20,60 +25,40 @@ public class PlayerInput : MonoBehaviour
     {
         if (dialogueUI.isOpen) return;
 
-        // Prevent shooting if the player is frozen HERE
+        // Prevent shooting if the player is frozen
         if (playerMovement != null && playerMovement.isFrozen) return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            projectileManager.SetProjectileType(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            projectileManager.SetProjectileType(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            projectileManager.SetProjectileType(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            projectileManager.SetProjectileType(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            projectileManager.SetProjectileType(4);
-        }
+        HandleProjectileSelection();
+        HandleShooting();
+    }
 
-        // Set the fire rate based on the selected projectile type
-        switch (projectileManager.selectedProjectileIndex)
+    private void HandleProjectileSelection()
+    {
+        // Detect projectile selection input and set the selected projectile
+        for (int i = 0; i < fireRates.Length; i++)
         {
-            case 0:
-                fireRate = 0.35f;
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                projectileManager.SetProjectileType(i);
                 break;
-            case 1:
-                fireRate = 0.2f;
-                break;
-            case 2:
-                fireRate = 1f;
-                break;
-            case 3:
-                fireRate = 0.7f;
-                break;
-            case 4:
-                fireRate = 1.2f;
-                break;
+            }
         }
+    }
 
-        // Check if the fire button is held down and if enough time has passed since the last shot
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
+    private void HandleShooting()
+    {
+        int currentProjectileIndex = projectileManager.selectedProjectileIndex;
+
+        // Check if the fire button is held down and if enough time has passed since the last shot for the selected projectile
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTimes[currentProjectileIndex])
         {
             projectileManager.Shoot();
 
             // Trigger the shooting animation
             animator.SetTrigger("Shoot");
 
-            // Update the next fire time
-            nextFireTime = Time.time + fireRate;
+            // Update the next fire time for the selected projectile
+            nextFireTimes[currentProjectileIndex] = Time.time + fireRates[currentProjectileIndex];
         }
     }
 }

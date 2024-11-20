@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 280637916907994150}
   - component: {fileID: 4783690883753201109}
   - component: {fileID: 3069515257200668132}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1868,12 +1868,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8394292988907310564}
   - {fileID: 1208056027842699549}
   - {fileID: 8728933413238424952}
   - {fileID: 8432130686159590335}
   - {fileID: 7350486692321676171}
   - {fileID: 1904327984306501027}
+  - {fileID: 8394292988907310564}
   m_Father: {fileID: 8748028666477875587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2914,7 +2914,7 @@ GameObject:
   - component: {fileID: 3498137709465059774}
   - component: {fileID: 149313874841483358}
   - component: {fileID: 8835918465165221467}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3322,7 +3322,7 @@ GameObject:
   - component: {fileID: 5106059633545416433}
   - component: {fileID: 8445826629145589818}
   - component: {fileID: 7226301766821738837}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: FadeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29613,6 +29613,7 @@ GameObject:
   - component: {fileID: 7528355737601230444}
   - component: {fileID: 798980405524667630}
   - component: {fileID: 3293273343591313620}
+  - component: {fileID: 2304040533859562548}
   m_Layer: 7
   m_Name: Level2BossIce
   m_TagString: Enemy
@@ -29629,7 +29630,7 @@ Transform:
   m_GameObject: {fileID: 6663066379282100849}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106, y: 244.25, z: 12.540284}
+  m_LocalPosition: {x: 106, y: 244.25, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -29705,6 +29706,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.06}
   m_Size: {x: 0.38, y: 0.58}
   m_Direction: 0
+--- !u!114 &2304040533859562548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663066379282100849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3dce95a39ae0b48a16629889642160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createSmokePrefab: {fileID: 0}
+  destroySmokePrefab: {fileID: 5399713483127888893, guid: 41d8c6ae6239cf843856df15033834b4, type: 3}
+  createSmokeLifetime: 0.5
+  destroySmokeLifetime: 3
 --- !u!1 &6711553164060292908
 GameObject:
   m_ObjectHideFlags: 0

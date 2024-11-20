@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 2626739012857286980}
   - component: {fileID: 1004807310006312162}
   - component: {fileID: 7017975458213057507}
-  - component: {fileID: 4486848185920200902}
   m_Layer: 7
   m_Name: EnemyRobot
   m_TagString: Enemy
@@ -357,22 +356,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.01}
   serializedVersion: 2
   m_Radius: 0.11
---- !u!114 &4486848185920200902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475629041016757149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f9920e086295443a7627b7cee1ff7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avoidanceDistance: 0.5
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &8412201423853090428
 GameObject:
   m_ObjectHideFlags: 0

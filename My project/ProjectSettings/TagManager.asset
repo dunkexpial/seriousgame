@@ -27,6 +27,8 @@ TagManager:
   - Boss3TpPoint
   - FireBoss
   - IceBoss
+  - SpawnLoc
+  - Spawner
   layers:
   - Default
   - TransparentFX

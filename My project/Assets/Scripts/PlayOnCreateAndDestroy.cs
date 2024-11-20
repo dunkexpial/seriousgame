@@ -17,7 +17,7 @@ public class PlayOnCreateAndDestroy : MonoBehaviour
         PlayDestroySmokeEffect();
     }
 
-    private void PlayCreateSmokeEffect()
+    public void PlayCreateSmokeEffect()
     {
         if (createSmokePrefab != null)
         {
@@ -26,7 +26,7 @@ public class PlayOnCreateAndDestroy : MonoBehaviour
         }
     }
 
-    private void PlayDestroySmokeEffect()
+    public void PlayDestroySmokeEffect()
     {
         if (destroySmokePrefab != null)
         {

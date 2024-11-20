@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class MobSpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnInterval = 5f; // Fixed base time between spawns
+    [SerializeField] private float spawnInterval = 5f; // Time between spawns
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private bool canSpawn = true;
-    [SerializeField] private float spawnRangeX = 30f; // Horizontal range (Width of the spawn area)
-    [SerializeField] private float spawnRangeY = 30f; // Vertical range (Height of the spawn area)
+    [SerializeField] private float spawnRangeX = 30f; // Horizontal range of spawn area
+    [SerializeField] private float spawnRangeY = 30f; // Vertical range of spawn area
     [SerializeField] private int maxEnemiesInRange = 5;
-    [SerializeField] private float minDistanceToPlayer = 30f; // Minimum distance to player for spawning
-    [SerializeField] private float maxDistanceToPlayer = 100f; // Maximum distance to player for spawning
-    private int maxEnemiesInScene = 10; // Max number of enemies allowed in the scene
+    [SerializeField] private float minDistanceToPlayer = 30f; // Minimum distance to player
+    [SerializeField] private float maxDistanceToPlayer = 100f; // Maximum distance to player
+    private int maxEnemiesInScene = 10; // Maximum enemies allowed in the scene
 
-    private Transform playerTransform; // Reference to the player's transform
+    private Transform playerTransform; // Reference to player's Transform
     private Camera mainCamera; // Reference to the main camera
 
     void Start()
@@ -40,7 +40,6 @@ public class MobSpawner : MonoBehaviour
     {
         while (canSpawn)
         {
-            // Add randomness of ±50% to the spawn interval
             float randomizedInterval = spawnInterval * Random.Range(0.5f, 1.5f);
             yield return new WaitForSeconds(randomizedInterval);
 
@@ -55,17 +54,16 @@ public class MobSpawner : MonoBehaviour
 
             if (enemyCountInScene >= maxEnemiesInScene)
             {
-                // If there are more than the allowed number of enemies, stop spawning
+                Debug.Log("Max enemies in scene reached: " + enemyCountInScene);
                 continue;
             }
 
-            // Define the spawn area with the 16:9 ratio
-            Vector2 spawnArea = new Vector2(spawnRangeX * 2, spawnRangeY * 2);
-            Collider2D[] nearbyEnemies = Physics2D.OverlapBoxAll(transform.position, spawnArea, 0f);
+            // Define a smaller spawn area for nearby enemy checks
+            Vector2 smallerSpawnArea = new Vector2(spawnRangeX * 0.8f, spawnRangeY * 0.8f);
+            Collider2D[] nearbyEnemies = Physics2D.OverlapBoxAll(transform.position, smallerSpawnArea, 0f);
 
             int enemyCount = 0;
 
-            // Count only objects with the "Enemy" tag
             foreach (var obj in nearbyEnemies)
             {
                 if (obj.CompareTag("Enemy"))
@@ -74,51 +72,44 @@ public class MobSpawner : MonoBehaviour
                 }
             }
 
-            if (enemyCount <= maxEnemiesInRange)
+            if (enemyCount > maxEnemiesInRange)
             {
-                bool spawnSuccessful = false;
-                int retryCount = 0; // Counter for retries
-                int maxRetries = 10; // Max retries before giving up
+                Debug.Log("Too many enemies nearby: " + enemyCount);
+                continue;
+            }
 
-                // Keep trying to find a valid spawn location until the max retries are reached
-                while (!spawnSuccessful && retryCount < maxRetries)
+            bool spawnSuccessful = false;
+            float retryTimer = 1f; // Maximum time for retrying spawn
+            float startTime = Time.time;
+
+            while (!spawnSuccessful && Time.time - startTime < retryTimer)
+            {
+                Vector3 randomOffset = new Vector3(
+                    Random.Range(-spawnRangeX, spawnRangeX),
+                    Random.Range(-spawnRangeY, spawnRangeY),
+                    0f
+                );
+
+                Vector3 spawnPosition = transform.position + randomOffset;
+
+                // Check if the spawn position is within the valid distance range from the player
+                float distanceToPlayer = Vector3.Distance(spawnPosition, playerTransform.position);
+
+                if (distanceToPlayer >= minDistanceToPlayer && distanceToPlayer <= maxDistanceToPlayer &&
+                    !IsPositionOccupiedByObstacle(spawnPosition))
                 {
-                    Vector3 randomOffset = new Vector3(
-                        Random.Range(-spawnRangeX, spawnRangeX),
-                        Random.Range(-spawnRangeY, spawnRangeY),
-                        0f
-                    );
+                    int rand = Random.Range(0, enemyPrefabs.Length);
+                    GameObject enemyToSpawn = enemyPrefabs[rand];
 
-                    Vector3 spawnPosition = transform.position + randomOffset;
-
-                    // Check if the spawn position is within the camera's viewport (16:9 aspect ratio)
-                    Vector3 viewportPosition = mainCamera.WorldToViewportPoint(spawnPosition);
-
-                    // Ensure the spawn position is within the camera's view (x: 0 to 1, y: 0 to 1)
-                    if (viewportPosition.x >= 0f && viewportPosition.x <= 1f && viewportPosition.y >= 0f && viewportPosition.y <= 1f)
-                    {
-                        // Check if the spawn position is within the valid distance range from the player
-                        float distanceToPlayer = Vector3.Distance(spawnPosition, playerTransform.position);
-                        if (distanceToPlayer >= minDistanceToPlayer && distanceToPlayer <= maxDistanceToPlayer &&
-                            !IsPositionOccupiedByObstacle(spawnPosition))
-                        {
-                            int rand = Random.Range(0, enemyPrefabs.Length);
-                            GameObject enemyToSpawn = enemyPrefabs[rand];
-
-                            Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-                            spawnSuccessful = true; // Spawn successful, exit the loop
-                        }
-                    }
-
-                    retryCount++; // Increment the retry counter
-                    yield return null; // Yield to prevent freezing the game
+                    Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+                    spawnSuccessful = true; // Spawn successful, exit the loop
                 }
+                yield return null; // Yield to prevent freezing the game
+            }
 
-                // If max retries are reached and no valid spawn was found, log a warning
-                if (!spawnSuccessful)
-                {
-                    Debug.LogWarning("Failed to find a valid spawn position after " + maxRetries + " attempts.");
-                }
+            if (!spawnSuccessful)
+            {
+                Debug.LogWarning("Failed to find a valid spawn position after " + retryTimer + " seconds.");
             }
         }
     }
@@ -136,20 +127,18 @@ public class MobSpawner : MonoBehaviour
         return false;
     }
 
-    // This method draws a gizmo box in the scene view to visualize spawn area
     private void OnDrawGizmos()
     {
         // Set the gizmo color to a semi-transparent yellow
-        Color gizmoColor = new Color(1f, 1f, 0f, 0.05f); // RGBA (yellow, 30% opacity)
-        Gizmos.color = gizmoColor;
-
-        // Draw a filled cube representing the spawn area
+        Gizmos.color = new Color(1f, 1f, 0f, 0.1f); // RGBA (yellow, 10% opacity)
         Gizmos.DrawCube(transform.position, new Vector3(spawnRangeX * 2, spawnRangeY * 2, 0f));
 
-        // Set the gizmo color to a slightly darker version for the borders
-        Gizmos.color = new Color(1f, 1f, 0f, 0.05f); // RGBA (yellow, 60% opacity)
-
-        // Draw a wireframe box that represents the spawn area borders
-        Gizmos.DrawWireCube(transform.position, new Vector3(spawnRangeX * 2, spawnRangeY * 2, 0f));
+        if (Application.isPlaying && playerTransform != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(playerTransform.position, minDistanceToPlayer); // Minimum spawn distance
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(playerTransform.position, maxDistanceToPlayer); // Maximum spawn distance
+        }
     }
 }

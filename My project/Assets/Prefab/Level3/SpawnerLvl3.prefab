@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7780500804118709626}
   m_Layer: 0
   m_Name: SpawnerLvl3
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2017630694499471782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 805, y: 268, z: -1.2108939}
+  m_LocalPosition: {x: 805, y: 268, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e364b8dddf8ba1947895f1c99a5e6818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 2
+  spawnInterval: 8
   enemyPrefabs:
   - {fileID: 7444085534275883118, guid: 227555634482865488e7461e02327807, type: 3}
   canSpawn: 1

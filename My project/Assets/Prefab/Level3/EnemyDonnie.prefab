@@ -51,7 +51,6 @@ GameObject:
   - component: {fileID: 9154831431425647634}
   - component: {fileID: 2028837959259129673}
   - component: {fileID: 8078874330787087107}
-  - component: {fileID: 1927667368219310567}
   m_Layer: 7
   m_Name: EnemyDonnie
   m_TagString: Enemy
@@ -328,19 +327,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &1927667368219310567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7811830266500152931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f9920e086295443a7627b7cee1ff7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avoidanceDistance: 0.5
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 8

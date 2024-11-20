@@ -4937,7 +4937,6 @@ GameObject:
   - component: {fileID: 7131700669502481123}
   - component: {fileID: 6382526015031238226}
   - component: {fileID: 661370291809297791}
-  - component: {fileID: 5712495447860548293}
   m_Layer: 7
   m_Name: EnemySkully
   m_TagString: Enemy
@@ -5130,22 +5129,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22, y: 0.28}
   m_EdgeRadius: 0
---- !u!114 &5712495447860548293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576528401196774879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f9920e086295443a7627b7cee1ff7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avoidanceDistance: 0.5
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &2132057107174023988
 GameObject:
   m_ObjectHideFlags: 0
