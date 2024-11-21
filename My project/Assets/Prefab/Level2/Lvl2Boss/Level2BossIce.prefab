@@ -49,7 +49,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  shootingIntervalVariance: 1.5
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &7594211825778911836
@@ -4898,7 +4898,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  shootingIntervalVariance: 1.5
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &3582634948854259460
@@ -9747,7 +9747,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  shootingIntervalVariance: 1.5
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &6818129042984315426
@@ -14596,7 +14596,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  shootingIntervalVariance: 1.5
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &286526771936627502
@@ -24527,7 +24527,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  shootingIntervalVariance: 1.5
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &122467076765230442
@@ -29667,7 +29667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 400
+  health: 500
   attack: 10
   damageColorDuration: 0.1
   dropChance: 1
@@ -39705,7 +39705,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  shootingIntervalVariance: 1.5
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &60480643859960656

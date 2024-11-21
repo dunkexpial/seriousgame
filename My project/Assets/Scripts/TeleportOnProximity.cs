@@ -52,8 +52,12 @@ public class TeleportOnProximity : MonoBehaviour
                     // Check if the teleport position is closer to the player than the AI's current position
                     if (teleportPosition != Vector2.zero && Vector2.Distance(teleportPosition, playerTransform.position) < Vector2.Distance(transform.position, playerTransform.position))
                     {
-                        SpawnTeleportMarkers(transform.position, teleportPosition);
-                        transform.position = teleportPosition;
+                        // Check if there's no obstacle blocking the line of sight to the teleport position
+                        if (IsLineOfSightClear(transform.position, teleportPosition))
+                        {
+                            SpawnTeleportMarkers(transform.position, teleportPosition);
+                            transform.position = teleportPosition;
+                        }
                     }
                 }
 
@@ -65,8 +69,12 @@ public class TeleportOnProximity : MonoBehaviour
 
                     if (teleportPosition != Vector2.zero)
                     {
-                        SpawnTeleportMarkers(transform.position, teleportPosition);
-                        transform.position = teleportPosition;
+                        // Check if there's no obstacle blocking the line of sight to the teleport position
+                        if (IsLineOfSightClear(transform.position, teleportPosition))
+                        {
+                            SpawnTeleportMarkers(transform.position, teleportPosition);
+                            transform.position = teleportPosition;
+                        }
                     }
                 }
             }
@@ -95,12 +103,17 @@ public class TeleportOnProximity : MonoBehaviour
         return Vector2.zero;
     }
 
+    private bool IsLineOfSightClear(Vector2 startPosition, Vector2 endPosition)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(startPosition, endPosition - startPosition, Vector2.Distance(startPosition, endPosition), LayerMask.GetMask(obstacleTag));
+        return hit.collider == null; // If no obstacle is hit, the line of sight is clear
+    }
+
     private void SpawnTeleportMarkers(Vector2 startPosition, Vector2 endPosition)
     {
         if (teleportMarkerPrefab != null)
         {
             GameObject startMarker = Instantiate(teleportMarkerPrefab, startPosition, Quaternion.identity);
-
             Destroy(startMarker, markerLifetime);
         }
     }

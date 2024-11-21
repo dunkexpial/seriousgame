@@ -175,8 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 6217c72f027493d47ace63925674c4de, type: 3}
-  baseShootingInterval: 3
-  shootingIntervalVariance: 2
+  baseShootingInterval: 2
+  shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &7132180866102505499

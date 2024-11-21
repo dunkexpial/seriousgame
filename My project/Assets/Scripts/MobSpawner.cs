@@ -11,6 +11,8 @@ public class MobSpawner : MonoBehaviour
     [SerializeField] private int maxEnemiesInRange = 5;
     [SerializeField] private float minDistanceToPlayer = 30f; // Minimum distance to player
     [SerializeField] private float maxDistanceToPlayer = 100f; // Maximum distance to player
+    [SerializeField] private float obstacleDetectionRadius = 2f; // Configurable radius for obstacle detection
+
     private int maxEnemiesInScene = 10; // Maximum enemies allowed in the scene
 
     private Transform playerTransform; // Reference to player's Transform
@@ -40,6 +42,7 @@ public class MobSpawner : MonoBehaviour
     {
         while (canSpawn)
         {
+            // Randomize the interval between spawns
             float randomizedInterval = spawnInterval * Random.Range(0.5f, 1.5f);
             yield return new WaitForSeconds(randomizedInterval);
 
@@ -55,35 +58,15 @@ public class MobSpawner : MonoBehaviour
             if (enemyCountInScene >= maxEnemiesInScene)
             {
                 Debug.Log("Max enemies in scene reached: " + enemyCountInScene);
-                continue;
+                continue; // Stop this spawn attempt and wait for the next interval
             }
 
-            // Define a smaller spawn area for nearby enemy checks
-            Vector2 smallerSpawnArea = new Vector2(spawnRangeX * 0.8f, spawnRangeY * 0.8f);
-            Collider2D[] nearbyEnemies = Physics2D.OverlapBoxAll(transform.position, smallerSpawnArea, 0f);
-
-            int enemyCount = 0;
-
-            foreach (var obj in nearbyEnemies)
-            {
-                if (obj.CompareTag("Enemy"))
-                {
-                    enemyCount++;
-                }
-            }
-
-            if (enemyCount > maxEnemiesInRange)
-            {
-                Debug.Log("Too many enemies nearby: " + enemyCount);
-                continue;
-            }
-
+            // Try to spawn until a valid position is found
             bool spawnSuccessful = false;
-            float retryTimer = 1f; // Maximum time for retrying spawn
-            float startTime = Time.time;
 
-            while (!spawnSuccessful && Time.time - startTime < retryTimer)
+            while (!spawnSuccessful)
             {
+                // Randomize a spawn offset within the defined range
                 Vector3 randomOffset = new Vector3(
                     Random.Range(-spawnRangeX, spawnRangeX),
                     Random.Range(-spawnRangeY, spawnRangeY),
@@ -95,31 +78,38 @@ public class MobSpawner : MonoBehaviour
                 // Check if the spawn position is within the valid distance range from the player
                 float distanceToPlayer = Vector3.Distance(spawnPosition, playerTransform.position);
 
-                if (distanceToPlayer >= minDistanceToPlayer && distanceToPlayer <= maxDistanceToPlayer &&
+                if (distanceToPlayer >= minDistanceToPlayer &&
+                    distanceToPlayer <= maxDistanceToPlayer &&
                     !IsPositionOccupiedByObstacle(spawnPosition))
                 {
                     int rand = Random.Range(0, enemyPrefabs.Length);
                     GameObject enemyToSpawn = enemyPrefabs[rand];
 
                     Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-                    spawnSuccessful = true; // Spawn successful, exit the loop
+                    spawnSuccessful = true; // Exit the loop after a successful spawn
                 }
-                yield return null; // Yield to prevent freezing the game
-            }
 
-            if (!spawnSuccessful)
-            {
-                Debug.LogWarning("Failed to find a valid spawn position after " + retryTimer + " seconds.");
+                // Yield for a frame to avoid freezing the game while searching for a valid position
+                yield return null;
             }
         }
     }
 
     private bool IsPositionOccupiedByObstacle(Vector3 position)
     {
-        Collider2D[] obstacles = Physics2D.OverlapCircleAll(position, 0.5f);
+        // Find all colliders within the detection radius
+        Collider2D[] obstacles = Physics2D.OverlapCircleAll(position, obstacleDetectionRadius);
+        
         foreach (var obstacle in obstacles)
         {
-            if (obstacle.CompareTag("Obstacle"))
+            // Check for "Obstacle" or "ProjObstacle" tags
+            if (obstacle.CompareTag("Obstacle") || obstacle.CompareTag("ProjObstacle"))
+            {
+                return true;
+            }
+
+            // Check for "safezone" with isTrigger enabled
+            if (obstacle.CompareTag("Safezone") && obstacle.isTrigger)
             {
                 return true;
             }

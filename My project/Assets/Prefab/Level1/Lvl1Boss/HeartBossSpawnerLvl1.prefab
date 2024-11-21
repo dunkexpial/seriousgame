@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3246712744093024699}
-  - component: {fileID: 7780500804118709626}
+  - component: {fileID: 30779399344013097}
   m_Layer: 0
   m_Name: HeartBossSpawnerLvl1
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7780500804118709626
+--- !u!114 &30779399344013097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2017630694499471782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e364b8dddf8ba1947895f1c99a5e6818, type: 3}
+  m_Script: {fileID: 11500000, guid: d78120a87f144c44b859c36129e2ac01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 15
-  enemyPrefabs:
-  - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  canSpawn: 1
-  spawnRangeX: 277.5
-  spawnRangeY: 123.5
-  maxEnemiesInRange: 999999
-  minDistanceToPlayer: 0
-  maxDistanceToPlayer: 99999
+  heartPrefab: {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
+  spawnInterval: 10
+  areaSize: {x: 560, y: 300}
+  gizmoColor: {r: 0, g: 1, b: 0, a: 0.3}

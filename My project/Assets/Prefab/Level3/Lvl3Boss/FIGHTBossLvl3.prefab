@@ -1606,59 +1606,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &8839499382957007210
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5450061153719366007}
-  - component: {fileID: 960887355753641398}
-  m_Layer: 0
-  m_Name: HeartBossSpawnerLvl3
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5450061153719366007
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8839499382957007210}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 46, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3937279694919851776}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &960887355753641398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8839499382957007210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e364b8dddf8ba1947895f1c99a5e6818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnInterval: 15
-  enemyPrefabs:
-  - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  canSpawn: 1
-  spawnRangeX: 277.5
-  spawnRangeY: 123.5
-  maxEnemiesInRange: 999999
-  minDistanceToPlayer: 0
-  maxDistanceToPlayer: 99999
 --- !u!1 &8859996989172249056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,3 +1726,73 @@ Grid:
   m_CellGap: {x: 0, y: 0.6666667, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1001 &5354972144907762028
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3937279694919851776}
+    m_Modifications:
+    - target: {fileID: -2210735849264416406, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: areaSize.x
+      value: 560
+      objectReference: {fileID: 0}
+    - target: {fileID: -2210735849264416406, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: areaSize.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529866708862457862, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+      propertyPath: m_Name
+      value: HeartBossSpawnerLvl3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+--- !u!4 &5450061153719366007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 140226719583799323, guid: 022b2408596ce004db024a6aa7bc6d62, type: 3}
+  m_PrefabInstance: {fileID: 5354972144907762028}
+  m_PrefabAsset: {fileID: 0}

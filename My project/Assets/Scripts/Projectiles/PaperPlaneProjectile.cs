@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class EraserProjectile : BaseProjectile
+public class PaperPlaneProjectile : BaseProjectile
 {
     protected override void Start()
     {
-        damageAmount = 6; // Set the damage specific to this type of projectile
-        speed = 200f;
-        spinSpeed = 1000f;
+        damageAmount = 20; // Set the damage specific to this type of projectile
+        speed = 500f;
+        spinSpeed = 0f;
         base.Start();
-        // CARACTERISTICAS DO PROJETIL
+    }
+    
+    private void OnDestroy() {
+        
     }
 
     protected override void Update()

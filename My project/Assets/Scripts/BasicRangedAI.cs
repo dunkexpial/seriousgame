@@ -26,7 +26,7 @@ public class BasicRangedAI : MonoBehaviour
     float sightDelay = 0.5f; // Delay after seeing the player before shooting
     float sightTimer = 0f; // Time spent with line of sight
 
-    private Vector2[] raycastOffsets = new Vector2[]
+    private Vector2[] raycastOffsets = new Vector2[] 
     {
         new Vector2(0, -2f),
         new Vector2(5.49f, -2f),
@@ -39,9 +39,16 @@ public class BasicRangedAI : MonoBehaviour
         new Vector2(-5.49f, -5.49f)
     };
 
+    private Vector2 lastSeenPosition;
+    private bool hasSeenPlayer = false;  // Track if the AI has ever seen the player
+
+    // Public variable to enable/disable the last seen position behavior
+    public bool useLastSeenPosition = true;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        lastSeenPosition = Vector2.zero;  // Initial value (could be anything, but we want to avoid using this as a "last known position")
     }
 
     void Update()
@@ -55,19 +62,44 @@ public class BasicRangedAI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        if (distance < radius && hasLineOfSight && distance > inRange)
+        // If AI has line of sight to the player
+        if (distance < radius && hasLineOfSight)
         {
+            // Move towards the player
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
             lastX = direction.x;
             lastY = direction.y;
 
+            // Update animator
             animator.SetFloat("enemyX", direction.x);
             animator.SetFloat("enemyY", direction.y);
             animator.SetFloat("Moving", 1);
+
+            // Store the player's position when seen
+            lastSeenPosition = player.transform.position;
+            hasSeenPlayer = true; // Mark that the AI has seen the player
+        }
+        // If AI doesn't have line of sight and has seen the player before
+        else if (hasSeenPlayer && useLastSeenPosition)
+        {
+            // Move to the last seen position
+            transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed * Time.deltaTime);
+
+            // Check if the AI has reached the last seen position
+            if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
+            {
+                // Stop moving and update the animator
+                animator.SetFloat("Moving", 0);
+            }
+            else
+            {
+                animator.SetFloat("Moving", 1);
+            }
         }
         else
         {
+            // AI has never seen the player or useLastSeenPosition is disabled, so remain idle
             animator.SetFloat("enemyX", 0);
             animator.SetFloat("enemyY", 0);
             animator.SetFloat("Moving", 0);
@@ -101,7 +133,7 @@ public class BasicRangedAI : MonoBehaviour
         hadLineOfSightLastFrame = hasLineOfSight;
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         hasLineOfSight = false;
 
