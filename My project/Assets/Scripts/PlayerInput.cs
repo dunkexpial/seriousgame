@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -6,6 +7,10 @@ public class PlayerInput : MonoBehaviour
     public ProjectileManager projectileManager;
     public Animator animator;
     private PlayerMovement playerMovement;
+
+    public AudioSource shoot;
+
+    public AudioClip shootclip;
 
     private float[] fireRates = { 0.4f, 0.2f, 1.0f, 0.3f, 1.2f }; // Fire rates for each projectile type
     private float[] nextFireTimes; // Timers for each projectile type
@@ -56,6 +61,7 @@ public class PlayerInput : MonoBehaviour
 
             // Trigger the shooting animation
             animator.SetTrigger("Shoot");
+            shoot.PlayOneShot(shootclip);
 
             // Update the next fire time for the selected projectile
             nextFireTimes[currentProjectileIndex] = Time.time + fireRates[currentProjectileIndex];
