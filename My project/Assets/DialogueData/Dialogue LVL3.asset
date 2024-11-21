@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcde56388f3a4574fb9d3684d07625d2, type: 3}
+  m_Name: Dialogue LVL3
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Voc\xEA est\xE1 indo muito bem, Kelvin! Agora temos duas pe\xE7as! A m\xE1quina
+    de sorvete est\xE1... digamos... 45% operacional. J\xE1 conseguimos um pouco
+    de ar gelado, mas nada de sabor ainda."
+  - "O pr\xF3ximo desafio vai levar voc\xEA para um lugar... al\xE9m da nossa imagina\xE7\xE3o:
+    o Observat\xF3rio Astron\xF4mico. \xC9 l\xE1 que est\xE1 o enigm\xE1tico Cronos,
+    mestre do espa\xE7o e do tempo! Ele \xE9... como posso dizer? Um verdadeiro quebra-cabe\xE7a
+    ambulante."
+  - "Cronos controla o tempo como se fosse um brinquedo. Ele pode desacelerar as
+    coisas at\xE9 parecerem paradas... ou acelerar tudo ao ponto de ser imposs\xEDvel
+    acompanhar. Ah, e n\xE3o se esque\xE7a do espa\xE7o! Ele adora criar distor\xE7\xF5es
+    espaciais. Prepare-se para andar em c\xEDrculos e achar que est\xE1 no lugar
+    certo, mas... surpresa! N\xE3o est\xE1."
+  - "Espa\xE7o e tempo s\xE3o os tecidos do universo, Kelvin. O espa\xE7o \xE9 onde
+    as coisas est\xE3o, e o tempo \xE9 quando elas acontecem. Tudo parece simples,
+    at\xE9 algu\xE9m come\xE7ar a dobrar, torcer e manipular essas regras. Cronos
+    faz isso como ningu\xE9m."
+  - "Isso \xE9 o Cron\xF4metro Espacial. Ele vai te ajudar a rastrear os padr\xF5es
+    de Cronos e evitar suas armadilhas. Mas cuidado: se ele te prender em um paradoxo
+    temporal... bem, \xE9 melhor n\xE3o descobrir como \xE9. Seu objetivo \xE9 recuperar
+    o temporizador , que \xE9 a pr\xF3xima pe\xE7a da m\xE1quina."
+  - "\"Lembre-se, Kelvin, que cada segundo conta \u2014 literalmente. Use a l\xF3gica,
+    fique atento aos padr\xF5es e n\xE3o confie em nada que pare\xE7a f\xE1cil demais.
+    Agora v\xE1, desvende os mist\xE9rios do cosmos e mostre a Cronos que ningu\xE9m
+    fica entre voc\xEA e seu sorvete!"
+  responses: []

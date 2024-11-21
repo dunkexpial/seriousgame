@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcde56388f3a4574fb9d3684d07625d2, type: 3}
+  m_Name: Dialogue LVL5
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Incr\xEDvel, Kelvin! Com a Placa Aceleradora de Energia, estamos quase l\xE1!
+    A m\xE1quina agora est\xE1 funcionando a... 90%! S\xF3 falta mais uma pe\xE7a
+    e podemos voltar a fazer sorvete interdimensional!"
+  - "Mas a \xFAltima pe\xE7a n\xE3o vai ser f\xE1cil de pegar. Ela est\xE1 com Omniphysicus,
+    o mestre da f\xEDsica total. Ele \xE9 a combina\xE7\xE3o de todos os poderes
+    dos vil\xF5es que voc\xEA enfrentou at\xE9 agora. Ele controla a acelera\xE7\xE3o,
+    a massa, o espa\xE7o, o tempo e a energia! Imagine um inimigo que pode manipular
+    tudo o que voc\xEA j\xE1 aprendeu."
+  - "Omniphysicus \xE9 uma fus\xE3o de todos os desafios anteriores: ele pode alterar
+    a gravidade, manipular a temperatura e at\xE9 distorcer o espa\xE7o e o tempo
+    ao seu redor. Prepare-se para enfrentar algo nunca visto antes."
+  - "Omniphysicus \xE9 uma fus\xE3o de todos os desafios anteriores: ele pode alterar
+    a gravidade, manipular a temperatura e at\xE9 distorcer o espa\xE7o e o tempo
+    ao seu redor. Prepare-se para enfrentar algo nunca visto antes."
+  - "Este \xE9 um Aparelho Qu\xE2ntico. Com ele, voc\xEA poder\xE1 equilibrar todas
+    as for\xE7as que Omniphysicus manipula. Esse painel vai te permitir monitorar
+    e ajustar todas as leis da f\xEDsica enquanto voc\xEA luta. Ele pode at\xE9 ajudar
+    a restabelecer um pouco da ordem quando Omniphysicus tentar distorcer o ambiente."
+  - "\"Omniphysicus tem a \xFAltima pe\xE7a: o Painel de Controle. Ele \xE9 o que
+    vai colocar nossa m\xE1quina de sorvete de volta nos trilhos! Voc\xEA tem todas
+    as ferramentas necess\xE1rias. Agora \xE9 a sua chance de ser o mestre da f\xEDsica!
+    V\xE1 l\xE1 e mostre quem \xE9 o verdadeiro mestre das leis do universo!"
+  responses: []
