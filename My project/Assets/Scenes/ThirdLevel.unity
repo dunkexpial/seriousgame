@@ -10359,7 +10359,7 @@ Transform:
   m_GameObject: {fileID: 198893276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -543.7974, y: 609.90454, z: -10}
+  m_LocalPosition: {x: -544.027, y: 609.90454, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10921,11 +10921,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -700
+      value: -706
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 652
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11799,7 +11799,39 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 557267815}
+  - {fileID: 318262129}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &318262128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 318262129}
+  m_Layer: 0
+  m_Name: BossRespawnPoint
+  m_TagString: BossRespawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &318262129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318262128}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06218994, y: -0.03687623, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 316382361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &320924010
 PrefabInstance:
@@ -68242,7 +68274,7 @@ Transform:
   m_GameObject: {fileID: 2134763138}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -700, y: 652, z: 0}
+  m_LocalPosition: {x: -706, y: 650, z: 0}
   m_LocalScale: {x: 100, y: 97.408585, z: 143.96776}
   m_ConstrainProportionsScale: 1
   m_Children:

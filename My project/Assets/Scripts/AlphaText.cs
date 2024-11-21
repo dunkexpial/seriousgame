@@ -23,6 +23,7 @@ public class LevelSelector : MonoBehaviour
         {
             fadeImage.color = new Color(0, 0, 0, 0);
         }
+        PlayerManager.reachedBossArea = false;
 
         // Retrieve the highest unlocked level from PlayerPrefs
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);

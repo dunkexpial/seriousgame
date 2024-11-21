@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9b476fea3e934f8519c69c25c65b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 80
   radius: 999
   hasLineOfSight: 0
   layerMask:

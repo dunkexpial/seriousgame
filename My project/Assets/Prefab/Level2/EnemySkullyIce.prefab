@@ -4874,12 +4874,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4a92a5512a8e0694e97f454bd78a4d7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 604031472290cb543bd1daa985191fdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.14, y: 0.14}
+  m_Size: {x: 0.44, y: 0.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4918,8 +4918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05915805e1b0114469d215cd1e48a5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatAmplitude: 0.02
-  floatFrequency: 4
+  floatAmplitude: 0.01
+  floatFrequency: 8
 --- !u!1 &1576528401196774879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5031,7 +5031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1991c5c9420c96a468738c1a90859b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
+  speed: 60
   radius: 999
   inRange: 60
   ghostProjectile: {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
@@ -5040,7 +5040,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 3914986122140214406}
-  shootCooldown: 1
+  shootCooldown: 0.75
   useLastSeenPosition: 0
 --- !u!114 &8260175634477121688
 MonoBehaviour:
@@ -5159,7 +5159,7 @@ Transform:
   m_GameObject: {fileID: 3400140736692292554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.09000007, z: 0}
+  m_LocalPosition: {x: 0, y: -0.02000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -10026,8 +10026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05915805e1b0114469d215cd1e48a5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatAmplitude: 0.02
-  floatFrequency: 4
+  floatAmplitude: 0.01
+  floatFrequency: 8
 --- !u!1 &5344289445903687576
 GameObject:
   m_ObjectHideFlags: 0

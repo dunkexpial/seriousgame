@@ -12,9 +12,9 @@ public class MobSpawner : MonoBehaviour
     [SerializeField] private float minDistanceToPlayer = 30f; // Minimum distance to player
     [SerializeField] private float maxDistanceToPlayer = 100f; // Maximum distance to player
     [SerializeField] private float obstacleDetectionRadius = 2f; // Configurable radius for obstacle detection
+    [SerializeField] private float minDistanceToOtherEnemies = 30f; // Minimum distance from other enemies
 
     private int maxEnemiesInScene = 10; // Maximum enemies allowed in the scene
-
     private Transform playerTransform; // Reference to player's Transform
     private Camera mainCamera; // Reference to the main camera
 
@@ -35,6 +35,7 @@ public class MobSpawner : MonoBehaviour
         {
             Debug.LogError("Main camera not found.");
         }
+
         StartCoroutine(Spawner());
     }
 
@@ -42,7 +43,6 @@ public class MobSpawner : MonoBehaviour
     {
         while (canSpawn)
         {
-            // Randomize the interval between spawns
             float randomizedInterval = spawnInterval * Random.Range(0.5f, 1.5f);
             yield return new WaitForSeconds(randomizedInterval);
 
@@ -52,41 +52,42 @@ public class MobSpawner : MonoBehaviour
                 continue;
             }
 
-            // Count all "Enemy" tagged objects in the scene
             int enemyCountInScene = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
             if (enemyCountInScene >= maxEnemiesInScene)
             {
                 Debug.Log("Max enemies in scene reached: " + enemyCountInScene);
-                continue; // Stop this spawn attempt and wait for the next interval
+                continue;
             }
 
-            // Try to spawn until a valid position is found
             bool spawnSuccessful = false;
 
             while (!spawnSuccessful)
             {
-                // Randomize a spawn offset within the defined range
-                Vector3 randomOffset = new Vector3(
-                    Random.Range(-spawnRangeX, spawnRangeX),
-                    Random.Range(-spawnRangeY, spawnRangeY),
-                    0f
+                // Get a random viewport position within the visible area
+                Vector3 viewportPos = new Vector3(
+                    Random.Range(0f, 1f), // X within viewport
+                    Random.Range(0f, 1f), // Y within viewport
+                    mainCamera.nearClipPlane // Z depth
                 );
 
-                Vector3 spawnPosition = transform.position + randomOffset;
+                // Convert the viewport position to world position
+                Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(viewportPos);
+                spawnPosition.z = 0f; // Ensure the spawn position is on the 2D plane
 
-                // Check if the spawn position is within the valid distance range from the player
+                // Check distance constraints and obstacle-free status
                 float distanceToPlayer = Vector3.Distance(spawnPosition, playerTransform.position);
 
                 if (distanceToPlayer >= minDistanceToPlayer &&
                     distanceToPlayer <= maxDistanceToPlayer &&
-                    !IsPositionOccupiedByObstacle(spawnPosition))
+                    !IsPositionOccupiedByObstacle(spawnPosition) &&
+                    !IsPositionTooCloseToOtherEnemies(spawnPosition))
                 {
                     int rand = Random.Range(0, enemyPrefabs.Length);
                     GameObject enemyToSpawn = enemyPrefabs[rand];
 
                     Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-                    spawnSuccessful = true; // Exit the loop after a successful spawn
+                    spawnSuccessful = true;
                 }
 
                 // Yield for a frame to avoid freezing the game while searching for a valid position
@@ -97,18 +98,15 @@ public class MobSpawner : MonoBehaviour
 
     private bool IsPositionOccupiedByObstacle(Vector3 position)
     {
-        // Find all colliders within the detection radius
         Collider2D[] obstacles = Physics2D.OverlapCircleAll(position, obstacleDetectionRadius);
-        
+
         foreach (var obstacle in obstacles)
         {
-            // Check for "Obstacle" or "ProjObstacle" tags
             if (obstacle.CompareTag("Obstacle") || obstacle.CompareTag("ProjObstacle"))
             {
                 return true;
             }
 
-            // Check for "safezone" with isTrigger enabled
             if (obstacle.CompareTag("Safezone") && obstacle.isTrigger)
             {
                 return true;
@@ -117,11 +115,35 @@ public class MobSpawner : MonoBehaviour
         return false;
     }
 
+    private bool IsPositionTooCloseToOtherEnemies(Vector3 spawnPosition)
+    {
+        // Get all existing enemies in the scene
+        GameObject[] existingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        // Check if the spawn position is too close to any existing enemy
+        foreach (var enemy in existingEnemies)
+        {
+            float distanceToEnemy = Vector3.Distance(spawnPosition, enemy.transform.position);
+            if (distanceToEnemy < minDistanceToOtherEnemies)
+            {
+                return true; // Position is too close to another enemy
+            }
+        }
+
+        return false; // Position is valid
+    }
+
     private void OnDrawGizmos()
     {
-        // Set the gizmo color to a semi-transparent yellow
-        Gizmos.color = new Color(1f, 1f, 0f, 0.1f); // RGBA (yellow, 10% opacity)
-        Gizmos.DrawCube(transform.position, new Vector3(spawnRangeX * 2, spawnRangeY * 2, 0f));
+        if (Application.isPlaying && mainCamera != null)
+        {
+            Gizmos.color = Color.yellow;
+            Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0f, 0f, mainCamera.nearClipPlane));
+            Vector3 topRight = mainCamera.ViewportToWorldPoint(new Vector3(1f, 1f, mainCamera.nearClipPlane));
+            Vector3 size = topRight - bottomLeft;
+
+            Gizmos.DrawWireCube(bottomLeft + size / 2, size);
+        }
 
         if (Application.isPlaying && playerTransform != null)
         {

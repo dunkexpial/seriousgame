@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
     public Animator animator;
     private PlayerMovement playerMovement;
 
-    private float[] fireRates = { 0.4f, 0.2f, 1.0f, 0.3f, 1.2f }; // Fire rates for each projectile type
+    private float[] fireRates = { 0.4f, 0.2f, 1.0f, 0.2f, 1.2f }; // Fire rates for each projectile type
     private float[] nextFireTimes; // Timers for each projectile type
 
     public DialogueUI DialogueUI => dialogueUI;

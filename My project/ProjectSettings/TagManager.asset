@@ -30,6 +30,8 @@ TagManager:
   - SpawnLoc
   - Spawner
   - Safezone
+  - BossRespawnPoint
+  - Boss3TpInactive
   layers:
   - Default
   - TransparentFX

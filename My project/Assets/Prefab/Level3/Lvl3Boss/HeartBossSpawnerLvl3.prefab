@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  spawnInterval: 10
+  spawnInterval: 20
   areaSize: {x: 277.5, y: 123.5}
   gizmoColor: {r: 0, g: 1, b: 0, a: 0.3}
