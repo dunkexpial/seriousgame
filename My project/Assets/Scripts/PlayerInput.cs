@@ -8,15 +8,12 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement playerMovement;
 
     private float[] fireRates = { 0.4f, 0.2f, 1.0f, 0.2f, 1.2f }; // Fire rates for each projectile type
-    private float[] nextFireTimes; // Timers for each projectile type
+    private float nextFireTime; // Shared timer for all projectile types
 
     public DialogueUI DialogueUI => dialogueUI;
 
     void Start()
     {
-        // Initialize the nextFireTimes array with the same length as the fireRates array
-        nextFireTimes = new float[fireRates.Length];
-
         // Get the PlayerMovement component to check if the player is frozen
         playerMovement = GetComponent<PlayerMovement>();
     }
@@ -49,16 +46,16 @@ public class PlayerInput : MonoBehaviour
     {
         int currentProjectileIndex = projectileManager.selectedProjectileIndex;
 
-        // Check if the fire button is held down and if enough time has passed since the last shot for the selected projectile
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTimes[currentProjectileIndex])
+        // Check if the fire button is held down and if enough time has passed since the last shot
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             projectileManager.Shoot();
 
             // Trigger the shooting animation
             animator.SetTrigger("Shoot");
 
-            // Update the next fire time for the selected projectile
-            nextFireTimes[currentProjectileIndex] = Time.time + fireRates[currentProjectileIndex];
+            // Update the shared next fire time based on the current projectile's fire rate
+            nextFireTime = Time.time + fireRates[currentProjectileIndex];
         }
     }
 }

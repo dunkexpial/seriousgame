@@ -7,14 +7,17 @@ public class Lvl3ShootTag : MonoBehaviour
     public GameObject projectilePrefab;
     public float minShootDelay = 1f;
     public float maxShootDelay = 3f;
-    public string targetTag = "Target";
     public float projectileSpeed = 10f;
 
     [Header("Spawn Settings")]
     public GameObject spawnPrefab;
+    public string spawnerTag = "Spawner"; // Assuming spawners are tagged as "Spawner"
+    
+    private Transform player;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Get player transform
         StartCoroutine(ShootRoutine());
     }
 
@@ -26,26 +29,38 @@ public class Lvl3ShootTag : MonoBehaviour
             float delay = Random.Range(minShootDelay, maxShootDelay);
             yield return new WaitForSeconds(delay);
 
-            // Find a random target with the specified tag
-            GameObject target = GetRandomTargetWithTag(targetTag);
+            // Find the closest spawner
+            GameObject closestSpawner = GetClosestSpawner();
 
-            if (target != null)
+            if (closestSpawner != null)
             {
-                // Shoot a projectile at the target
-                ShootAtTarget(target);
+                // Shoot a projectile at the closest spawner
+                ShootAtTarget(closestSpawner);
             }
         }
     }
 
-    private GameObject GetRandomTargetWithTag(string tag)
+    private GameObject GetClosestSpawner()
     {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag(tag);
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag(spawnerTag);
+        
+        if (spawners.Length == 0) return null;
 
-        if (targets.Length == 0) return null;
+        GameObject closestSpawner = null;
+        float closestDistance = Mathf.Infinity;
 
-        // Choose a random target from the list
-        int randomIndex = Random.Range(0, targets.Length);
-        return targets[randomIndex];
+        // Loop through all spawners and find the closest one to the player
+        foreach (GameObject spawner in spawners)
+        {
+            float distance = Vector2.Distance(player.position, spawner.transform.position);
+            if (distance < closestDistance)
+            {
+                closestSpawner = spawner;
+                closestDistance = distance;
+            }
+        }
+
+        return closestSpawner;
     }
 
     private void ShootAtTarget(GameObject target)
@@ -64,7 +79,6 @@ public class Lvl3ShootTag : MonoBehaviour
         {
             projectileScript.direction = direction;
             projectileScript.speed = projectileSpeed;
-            projectileScript.targetTag = targetTag;
             projectileScript.spawnPrefab = spawnPrefab;
         }
     }

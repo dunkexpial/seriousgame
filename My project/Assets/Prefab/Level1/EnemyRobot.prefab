@@ -244,7 +244,8 @@ MonoBehaviour:
     m_Bits: 72
   animator: {fileID: 2739401685674574794}
   playerTargetPositionOffset: {x: 0, y: 0}
-  useLastSeenPosition: 0
+  useLastSeenPosition: 1
+  reflexDelay: 0.5
 --- !u!114 &1549463768266137196
 MonoBehaviour:
   m_ObjectHideFlags: 0

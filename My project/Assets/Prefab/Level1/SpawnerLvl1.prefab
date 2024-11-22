@@ -50,8 +50,6 @@ MonoBehaviour:
   canSpawn: 1
   spawnRangeX: 30
   spawnRangeY: 30
-  maxEnemiesInRange: 20
   minDistanceToPlayer: 30
-  maxDistanceToPlayer: 300
-  obstacleDetectionRadius: 2
-  minDistanceToOtherEnemies: 100
+  obstacleDetectionRadius: 5
+  minDistanceToOtherEnemies: 30

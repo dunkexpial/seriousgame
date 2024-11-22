@@ -8,11 +8,9 @@ public class MobSpawner : MonoBehaviour
     [SerializeField] private bool canSpawn = true;
     [SerializeField] private float spawnRangeX = 30f; // Horizontal range of spawn area
     [SerializeField] private float spawnRangeY = 30f; // Vertical range of spawn area
-    [SerializeField] private int maxEnemiesInRange = 5;
     [SerializeField] private float minDistanceToPlayer = 30f; // Minimum distance to player
-    [SerializeField] private float maxDistanceToPlayer = 100f; // Maximum distance to player
     [SerializeField] private float obstacleDetectionRadius = 2f; // Configurable radius for obstacle detection
-    [SerializeField] private float minDistanceToOtherEnemies = 30f; // Minimum distance from other enemies
+    [SerializeField] private float minDistanceToOtherEnemies = 10f; // Minimum distance from other enemies
 
     private int maxEnemiesInScene = 10; // Maximum enemies allowed in the scene
     private Transform playerTransform; // Reference to player's Transform
@@ -64,24 +62,18 @@ public class MobSpawner : MonoBehaviour
 
             while (!spawnSuccessful)
             {
-                // Get a random viewport position within the visible area
-                Vector3 viewportPos = new Vector3(
-                    Random.Range(0f, 1f), // X within viewport
-                    Random.Range(0f, 1f), // Y within viewport
-                    mainCamera.nearClipPlane // Z depth
-                );
-
-                // Convert the viewport position to world position
-                Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(viewportPos);
-                spawnPosition.z = 0f; // Ensure the spawn position is on the 2D plane
+                // Generate a random position within the defined spawn area
+                float randomX = Random.Range(-spawnRangeX, spawnRangeX);
+                float randomY = Random.Range(-spawnRangeY, spawnRangeY);
+                Vector3 spawnPosition = new Vector3(randomX, randomY, 0f) + transform.position; // Add spawner's position to offset
 
                 // Check distance constraints and obstacle-free status
                 float distanceToPlayer = Vector3.Distance(spawnPosition, playerTransform.position);
 
                 if (distanceToPlayer >= minDistanceToPlayer &&
-                    distanceToPlayer <= maxDistanceToPlayer &&
                     !IsPositionOccupiedByObstacle(spawnPosition) &&
-                    !IsPositionTooCloseToOtherEnemies(spawnPosition))
+                    !IsPositionTooCloseToOtherEnemies(spawnPosition) &&
+                    IsPositionWithinViewport(spawnPosition)) // Check if spawn position is within viewport
                 {
                     int rand = Random.Range(0, enemyPrefabs.Length);
                     GameObject enemyToSpawn = enemyPrefabs[rand];
@@ -133,24 +125,40 @@ public class MobSpawner : MonoBehaviour
         return false; // Position is valid
     }
 
+    // New function to check if the position is within the camera's viewport
+    private bool IsPositionWithinViewport(Vector3 position)
+    {
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(position);
+
+        // Check if the spawn position is within the camera's visible area
+        return viewportPosition.x >= 0f && viewportPosition.x <= 1f && viewportPosition.y >= 0f && viewportPosition.y <= 1f;
+    }
+
     private void OnDrawGizmos()
     {
         if (Application.isPlaying && mainCamera != null)
         {
+            // Gizmo to show the camera's visible area
             Gizmos.color = Color.yellow;
             Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0f, 0f, mainCamera.nearClipPlane));
             Vector3 topRight = mainCamera.ViewportToWorldPoint(new Vector3(1f, 1f, mainCamera.nearClipPlane));
             Vector3 size = topRight - bottomLeft;
-
             Gizmos.DrawWireCube(bottomLeft + size / 2, size);
         }
 
         if (Application.isPlaying && playerTransform != null)
         {
+            // Gizmo to show the player’s minimum spawn distance
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(playerTransform.position, minDistanceToPlayer); // Minimum spawn distance
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(playerTransform.position, maxDistanceToPlayer); // Maximum spawn distance
         }
+
+        // Gizmos to show the full spawn area (in 2D space)
+        Gizmos.color = Color.blue;
+        Vector3 spawnAreaCenter = transform.position; // Use the spawner's position as the center of the spawn area
+        Vector3 spawnAreaSize = new Vector3(spawnRangeX * 2, spawnRangeY * 2, 0f); // Full spawn area size (double the range to account for both positive/negative)
+
+        // Draw the spawn area as a wireframe rectangle
+        Gizmos.DrawWireCube(spawnAreaCenter, spawnAreaSize);
     }
 }

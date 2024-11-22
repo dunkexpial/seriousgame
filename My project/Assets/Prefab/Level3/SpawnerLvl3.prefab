@@ -44,14 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e364b8dddf8ba1947895f1c99a5e6818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 1
+  spawnInterval: 0.75
   enemyPrefabs:
   - {fileID: 7444085534275883118, guid: 227555634482865488e7461e02327807, type: 3}
   canSpawn: 1
   spawnRangeX: 30
   spawnRangeY: 30
-  maxEnemiesInRange: 20
   minDistanceToPlayer: 30
-  maxDistanceToPlayer: 300
-  obstacleDetectionRadius: 2
-  minDistanceToOtherEnemies: 100
+  obstacleDetectionRadius: 5
+  minDistanceToOtherEnemies: 30

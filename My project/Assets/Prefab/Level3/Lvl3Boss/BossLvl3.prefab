@@ -54,9 +54,9 @@ MonoBehaviour:
   teleportEffectPrefab: {fileID: 2430221162970206683, guid: cbd544009603fc143bc3464149e2e2a1, type: 3}
   baseIntervalTime: 5
   intervalRandomnessPercentage: 0.5
-  stopRangeX: 50
-  stopRangeY: 50
-  stopRangeOffset: {x: 0, y: 0, z: 0}
+  stopRangeX: 43
+  stopRangeY: 58.2
+  stopRangeOffset: {x: 0, y: -30, z: 0}
   scriptNameToAdd1: CreaturePhysics
   scriptNameToAdd2: DestroyAfterTime
   scriptNameToRemove: BaseProjectile
@@ -75,11 +75,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 637174100589294369, guid: 84ac909358086554aa50fe236b5338f1, type: 3}
-  minShootDelay: 4
-  maxShootDelay: 6
-  targetTag: SpawnLoc
+  minShootDelay: 2
+  maxShootDelay: 4
   projectileSpeed: 200
   spawnPrefab: {fileID: 7444085534275883118, guid: 227555634482865488e7461e02327807, type: 3}
+  spawnerTag: SpawnLoc
 --- !u!114 &2661196904687452656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2088308553490537165, guid: 0a9839de68d8b7748b1fb12b217d4fff, type: 3}
-  health: 10
+  health: 200
   attack: 0
   damageColorDuration: 0.1
   dropChance: 1
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 6217c72f027493d47ace63925674c4de, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!1 &7270671124980800298

@@ -32,6 +32,7 @@ TagManager:
   - Safezone
   - BossRespawnPoint
   - Boss3TpInactive
+  - BossWall
   layers:
   - Default
   - TransparentFX

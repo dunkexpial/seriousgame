@@ -6,6 +6,7 @@ public class PowerUpActivator : MonoBehaviour
     public float spawnRate = 0.5f; // Rate of spawning prefabs during power-up
     public float powerUpCooldown = 10f; // Time between power-up activations
     public GameObject prefabUp, prefabDown, prefabLeft, prefabRight; // Prefabs for each direction
+    public float multiplier = 3f;
 
     private BasicAI basicAI;
     private Animator animator;
@@ -93,8 +94,8 @@ public class PowerUpActivator : MonoBehaviour
         isPowerUpActive = true;
         powerUpTimer = powerUpDuration;
         spawnTimer = 0f; // Start spawning immediately
-        basicAI.speed *= 3; // Triple speed
-        animator.speed *= 3; // Triple animation speed
+        basicAI.speed *= multiplier; // Triple speed
+        animator.speed *= multiplier; // Triple animation speed
     }
 
     void DeactivatePowerUp()

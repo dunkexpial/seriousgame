@@ -205,6 +205,7 @@ MonoBehaviour:
     m_Bits: 72
   animator: {fileID: 2028837959259129673}
   shootCooldown: 1
+  sightDelay: 0.5
   useLastSeenPosition: 1
 --- !u!114 &-1095868626058045907
 MonoBehaviour:
