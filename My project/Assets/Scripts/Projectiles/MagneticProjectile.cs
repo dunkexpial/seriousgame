@@ -10,8 +10,8 @@ public class MagneticProjectile : BaseProjectile
 
     protected override void Start()
     {
-        damageAmount = 5; // Set the damage specific to this type of projectile
-        speed = 250f;
+        damageAmount = 3; // Set the damage specific to this type of projectile
+        speed = 300f;
         spinSpeed = 1000f;
         base.Start();
 

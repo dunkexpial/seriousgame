@@ -23,6 +23,7 @@ public class LevelSelector : MonoBehaviour
         {
             fadeImage.color = new Color(0, 0, 0, 0);
         }
+        PlayerManager.reachedBossArea = false;
 
         // Retrieve the highest unlocked level from PlayerPrefs
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
@@ -112,6 +113,34 @@ public class LevelSelector : MonoBehaviour
         else
         {
             Debug.LogError($"Scene '{levelName}' cannot be loaded. Ensure it's added to Build Settings!");
+        }
+    }
+    public void RefreshLevelButtons()
+    {
+        // Retrieve the highest unlocked level from PlayerPrefs
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        // Update button states based on the unlocked level
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            int index = i; // Cache the index for listener
+            bool isUnlocked = (i + 1) <= unlockedLevel;
+
+            levelButtons[i].interactable = isUnlocked; // Lock or unlock the button
+            levelButtons[i].onClick.RemoveAllListeners(); // Remove previous listeners
+
+            if (isUnlocked)
+            {
+                levelButtons[i].onClick.AddListener(() =>
+                {
+                    Debug.Log($"Button {levelNames[index]} clicked!");
+                    StartCoroutine(FadeAndLoadLevel(levelNames[index]));
+                });
+            }
+            else
+            {
+                Debug.Log($"Button {levelNames[index]} is locked.");
+            }
         }
     }
 }

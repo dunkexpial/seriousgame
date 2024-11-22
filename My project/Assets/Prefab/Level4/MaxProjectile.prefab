@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 150
+  speed: 250
   lifespan: 10
 --- !u!1 &712656083256922329
 GameObject:

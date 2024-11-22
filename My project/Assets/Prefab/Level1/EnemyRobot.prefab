@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9b476fea3e934f8519c69c25c65b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 80
   radius: 999
   hasLineOfSight: 0
   layerMask:
@@ -244,7 +244,8 @@ MonoBehaviour:
     m_Bits: 72
   animator: {fileID: 2739401685674574794}
   playerTargetPositionOffset: {x: 0, y: 0}
-  useLastSeenPosition: 0
+  useLastSeenPosition: 1
+  reflexDelay: 0.5
 --- !u!114 &1549463768266137196
 MonoBehaviour:
   m_ObjectHideFlags: 0

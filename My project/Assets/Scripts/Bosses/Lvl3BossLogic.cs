@@ -42,8 +42,15 @@ public class Lvl3BossLogic : MonoBehaviour
 
     void Update()
     {
-        // Check if there are any objects with the target tag
+        // Get the list of objects with the target tag
         GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(targetTag);
+
+        // Disable stop range functionality if there are 1 or fewer target objects
+        if (targetObjects.Length <= 1)
+        {
+            // Skip stop range logic when there are 1 or fewer targets
+            return;
+        }
 
         // Access the AttributesManager component
         var attributesManager = GetComponent<AttributesManager>();

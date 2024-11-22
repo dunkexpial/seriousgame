@@ -29,7 +29,7 @@ public class SceneChangeOnHover : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player entered the scene transition trigger.");
-
+            PlayerManager.reachedBossArea = false;
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             if (currentSceneIndex < SceneManager.sceneCountInBuildSettings - 1)

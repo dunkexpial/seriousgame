@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5868214685417348425}
   - component: {fileID: 7988490822875296262}
   - component: {fileID: 4669555029890655399}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bancada de pesquisa2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8685168766792564574}
   - component: {fileID: 4167870519951852021}
   - component: {fileID: 1448594768195840662}
-  - component: {fileID: 65497925533775134}
+  - component: {fileID: 8972661184180209260}
   m_Layer: 0
   m_Name: Boss3TpPoint
   m_TagString: Boss3TpPoint
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 250
+  health: 300
   attack: 0
   damageColorDuration: 0.1
   dropChance: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee98b618c6ae8f843a65fce62557c14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &65497925533775134
+--- !u!114 &8972661184180209260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   createSmokePrefab: {fileID: 0}
   destroySmokePrefab: {fileID: 870109813840410523, guid: eb4b003a78d65234fbb1f5259751e789, type: 3}
   createSmokeLifetime: 0.5
-  destroySmokeLifetime: 9999999
+  destroySmokeLifetime: 99999
 --- !u!1 &3524887519194947900
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 6217c72f027493d47ace63925674c4de, type: 3}
   baseShootingInterval: 2
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!199 &7132180866102505499
@@ -220,7 +220,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0

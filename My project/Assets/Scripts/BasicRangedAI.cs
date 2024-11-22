@@ -23,7 +23,7 @@ public class BasicRangedAI : MonoBehaviour
 
     private float shootTimer;
     public float shootCooldown = 0.5f;
-    float sightDelay = 0.5f; // Delay after seeing the player before shooting
+    public float sightDelay = 1.5f; // Delay after seeing the player before shooting
     float sightTimer = 0f; // Time spent with line of sight
 
     private Vector2[] raycastOffsets = new Vector2[] 
@@ -41,9 +41,13 @@ public class BasicRangedAI : MonoBehaviour
 
     private Vector2 lastSeenPosition;
     private bool hasSeenPlayer = false;  // Track if the AI has ever seen the player
+    private Vector2 lastRaycastHitPoint; // Store the exact point where the raycast hit
 
     // Public variable to enable/disable the last seen position behavior
     public bool useLastSeenPosition = true;
+
+    // New flag to check if it's the first time the AI sees the player
+    private bool hasFirstSightedPlayer = false;
 
     void Start()
     {
@@ -65,24 +69,42 @@ public class BasicRangedAI : MonoBehaviour
         // If AI has line of sight to the player
         if (distance < radius && hasLineOfSight)
         {
-            // Move towards the player
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            sightTimer += Time.deltaTime;  // Increment the sight timer when AI sees the player
 
-            lastX = direction.x;
-            lastY = direction.y;
+            // Only apply the sight delay the first time the AI sees the player
+            if (!hasFirstSightedPlayer)
+            {
+                if (sightTimer >= sightDelay)
+                {
+                    hasFirstSightedPlayer = true; // Mark the first sight
+                    sightTimer = 0f; // Reset the timer after the first sight
+                }
+            }
 
-            // Update animator
-            animator.SetFloat("enemyX", direction.x);
-            animator.SetFloat("enemyY", direction.y);
-            animator.SetFloat("Moving", 1);
+            // If the sight delay has passed (or if it's after the first time)
+            if (hasFirstSightedPlayer)
+            {
+                // Move towards the point where the AI last saw the player (raycast hit point)
+                transform.position = Vector2.MoveTowards(transform.position, lastRaycastHitPoint, speed * Time.deltaTime);
 
-            // Store the player's position when seen
-            lastSeenPosition = player.transform.position;
-            hasSeenPlayer = true; // Mark that the AI has seen the player
+                lastX = direction.x;
+                lastY = direction.y;
+
+                // Update animator
+                animator.SetFloat("enemyX", direction.x);
+                animator.SetFloat("enemyY", direction.y);
+                animator.SetFloat("Moving", 1);
+
+                // Store the player's position when seen
+                lastSeenPosition = player.transform.position;
+                hasSeenPlayer = true; // Mark that the AI has seen the player
+            }
         }
         // If AI doesn't have line of sight and has seen the player before
         else if (hasSeenPlayer && useLastSeenPosition)
         {
+            sightTimer = 0f;  // Reset the timer when the player is not in sight
+
             // Move to the last seen position
             transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed * Time.deltaTime);
 
@@ -137,22 +159,115 @@ public class BasicRangedAI : MonoBehaviour
     {
         hasLineOfSight = false;
 
-        foreach (Vector2 offset in raycastOffsets)
-        {
-            Vector2 targetPosition = (Vector2)player.transform.position + playerTargetPositionOffset + offset;
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, Mathf.Infinity, layerMask);
+        // Get colliders for raycasting
+        Collider2D aiCollider = GetComponent<Collider2D>();
+        Collider2D playerCollider = player.GetComponent<Collider2D>();
 
-            if(ray.collider != null && ray.collider.CompareTag("Player"))
+        if (aiCollider == null || playerCollider == null) return;
+
+        // Get bounds of both colliders
+        Bounds aiBounds = aiCollider.bounds;
+        Bounds playerBounds = playerCollider.bounds;
+
+        // Get the corners of the AI's collider bounds
+        Vector2[] aiCorners = GetBoundsCorners(aiBounds);
+
+        // Get the corners of the player's collider bounds
+        Vector2[] playerCorners = GetBoundsCorners(playerBounds);
+
+        // Get the center and midpoints of the AI's collider sides
+        Vector2 aiCenter = aiBounds.center;
+        Vector2[] aiSideCenters = GetSideCenters(aiBounds);
+
+        // Check all combinations of corners and midpoints
+        foreach (Vector2 aiCorner in aiCorners)
+        {
+            foreach (Vector2 playerCorner in playerCorners)
+            {
+                // Cast a ray from the AI corner to the player corner
+                Vector2 direction = playerCorner - aiCorner;
+                RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, direction.magnitude, layerMask);
+
+                // Check if the ray hits the player
+                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                {
+                    hasLineOfSight = true;
+                    lastRaycastHitPoint = hit.point;  // Store the point where the raycast hit
+                    Debug.DrawRay(aiCorner, direction, Color.green); // Raycast hit, visualize with green
+                    return; // Stop checking if we already have line of sight
+                }
+                else
+                {
+                    Debug.DrawRay(aiCorner, direction, Color.red); // Raycast missed or blocked, visualize with red
+                }
+            }
+        }
+
+        // Check rays from the AI's side centers and middle
+        foreach (Vector2 aiSideCenter in aiSideCenters)
+        {
+            foreach (Vector2 playerCorner in playerCorners)
+            {
+                // Cast a ray from the AI side center to the player corner
+                Vector2 direction = playerCorner - aiSideCenter;
+                RaycastHit2D hit = Physics2D.Raycast(aiSideCenter, direction, direction.magnitude, layerMask);
+
+                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                {
+                    hasLineOfSight = true;
+                    lastRaycastHitPoint = hit.point;  // Store the point where the raycast hit
+                    Debug.DrawRay(aiSideCenter, direction, Color.green);
+                    return; // Stop checking if we already have line of sight
+                }
+                else
+                {
+                    Debug.DrawRay(aiSideCenter, direction, Color.red);
+                }
+            }
+        }
+
+        // Ray from the center of the AI's collider
+        foreach (Vector2 playerCorner in playerCorners)
+        {
+            Vector2 direction = playerCorner - aiCenter;
+            RaycastHit2D hit = Physics2D.Raycast(aiCenter, direction, direction.magnitude, layerMask);
+
+            if (hit.collider != null && hit.collider.CompareTag("Player"))
             {
                 hasLineOfSight = true;
-                Debug.DrawRay(transform.position, targetPosition - (Vector2)transform.position, Color.green);
-                break;
+                lastRaycastHitPoint = hit.point;  // Store the point where the raycast hit
+                Debug.DrawRay(aiCenter, direction, Color.green);
+                return;
             }
             else
             {
-                Debug.DrawRay(transform.position, targetPosition - (Vector2)transform.position, Color.red);
+                Debug.DrawRay(aiCenter, direction, Color.red);
             }
         }
+    }
+
+    // Helper function to get the corners of a collider's bounds
+    private Vector2[] GetBoundsCorners(Bounds bounds)
+    {
+        return new Vector2[]
+        {
+            new Vector2(bounds.min.x, bounds.min.y), // Bottom-left corner
+            new Vector2(bounds.max.x, bounds.min.y), // Bottom-right corner
+            new Vector2(bounds.min.x, bounds.max.y), // Top-left corner
+            new Vector2(bounds.max.x, bounds.max.y)  // Top-right corner
+        };
+    }
+
+    // Helper function to get the center points of the sides of a collider's bounds
+    private Vector2[] GetSideCenters(Bounds bounds)
+    {
+        return new Vector2[]
+        {
+            new Vector2(bounds.center.x, bounds.min.y), // Bottom-center
+            new Vector2(bounds.center.x, bounds.max.y), // Top-center
+            new Vector2(bounds.min.x, bounds.center.y), // Left-center
+            new Vector2(bounds.max.x, bounds.center.y)  // Right-center
+        };
     }
 
     void shoot()
