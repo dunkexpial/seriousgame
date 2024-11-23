@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lvl4BossPhase3Shooting : MonoBehaviour
+public class Lvl4BossPhase2Shooting : MonoBehaviour
 {
     public GameObject[] projectiles; // Array of projectile prefabs
     public float baseShootingInterval = 1f; // Base time between shots
@@ -14,6 +14,8 @@ public class Lvl4BossPhase3Shooting : MonoBehaviour
     public string ignoreTag = "IgnoreTag";  // Optional tag to ignore for starting shooting
     public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
 
+    private Lvl4BossPhase2Movement bossMovement; // Reference to Lvl4BossPhase2Movement
+
     void Start()
     {
         // Add a random initial delay for the first shot
@@ -22,6 +24,15 @@ public class Lvl4BossPhase3Shooting : MonoBehaviour
 
     void Update()
     {
+        // Continuously check for Lvl4BossPhase2Movement component
+        bossMovement = GetComponent<Lvl4BossPhase2Movement>();
+
+        // Stop shooting if no Lvl4BossPhase2Movement component is found or canShoot is false
+        if (bossMovement == null || !bossMovement.canShoot)
+        {
+            return; // Exit early if movement component is missing or canShoot is false
+        }
+
         // Only check for objects with the ignore tag if checkForTags is true
         if (checkForTags)
         {

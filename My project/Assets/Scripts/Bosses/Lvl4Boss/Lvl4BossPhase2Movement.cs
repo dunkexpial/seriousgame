@@ -8,6 +8,7 @@ public class Lvl4BossPhase2Movement : MonoBehaviour
     private GameObject target;              // The target object
     public float maxSpeed = 1000f;          // Maximum speed
     private float minSpeed = 1f;            // Minimum speed to avoid stopping
+    public bool canShoot = false;
 
     void Start()
     {
@@ -68,7 +69,7 @@ public class Lvl4BossPhase2Movement : MonoBehaviour
 
         // Directly set the position to the target to avoid small floating-point errors
         transform.position = targetPosition;
-
+        canShoot = true;
         Debug.Log("Boss reached the target.");
     }
 }
