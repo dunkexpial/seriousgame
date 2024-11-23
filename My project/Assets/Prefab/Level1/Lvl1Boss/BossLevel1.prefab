@@ -14702,8 +14702,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.75
-  shootingIntervalVariance: 0.75
+  baseShootingInterval: 0.5
+  shootingIntervalVariance: 0.5
   ignoreTag: MagnetBottom
   checkForTags: 1
 --- !u!1 &2664783269027351843
@@ -21173,8 +21173,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.75
-  shootingIntervalVariance: 0.75
+  baseShootingInterval: 0.5
+  shootingIntervalVariance: 0.5
   ignoreTag: MagnetTop
   checkForTags: 1
 --- !u!1 &6688068118894876193
@@ -21224,8 +21224,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.4
-  shootingIntervalVariance: 0.4
+  baseShootingInterval: 0.2
+  shootingIntervalVariance: 0.1
   ignoreTag: Boss1Head
   checkForTags: 1
 --- !u!1 &6700401817463512357

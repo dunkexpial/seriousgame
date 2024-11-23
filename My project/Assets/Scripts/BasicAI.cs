@@ -18,19 +18,6 @@ public class BasicAI : MonoBehaviour
     private float lastX;
     private float lastY;
 
-    private Vector2[] raycastOffsets = new Vector2[] 
-    {
-        new Vector2(0, -2f),
-        new Vector2(5.49f, -2f),
-        new Vector2(-5.49f, -2f),
-        new Vector2(0, 3.49f),
-        new Vector2(0, -5.49f),
-        new Vector2(5.49f, 3.49f),
-        new Vector2(-5.49f, 3.49f),
-        new Vector2(5.49f, -5.49f),
-        new Vector2(-5.49f, -5.49f)
-    };
-
     private Vector2 lastSeenPosition;
     private bool hasSeenPlayer = false;  // Track if the AI has ever seen the player
 
@@ -43,6 +30,9 @@ public class BasicAI : MonoBehaviour
 
     private bool hasFirstSightedPlayer = false; // Track if this is the first time the AI sees the player
     private Vector2 lastRaycastHitPoint; // Store the exact point where the raycast hit
+    private float maxTimeToChaseLastSeenPosition = 3f; // Time in seconds
+    private float timeSinceLastSeen = 0f; // Timer for tracking how long AI is moving to the last seen position
+
 
     void Start()
     {
@@ -64,7 +54,7 @@ public class BasicAI : MonoBehaviour
         // If AI has line of sight to the player
         if (distance < radius && hasLineOfSight)
         {
-            timeSeenPlayer += Time.deltaTime;  // Increment the timer since AI has line of sight to the player
+            timeSeenPlayer += Time.deltaTime; // Increment the timer since AI has line of sight to the player
 
             if (!hasFirstSightedPlayer) // If this is the first time AI sees the player
             {
@@ -75,7 +65,7 @@ public class BasicAI : MonoBehaviour
                 }
             }
 
-            if (hasFirstSightedPlayer)  // Once the reflex delay is over, move towards the raycast hit point
+            if (hasFirstSightedPlayer) // Once the reflex delay is over, move towards the raycast hit point
             {
                 // Move towards the raycast hit point (not the player center)
                 transform.position = Vector2.MoveTowards(this.transform.position, lastRaycastHitPoint, speed * Time.deltaTime);
@@ -91,6 +81,7 @@ public class BasicAI : MonoBehaviour
                 // Store the player's position when seen
                 lastSeenPosition = player.transform.position;
                 hasSeenPlayer = true; // Mark that the AI has seen the player
+                timeSinceLastSeen = 0f; // Reset the timer for last seen position
             }
         }
         // If AI doesn't have line of sight and has seen the player before
@@ -98,18 +89,30 @@ public class BasicAI : MonoBehaviour
         {
             timeSeenPlayer = 0f; // Reset the timer when player is not visible
 
-            // Move to the last seen position
-            transform.position = Vector2.MoveTowards(this.transform.position, lastSeenPosition, speed * Time.deltaTime);
+            // Increment the timer for moving to the last seen position
+            timeSinceLastSeen += Time.deltaTime;
 
-            // Check if the AI has reached the last seen position
-            if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
+            if (timeSinceLastSeen < maxTimeToChaseLastSeenPosition) // Only move for the set duration
             {
-                // Stop moving and update the animator
-                animator.SetFloat("Moving", 0);
+                // Move to the last seen position
+                transform.position = Vector2.MoveTowards(this.transform.position, lastSeenPosition, speed * Time.deltaTime);
+
+                // Check if the AI has reached the last seen position
+                if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
+                {
+                    // Stop moving and update the animator
+                    animator.SetFloat("Moving", 0);
+                }
+                else
+                {
+                    animator.SetFloat("Moving", 1);
+                }
             }
             else
             {
-                animator.SetFloat("Moving", 1);
+                // Stop moving when the timer expires
+                animator.SetFloat("Moving", 0);
+                hasSeenPlayer = false; // Reset seeing the player
             }
         }
         else

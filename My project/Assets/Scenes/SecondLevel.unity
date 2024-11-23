@@ -8115,7 +8115,7 @@ Transform:
   m_GameObject: {fileID: 198893276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -543.81775, y: 30.904537, z: -10}
+  m_LocalPosition: {x: -543.8456, y: 30.904537, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8626,11 +8626,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -666
+      value: -664
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9459,6 +9459,7 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 5754087838920956192, guid: 750f4afaf0b5a8e42a8a2511f84c40e8, type: 3}
   bossWallObjects:
   - {fileID: 500737219}
+  bossMusic: {fileID: 0}
 --- !u!50 &316382359
 Rigidbody2D:
   serializedVersion: 4
@@ -15358,7 +15359,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -15369,7 +15370,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.32}
+  m_Size: {x: 0.15, y: 0.25}
   m_EdgeRadius: 0
 --- !u!50 &579425724
 Rigidbody2D:
@@ -59585,7 +59586,7 @@ Transform:
   m_GameObject: {fileID: 2134763138}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -666, y: -22, z: 0}
+  m_LocalPosition: {x: -664, y: -20, z: 0}
   m_LocalScale: {x: 100, y: 97.408585, z: 143.96776}
   m_ConstrainProportionsScale: 1
   m_Children:

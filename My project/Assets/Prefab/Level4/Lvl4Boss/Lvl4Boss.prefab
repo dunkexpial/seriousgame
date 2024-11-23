@@ -10011,7 +10011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  health: 300
+  health: 800
   attack: 1
   damageColorDuration: 0.1
   dropChance: 0.1
@@ -10093,7 +10093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  detectionDistance: 100
+  detectionDistance: 125
 --- !u!114 &4052246606667947530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10106,7 +10106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2da8239a38bd5e41b2a53e3c48727c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Duration: 10
+  phase1Duration: 15
   phase2Duration: 5
 --- !u!114 &9030186860450199794
 MonoBehaviour:
@@ -10141,10 +10141,10 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 310c6798e35267d49beb248fedd67669, type: 3}
   baseShootingInterval: 0.4
-  shootingIntervalVariance: 0
+  shootingIntervalVariance: 0.2
   projectilesPerShot: 20
-  projectileSpeed: 100
-  spreadVariance: 20
+  projectileSpeed: 200
+  spreadVariance: 40
   ignoreTag: IgnoreTag
   checkForTags: 0
 --- !u!1 &8030579262092024715

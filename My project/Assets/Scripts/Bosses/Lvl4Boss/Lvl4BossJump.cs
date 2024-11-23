@@ -6,8 +6,8 @@ public class BossJumpSlam : MonoBehaviour
     [Header("Jump Settings")]
     public float jumpHeight = 5f;           // Height of the boss's jump
     public float upwardDuration = 0.5f;       // Duration of the upward motion
-    public float downwardDuration = 0.4f;   // Duration of the downward motion
-    public float shadowMinScale = 0.5f;     // Minimum scale of the shadow when fully "up"
+    public float downwardDuration = 0.3f;   // Duration of the downward motion
+    public float shadowMinScale = 0.7f;     // Minimum scale of the shadow when fully "up"
     public float shadowMaxScale = 1f;       // Maximum scale of the shadow when "on ground"
     public float shadowMinAlpha = 0.3f;     // Minimum alpha of the shadow when fully "up"
     public float shadowMaxAlpha = 1f;       // Maximum alpha of the shadow when "on ground"

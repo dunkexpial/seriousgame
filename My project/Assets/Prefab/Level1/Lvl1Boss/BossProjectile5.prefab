@@ -145,10 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 350
+  speed: 300
   lifespan: 5
   rotationSpeed: 400
-  inaccuracyAngle: 20
+  inaccuracyAngle: 10
 --- !u!96 &-4945521243590023826
 TrailRenderer:
   serializedVersion: 3

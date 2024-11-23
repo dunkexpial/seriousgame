@@ -4,7 +4,7 @@ using System.Collections;
 public class Lvl4BossControl : MonoBehaviour
 {
     public string playerTag = "Player"; // Tag to identify the player
-    public float detectionDistance = 100f; // Distance within which the boss changes behavior
+    public float detectionDistance = 125f; // Distance within which the boss changes behavior
     private GameObject player; // Cached reference to the player
     private Lvl4BossPhase1Movement phase1Movement;
     private BossJumpSlam jumpSlam;
