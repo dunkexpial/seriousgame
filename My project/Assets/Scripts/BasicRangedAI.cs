@@ -51,7 +51,7 @@ public class BasicRangedAI : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("PlayerRaycast");
         lastSeenPosition = Vector2.zero;  // Initial value (could be anything, but we want to avoid using this as a "last known position")
     }
 
@@ -59,7 +59,7 @@ public class BasicRangedAI : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag("PlayerRaycast");
             if (player == null) return;
         }
 
@@ -189,7 +189,7 @@ public class BasicRangedAI : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, direction.magnitude, layerMask);
 
                 // Check if the ray hits the player
-                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                if (hit.collider != null && hit.collider.CompareTag("PlayerRaycast"))
                 {
                     hasLineOfSight = true;
                     lastRaycastHitPoint = hit.point;  // Store the point where the raycast hit
@@ -212,7 +212,7 @@ public class BasicRangedAI : MonoBehaviour
                 Vector2 direction = playerCorner - aiSideCenter;
                 RaycastHit2D hit = Physics2D.Raycast(aiSideCenter, direction, direction.magnitude, layerMask);
 
-                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                if (hit.collider != null && hit.collider.CompareTag("PlayerRaycast"))
                 {
                     hasLineOfSight = true;
                     lastRaycastHitPoint = hit.point;  // Store the point where the raycast hit
@@ -232,7 +232,7 @@ public class BasicRangedAI : MonoBehaviour
             Vector2 direction = playerCorner - aiCenter;
             RaycastHit2D hit = Physics2D.Raycast(aiCenter, direction, direction.magnitude, layerMask);
 
-            if (hit.collider != null && hit.collider.CompareTag("Player"))
+            if (hit.collider != null && hit.collider.CompareTag("PlayerRaycast"))
             {
                 hasLineOfSight = true;
                 lastRaycastHitPoint = hit.point;  // Store the point where the raycast hit
