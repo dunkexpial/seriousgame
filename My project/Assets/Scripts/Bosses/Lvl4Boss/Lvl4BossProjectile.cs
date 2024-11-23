@@ -74,11 +74,6 @@ public class Lvl4BossProjectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collider.CompareTag("Player"))
-        {
-            // Optionally handle interaction with the player (e.g., damage)
-            Destroy(gameObject);
-        }
     }
 
     // Helper method to count how many projectiles are active
