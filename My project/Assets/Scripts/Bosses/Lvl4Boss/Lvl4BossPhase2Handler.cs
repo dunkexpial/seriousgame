@@ -13,6 +13,9 @@ public class Lvl4BossPhase2Handler : MonoBehaviour
 
     private Coroutine phaseCoroutine;
 
+    private BossJumpSlam bossJumpSlam; // Cached reference to the BossJumpSlam component
+    public bool isJumping { get; private set; } // Public property to track jumping state
+
     void Start()
     {
         // Try to get the AttributesManager component from the same GameObject this script is attached to
@@ -31,6 +34,15 @@ public class Lvl4BossPhase2Handler : MonoBehaviour
         phaseCoroutine = StartCoroutine(PhaseCycle());
     }
 
+    void Update()
+    {
+        // Dynamically check if the BossJumpSlam script is attached
+        bossJumpSlam = GetComponent<BossJumpSlam>();
+
+        // Update the isJumping state
+        isJumping = bossJumpSlam != null && bossJumpSlam.isJumping;
+    }
+
     private IEnumerator PhaseCycle()
     {
         while (true) // Infinite loop to repeat phases
@@ -40,6 +52,12 @@ public class Lvl4BossPhase2Handler : MonoBehaviour
             AddPhase1Scripts();
             RemovePhase2Scripts();
             yield return new WaitForSeconds(phase1Duration); // Wait for Phase 1 duration
+
+            // Wait until the boss stops jumping
+            while (isJumping)
+            {
+                yield return null; // Yield until the next frame, allowing the game to continue updating
+            }
 
             // Phase 2
             Debug.Log("Entering Phase 2");
@@ -73,10 +91,11 @@ public class Lvl4BossPhase2Handler : MonoBehaviour
             Debug.Log("Removing Lvl4BossPhase1Movement script");
             Destroy(lvl4BossPhase1Movement);
         }
+
         var BossJumpSlam = GetComponent<BossJumpSlam>();
         if (BossJumpSlam != null)
         {
-            Debug.Log("Removing Lvl4BossPhase1Movement script");
+            Debug.Log("Removing BossJumpSlam script");
             Destroy(BossJumpSlam);
         }
     }

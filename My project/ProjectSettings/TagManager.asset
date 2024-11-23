@@ -35,6 +35,9 @@ TagManager:
   - BossWall
   - Boss4Point
   - Boss4Point2
+  - PlayerRaycast
+  - Key
+  - Key2
   layers:
   - Default
   - TransparentFX
