@@ -6,6 +6,19 @@ public class TriggerPrefabCollider : MonoBehaviour
     private GameObject spawnedPrefab; // Reference to the instantiated prefab
     public GameObject[] bossWallObjects; // Drag all BossWall objects into this array in the inspector
 
+    public AudioSource bossMusic; // Música a ser tocada no evento do Trigger
+    private PauseMenu pauseMenu; // Referência ao script PauseMenu
+
+    private void Start()
+    {
+        // Obtém o script PauseMenu
+        pauseMenu = FindObjectOfType<PauseMenu>();
+        if (pauseMenu == null)
+        {
+            Debug.LogError("PauseMenu não encontrado na cena!");
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && spawnedPrefab == null)
@@ -24,6 +37,12 @@ public class TriggerPrefabCollider : MonoBehaviour
 
             // Activate all BossWall objects
             ActivateBossWallObjects();
+
+            // Altera a música para a do boss
+            if (pauseMenu != null && bossMusic != null)
+            {
+                pauseMenu.SetCurrentMusic(bossMusic);
+            }
         }
     }
 
