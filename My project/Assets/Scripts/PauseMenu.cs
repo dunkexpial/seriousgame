@@ -11,14 +11,16 @@ public class PauseMenu : MonoBehaviour
     public GameObject healthBar;
     public bool isPaused;
 
-    [SerializeField] private AudioSource backgroundMusic; // Vincule o AudioSource da música pelo Inspector
+    [SerializeField] private AudioSource backgroundMusic; // Música de fundo do nível
+    private AudioSource currentMusic; // Música atualmente em reprodução (padrão ou especial)
 
     void Start()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
 
-        if (backgroundMusic == null)
+        currentMusic = backgroundMusic; // Define a música inicial como a música de fundo
+        if (currentMusic == null)
         {
             Debug.LogError("AudioSource da música de fundo não está vinculado no Inspector!");
         }
@@ -48,10 +50,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
-        // Pausa a música
-        if (backgroundMusic != null && backgroundMusic.isPlaying)
+        // Pausa a música atual
+        if (currentMusic != null && currentMusic.isPlaying)
         {
-            backgroundMusic.Pause();
+            currentMusic.Pause();
         }
     }
 
@@ -61,10 +63,25 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        // Retoma a música de onde parou
-        if (backgroundMusic != null)
+        // Retoma a música atual
+        if (currentMusic != null)
         {
-            backgroundMusic.UnPause();
+            currentMusic.UnPause();
+        }
+    }
+
+    // Altera a música atualmente tocando
+    public void SetCurrentMusic(AudioSource newMusic)
+    {
+        if (currentMusic != null && currentMusic.isPlaying)
+        {
+            currentMusic.Stop(); // Para a música atual
+        }
+
+        currentMusic = newMusic; // Define a nova música
+        if (currentMusic != null)
+        {
+            currentMusic.Play(); // Toca a nova música
         }
     }
 
@@ -79,7 +96,7 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Restarting level1");
         Time.timeScale = 1f;
-        Physics2D.IgnoreLayerCollision(6, 7, false); //Now the player Actually take damage after restart
+        Physics2D.IgnoreLayerCollision(6, 7, false);
 
         pauseMenu.SetActive(false);
         iventorySlots.SetActive(false);
