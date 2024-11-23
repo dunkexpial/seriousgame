@@ -11,6 +11,10 @@ public class Lvl4BossPhase1Movement : MonoBehaviour
     private float minSpeed = 1f;         // Minimum speed to avoid stopping
     private bool isMoving = false;
 
+    // New fields for the shooting behavior
+    public bool canShoot = false;        // Boolean that determines if the boss can shoot
+    private float shootCooldown = 1f;    // 1 second delay after each move before shooting is allowed
+
     void Start()
     {
         // Find all objects with the specified tag and store them in the array
@@ -69,6 +73,16 @@ public class Lvl4BossPhase1Movement : MonoBehaviour
             // Directly set the position to the target to avoid small floating-point errors
             transform.position = targetPosition;
 
+            // Set canShoot to true while the cooldown period is running (1 second)
+            canShoot = true;
+
+            // Wait for 1 second before starting a new move
+            yield return new WaitForSeconds(shootCooldown);
+
+            // After the cooldown, reset canShoot to false
+            canShoot = false;
+
+            // Movement is now finished for this cycle
             isMoving = false;
         }
     }

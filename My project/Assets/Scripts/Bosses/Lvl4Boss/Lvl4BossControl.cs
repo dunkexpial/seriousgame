@@ -4,13 +4,13 @@ using System.Collections;
 public class Lvl4BossControl : MonoBehaviour
 {
     public string playerTag = "Player"; // Tag to identify the player
-    public float detectionDistance = 5f; // Distance within which the boss changes behavior
-    public float cooldownDuration = 1f; // Cooldown time before returning to Phase 1 movement
-
+    public float detectionDistance = 100f; // Distance within which the boss changes behavior
     private GameObject player; // Cached reference to the player
     private Lvl4BossPhase1Movement phase1Movement;
     private BossJumpSlam jumpSlam;
-    private bool isCooldownActive = false; // Tracks if cooldown is in progress
+
+    private float lastJumpSlamTime = -Mathf.Infinity; // Tracks the time of the last jump slam
+    private float jumpSlamCooldown = 3f; // Cooldown duration in seconds
 
     void Start()
     {
@@ -32,12 +32,22 @@ public class Lvl4BossControl : MonoBehaviour
         // Ensure player is detected
         if (player == null) return;
 
-        // Skip detection and state transition if already jumping or during cooldown
-        if ((jumpSlam != null && jumpSlam.isJumping) || isCooldownActive) return;
-
         // Check the distance to the player every frame
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        // Handle Jump Slam cooldown and transitions
+        if (jumpSlam != null && jumpSlam.isJumping)
+        {
+            // Wait until the jump slam completes
+            return;
+        }
+        else if (jumpSlam != null && !jumpSlam.isJumping)
+        {
+            // Jump slam completed, transition back to Phase 1 Movement
+            ActivatePhase1Movement();
+        }
+
+        // Handle behavior based on player distance
         if (distanceToPlayer <= detectionDistance)
         {
             ActivateJumpSlam();
@@ -50,6 +60,9 @@ public class Lvl4BossControl : MonoBehaviour
 
     private void ActivateJumpSlam()
     {
+        // Check if enough time has passed since the last jump slam
+        if (Time.time - lastJumpSlamTime < jumpSlamCooldown) return;
+
         // Remove the existing Jump Slam script (if any) and add a fresh one
         if (jumpSlam != null)
         {
@@ -58,6 +71,9 @@ public class Lvl4BossControl : MonoBehaviour
 
         // Add a new Jump Slam script to the boss
         jumpSlam = gameObject.AddComponent<BossJumpSlam>();
+
+        // Update the last jump slam time
+        lastJumpSlamTime = Time.time;
 
         // Also, remove the Phase 1 Movement script
         if (phase1Movement != null)
@@ -68,39 +84,16 @@ public class Lvl4BossControl : MonoBehaviour
 
     private void ActivatePhase1Movement()
     {
-        // Begin cooldown if not already active
-        if (!isCooldownActive && jumpSlam != null)
+        // Ensure Phase 1 Movement script is active
+        if (phase1Movement == null)
         {
-            StartCoroutine(HandleCooldown());
+            phase1Movement = gameObject.AddComponent<Lvl4BossPhase1Movement>();
         }
-    }
 
-    private IEnumerator HandleCooldown()
-    {
-        // Set cooldown as active
-        isCooldownActive = true;
-
-        // Remove the Jump Slam script
+        // Remove the Jump Slam script (if any)
         if (jumpSlam != null)
         {
-            Destroy(jumpSlam); // Remove Jump Slam script
-        }
-
-        // Wait for cooldown duration
-        yield return new WaitForSeconds(cooldownDuration);
-
-        // After cooldown, check if player is still in detection range
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (distanceToPlayer <= detectionDistance)
-        {
-            // If the player is still in range, immediately add a new Jump Slam script
-            ActivateJumpSlam();
-        }
-        else
-        {
-            // If the player is out of range, re-enable Phase 1 Movement
-            phase1Movement = gameObject.AddComponent<Lvl4BossPhase1Movement>();
-            isCooldownActive = false;
+            Destroy(jumpSlam);
         }
     }
 }

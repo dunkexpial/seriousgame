@@ -4,9 +4,9 @@ using UnityEngine;
 public class BossJumpSlam : MonoBehaviour
 {
     [Header("Jump Settings")]
-    public float jumpHeight = 10f;           // Height of the boss's jump
-    public float upwardDuration = 1f;       // Duration of the upward motion
-    public float downwardDuration = 0.2f;   // Duration of the downward motion
+    public float jumpHeight = 5f;           // Height of the boss's jump
+    public float upwardDuration = 0.5f;       // Duration of the upward motion
+    public float downwardDuration = 0.4f;   // Duration of the downward motion
     public float shadowMinScale = 0.5f;     // Minimum scale of the shadow when fully "up"
     public float shadowMaxScale = 1f;       // Maximum scale of the shadow when "on ground"
     public float shadowMinAlpha = 0.3f;     // Minimum alpha of the shadow when fully "up"
@@ -15,8 +15,8 @@ public class BossJumpSlam : MonoBehaviour
     [Header("Player Targeting")]
     public string playerTag = "Player";     // Tag used to find the player
     public Vector3 slamPositionOffset;      // Offset applied to the target position
-    public float followSpeed = 200f;          // How fast the boss follows the player
-    public Vector3 followOffset = new Vector3(0, -10, 0); // Default offset X: 0, Y: -10, Z: 0
+    public float followSpeed = 250f;          // How fast the boss follows the player
+    public Vector3 followOffset = new Vector3(0, 0, 0); // Default offset X: 0, Y: -10, Z: 0
 
 
     private Transform visual;
@@ -156,7 +156,6 @@ public class BossJumpSlam : MonoBehaviour
         shadow.localScale = shadowStartScale;
         shadowRenderer.color = new Color(1f, 1f, 1f, shadowMaxAlpha);
         bossCollider.enabled = true;
-        yield return new WaitForSeconds(1);
         isJumping = false;
     }
 }

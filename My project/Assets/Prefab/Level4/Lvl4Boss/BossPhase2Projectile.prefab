@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 4620163445893403897}
   - component: {fileID: 796027120585647325}
   - component: {fileID: 4945061409652961036}
-  - component: {fileID: -9163365457103953754}
+  - component: {fileID: -6661810504287656967}
+  - component: {fileID: -5074399871681295649}
+  - component: {fileID: -1526202140679613100}
   m_Layer: 7
   m_Name: BossPhase2Projectile
   m_TagString: EnemyProjectile
@@ -33,7 +35,6 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1205441997356502004}
   - {fileID: 590554441484253897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -115,7 +116,7 @@ MonoBehaviour:
   destroySmokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
   createSmokeLifetime: 0.5
   destroySmokeLifetime: 0.25
---- !u!114 &-9163365457103953754
+--- !u!114 &-6661810504287656967
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,11 +125,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 637174100589294369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4530f9729fb2c1d4eb379c0cfc2bea67, type: 3}
+  m_Script: {fileID: 11500000, guid: aca6a6116b2621c4dbe469bd069c8470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  lifespan: 10
+  lifespan: 5
+--- !u!114 &-5074399871681295649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637174100589294369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafa7d5bd72c44446a492875b92abed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToIgnore1: Enemy
+  tagToIgnore2: EnemyProjectile
+--- !u!114 &-1526202140679613100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637174100589294369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafa7d5bd72c44446a492875b92abed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToIgnore1: EnemyProjectile
+  tagToIgnore2: EnemyProjectile
 --- !u!1 &712656083256922329
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,12 +183,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712656083256922329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 126305679462903894}
+  m_Father: {fileID: 590554441484253897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &7142252020351054902
 TrailRenderer:
@@ -234,9 +263,9 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.25882354, g: 0.14117648, b: 0.27058825, a: 0}
-      key1: {r: 0.25882354, g: 0.14117648, b: 0.27058825, a: 1}
-      key2: {r: 0.25882354, g: 0.14117648, b: 0.27058825, a: 0}
+      key0: {r: 0.6039216, g: 0, b: 0.10196079, a: 0}
+      key1: {r: 0.6039216, g: 0, b: 0.10196079, a: 1}
+      key2: {r: 0.2, g: 0.105882354, b: 0.20392157, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -304,7 +333,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1205441997356502004}
   m_Father: {fileID: 126305679462903894}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1026249493579470956
@@ -348,8 +378,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 23c290f27920be74fbb604e5f1e9b881, type: 3}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dbd859d3f09d36742b50f0203d23a8ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -371,4 +401,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93334f502c9be1469db8c9394bd179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 1000
+  spinSpeed: 480
