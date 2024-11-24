@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI; // For handling the UI Image component
 
 public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] private DialogueUI dialogueUI;
-    public GameObject[] projectilePrefabs; // Array dos prefabs dos projéteis
+    [SerializeField] private Image selectedProjectileThumbnail; // Reference to the UI Image for displaying the thumbnail
+    public GameObject[] projectilePrefabs; // Array of projectile prefabs
     public Transform shootingPoint;
     public float projectileSpeed;
     public GameObject player;
@@ -24,6 +26,9 @@ public class ProjectileManager : MonoBehaviour
         
         // Get the Animator component
         animator = player.GetComponent<Animator>();
+
+        // Set the initial thumbnail on start
+        UpdateProjectileThumbnail();
     }
 
     public void SetProjectileType(int index)
@@ -31,6 +36,7 @@ public class ProjectileManager : MonoBehaviour
         if (index >= 0 && index < projectilePrefabs.Length)
         {
             selectedProjectileIndex = index;
+            UpdateProjectileThumbnail(); // Update the thumbnail when the projectile type changes
         }
     }
 
@@ -65,4 +71,18 @@ public class ProjectileManager : MonoBehaviour
             }
         }
     }
+
+    // Method to update the thumbnail UI
+    private void UpdateProjectileThumbnail()
+    {
+        if (selectedProjectileThumbnail != null && projectilePrefabs.Length > selectedProjectileIndex)
+        {
+            // Assuming each projectile prefab has a SpriteRenderer component with a sprite
+            Sprite projectileSprite = projectilePrefabs[selectedProjectileIndex].GetComponent<SpriteRenderer>().sprite;
+            
+            // Set the sprite of the UI Image to the current projectile's sprite
+            selectedProjectileThumbnail.sprite = projectileSprite;
+        }
+    }
 }
+

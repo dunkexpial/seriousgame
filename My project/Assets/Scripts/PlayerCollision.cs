@@ -132,7 +132,12 @@ public class PlayerCollision : MonoBehaviour
         CleanupEffects();
 
         GetComponent<Animator>().SetLayerWeight(1, 0);
-        playerMovement.moveSpeed = 100f; // Reset speed to normal
+
+        // Only reset speed if the power-up is not active
+        if (!playerMovement.isPowerUpActive)
+        {
+            playerMovement.moveSpeed = 100f; // Reset speed to normal
+        }
         playerMovement.isSlowed = false;
         isInvincible = false;
     }
@@ -146,7 +151,10 @@ public class PlayerCollision : MonoBehaviour
     private void HandleGameOverCleanup()
     {
         // Reset player movement speed and states
-        playerMovement.moveSpeed = 100f;
+        if (!playerMovement.isPowerUpActive) // Don't reset speed if power-up is active
+        {
+            playerMovement.moveSpeed = 100f;
+        }
         playerMovement.isSlowed = false;
         playerMovement.isFrozen = false;
 

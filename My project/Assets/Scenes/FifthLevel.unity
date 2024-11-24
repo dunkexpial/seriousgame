@@ -1925,6 +1925,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad84bb489dd8a95478a3fcbb67f8475c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &407142436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 677172424655408330, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+  m_PrefabInstance: {fileID: 407142433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &587563852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,7 +2241,7 @@ Transform:
   m_GameObject: {fileID: 669694694}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -543.88885, y: 609.90454, z: -10}
+  m_LocalPosition: {x: -543.84564, y: 609.90454, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3191,6 +3202,10 @@ PrefabInstance:
       propertyPath: projectileSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
+      propertyPath: selectedProjectileThumbnail
+      value: 
+      objectReference: {fileID: 407142436}
     - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
       propertyPath: projectilePrefabs.Array.size
       value: 3
@@ -5302,10 +5317,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 407142435}
   frozenEffectPrefab: {fileID: 7605946190564337112, guid: 9b44b03a4599abb4db6b75809b44fa5f, type: 3}
+  afterimagePrefab: {fileID: 7605946190564337112, guid: 35cdc65cb0de3e04ca2f8458c5f635fb, type: 3}
+  afterimageInterval: 0.05
+  cooldownDuration: 5
+  powerUpDuration: 2
   moveSpeed: 100
   rb: {fileID: 1864051315}
   animator: {fileID: 1864051312}
   isSlowed: 0
+  isPowerUpEnabled: 1
+  isPowerUpActive: 0
 --- !u!50 &1864051315
 Rigidbody2D:
   serializedVersion: 4

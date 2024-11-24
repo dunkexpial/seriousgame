@@ -8784,6 +8784,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad84bb489dd8a95478a3fcbb67f8475c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &247108301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 677172424655408330, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+  m_PrefabInstance: {fileID: 247108299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &257852258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14711,6 +14722,10 @@ PrefabInstance:
       propertyPath: projectileSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
+      propertyPath: selectedProjectileThumbnail
+      value: 
+      objectReference: {fileID: 247108301}
     - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
       propertyPath: projectilePrefabs.Array.size
       value: 4
@@ -59494,10 +59509,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 247108300}
   frozenEffectPrefab: {fileID: 7605946190564337112, guid: 9b44b03a4599abb4db6b75809b44fa5f, type: 3}
+  afterimagePrefab: {fileID: 0}
+  afterimageInterval: 0.2
+  cooldownDuration: 10
+  powerUpDuration: 5
   moveSpeed: 100
   rb: {fileID: 2134763147}
   animator: {fileID: 2134763144}
   isSlowed: 0
+  isPowerUpEnabled: 0
+  isPowerUpActive: 0
 --- !u!50 &2134763147
 Rigidbody2D:
   serializedVersion: 4

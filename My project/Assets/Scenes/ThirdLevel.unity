@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 74478642}
   - component: {fileID: 74478641}
   - component: {fileID: 74478640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_V_Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -10352,7 +10352,7 @@ GameObject:
   - component: {fileID: 186372647}
   - component: {fileID: 186372646}
   - component: {fileID: 186372645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -11528,6 +11528,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad84bb489dd8a95478a3fcbb67f8475c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &247108301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 677172424655408330, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+  m_PrefabInstance: {fileID: 247108299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &247419486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11997,7 +12008,7 @@ GameObject:
   - component: {fileID: 280305780}
   - component: {fileID: 280305779}
   - component: {fileID: 280305778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_ProjObstacle
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -15185,6 +15196,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
+      propertyPath: selectedProjectileThumbnail
+      value: 
+      objectReference: {fileID: 247108301}
+    - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
       propertyPath: projectilePrefabs.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -16720,7 +16735,7 @@ GameObject:
   - component: {fileID: 671716105}
   - component: {fileID: 671716104}
   - component: {fileID: 671716103}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Walls_H_ProjObstacle
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -19962,7 +19977,7 @@ GameObject:
   - component: {fileID: 1095448509}
   - component: {fileID: 1095448508}
   - component: {fileID: 1095448507}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -20370,7 +20385,7 @@ GameObject:
   - component: {fileID: 1113651311}
   - component: {fileID: 1113651310}
   - component: {fileID: 1113651309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_V_ProjCollider
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -28461,7 +28476,7 @@ GameObject:
   - component: {fileID: 1115724495}
   - component: {fileID: 1115724494}
   - component: {fileID: 1115724493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_ProjObstacle
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -39123,7 +39138,7 @@ GameObject:
   - component: {fileID: 1396216278}
   - component: {fileID: 1396216277}
   - component: {fileID: 1396216276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -43961,7 +43976,7 @@ GameObject:
   - component: {fileID: 1506581251}
   - component: {fileID: 1506581253}
   - component: {fileID: 1506581252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69807,7 +69822,7 @@ GameObject:
   - component: {fileID: 1991562039}
   - component: {fileID: 1991562038}
   - component: {fileID: 1991562037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -71593,7 +71608,7 @@ GameObject:
   - component: {fileID: 2092120196}
   - component: {fileID: 2092120195}
   - component: {fileID: 2092120194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_ProjObstacle
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -72439,10 +72454,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 247108300}
   frozenEffectPrefab: {fileID: 7605946190564337112, guid: 9b44b03a4599abb4db6b75809b44fa5f, type: 3}
+  afterimagePrefab: {fileID: 0}
+  afterimageInterval: 0.2
+  cooldownDuration: 10
+  powerUpDuration: 5
   moveSpeed: 100
   rb: {fileID: 2134763147}
   animator: {fileID: 2134763144}
   isSlowed: 0
+  isPowerUpEnabled: 0
+  isPowerUpActive: 0
 --- !u!50 &2134763147
 Rigidbody2D:
   serializedVersion: 4

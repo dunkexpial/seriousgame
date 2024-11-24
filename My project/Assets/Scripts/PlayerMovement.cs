@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private GameObject frozenEffectPrefab; // Add prefab reference
+    [SerializeField] private GameObject frozenEffectPrefab;
+    [SerializeField] private GameObject afterimagePrefab;
+    [SerializeField] private float afterimageInterval = 0.2f;
+    [SerializeField] private float cooldownDuration = 10f;
+    [SerializeField] private float powerUpDuration = 5f;
 
-    private GameObject frozenEffectInstance; // Store the instantiated effect
+    private GameObject frozenEffectInstance;
+    private List<GameObject> afterimages = new List<GameObject>();
 
     public DialogueUI DialogueUI => dialogueUI;
     public Interactable Interactable { get; set; }
@@ -18,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private Vector2 lastDirection;
     private bool _isFrozen = false;
-    public bool isSlowed = false; // New flag for slow effect
+    public bool isSlowed = false;
 
     public bool isFrozen
     {
@@ -33,8 +38,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    [SerializeField] private bool isPowerUpEnabled = false;
+    public bool isPowerUpActive = false;
+    private float powerUpTimer = 0f;
+    private float cooldownTimer = 0f;
+    private float lastAfterimageTime = 0f;
+
     void Update()
     {
+        // Handle cooldown timer
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
         if (isFrozen)
         {
             animator.speed = 0;
@@ -45,9 +62,9 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.speed = 0.5f;
         }
-        else
+        else if (!isPowerUpActive)
         {
-            animator.speed = 1;
+            animator.speed = 1;  // Set to default speed when power-up is not active
         }
 
         if (dialogueUI.isOpen)
@@ -64,6 +81,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 Interactable.Interact(player: this);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isPowerUpEnabled && cooldownTimer <= 0)
+        {
+            ActivatePowerUp();
+        }
+
+        if (isPowerUpActive)
+        {
+            HandlePowerUp();
         }
 
         if (Time.timeScale != 0)
@@ -150,7 +177,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen)
         {
-            // Spawn the prefab as a child of the player
             if (frozenEffectPrefab != null && frozenEffectInstance == null)
             {
                 frozenEffectInstance = Instantiate(frozenEffectPrefab, transform.position, Quaternion.identity, transform);
@@ -158,12 +184,74 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Destroy the frozen effect prefab
             if (frozenEffectInstance != null)
             {
                 Destroy(frozenEffectInstance);
             }
         }
+    }
+
+    void ActivatePowerUp()
+    {
+        if (!isPowerUpEnabled || cooldownTimer > 0) return;
+
+        isPowerUpActive = true;
+        powerUpTimer = powerUpDuration;
+        moveSpeed *= 2;
+        animator.speed *= 2;
+
+        cooldownTimer = cooldownDuration;
+    }
+
+    void HandlePowerUp()
+    {
+        powerUpTimer -= Time.deltaTime;
+
+        if (powerUpTimer <= 0)
+        {
+            DeactivatePowerUp();
+        }
+        else
+        {
+            if (Time.time - lastAfterimageTime >= afterimageInterval)
+            {
+                SpawnAfterimage();
+                lastAfterimageTime = Time.time;
+            }
+        }
+    }
+
+    void DeactivatePowerUp()
+    {
+        isPowerUpActive = false;
+        moveSpeed /= 2;
+        animator.speed /= 2;
+
+        afterimages.Clear();
+    }
+
+    void SpawnAfterimage()
+    {
+        if (afterimagePrefab != null)
+        {
+            GameObject afterimage = Instantiate(afterimagePrefab, transform.position, Quaternion.identity);
+
+            SpriteRenderer playerSpriteRenderer = GetComponent<SpriteRenderer>();
+            Sprite currentSprite = playerSpriteRenderer.sprite;
+
+            SpriteRenderer afterimageSpriteRenderer = afterimage.GetComponent<SpriteRenderer>();
+            if (afterimageSpriteRenderer != null)
+            {
+                afterimageSpriteRenderer.sprite = currentSprite;
+            }
+
+            afterimages.Add(afterimage);
+        }
+    }
+
+    public void SetPowerUpEnabled(bool isEnabled)
+    {
+        isPowerUpEnabled = isEnabled;
     }
 
     public Vector2 GetMoveDirection()
