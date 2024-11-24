@@ -258,7 +258,10 @@ public class BasicRangedAI : MonoBehaviour
         if (ghostProjPos != null)
         {
             Instantiate(ghostProjectile, ghostProjPos.transform.position, Quaternion.identity);
-            audioSource.PlayOneShot(enemyshoot);
+            if (enemyshoot != null)
+            {
+                audioSource.PlayOneShot(enemyshoot);
+            }
         }
         else
         {
