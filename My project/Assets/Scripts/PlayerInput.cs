@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     private AudioSource audioSource;
 
     public DialogueUI DialogueUI => dialogueUI;
-
+    
     void Start()
     {
         // Get the PlayerMovement component to check if the player is frozen

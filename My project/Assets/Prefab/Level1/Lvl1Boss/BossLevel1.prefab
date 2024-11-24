@@ -14908,6 +14908,7 @@ MonoBehaviour:
   health: 400
   attack: 1
   damageColorDuration: 0.1
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &2526975776042314239
 MonoBehaviour:
@@ -15168,6 +15169,7 @@ MonoBehaviour:
   health: 400
   attack: 1
   damageColorDuration: 0.1
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &8950949453429578320
 MonoBehaviour:
@@ -15369,6 +15371,7 @@ MonoBehaviour:
   health: 9999
   attack: 0
   damageColorDuration: 0
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &261959951287513171
 MonoBehaviour:
@@ -15555,6 +15558,7 @@ MonoBehaviour:
   health: 9999
   attack: 0
   damageColorDuration: 0
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &3018089548799980902
 MonoBehaviour:
@@ -16082,6 +16086,7 @@ MonoBehaviour:
   health: 200
   attack: 1
   damageColorDuration: 0.1
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &5199829871557305923
 MonoBehaviour:
@@ -16298,6 +16303,7 @@ MonoBehaviour:
   health: 250
   attack: 1
   damageColorDuration: 0.1
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &7826749934732907461
 MonoBehaviour:
@@ -21526,6 +21532,7 @@ MonoBehaviour:
   health: 250
   attack: 1
   damageColorDuration: 0.1
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &4572738283525901261
 MonoBehaviour:
@@ -31535,6 +31542,7 @@ MonoBehaviour:
   health: 9999
   attack: 0
   damageColorDuration: 0
+  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &7316941271660850873
 MonoBehaviour:

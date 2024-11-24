@@ -37,11 +37,19 @@ public class BasicRangedAI : MonoBehaviour
     private float timeSinceLastSeen = Mathf.Infinity;
     private float timeBeforeGivingUp = 3f; // Time after which AI stops moving towards the last seen position
 
+    private AudioSource audioSource;
+
+    public AudioClip enemyshoot;
+
     void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("PlayerRaycast");
-        lastSeenPosition = Vector2.zero;
-    }
+{
+    player = GameObject.FindGameObjectWithTag("PlayerRaycast");
+    lastSeenPosition = Vector2.zero;
+
+    // Inicializa o AudioSource
+    audioSource = GetComponent<AudioSource>();
+    
+}
 
     void Update()
     {
@@ -250,6 +258,7 @@ public class BasicRangedAI : MonoBehaviour
         if (ghostProjPos != null)
         {
             Instantiate(ghostProjectile, ghostProjPos.transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(enemyshoot);
         }
         else
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttributesManager : MonoBehaviour
 {
+    private SoundManager soundManager;
     public GameObject[] bossDrop;
     public int health;
     public int attack;
@@ -83,4 +84,12 @@ public class AttributesManager : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (soundManager != null)
+        {
+            soundManager.PlayarSom(GetComponent<Collider2D>(), other);
+        }
+    
+}
 }
