@@ -190,27 +190,25 @@ public class BasicRangedAI : MonoBehaviour
                 }
             }
         }
-
-        foreach (Vector2 aiSideCenter in aiSideCenters)
+    foreach (Vector2 aiCorner in aiCorners)
+    {
+        foreach (Vector2 playerCorner in playerCorners)
         {
-            foreach (Vector2 playerCorner in playerCorners)
-            {
-                Vector2 direction = playerCorner - aiSideCenter;
-                RaycastHit2D hit = Physics2D.Raycast(aiSideCenter, direction, direction.magnitude, layerMask);
+            Vector2 direction = playerCorner - aiCorner;
+            RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, radius, layerMask); // Limit to AI radius
 
-                if (hit.collider != null && hit.collider.CompareTag("PlayerRaycast"))
+            if (hit.collider != null)
+            {
+                Debug.DrawRay(aiCorner, direction, hit.collider.CompareTag("PlayerRaycast") ? Color.green : Color.red);
+                if (hit.collider.CompareTag("PlayerRaycast"))
                 {
                     hasLineOfSight = true;
                     lastRaycastHitPoint = hit.point;
-                    Debug.DrawRay(aiSideCenter, direction, Color.green);
                     return;
-                }
-                else
-                {
-                    Debug.DrawRay(aiSideCenter, direction, Color.red);
                 }
             }
         }
+    }
 
         foreach (Vector2 playerCorner in playerCorners)
         {

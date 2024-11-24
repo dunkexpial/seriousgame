@@ -156,21 +156,18 @@ public class BasicAI : MonoBehaviour
         {
             foreach (Vector2 playerCorner in playerCorners)
             {
-                // Cast a ray from the AI corner to the player corner
                 Vector2 direction = playerCorner - aiCorner;
-                RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, direction.magnitude, layerMask);
+                RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, radius, layerMask); // Limit to AI radius
 
-                // Check if the ray hits the player
-                if (hit.collider != null && hit.collider.CompareTag("PlayerRaycast"))
+                if (hit.collider != null)
                 {
-                    hasLineOfSight = true;
-                    lastRaycastHitPoint = hit.point;  // Store the exact point where the raycast hit
-                    Debug.DrawRay(aiCorner, direction, Color.green); // Raycast hit, visualize with green
-                    return; // Stop checking if we already have line of sight
-                }
-                else
-                {
-                    Debug.DrawRay(aiCorner, direction, Color.red); // Raycast missed or blocked, visualize with red
+                    Debug.DrawRay(aiCorner, direction, hit.collider.CompareTag("PlayerRaycast") ? Color.green : Color.red);
+                    if (hit.collider.CompareTag("PlayerRaycast"))
+                    {
+                        hasLineOfSight = true;
+                        lastRaycastHitPoint = hit.point;
+                        return;
+                    }
                 }
             }
         }
