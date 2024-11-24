@@ -247,11 +247,11 @@ MonoBehaviour:
   lifetime: 3
   damageAmount: 0
   spinSpeed: 360
-  followDistance: 150
+  followDistance: 100
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
-  attractionStrength: 5
+  attractionStrength: 20
 --- !u!58 &5245465410419175432
 CircleCollider2D:
   m_ObjectHideFlags: 0

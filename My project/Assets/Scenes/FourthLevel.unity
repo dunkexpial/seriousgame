@@ -19846,7 +19846,7 @@ PrefabInstance:
       objectReference: {fileID: 247108301}
     - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
       propertyPath: projectilePrefabs.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
       propertyPath: projectilePrefabs.Array.data[1]
@@ -19860,6 +19860,10 @@ PrefabInstance:
       propertyPath: projectilePrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 6660336288068593288, guid: f67160cffb104054088eac576411066d, type: 3}
+    - target: {fileID: 4603167063084194995, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
+      propertyPath: projectilePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 6660336288068593288, guid: d6ca807c6630a6e43906a793938db101, type: 3}
     - target: {fileID: 8138602854053416635, guid: 5553fc82f7bfd424d9aa72cbe0d963a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.031429738
