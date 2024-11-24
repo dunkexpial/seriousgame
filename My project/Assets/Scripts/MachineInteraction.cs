@@ -27,6 +27,7 @@ public class MachineInteraction : MonoBehaviour
                 {
                     creditsObject.SetActive(true);
                     visualCue.SetActive(false);
+                    Destroy(GameObject.FindWithTag("Player"));
                 }
                 else if (IsInventoryFull())
                 {

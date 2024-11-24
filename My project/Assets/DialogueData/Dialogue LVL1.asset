@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: Dialogue LVL1
   m_EditorClassIdentifier: 
   dialogue:
-  - "Kelvin Celcius! Meu querido aprendiz. Vejo que sua magn\xEDfica m\xE1quina de
-    sorvete... est\xE1 em um estado lastim\xE1vel. Deixe-me dar uma olhada.\n\n\"O
-    professor ajusta seus \xF3culos, inspeciona a m\xE1quina e balan\xE7a a cabe\xE7a
-    dramaticamente.\""
+  - "Kelvin Celsius! Meu querido aprendiz! Vejo que voc\xEA chegou com pressa. Algo
+    me diz que temos uma emerg\xEAncia cient\xEDfica, n\xE3o \xE9 mesmo? O que aconteceu?\n\n\"Kelvin
+    gesticula apontando para a m\xE1quina de sorvete desmontada que ele trouxe consigo\""
+  - "Ah, sua magn\xEDfica m\xE1quina de sorvete... Que inven\xE7\xE3o maravilhosa!
+    Espere, o que \xE9 isso? Ela est\xE1 quebrada?\n\n\"O professor se aproxima para
+    inspecionar a m\xE1quina mais de perto\""
   - "Ah\xE1, eu sabia! As cinco pe\xE7as principais est\xE3o completamente danificadas!
     Sem elas, a m\xE1quina de sorvete n\xE3o vai fazer nem gelo raspado, quanto mais
     sorvete."
+  - "Essas pe\xE7as s\xE3o raras, muito raras... e, infelizmente, elas foram parar
+    nas m\xE3os de cinco vil\xF5es espalhados por a\xED. Vil\xF5es que, por coincid\xEAncia
+    ou pura ironia do destino, dominarama  f\xEDsica e conceitos que v\xE3o desafiar
+    sua mente."
   - "Essas pe\xE7as s\xE3o raras, muito raras... e, infelizmente, elas foram parar
     nas m\xE3os de cinco vil\xF5es espalhados por a\xED. Vil\xF5es que, por coincid\xEAncia
     ou pura ironia do destino, dominarama  f\xEDsica e conceitos que v\xE3o desafiar
