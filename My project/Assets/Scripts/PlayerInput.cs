@@ -66,7 +66,7 @@ public class PlayerInput : MonoBehaviour
             // Trigger the shooting animation
             animator.SetTrigger("Shoot");
 
-            // Randomiza e toca um som de tiro
+            
             PlayRandomShootSound();
 
             // Update the shared next fire time based on the current projectile's fire rate

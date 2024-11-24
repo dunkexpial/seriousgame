@@ -12,9 +12,11 @@ public class PlayerCollision : MonoBehaviour
 
     private GameObject activeSlowEffect;
     private GameObject activeDoubleDamageEffect;
+    private SoundManager soundManager;
 
     void Start()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         healthManager = FindObjectOfType<HealthManager>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
@@ -67,6 +69,7 @@ public class PlayerCollision : MonoBehaviour
         if (collider.CompareTag("Heart") && HealthManager.health < 5)
         {
             HealthManager.health++;
+            soundManager.PlayitemHeal();
             Destroy(collider.gameObject);
         }
     }

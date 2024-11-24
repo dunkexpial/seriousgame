@@ -5,6 +5,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip playerProjParede;
     public AudioClip enemyDamage;
     public AudioClip EnemyProjParede;
+    public AudioClip itemPickupSound; 
+    public AudioClip itemHeal;
 
     private AudioSource audioSource;
 
@@ -43,9 +45,40 @@ public class SoundManager : MonoBehaviour
                 }
                 break;
 
-            default:
-                Debug.LogWarning("Par n reconhecido: " + collisionPair);
+            case "itemHeal":
+                if (itemHeal != null)
+                {
+                    audioSource.PlayOneShot(itemHeal);
+                }
                 break;
+
+            default:
+                Debug.LogWarning("Par não reconhecido: " + collisionPair);
+                break;
+        }
+    }
+
+    public void PlayItemHealPickupSound()
+    {
+        if (itemPickupSound != null)
+        {
+            audioSource.PlayOneShot(itemHeal);
+        }
+        else
+        {
+            Debug.LogWarning("Som de itemPickupSound não configurado no SoundManager!");
+        }
+    }
+
+    public void PlayItemPickupSound()
+    {
+        if (itemPickupSound != null)
+        {
+            audioSource.PlayOneShot(itemPickupSound);
+        }
+        else
+        {
+            Debug.LogWarning("Som de itemPickupSound não configurado no SoundManager!");
         }
     }
 }
