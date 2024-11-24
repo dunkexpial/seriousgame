@@ -1042,7 +1042,7 @@ GameObject:
   - component: {fileID: 102274474}
   - component: {fileID: 102274473}
   m_Layer: 0
-  m_Name: Boss Music
+  m_Name: BossSong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1058,9 +1058,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9064ef41e058d0a46a405a4171815e07, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e4142e23509b3b249ba17c0b006b1f9f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.18
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -44810,7 +44810,7 @@ Transform:
   m_GameObject: {fileID: 791793133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -543.84564, y: 609.90454, z: -10}
+  m_LocalPosition: {x: -544.0204, y: 609.90454, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46000,9 +46000,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3cd89a81242d8d47a5426e187eb6f95, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 87cf474523fdbdf4dae0c47377082c59, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.08
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -71857,8 +71857,9 @@ MonoBehaviour:
   projectileManager: {fileID: 1770223718}
   animator: {fileID: 1781025688}
   shootClips:
-  - {fileID: 8300000, guid: d3aee56cd03316549b07d35568abb0eb, type: 3}
-  - {fileID: 8300000, guid: a3f5f9e36716c85439c7a2274b4540f0, type: 3}
+  - {fileID: 8300000, guid: 4b061195c75bf4042a0babfa43b8c580, type: 3}
+  - {fileID: 8300000, guid: 5cc9b016f66661b4b82e21f245a6abba, type: 3}
+  - {fileID: 8300000, guid: d009d4547bde9054f88016a61fc7c15c, type: 3}
 --- !u!95 &1781025688
 Animator:
   serializedVersion: 5
@@ -72040,7 +72041,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
