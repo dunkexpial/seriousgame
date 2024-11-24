@@ -5159,7 +5159,6 @@ GameObject:
   - component: {fileID: 3892870214286478915}
   - component: {fileID: 1708545758858408836}
   - component: {fileID: 1780732971020280946}
-  - component: {fileID: 5824120557992693984}
   m_Layer: 7
   m_Name: EnemyMagnit
   m_TagString: Enemy
@@ -5452,19 +5451,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5824120557992693984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378365091827364105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7beed36435ba2d4db79a5b910379db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
 --- !u!1 &5590882171903390801
 GameObject:
   m_ObjectHideFlags: 0

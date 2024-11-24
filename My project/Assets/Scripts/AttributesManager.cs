@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class AttributesManager : MonoBehaviour
 {
-    private SoundManager soundManager;
     public GameObject[] bossDrop;
     public int health;
     public int attack;
     public float damageColorDuration = 0.1f; // Duration of the red color effect
     private SpriteRenderer[] spriteRenderers;
     private Dictionary<SpriteRenderer, Color> originalColors = new Dictionary<SpriteRenderer, Color>();
-    
+    private SoundManager soundManager;
+
     [Range(0f, 1f)] public float dropChance = 1f; // Chance of item drop (default 100%)
 
     private void Start()
     {
         // Get all SpriteRenderers, including those of child objects
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        soundManager = FindObjectOfType<SoundManager>();
         
         // Store original colors for each SpriteRenderer
         foreach (var sr in spriteRenderers)
@@ -29,6 +30,7 @@ public class AttributesManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
+        soundManager.PlaySoundBasedOnCollision("DanoInimigo");
         if (health <= 0)
         {
             itemDrop();
@@ -72,7 +74,7 @@ public class AttributesManager : MonoBehaviour
             sr.color = Color.red;
         }
 
-        // Wait for the specified durationss
+        // Wait for the specified duration
         yield return new WaitForSeconds(damageColorDuration);
 
         // Revert each SpriteRenderer to its original color
@@ -84,13 +86,4 @@ public class AttributesManager : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (soundManager != null)
-        {
-            soundManager.PlayarSom(GetComponent<Collider2D>(), other);
-        }
-    
 }
-}
-

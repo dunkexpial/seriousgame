@@ -1,26 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip audioClip;
+    public AudioClip playerProjParede;
+    public AudioClip enemyDamage;
+    public AudioClip EnemyProjParede;
+
     private AudioSource audioSource;
-    public string tag1 = "Tag1";
-    public string tag2 = "Tag2";
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
-    public void PlayarSom(Collider2D colliderA, Collider2D colliderB)
+    public void PlaySoundBasedOnCollision(string collisionPair)
     {
-        if ((colliderA.CompareTag(tag1) && colliderB.CompareTag(tag2)) ||
-            (colliderA.CompareTag(tag2) && colliderB.CompareTag(tag1)))
+        Debug.Log("Par de colisão: " + collisionPair);
+        switch (collisionPair)
         {
-            audioSource.PlayOneShot(audioClip);
+            case "PlayerProjParede":
+                if (playerProjParede != null)
+                {
+                    audioSource.PlayOneShot(playerProjParede);
+                }
+                break;
+
+            case "DanoInimigo":
+                if (enemyDamage != null)
+                {
+                    audioSource.PlayOneShot(enemyDamage);
+                }
+                break;
+
+            case "EnemyProjParede":
+                if (EnemyProjParede != null)
+                {
+                    audioSource.PlayOneShot(EnemyProjParede);
+                }
+                break;
+
+            default:
+                Debug.LogWarning("Par n reconhecido: " + collisionPair);
+                break;
         }
     }
 }

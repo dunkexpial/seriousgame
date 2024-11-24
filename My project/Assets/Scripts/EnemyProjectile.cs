@@ -8,11 +8,13 @@ public class EnemyProjectile : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     public float lifespan = 5f;
+    private SoundManager soundManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        soundManager = FindObjectOfType<SoundManager>();
 
         Vector3 direction = (player.transform.position - transform.position).normalized;
 
@@ -30,6 +32,7 @@ public class EnemyProjectile : MonoBehaviour
         if (collider.CompareTag("ProjObstacle"))
         {
             // Only detach particles here if the projectile hits an obstacle
+            soundManager.PlaySoundBasedOnCollision("EnemyProjParede");  // Play "Som 3" for obstacle hit
             DetachParticles();
             Destroy(gameObject); // Destroy on obstacle hit
         }

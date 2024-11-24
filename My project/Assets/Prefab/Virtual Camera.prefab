@@ -1539,7 +1539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 381221319104255368}
   - component: {fileID: 5938039758680330434}
-  - component: {fileID: 7639124246838259995}
+  - component: {fileID: 6484515352522531887}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -1658,7 +1658,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7639124246838259995
+--- !u!114 &6484515352522531887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1667,12 +1667,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1726324330447677627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7beed36435ba2d4db79a5b910379db2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bc0cc02636d7284b95b7b9d46f7304d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
-  tag1: ProjectileTag
-  tag2: Enemy
+  playerProjParede: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
+  enemyDamage: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
+  EnemyProjParede: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
 --- !u!1 &1743862029726926880
 GameObject:
   m_ObjectHideFlags: 0
