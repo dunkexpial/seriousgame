@@ -71,7 +71,7 @@ public class AttributesManager : MonoBehaviour
             sr.color = Color.red;
         }
 
-        // Wait for the specified duration
+        // Wait for the specified durationss
         yield return new WaitForSeconds(damageColorDuration);
 
         // Revert each SpriteRenderer to its original color
@@ -84,3 +84,4 @@ public class AttributesManager : MonoBehaviour
         }
     }
 }
+
