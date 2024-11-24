@@ -10434,6 +10434,7 @@ MonoBehaviour:
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: fireProjectile
 --- !u!199 &8681838343733090928
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -15283,6 +15284,7 @@ MonoBehaviour:
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: fireProjectile
 --- !u!199 &5482922227700969290
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -20132,6 +20134,7 @@ MonoBehaviour:
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: fireProjectile
 --- !u!199 &8186266948167503595
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -25065,6 +25068,7 @@ MonoBehaviour:
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: fireProjectile
 --- !u!199 &8609444474254858301
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -34744,6 +34748,7 @@ MonoBehaviour:
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: fireProjectile
 --- !u!199 &1345550848891398997
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -39593,6 +39598,7 @@ MonoBehaviour:
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: fireProjectile
 --- !u!199 &4564709955441200047
 ParticleSystemRenderer:
   serializedVersion: 6

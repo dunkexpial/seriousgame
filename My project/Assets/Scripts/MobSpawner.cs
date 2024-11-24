@@ -54,7 +54,6 @@ public class MobSpawner : MonoBehaviour
 
             if (enemyCountInScene >= maxEnemiesInScene)
             {
-                Debug.Log("Max enemies in scene reached: " + enemyCountInScene);
                 continue;
             }
 

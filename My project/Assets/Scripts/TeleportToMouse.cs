@@ -12,9 +12,11 @@ public class TeleportToMouse : MonoBehaviour
 
     private float lastTeleportTime = -Mathf.Infinity; // Tracks the last teleport time
     private GameObject teleportIndicatorInstance; // Instance of the teleport indicator
+    private SoundManager soundManager;
 
     void Start()
     {
+        soundManager = FindAnyObjectByType<SoundManager>();
         // Instantiate the teleport indicator prefab
         if (teleportIndicatorPrefab != null)
         {
@@ -89,6 +91,7 @@ public class TeleportToMouse : MonoBehaviour
 
         // Teleport to the target position
         transform.position = targetPosition;
+        soundManager.PlaySoundBasedOnCollision("PlayerTeleport");
 
         // Spawn the teleport effect at the original and new positions
         if (teleportEffectPrefab != null)

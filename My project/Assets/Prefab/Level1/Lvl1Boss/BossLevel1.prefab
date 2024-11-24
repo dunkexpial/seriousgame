@@ -60,6 +60,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
+  shootSound: 
 --- !u!199 &7122788405898014378
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5001,6 +5002,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
+  shootSound: 
 --- !u!199 &4724853087143931949
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -9858,6 +9860,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
+  shootSound: 
 --- !u!199 &3618647239830321956
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14706,6 +14709,7 @@ MonoBehaviour:
   shootingIntervalVariance: 0.5
   ignoreTag: MagnetBottom
   checkForTags: 1
+  shootSound: Boss1ProjectileLaser
 --- !u!1 &2664783269027351843
 GameObject:
   m_ObjectHideFlags: 0
@@ -14908,7 +14912,6 @@ MonoBehaviour:
   health: 400
   attack: 1
   damageColorDuration: 0.1
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &2526975776042314239
 MonoBehaviour:
@@ -15169,7 +15172,6 @@ MonoBehaviour:
   health: 400
   attack: 1
   damageColorDuration: 0.1
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &8950949453429578320
 MonoBehaviour:
@@ -15371,7 +15373,6 @@ MonoBehaviour:
   health: 9999
   attack: 0
   damageColorDuration: 0
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &261959951287513171
 MonoBehaviour:
@@ -15558,7 +15559,6 @@ MonoBehaviour:
   health: 9999
   attack: 0
   damageColorDuration: 0
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &3018089548799980902
 MonoBehaviour:
@@ -16086,7 +16086,6 @@ MonoBehaviour:
   health: 200
   attack: 1
   damageColorDuration: 0.1
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &5199829871557305923
 MonoBehaviour:
@@ -16303,7 +16302,6 @@ MonoBehaviour:
   health: 250
   attack: 1
   damageColorDuration: 0.1
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &7826749934732907461
 MonoBehaviour:
@@ -21183,6 +21181,7 @@ MonoBehaviour:
   shootingIntervalVariance: 0.5
   ignoreTag: MagnetTop
   checkForTags: 1
+  shootSound: Boss1ProjectileLaser
 --- !u!1 &6688068118894876193
 GameObject:
   m_ObjectHideFlags: 0
@@ -21234,6 +21233,7 @@ MonoBehaviour:
   shootingIntervalVariance: 0.1
   ignoreTag: Boss1Head
   checkForTags: 1
+  shootSound: Boss1ProjectileLaser
 --- !u!1 &6700401817463512357
 GameObject:
   m_ObjectHideFlags: 0
@@ -21532,7 +21532,6 @@ MonoBehaviour:
   health: 250
   attack: 1
   damageColorDuration: 0.1
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &4572738283525901261
 MonoBehaviour:
@@ -26520,6 +26519,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
+  shootSound: 
 --- !u!199 &1730962645898513041
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -31542,7 +31542,6 @@ MonoBehaviour:
   health: 9999
   attack: 0
   damageColorDuration: 0
-  hitsound: {fileID: 0}
   dropChance: 1
 --- !u!114 &7316941271660850873
 MonoBehaviour:

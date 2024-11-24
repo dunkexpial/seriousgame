@@ -12,12 +12,14 @@ public class Lvl3ShootTag : MonoBehaviour
     [Header("Spawn Settings")]
     public GameObject spawnPrefab;
     public string spawnerTag = "Spawner"; // Assuming spawners are tagged as "Spawner"
+    private SoundManager soundManager;
     
     private Transform player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Get player transform
+        soundManager = FindAnyObjectByType<SoundManager>();
         StartCoroutine(ShootRoutine());
     }
 
@@ -69,6 +71,7 @@ public class Lvl3ShootTag : MonoBehaviour
 
         // Instantiate the projectile
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        soundManager.PlaySoundBasedOnCollision("portalProjectile"); 
 
         // Calculate the direction to the target (2D)
         Vector2 direction = (target.transform.position - transform.position).normalized;

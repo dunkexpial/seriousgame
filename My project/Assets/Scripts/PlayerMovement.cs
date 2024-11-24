@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastDirection;
     private bool _isFrozen = false;
     public bool isSlowed = false;
+    private SoundManager soundManager;
 
     public bool isFrozen
     {
@@ -44,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     private float cooldownTimer = 0f;
     private float lastAfterimageTime = 0f;
 
+    void Start()
+    {
+        soundManager = FindAnyObjectByType<SoundManager>();
+    }
     void Update()
     {
         // Handle cooldown timer
@@ -199,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
         powerUpTimer = powerUpDuration;
         moveSpeed *= 2;
         animator.speed *= 2;
+        soundManager.PlaySoundBasedOnCollision("PlayerSonicSpeed");
 
         cooldownTimer = cooldownDuration;
     }

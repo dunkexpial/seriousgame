@@ -1574,7 +1574,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.13
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1672,7 +1672,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerProjParede: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
   enemyDamage: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
-  EnemyProjParede: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
+  EnemyProjParede: {fileID: 0}
+  itemPickupSound: {fileID: 8300000, guid: fbcc740bbb284eb4489050f6a5fc5501, type: 3}
+  itemHeal: {fileID: 8300000, guid: ef0aa51462de5af4eb0d6c9f6dcbfa85, type: 3}
+  iceProjectile: {fileID: 8300000, guid: f36d7c971f5824b4aa11ba8562ba8092, type: 3}
+  fireProjectile: {fileID: 8300000, guid: 830732500639dc64f906af2975d321a4, type: 3}
+  teleportSound: {fileID: 0}
+  freezeProjectile: {fileID: 8300000, guid: d2d55c95712d1d84b8ae39db7293ced7, type: 3}
+  portalProjectile: {fileID: 0}
+  boss4Projectile: {fileID: 8300000, guid: d2d55c95712d1d84b8ae39db7293ced7, type: 3}
+  boss1ProjectileLaser: {fileID: 8300000, guid: a40e88cd3e79c0f4da30c1ae6a8e4194, type: 3}
+  boss1ProjectileMetal: {fileID: 0}
 --- !u!1 &1743862029726926880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2115,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 414404481905790208}
   iventorySlots: {fileID: 4603303751424739591}
   healthBar: {fileID: 682722103974473629}
-  isPaused: 0
   backgroundMusic: {fileID: 0}
 --- !u!114 &8547744921260523487
 MonoBehaviour:

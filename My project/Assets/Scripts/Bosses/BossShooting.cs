@@ -10,12 +10,15 @@ public class BossShooting : MonoBehaviour
     private GameObject player; // Reference to the player
     public string ignoreTag = "IgnoreTag";  // Optional tag to ignore for starting shooting
     public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
+    public string shootSound;
+    private SoundManager soundManager;
 
     void Start()
     {
         // Add a random initial delay for the first shot
         nextShootTime = Time.time + Random.Range(0, baseShootingInterval);
         player = GameObject.FindGameObjectWithTag("Player"); // Find player at the start
+        soundManager = FindAnyObjectByType<SoundManager>();
     }
 
     void Update()
@@ -49,6 +52,10 @@ public class BossShooting : MonoBehaviour
     {
         if (player == null) return; // Ensure the player is still found before shooting
 
+        if (soundManager != null)
+        {
+            soundManager.PlaySoundBasedOnCollision(shootSound);
+        }
         int projectileIndex = Random.Range(0, projectiles.Length);
         GameObject projectilePrefab = projectiles[projectileIndex];
 

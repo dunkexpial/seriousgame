@@ -14,11 +14,17 @@ public class TeleportOnProximity : MonoBehaviour
 
     private Transform playerTransform;
     private BasicAI basicAI; // Reference to the BasicAI component
+    private SoundManager soundManager;
 
     void Start()
     {
         // Find the player object by tag and the BasicAI component
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        soundManager = FindAnyObjectByType<SoundManager>();
+        if (soundManager == null)
+        {
+            Debug.LogError("SoundManager not found in the scene.");
+        }
         if (player != null)
         {
             playerTransform = player.transform;
@@ -57,6 +63,7 @@ public class TeleportOnProximity : MonoBehaviour
                         {
                             SpawnTeleportMarkers(transform.position, teleportPosition);
                             transform.position = teleportPosition;
+                            soundManager.PlaySoundBasedOnCollision("teleportSound");
                         }
                     }
                 }
@@ -74,12 +81,14 @@ public class TeleportOnProximity : MonoBehaviour
                         {
                             SpawnTeleportMarkers(transform.position, teleportPosition);
                             transform.position = teleportPosition;
+                            soundManager.PlaySoundBasedOnCollision("teleportSound");
                         }
                     }
                 }
             }
         }
     }
+
 
     private Vector2 FindSafeTeleportPosition()
     {

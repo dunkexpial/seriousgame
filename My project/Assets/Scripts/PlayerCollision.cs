@@ -30,6 +30,7 @@ public class PlayerCollision : MonoBehaviour
         {
             if (!isInvincible)
             {
+                soundManager.PlaySoundBasedOnCollision("PlayerDano");
                 if (collider.CompareTag("Enemy"))
                 {
                     HealthManager.health--;
@@ -43,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
 
                     if (collider.CompareTag("FreezeProjectile"))
                     {
+                        soundManager.PlaySoundBasedOnCollision("zaWarudo");
                         playerMovement.isFrozen = true;
                         StartCoroutine(UnfreezePlayerAfterDelay(1.0f));
                     }
@@ -69,7 +71,7 @@ public class PlayerCollision : MonoBehaviour
         if (collider.CompareTag("Heart") && HealthManager.health < 5)
         {
             HealthManager.health++;
-            soundManager.PlayitemHeal();
+            soundManager.PlayItemHealPickupSound();
             Destroy(collider.gameObject);
         }
     }
@@ -79,6 +81,7 @@ public class PlayerCollision : MonoBehaviour
         // Slow effect for IceProjectile
         if (projectile.CompareTag("IceProjectile"))
         {
+            soundManager.PlaySoundBasedOnCollision("FicaFrioAi");
             playerMovement.moveSpeed = 50f; // Halve the speed
             playerMovement.isSlowed = true;
             activeSlowEffect = Instantiate(slowEffectPrefab, transform);
@@ -86,6 +89,7 @@ public class PlayerCollision : MonoBehaviour
         // Double damage effect for FireProjectile
         else if (projectile.CompareTag("FireProjectile"))
         {
+            soundManager.PlaySoundBasedOnCollision("PlayerQueimando");
             activeDoubleDamageEffect = Instantiate(doubleDamageEffectPrefab, transform);
             StartCoroutine(DoubleDamageSequence());
         }

@@ -12,12 +12,14 @@ public class Lvl4BossPhase1Shooting : MonoBehaviour
     public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
 
     private Lvl4BossPhase1Movement bossMovement; // Reference to Lvl4BossPhase1Movement
+    private SoundManager soundManager;
 
     void Start()
     {
         // Add a random initial delay for the first shot
         nextShootTime = Time.time + Random.Range(0, baseShootingInterval);
         player = GameObject.FindGameObjectWithTag("Player"); // Find player at the start
+        soundManager = FindAnyObjectByType<SoundManager>();
     }
 
     void Update()
@@ -53,6 +55,7 @@ public class Lvl4BossPhase1Shooting : MonoBehaviour
     void Shoot()
     {
         if (player == null) return; // Ensure the player is still found before shooting
+        soundManager.PlaySoundBasedOnCollision("Boss4Projectile");
 
         int projectileIndex = Random.Range(0, projectiles.Length);
         GameObject projectilePrefab = projectiles[projectileIndex];

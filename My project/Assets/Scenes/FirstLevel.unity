@@ -7834,7 +7834,7 @@ GameObject:
   - component: {fileID: 359033293}
   - component: {fileID: 359033292}
   - component: {fileID: 359033291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_V_ProjCollider
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -17979,7 +17979,7 @@ GameObject:
   - component: {fileID: 424369905}
   - component: {fileID: 424369904}
   - component: {fileID: 424369903}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_V_Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -38512,7 +38512,7 @@ GameObject:
   - component: {fileID: 605416313}
   - component: {fileID: 605416312}
   - component: {fileID: 605416311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -44810,7 +44810,7 @@ Transform:
   m_GameObject: {fileID: 791793133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -543.8161, y: 609.90454, z: -10}
+  m_LocalPosition: {x: -543.88885, y: 609.90454, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46925,7 +46925,7 @@ GameObject:
   - component: {fileID: 977904254}
   - component: {fileID: 977904253}
   - component: {fileID: 977904252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -47166,7 +47166,7 @@ GameObject:
   - component: {fileID: 985794733}
   - component: {fileID: 985794732}
   - component: {fileID: 985794731}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Walls_H_ProjCollider
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -48059,7 +48059,7 @@ GameObject:
   - component: {fileID: 1125710326}
   - component: {fileID: 1125710325}
   - component: {fileID: 1125710324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -53637,7 +53637,7 @@ GameObject:
   - component: {fileID: 1252000954}
   - component: {fileID: 1252000956}
   - component: {fileID: 1252000955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66511,7 +66511,7 @@ GameObject:
   - component: {fileID: 1696001212}
   - component: {fileID: 1696001211}
   - component: {fileID: 1696001210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_ProjCollider
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -71769,7 +71769,7 @@ Transform:
   m_GameObject: {fileID: 1781025680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -710, y: 649, z: 0}
+  m_LocalPosition: {x: -697, y: 646, z: 0}
   m_LocalScale: {x: 100, y: 97.408585, z: 143.96776}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -74845,7 +74845,7 @@ GameObject:
   - component: {fileID: 2061029822}
   - component: {fileID: 2061029821}
   - component: {fileID: 2061029820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls_H_ProjObstacle
   m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
@@ -76363,11 +76363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -710
+      value: -697
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 649
+      value: 646
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76498,17 +76498,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6484515352522531887, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
-      propertyPath: itemHeal
-      value: 
-      objectReference: {fileID: 8300000, guid: ef0aa51462de5af4eb0d6c9f6dcbfa85, type: 3}
-    - target: {fileID: 6484515352522531887, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6484515352522531887, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
-      propertyPath: itemPickupSound
-      value: 
-      objectReference: {fileID: 8300000, guid: fbcc740bbb284eb4489050f6a5fc5501, type: 3}
     - target: {fileID: 7108005938809121660, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

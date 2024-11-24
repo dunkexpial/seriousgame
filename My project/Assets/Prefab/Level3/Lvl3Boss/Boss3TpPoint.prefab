@@ -179,6 +179,7 @@ MonoBehaviour:
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: freezeProjectile
 --- !u!199 &7132180866102505499
 ParticleSystemRenderer:
   serializedVersion: 6

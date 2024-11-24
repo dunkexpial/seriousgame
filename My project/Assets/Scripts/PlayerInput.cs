@@ -78,19 +78,16 @@ public class PlayerInput : MonoBehaviour
 {
     if (audioSource == null)
     {
-        Debug.LogError("AudioSource não encontrado!");
         return; // o AudioSource não está configurado
     }
 
     if (shootClips == null || shootClips.Length == 0)
     {
-        Debug.LogError("O array shootClips está vazio ou não foi configurado.");
         return; // não há clipes no array
     }
 
     // Escolhe um som aleatório dentro do array
     int randomIndex = Random.Range(0, shootClips.Length);
-    Debug.Log($"Reproduzindo som {randomIndex}: {shootClips[randomIndex].name}");
     audioSource.PlayOneShot(shootClips[randomIndex]); // Toca o som escolhido
 }
 }

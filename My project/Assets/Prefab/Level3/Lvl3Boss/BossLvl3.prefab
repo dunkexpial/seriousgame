@@ -258,6 +258,7 @@ MonoBehaviour:
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
+  shootSound: freezeProjectile
 --- !u!1 &7270671124980800298
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,7 +32,6 @@ public class EnemyProjectile : MonoBehaviour
         if (collider.CompareTag("ProjObstacle"))
         {
             // Only detach particles here if the projectile hits an obstacle
-            soundManager.PlaySoundBasedOnCollision("EnemyProjParede");  // Play "Som 3" for obstacle hit
             DetachParticles();
             Destroy(gameObject); // Destroy on obstacle hit
         }

@@ -15,9 +15,11 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
     public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
 
     private Lvl4BossPhase2Movement bossMovement; // Reference to Lvl4BossPhase2Movement
+    private SoundManager soundManager;
 
     void Start()
     {
+        soundManager = FindAnyObjectByType<SoundManager>();
         // Add a random initial delay for the first shot
         nextShootTime = Time.time + Random.Range(0, baseShootingInterval);
     }
@@ -59,6 +61,8 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
 
         // Add a global random offset to the entire shot cluster
         float globalRandomOffset = Random.Range(-spreadVariance, spreadVariance);
+
+        soundManager.PlaySoundBasedOnCollision("Boss4Projectile"); 
 
         // Shoot the projectiles in all directions with slight randomness
         for (int i = 0; i < projectilesPerShot; i++)

@@ -21,6 +21,7 @@ public class Lvl3BossLogic : MonoBehaviour
     private Type scriptTypeToAdd1;
     private Type scriptTypeToAdd2;
     private Type scriptTypeToRemove;
+    private SoundManager soundManager;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class Lvl3BossLogic : MonoBehaviour
         scriptTypeToAdd1 = Type.GetType(scriptNameToAdd1);
         scriptTypeToAdd2 = Type.GetType(scriptNameToAdd2);
         scriptTypeToRemove = Type.GetType(scriptNameToRemove);
+        soundManager = FindAnyObjectByType<SoundManager>();
 
         // Check if the script types are found
         if (scriptTypeToAdd1 == null)
@@ -144,6 +146,7 @@ public class Lvl3BossLogic : MonoBehaviour
 
         // Move the boss to the new target's position, applying the Y offset
         Vector3 targetPosition = newTarget.transform.position;
+        soundManager.PlaySoundBasedOnCollision("teleportSound");
         transform.position = new Vector3(targetPosition.x, targetPosition.y + teleportYOffset, targetPosition.z);
 
         // Spawn the teleport effect at the old position (where the boss was)
