@@ -9,14 +9,15 @@ public class TeleportToMouse : MonoBehaviour
     public GameObject teleportEffectPrefab; // Prefab to spawn at teleport locations
     public GameObject teleportIndicatorPrefab; // Prefab to display at potential teleport location
     public LayerMask obstacleLayerMask; // Layer mask for obstacles
-
     private float lastTeleportTime = -Mathf.Infinity; // Tracks the last teleport time
     private GameObject teleportIndicatorInstance; // Instance of the teleport indicator
     private SoundManager soundManager;
+    private DialogueUI dialogueUI;
 
     void Start()
     {
         soundManager = FindAnyObjectByType<SoundManager>();
+        dialogueUI = FindAnyObjectByType<DialogueUI>();
         // Instantiate the teleport indicator prefab
         if (teleportIndicatorPrefab != null)
         {
@@ -29,6 +30,9 @@ public class TeleportToMouse : MonoBehaviour
     {
         // Update teleport indicator position
         UpdateTeleportIndicator();
+        // if (DialogueUI.isOpen || PauseMenu.isPaused) return;
+        if ((dialogueUI != null && dialogueUI.isOpen) || PauseMenu.isPaused) return;
+
 
         // Check if the teleport key is pressed and cooldown has elapsed
         if (Input.GetKeyDown(teleportKey) && Time.time >= lastTeleportTime + cooldownTime)
