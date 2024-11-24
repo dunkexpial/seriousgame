@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject iventorySlots;
     public GameObject healthBar;
-    public bool isPaused;
+    public static bool isPaused;
 
     [SerializeField] private AudioSource backgroundMusic; // Música de fundo do nível
     private AudioSource currentMusic; // Música atualmente em reprodução (padrão ou especial)
@@ -30,6 +30,8 @@ public class PauseMenu : MonoBehaviour
     {
         iventorySlots.SetActive(!isPaused);
         healthBar.SetActive(!isPaused);
+
+        if (PlayerManager.GameOver) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

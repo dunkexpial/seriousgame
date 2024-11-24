@@ -9,7 +9,6 @@ public class PlayerManager : MonoBehaviour
     public GameObject GameOverScreen;
     public GameObject iventorySlots;
     public GameObject healthBar;
-
     public static bool reachedBossArea; // Tracks if the player reached the boss area
 
     private void Awake()
