@@ -55,6 +55,7 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleShooting()
     {
+        if (PauseMenu.isPaused) return;
         int currentProjectileIndex = projectileManager.selectedProjectileIndex;
 
         // Check if the fire button is held down and if enough time has passed since the last shot
