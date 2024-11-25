@@ -516,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 230822758312452096}
   iventorySlots: {fileID: 1243580638757006938}
-  healthBar: {fileID: 682722103974473629}
+  healthBar: {fileID: 5746833219793936506}
 --- !u!114 &847083462774139929
 MonoBehaviour:
   m_ObjectHideFlags: 0
