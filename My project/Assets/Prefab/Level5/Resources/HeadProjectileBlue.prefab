@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c20a2857ae5eb44ea27945e71db55e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 400
   increasedSpeed: 400
-  detectionRadius: 100
+  detectionRadius: 25
   childPrefab: {fileID: 1678163245548598275, guid: 1b6557fe2ec3bab4baff5560cea4fd5c, type: 3}
   shootingInaccuracy: 0

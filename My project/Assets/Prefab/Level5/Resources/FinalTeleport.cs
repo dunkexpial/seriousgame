@@ -21,7 +21,7 @@ public class FinalBossMovement : MonoBehaviour
     private GameObject[] teleportTargets;
     private GameObject[] movementTargets;
     private Transform currentMovementTarget;
-    private bool isTeleportMode = true;
+    private bool isTeleportMode = false;
 
     private SoundManager soundManager;
     private AttributesManager attributesManager;
