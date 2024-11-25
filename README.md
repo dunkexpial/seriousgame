@@ -1,4 +1,4 @@
-#*OmniPhysis*
+# *OmniPhysis*
 
 OmniPhysis é um jogo educativo em arte 2.5D (top-down) desenvolvido no Unity, com o objetivo de ensinar conceitos fundamentais de física de forma interativa e intuitiva. O projeto é uma iniciativa do curso de Sistemas de Informação do Centro Universitário do Rio São Francisco, realizado como parte de um programa de extensão universitária sob a orientação da professora Franciely Souza.
 
