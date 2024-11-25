@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc0cc02636d7284b95b7b9d46f7304d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerProjParede: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
+  playerProjParede: {fileID: 8300000, guid: 028b65825ebce144391352e7753c61d7, type: 3}
   enemyDamage: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
   itemPickupSound: {fileID: 8300000, guid: fbcc740bbb284eb4489050f6a5fc5501, type: 3}
   itemHeal: {fileID: 8300000, guid: ef0aa51462de5af4eb0d6c9f6dcbfa85, type: 3}
