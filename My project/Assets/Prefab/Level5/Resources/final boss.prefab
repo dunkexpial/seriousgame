@@ -5124,11 +5124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportTargetTag: Boss3TpPoint
   teleportEffectPrefab: {fileID: 5397887125862687942, guid: ff9011b1262e3b24dbc2748cc3c50171, type: 3}
-  baseTeleportInterval: 2.5
+  baseTeleportInterval: 1.5
   teleportIntervalRandomnessPercentage: 0
   teleportYOffset: 0
   movementTargetTag: Boss3TpPoint
-  maxMovementSpeed: 1000
+  maxMovementSpeed: 1600
   modeSwitchInterval: 10
 --- !u!114 &4610396110195997774
 MonoBehaviour:

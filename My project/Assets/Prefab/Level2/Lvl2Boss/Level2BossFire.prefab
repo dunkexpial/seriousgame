@@ -4882,7 +4882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Boss2FMP
-  maxSpeed: 600
+  maxSpeed: 1200
 --- !u!114 &8270494348587563833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10431,7 +10431,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: fireProjectile
@@ -15281,7 +15281,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: fireProjectile
@@ -20131,7 +20131,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: fireProjectile
@@ -25065,7 +25065,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: fireProjectile
@@ -34745,7 +34745,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: fireProjectile
@@ -39595,7 +39595,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: fireProjectile

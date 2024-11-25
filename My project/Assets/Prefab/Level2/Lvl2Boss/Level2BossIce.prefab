@@ -49,7 +49,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -4899,7 +4899,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -9749,7 +9749,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -14599,7 +14599,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -24531,7 +24531,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -29658,7 +29658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Boss2IMP
-  maxSpeed: 400
+  maxSpeed: 1200
 --- !u!114 &798980405524667630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39710,7 +39710,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
   baseShootingInterval: 1.5
-  shootingIntervalVariance: 1
+  shootingIntervalVariance: 0.5
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
