@@ -64,7 +64,6 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas:
 **Agradecimentos:**
 
    Comunidade Unity
-   
-   Recursos Open Source utilizados no desenvolvimento
+
 
   
