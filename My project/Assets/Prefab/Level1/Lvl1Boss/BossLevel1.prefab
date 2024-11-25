@@ -60,7 +60,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
-  shootSound: 
+  shootSound: Boss1ProjectileMetal
 --- !u!199 &7122788405898014378
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5002,7 +5002,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
-  shootSound: 
+  shootSound: Boss1ProjectileMetal
 --- !u!199 &4724853087143931949
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -9860,7 +9860,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
-  shootSound: 
+  shootSound: Boss1ProjectileMetal
 --- !u!199 &3618647239830321956
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -26519,7 +26519,7 @@ MonoBehaviour:
   shootingIntervalVariance: 2
   ignoreTag: Ignore
   checkForTags: 0
-  shootSound: 
+  shootSound: Boss1ProjectileMetal
 --- !u!199 &1730962645898513041
 ParticleSystemRenderer:
   serializedVersion: 6
