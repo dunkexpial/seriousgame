@@ -61,9 +61,9 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas:
 
    - Franciely Souza
 
-**Agradecimentos**  
+**Agradecimentos:**  
 
-  Comunidade Unity  
+   Comunidade Unity  
 
 
 
