@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: Dialogue LVL5
   m_EditorClassIdentifier: 
   dialogue:
-  - "Incr\xEDvel, Kelvin! Com a Placa Aceleradora de Energia, estamos quase l\xE1!
-    A m\xE1quina agora est\xE1 funcionando a... 90%! S\xF3 falta mais uma pe\xE7a
-    e podemos voltar a fazer sorvete interdimensional!"
+  - "Incr\xEDvel, Kelvin! Com a Placa Aceleradora, estamos quase l\xE1! A m\xE1quina
+    agora est\xE1 funcionando a... 90%! S\xF3 falta mais uma pe\xE7a e podemos voltar
+    a fazer sorvete interdimensional!"
   - "Mas a \xFAltima pe\xE7a n\xE3o vai ser f\xE1cil de pegar. Ela est\xE1 com Omniphysicus,
     o mestre da f\xEDsica total. Ele \xE9 a combina\xE7\xE3o de todos os poderes
     dos vil\xF5es que voc\xEA enfrentou at\xE9 agora. Ele controla a acelera\xE7\xE3o,
     a massa, o espa\xE7o, o tempo e a energia! Imagine um inimigo que pode manipular
     tudo o que voc\xEA j\xE1 aprendeu."
-  - "Omniphysicus \xE9 uma fus\xE3o de todos os desafios anteriores: ele pode alterar
-    a gravidade, manipular a temperatura e at\xE9 distorcer o espa\xE7o e o tempo
-    ao seu redor. Prepare-se para enfrentar algo nunca visto antes."
   - "Omniphysicus \xE9 uma fus\xE3o de todos os desafios anteriores: ele pode alterar
     a gravidade, manipular a temperatura e at\xE9 distorcer o espa\xE7o e o tempo
     ao seu redor. Prepare-se para enfrentar algo nunca visto antes."

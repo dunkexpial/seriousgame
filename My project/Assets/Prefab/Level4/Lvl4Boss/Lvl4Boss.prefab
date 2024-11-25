@@ -10014,7 +10014,7 @@ MonoBehaviour:
   health: 800
   attack: 1
   damageColorDuration: 0.1
-  dropChance: 0.1
+  dropChance: 1
 --- !u!114 &8510306019413709748
 MonoBehaviour:
   m_ObjectHideFlags: 0

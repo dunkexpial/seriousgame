@@ -4983,7 +4983,7 @@ Transform:
   m_GameObject: {fileID: 669694694}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1206.8888, y: 598, z: -10}
+  m_LocalPosition: {x: -1206.7435, y: 598, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10772,6 +10772,18 @@ PrefabInstance:
     - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_text
       value: LEVEL 5 - O Fim
+      objectReference: {fileID: 0}
+    - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
+    - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3384896529924848462, guid: f59ef4036a71a0d45b11b52bd7da49b3, type: 2}
+    - target: {fileID: 280637916907994150, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456686331266077238, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: levelItems.Array.size
