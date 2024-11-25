@@ -50,12 +50,12 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas:
 
 **Desenvolvedores:**
 
-   - Luís Gustavo Souza Lima
-   - Rubriel Luan Marques de Lima
-   - Pedro Victor Correia de Souza Santos
    - Caio Lúcio dos Santos Almeida
-   - João Vítor Almeida dos Santos
    - Erivelton Brasil Batista
+   - João Vítor Almeida dos Santos
+   - Luís Gustavo Souza Lima
+   - Pedro Victor Correia de Souza Santos
+   - Rubriel Luan Marques de Lima
 
 **Orientadora:**
 
