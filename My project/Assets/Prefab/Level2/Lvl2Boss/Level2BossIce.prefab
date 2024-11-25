@@ -29672,7 +29672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 250
+  health: 400
   attack: 10
   damageColorDuration: 0.1
   dropChance: 1

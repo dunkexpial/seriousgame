@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 6333939910367399607, guid: 4ddc0ad437ad5454f84e3c7cde4dba47, type: 3}
-  spawnDelay: 6
+  spawnDelay: 4
   destroyDelay: 0.8
   isBoss: 1
   spawnDistance: 5000
