@@ -42,14 +42,13 @@ public class BasicRangedAI : MonoBehaviour
     public AudioClip enemyshoot;
 
     void Start()
-{
-    player = GameObject.FindGameObjectWithTag("PlayerRaycast");
-    lastSeenPosition = Vector2.zero;
+    {
+        player = GameObject.FindGameObjectWithTag("PlayerRaycast");
+        lastSeenPosition = Vector2.zero;
 
-    // Inicializa o AudioSource
-    audioSource = GetComponent<AudioSource>();
-    
-}
+        // Initialize the AudioSource
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -62,7 +61,24 @@ public class BasicRangedAI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        if (distance < radius && hasLineOfSight)
+        if (distance <= 30f)
+        {
+            // Follow the player's center when within 30f
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+            lastX = direction.x;
+            lastY = direction.y;
+
+            animator.SetFloat("enemyX", direction.x);
+            animator.SetFloat("enemyY", direction.y);
+            animator.SetFloat("Moving", 1);
+
+            lastSeenPosition = player.transform.position;
+            hasSeenPlayer = true;
+
+            sightTimer = 0f; // Reset sight timer since AI is actively following the player
+        }
+        else if (distance < radius && hasLineOfSight)
         {
             // Reset the time since the player was last seen
             timeSinceLastSeen = 0f;
@@ -190,25 +206,6 @@ public class BasicRangedAI : MonoBehaviour
                 }
             }
         }
-    foreach (Vector2 aiCorner in aiCorners)
-    {
-        foreach (Vector2 playerCorner in playerCorners)
-        {
-            Vector2 direction = playerCorner - aiCorner;
-            RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, radius, layerMask); // Limit to AI radius
-
-            if (hit.collider != null)
-            {
-                Debug.DrawRay(aiCorner, direction, hit.collider.CompareTag("PlayerRaycast") ? Color.green : Color.red);
-                if (hit.collider.CompareTag("PlayerRaycast"))
-                {
-                    hasLineOfSight = true;
-                    lastRaycastHitPoint = hit.point;
-                    return;
-                }
-            }
-        }
-    }
 
         foreach (Vector2 playerCorner in playerCorners)
         {

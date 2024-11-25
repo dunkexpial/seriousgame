@@ -5000,7 +5000,7 @@ MonoBehaviour:
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
-  shootSound: 
+  shootSound: Boss4Projectile
 --- !u!114 &8540798287154035057
 MonoBehaviour:
   m_ObjectHideFlags: 0

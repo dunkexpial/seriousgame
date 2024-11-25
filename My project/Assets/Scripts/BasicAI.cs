@@ -51,8 +51,28 @@ public class BasicAI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        // If AI has line of sight to the player
-        if (distance < radius && hasLineOfSight)
+        // If AI is within 30f, follow the center of the player
+        if (distance <= 30f)
+        {
+            hasFirstSightedPlayer = true; // Skip reflex delay since we're focusing on proximity
+            timeSinceLastSeen = 0f; // Reset the timer for the last seen position
+
+            // Move towards the player's center position
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+            lastX = direction.x;
+            lastY = direction.y;
+
+            // Update animator
+            animator.SetFloat("enemyX", direction.x);
+            animator.SetFloat("enemyY", direction.y);
+            animator.SetFloat("Moving", 1);
+
+            // Store the player's position when seen
+            lastSeenPosition = player.transform.position;
+            hasSeenPlayer = true; // Mark that the AI has seen the player
+        }
+        else if (distance < radius && hasLineOfSight)
         {
             timeSeenPlayer += Time.deltaTime; // Increment the timer since AI has line of sight to the player
 
@@ -126,6 +146,7 @@ public class BasicAI : MonoBehaviour
             animator.SetFloat("lastY", lastY);
         }
     }
+
 
     private void FixedUpdate()
     {
