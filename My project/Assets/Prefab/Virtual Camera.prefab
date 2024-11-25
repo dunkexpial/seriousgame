@@ -1676,18 +1676,18 @@ MonoBehaviour:
   itemHeal: {fileID: 8300000, guid: ef0aa51462de5af4eb0d6c9f6dcbfa85, type: 3}
   iceProjectile: {fileID: 8300000, guid: f36d7c971f5824b4aa11ba8562ba8092, type: 3}
   fireProjectile: {fileID: 8300000, guid: 830732500639dc64f906af2975d321a4, type: 3}
-  teleportSound: {fileID: 0}
+  teleportSound: {fileID: 8300000, guid: 3bdd388d3614b2848824474fdd6298cb, type: 3}
   freezeProjectile: {fileID: 8300000, guid: d2d55c95712d1d84b8ae39db7293ced7, type: 3}
-  portalProjectile: {fileID: 0}
-  boss4Projectile: {fileID: 8300000, guid: d2d55c95712d1d84b8ae39db7293ced7, type: 3}
+  portalProjectile: {fileID: 8300000, guid: cff8f63fbbf14494397949fee6c2469d, type: 3}
+  boss4Projectile: {fileID: 8300000, guid: 3ea563069223ed54f9c03a23584a6c04, type: 3}
   boss1ProjectileLaser: {fileID: 8300000, guid: a40e88cd3e79c0f4da30c1ae6a8e4194, type: 3}
-  boss1ProjectileMetal: {fileID: 0}
-  playerSonicSpeed: {fileID: 0}
-  playerTeleport: {fileID: 0}
-  playerDano: {fileID: 0}
-  ficaFrioAi: {fileID: 0}
-  zaWarudo: {fileID: 0}
-  playerQueimando: {fileID: 0}
+  boss1ProjectileMetal: {fileID: 8300000, guid: 67688fec40be25a41937182d1cae8f16, type: 3}
+  playerSonicSpeed: {fileID: 8300000, guid: 0e098c39219d59145aff5b4253e3f1b9, type: 3}
+  playerTeleport: {fileID: 8300000, guid: 4344e9fea6093cb4b81e4d839c27af58, type: 3}
+  playerDano: {fileID: 8300000, guid: 7def31980d23abd4180f68fe29e67a0f, type: 3}
+  ficaFrioAi: {fileID: 8300000, guid: ac5249a4918cba94ca34f7d247da59dc, type: 3}
+  zaWarudo: {fileID: 8300000, guid: 600771d1d5984224c86fb06a65fb341b, type: 3}
+  playerQueimando: {fileID: 8300000, guid: 9a49948c5639b1d4abe0e2713186da8c, type: 3}
 --- !u!1 &1743862029726926880
 GameObject:
   m_ObjectHideFlags: 0
