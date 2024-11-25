@@ -4,9 +4,9 @@ public class EnergyBallProjectile : BaseProjectile
 {
     protected override void Start()
     {
-        damageAmount = 12; // Set the damage specific to this type of projectile
-        speed = 300f;
-        spinSpeed = 360f;
+        damageAmount = 6; // Set the damage specific to this type of projectile
+        speed = 400f;
+        spinSpeed = 720f;
         base.Start();
     }
 

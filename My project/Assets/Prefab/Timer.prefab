@@ -245,4 +245,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1353701793007225297}
   itemName: Timer
-  sprite: {fileID: 21300000, guid: 419327142041fa74e9e7dab85b5899b5, type: 3}
+  sprite: {fileID: 21300000, guid: 60493e8529d718c4ba2506c48c6af130, type: 3}

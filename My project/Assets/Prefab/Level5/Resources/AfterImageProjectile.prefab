@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4620163445893403897}
   - component: {fileID: 796027120585647325}
   - component: {fileID: 4945061409652961036}
-  - component: {fileID: 8509854200743142499}
   - component: {fileID: 5150345735656957954}
   m_Layer: 7
   m_Name: AfterImageProjectile
@@ -116,24 +115,6 @@ MonoBehaviour:
   destroySmokePrefab: {fileID: 5399713483127888893, guid: e421ce6c8de4aac43927ad43d3e8b2be, type: 3}
   createSmokeLifetime: 0.5
   destroySmokeLifetime: 0.25
---- !u!114 &8509854200743142499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637174100589294369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5852220f580143b4596d1207f70c379e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptNameToAdd1: CreaturePhysics
-  scriptNameToAdd2: DestroyAfterTime
-  scriptNameToRemove: BaseProjectile
-  prefabToSpawn: {fileID: 7335022754803324391, guid: 398b189a0fee11743b03ebb4a5c13c97, type: 3}
-  stopRangeX: 30
-  stopRangeY: 30
 --- !u!114 &5150345735656957954
 MonoBehaviour:
   m_ObjectHideFlags: 0

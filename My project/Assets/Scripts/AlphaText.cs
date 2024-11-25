@@ -12,6 +12,7 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
+        PauseMenu.isPaused = false;
         if (levelButtons.Length != levelNames.Length)
         {
             Debug.LogError("Number of buttons and levels do not match!");

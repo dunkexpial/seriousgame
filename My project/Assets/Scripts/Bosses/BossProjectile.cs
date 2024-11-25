@@ -54,10 +54,23 @@ public class BossProjectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
-    {
+    {   
         if (collider.CompareTag("ProjObstacle"))
         {
-            Destroy(gameObject);
+            // Only detach particles here if the projectile hits an obstacle
+            DetachParticles();
+            Destroy(gameObject); // Destroy on obstacle hit
+        }
+    }
+
+    private void DetachParticles()
+    {
+        Transform particleSystemChild = transform.childCount > 0 ? transform.GetChild(0) : null;
+        if (particleSystemChild != null)
+        {
+            particleSystemChild.parent = null;
+            particleSystemChild.localScale = Vector3.one;
+            Destroy(particleSystemChild.gameObject, 2f);
         }
     }
 }

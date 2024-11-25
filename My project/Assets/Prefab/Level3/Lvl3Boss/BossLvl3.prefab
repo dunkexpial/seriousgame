@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 637174100589294369, guid: 84ac909358086554aa50fe236b5338f1, type: 3}
-  minShootDelay: 4
-  maxShootDelay: 8
-  projectileSpeed: 200
+  minShootDelay: 3
+  maxShootDelay: 6
+  projectileSpeed: 250
   spawnPrefab: {fileID: 7444085534275883118, guid: 227555634482865488e7461e02327807, type: 3}
   spawnerTag: SpawnLoc
 --- !u!114 &2661196904687452656
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 5028407266140401135, guid: 5b5abf396a2d9a44ca9232427a4aa4a2, type: 3}
-  health: 200
+  health: 400
   attack: 0
   damageColorDuration: 0.1
   dropChance: 1

@@ -29,7 +29,19 @@ public class Lvl3SpawnProjectile : MonoBehaviour
             }
 
             // Destroy the projectile
-            Destroy(gameObject);
+            DetachParticles();
+            Destroy(gameObject); // Destroy on obstacle hit
+        }
+    }
+
+    private void DetachParticles()
+    {
+        Transform particleSystemChild = transform.childCount > 0 ? transform.GetChild(0) : null;
+        if (particleSystemChild != null)
+        {
+            particleSystemChild.parent = null;
+            particleSystemChild.localScale = Vector3.one;
+            Destroy(particleSystemChild.gameObject, 2f);
         }
     }
 }

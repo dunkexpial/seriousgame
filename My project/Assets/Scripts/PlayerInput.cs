@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
     public Animator animator;
     private PlayerMovement playerMovement;
 
-    private float[] fireRates = { 0.4f, 0.2f, 1.0f, 0.2f, 0.4f }; // Fire rates for each projectile type
+    private float[] fireRates = { 0.4f, 0.2f, 1.0f, 0.2f, 0.3f }; // Fire rates for each projectile type
     private float nextFireTime; // Shared timer for all projectile types
 
     [Header("Audio Settings")]

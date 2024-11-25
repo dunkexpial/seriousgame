@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 300
+  health: 400
   attack: 0
   damageColorDuration: 0.1
   dropChance: 1
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 6217c72f027493d47ace63925674c4de, type: 3}
-  baseShootingInterval: 3
+  baseShootingInterval: 2
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0

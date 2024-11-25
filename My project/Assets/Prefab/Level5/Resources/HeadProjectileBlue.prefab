@@ -78,7 +78,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 7
+    widthMultiplier: 5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -145,7 +145,7 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!1 &3356472009369231171
+--- !u!1 &4178798820770063083
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,10 +153,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4478369314587353884}
-  - component: {fileID: 166526551551577225}
-  - component: {fileID: 2460314990211557865}
-  - component: {fileID: 3833721601409876746}
+  - component: {fileID: 7488697599713178377}
+  - component: {fileID: 906654841187777477}
+  - component: {fileID: 3501449418131388817}
+  - component: {fileID: 1920557254305680551}
+  - component: {fileID: 4361469114750652349}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -164,13 +165,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4478369314587353884
+--- !u!4 &7488697599713178377
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356472009369231171}
+  m_GameObject: {fileID: 4178798820770063083}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -179,13 +180,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2359581678614341655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &166526551551577225
+--- !u!114 &906654841187777477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178798820770063083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93334f502c9be1469db8c9394bd179c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 1500
+--- !u!114 &3501449418131388817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178798820770063083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54073b44f413533408c90b6367328933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: -15, z: 0}
+--- !u!212 &1920557254305680551
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356472009369231171}
+  m_GameObject: {fileID: 4178798820770063083}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -225,33 +252,20 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2460314990211557865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356472009369231171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54073b44f413533408c90b6367328933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: -15, z: 0}
---- !u!96 &3833721601409876746
+--- !u!96 &4361469114750652349
 TrailRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356472009369231171}
+  m_GameObject: {fileID: 4178798820770063083}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -290,7 +304,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 7
+    widthMultiplier: 5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -304,7 +318,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.3043518
+        time: 0.29263306
         value: 0
         inSlope: 0
         outSlope: 0
@@ -318,7 +332,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0, g: 0, b: 0, a: 0.7058824}
-      key1: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0.7058824}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -334,7 +348,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 7132
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -344,7 +358,7 @@ TrailRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -388,11 +402,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -998, y: 50, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5135013225333242493}
-  - {fileID: 4478369314587353884}
+  - {fileID: 7488697599713178377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &36526219382652852
@@ -537,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c20a2857ae5eb44ea27945e71db55e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speed: 200
   increasedSpeed: 400
-  detectionRadius: 25
+  detectionRadius: 150
   childPrefab: {fileID: 1678163245548598275, guid: 1b6557fe2ec3bab4baff5560cea4fd5c, type: 3}
-  shootingInaccuracy: 0
+  shootingInaccuracy: 0.2

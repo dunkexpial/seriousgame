@@ -10430,7 +10430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 1.5
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -15280,7 +15280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 1.5
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -20130,7 +20130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 1.5
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -25064,7 +25064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 1.5
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -34744,7 +34744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 1.5
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -39594,7 +39594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 47b92c1200aae3741983468d92db1e78, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 1.5
   shootingIntervalVariance: 1
   ignoreTag: IgnoreTag
   checkForTags: 0

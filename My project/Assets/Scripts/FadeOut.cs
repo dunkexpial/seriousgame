@@ -4,6 +4,8 @@ using UnityEngine;
 public class FadeOut : MonoBehaviour
 {
     public float fadeDuration = 3f; // Duration of the fade effect
+    public bool shouldWaitBeforeFade = false; // Flag to enable/disable wait before fade
+    public float waitBeforeFade = 0f; // Time to wait before starting the fade, if enabled
 
     private SpriteRenderer spriteRenderer;
 
@@ -22,6 +24,11 @@ public class FadeOut : MonoBehaviour
 
     private IEnumerator FadeOutRoutine()
     {
+        if (shouldWaitBeforeFade && waitBeforeFade > 0f)
+        {
+            yield return new WaitForSeconds(waitBeforeFade);
+        }
+
         float elapsedTime = 0f;
         Color originalColor = spriteRenderer.color;
 

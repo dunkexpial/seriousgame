@@ -23,7 +23,7 @@ public class ShadowController : MonoBehaviour
             // Keep the shadow in the offset position relative to the parent
             transform.position = parentTransform.position + offset;
             // Optional: Match the rotation of the parent if needed, or keep it static
-            transform.rotation = Quaternion.identity; // Keeps the shadow from rotating
+            transform.rotation = parentTransform.rotation; // Keeps the shadow from rotating
         }
     }
 }
