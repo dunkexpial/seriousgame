@@ -26,9 +26,9 @@ Transform:
   m_GameObject: {fileID: 2890772544373922561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.083333336}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 193650871062379223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,8 +114,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 188.7, y: 260, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100, y: 100, z: 20}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 367615701061017001}
   m_Father: {fileID: 0}
@@ -208,14 +208,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.34, y: 9.29}
+    oldSize: {x: 0.27, y: 0.27}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12, y: 12}
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &4075994594538357657
 MonoBehaviour:
@@ -246,4 +246,3 @@ MonoBehaviour:
   visualCue: {fileID: 2890772544373922561}
   itemName: Control Panel
   sprite: {fileID: 21300000, guid: 866147a6a3a599742b3205b078f0849a, type: 3}
-  nextScene: {fileID: 4169996109374862918, guid: 02866bd697cdb8649960556f0be601d7, type: 3}
