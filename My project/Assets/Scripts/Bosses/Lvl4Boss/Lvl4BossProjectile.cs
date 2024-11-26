@@ -4,11 +4,16 @@ public class Lvl4BossProjectile : MonoBehaviour
 {
     public float speed = 10f; // Speed of the projectile
     public float inaccuracy = 10f; // Angle of inaccuracy in degrees
+    public float lifetime = 1f; // Lifetime of the projectile in seconds
     private bool hasRicocheted = false; // To ensure the ricochet happens only once
     private Vector2 direction; // Current movement direction of the projectile
+    private float lifetimeTimer; // Tracks elapsed time since the projectile was spawned
 
     void Start()
     {
+        // Initialize the lifetime timer
+        lifetimeTimer = lifetime;
+
         // Set the initial direction toward the player with some inaccuracy
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -27,12 +32,19 @@ public class Lvl4BossProjectile : MonoBehaviour
     {
         // Move the projectile in the current direction
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
+
+        // Decrease the lifetime timer
+        lifetimeTimer -= Time.deltaTime;
+
+        // Destroy the projectile if the lifetime expires
+        if (lifetimeTimer <= 0f)
+        {
+            DestroyProjectile();
+        }
     }
 
-    // Trigger-based collision with obstacles
     private void OnTriggerEnter2D(Collider2D collider)
     {
-
         if (collider.CompareTag("ProjObstacle"))
         {
             if (!hasRicocheted)
@@ -61,19 +73,24 @@ public class Lvl4BossProjectile : MonoBehaviour
             }
             else
             {
-                // If the projectile has already ricocheted, destroy it but preserve the "Particle" child
-                Transform particleChild = transform.Find("Particle");
-                if (particleChild != null)
-                {
-                    // Detach and preserve the "Particle" child before destroying the projectile
-                    particleChild.SetParent(null);
-                    Destroy(particleChild.gameObject, 2f); // Destroy the particle after 2 seconds
-                }
-
-                // Destroy the projectile itself
-                Destroy(gameObject);
+                DestroyProjectile();
             }
         }
+    }
+
+    private void DestroyProjectile()
+    {
+        // If the projectile has already ricocheted, destroy it but preserve the "Particle" child
+        Transform particleChild = transform.Find("Particle");
+        if (particleChild != null)
+        {
+            // Detach and preserve the "Particle" child before destroying the projectile
+            particleChild.SetParent(null);
+            Destroy(particleChild.gameObject, 2f); // Destroy the particle after 2 seconds
+        }
+
+        // Destroy the projectile itself
+        Destroy(gameObject);
     }
 
     // Helper method to count how many projectiles are active

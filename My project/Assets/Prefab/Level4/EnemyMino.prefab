@@ -68,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.04}
+  m_Offset: {x: 0, y: -0.01}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.01}
+  m_Size: {x: 0.18, y: 0.08}
   m_EdgeRadius: 0
 --- !u!114 &3205613957225234433
 MonoBehaviour:
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 1938920193642314640}
   - component: {fileID: 2899496135048462090}
   - component: {fileID: 4391778498586327667}
-  - component: {fileID: 6679078275034134782}
+  - component: {fileID: 4213760762774236374}
   m_Layer: 7
   m_Name: EnemyMino
   m_TagString: Enemy
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  health: 30
+  health: 25
   attack: 1
   damageColorDuration: 0.1
   dropChance: 0.1
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9b476fea3e934f8519c69c25c65b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 70
   radius: 999
   hasLineOfSight: 0
   layerMask:
@@ -318,7 +318,7 @@ MonoBehaviour:
   prefabDown: {fileID: 5397887125862687942, guid: 77b9650a0c6fdc04f97d4a4c1951f983, type: 3}
   prefabLeft: {fileID: 5397887125862687942, guid: 5ef6f3083793ce847b5f336e415a162b, type: 3}
   prefabRight: {fileID: 5397887125862687942, guid: 50f1e1251311ef044ae2c82ffafabb7e, type: 3}
-  multiplier: 3
+  multiplier: 2
 --- !u!114 &7709751548794272514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,8 +395,8 @@ MonoBehaviour:
   destroySmokePrefab: {fileID: 5399713483127888893, guid: 049b532a195837e4398fa81289332758, type: 3}
   createSmokeLifetime: 0.5
   destroySmokeLifetime: 3
---- !u!58 &6679078275034134782
-CircleCollider2D:
+--- !u!61 &4213760762774236374
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -428,5 +428,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.35, y: 0.31}
+    newSize: {x: 0.14, y: 0.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Size: {x: 0.25, y: 0.2}
+  m_EdgeRadius: 0

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -4898,8 +4898,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -9748,8 +9748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -14598,8 +14598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -24530,8 +24530,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile
@@ -29658,7 +29658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Boss2IMP
-  maxSpeed: 1200
+  maxSpeed: 400
 --- !u!114 &798980405524667630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29672,7 +29672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 400
+  health: 250
   attack: 10
   damageColorDuration: 0.1
   dropChance: 1
@@ -39709,8 +39709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: iceProjectile

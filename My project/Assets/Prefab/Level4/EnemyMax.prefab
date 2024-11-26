@@ -343,7 +343,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 2251668863378048992}
-  shootCooldown: 2
+  shootCooldown: 4
   sightDelay: 0.75
   useLastSeenPosition: 1
   enemyshoot: {fileID: 8300000, guid: 3ea563069223ed54f9c03a23584a6c04, type: 3}

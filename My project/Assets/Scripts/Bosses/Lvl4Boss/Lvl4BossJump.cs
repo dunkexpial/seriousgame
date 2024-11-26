@@ -15,7 +15,7 @@ public class BossJumpSlam : MonoBehaviour
     [Header("Player Targeting")]
     public string playerTag = "Player";     // Tag used to find the player
     public Vector3 slamPositionOffset;      // Offset applied to the target position
-    public float followSpeed = 250f;          // How fast the boss follows the player
+    public float followSpeed = 350f;          // How fast the boss follows the player
     public Vector3 followOffset = new Vector3(0, 0, 0); // Default offset X: 0, Y: -10, Z: 0
 
 

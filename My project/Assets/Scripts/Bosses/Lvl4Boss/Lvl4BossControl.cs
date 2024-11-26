@@ -10,7 +10,7 @@ public class Lvl4BossControl : MonoBehaviour
     private BossJumpSlam jumpSlam;
 
     private float lastJumpSlamTime = -Mathf.Infinity; // Tracks the time of the last jump slam
-    private float jumpSlamCooldown = 3f; // Cooldown duration in seconds
+    private float jumpSlamCooldown = 5f; // Cooldown duration in seconds
 
     void Start()
     {

@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 300
+  speed: 250
   lifespan: 5
   rotationSpeed: 400
   inaccuracyAngle: 10

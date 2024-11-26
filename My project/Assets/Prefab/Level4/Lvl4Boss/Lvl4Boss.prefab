@@ -9823,7 +9823,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4861990300295048670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10093,7 +10093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  detectionDistance: 125
+  detectionDistance: 200
 --- !u!114 &4052246606667947530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10122,7 +10122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 5c102e1c47e15b84d87c38c48f546fde, type: 3}
-  baseShootingInterval: 0.2
+  baseShootingInterval: 0.15
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -10141,9 +10141,9 @@ MonoBehaviour:
   projectiles:
   - {fileID: 637174100589294369, guid: 310c6798e35267d49beb248fedd67669, type: 3}
   baseShootingInterval: 0.4
-  shootingIntervalVariance: 0.2
-  projectilesPerShot: 20
-  projectileSpeed: 200
+  shootingIntervalVariance: 0
+  projectilesPerShot: 25
+  projectileSpeed: 400
   spreadVariance: 40
   ignoreTag: IgnoreTag
   checkForTags: 0
