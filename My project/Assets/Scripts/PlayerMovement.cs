@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject frozenEffectPrefab;
     [SerializeField] private GameObject afterimagePrefab;
     [SerializeField] private float afterimageInterval = 0.2f;
-    [SerializeField] private float cooldownDuration = 10f;
-    [SerializeField] private float powerUpDuration = 5f;
+    [SerializeField] private float cooldownDuration = 3f;
+    [SerializeField] private float powerUpDuration = 0.5f;
 
     private GameObject frozenEffectInstance;
     private List<GameObject> afterimages = new List<GameObject>();
@@ -202,8 +202,8 @@ public class PlayerMovement : MonoBehaviour
 
         isPowerUpActive = true;
         powerUpTimer = powerUpDuration;
-        moveSpeed *= 2;
-        animator.speed *= 2;
+        moveSpeed = 400;
+        animator.speed = 400;
         soundManager.PlaySoundBasedOnCollision("PlayerSonicSpeed");
 
         cooldownTimer = cooldownDuration;
@@ -230,8 +230,8 @@ public class PlayerMovement : MonoBehaviour
     void DeactivatePowerUp()
     {
         isPowerUpActive = false;
-        moveSpeed /= 2;
-        animator.speed /= 2;
+        moveSpeed = 100;
+        animator.speed = 1;
 
         afterimages.Clear();
     }

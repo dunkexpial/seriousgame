@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 643d6481ed5491e41abc05bcd3bf39c7, type: 3}
-  baseShootingInterval: 4
+  baseShootingInterval: 2
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -5124,7 +5124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportTargetTag: Boss3TpPoint
   teleportEffectPrefab: {fileID: 5397887125862687942, guid: ff9011b1262e3b24dbc2748cc3c50171, type: 3}
-  baseTeleportInterval: 2.4
+  teleportModePrefab: {fileID: 7932840307853992168, guid: c4ddf6dacc735e84aafe28959fb8c637, type: 3}
+  baseTeleportInterval: 2
   teleportIntervalRandomnessPercentage: 0
   teleportYOffset: 0
   movementTargetTag: Boss3TpPoint

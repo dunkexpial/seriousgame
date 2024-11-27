@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Lvl4BossPhase2Shooting : MonoBehaviour
 {
-    public GameObject[] projectiles; // Array of projectile prefabs
+    public GameObject[] projectiles;
     public float baseShootingInterval = 1f; // Base time between shots
     public float shootingIntervalVariance = 0.5f; // Variance for shooting interval
-    private float nextShootTime; // Time when the next shot can be fired
+    private float nextShootTime;
     public int projectilesPerShot = 8; // Number of projectiles to shoot per shot
     public float projectileSpeed = 5f; // Speed of the projectiles
     public float spreadVariance = 10f; // Amount of angle variation for projectile spread
-    public string ignoreTag = "IgnoreTag";  // Optional tag to ignore for starting shooting
-    public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
+    public string ignoreTag = "IgnoreTag";
+    public bool checkForTags = true;
 
-    private Lvl4BossPhase2Movement bossMovement; // Reference to Lvl4BossPhase2Movement
+    private Lvl4BossPhase2Movement bossMovement;
     private SoundManager soundManager;
 
     void Start()
@@ -45,7 +45,6 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
             }
         }
 
-        // Check if it's time to shoot
         if (Time.time >= nextShootTime)
         {
             Shoot();

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcde56388f3a4574fb9d3684d07625d2, type: 3}
+  m_Name: Hints
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Use WASD para controlar a movimenta\xE7\xE3o de Kelvin Celsius!\nA agilidade
+    ser\xE1 importante para se desviar dos ataques que os mestres da f\xEDsica poder\xE3o
+    usar contra voc\xEA!"
+  - "Voc\xEA pode usar os n\xFAmeros do teclado para trocar de proj\xE9til e achar
+    qual voc\xEA prefere para a situa\xE7\xE3o. Inicialmente voc\xEA possui a borracha,
+    bolinha de papel e avi\xE3o de papel, cada um com suas caracter\xEDsticas pr\xF3prias."
+  - Boa sorte e se divirta!
+  responses: []

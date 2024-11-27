@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDrop: []
-  health: 400
+  health: 250
   attack: 0
   damageColorDuration: 0.1
   dropChance: 1

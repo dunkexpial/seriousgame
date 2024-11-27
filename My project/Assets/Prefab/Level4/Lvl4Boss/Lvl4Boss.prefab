@@ -10143,7 +10143,7 @@ MonoBehaviour:
   baseShootingInterval: 0.4
   shootingIntervalVariance: 0
   projectilesPerShot: 25
-  projectileSpeed: 400
+  projectileSpeed: 200
   spreadVariance: 40
   ignoreTag: IgnoreTag
   checkForTags: 0

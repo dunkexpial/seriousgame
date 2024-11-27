@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; // Include if crosshair is a UI element
 
 public class TeleportToMouse : MonoBehaviour
 {
@@ -9,8 +10,14 @@ public class TeleportToMouse : MonoBehaviour
     public GameObject teleportEffectPrefab; // Prefab to spawn at teleport locations
     public GameObject teleportIndicatorPrefab; // Prefab to display at potential teleport location
     public LayerMask obstacleLayerMask; // Layer mask for obstacles
+
+    [Header("UI Elements")]
+    public Image crosshairImage; // Crosshair as a UI element (Optional)
+    public SpriteRenderer crosshairSpriteRenderer; // Crosshair as a sprite (Optional)
+
     private float lastTeleportTime = -Mathf.Infinity; // Tracks the last teleport time
     private GameObject teleportIndicatorInstance; // Instance of the teleport indicator
+    private SpriteRenderer teleportIndicatorRenderer; // Renderer to change indicator color
     private SoundManager soundManager;
     private DialogueUI dialogueUI;
 
@@ -18,11 +25,18 @@ public class TeleportToMouse : MonoBehaviour
     {
         soundManager = FindAnyObjectByType<SoundManager>();
         dialogueUI = FindAnyObjectByType<DialogueUI>();
+
         // Instantiate the teleport indicator prefab
         if (teleportIndicatorPrefab != null)
         {
             teleportIndicatorInstance = Instantiate(teleportIndicatorPrefab);
             teleportIndicatorInstance.SetActive(false);
+            teleportIndicatorRenderer = teleportIndicatorInstance.GetComponent<SpriteRenderer>();
+
+            if (teleportIndicatorRenderer == null)
+            {
+                Debug.LogError("Teleport indicator prefab must have a SpriteRenderer component.");
+            }
         }
     }
 
@@ -30,9 +44,9 @@ public class TeleportToMouse : MonoBehaviour
     {
         // Update teleport indicator position
         UpdateTeleportIndicator();
-        // if (DialogueUI.isOpen || PauseMenu.isPaused) return;
-        if ((dialogueUI != null && dialogueUI.isOpen) || PauseMenu.isPaused) return;
 
+        // Skip input processing if dialogue or pause menu is active
+        if ((dialogueUI != null && dialogueUI.isOpen) || PauseMenu.isPaused) return;
 
         // Check if the teleport key is pressed and cooldown has elapsed
         if (Input.GetKeyDown(teleportKey) && Time.time >= lastTeleportTime + cooldownTime)
@@ -42,6 +56,9 @@ public class TeleportToMouse : MonoBehaviour
                 lastTeleportTime = Time.time;
             }
         }
+
+        // Update indicator color based on cooldown
+        UpdateIndicatorColor();
     }
 
     void UpdateTeleportIndicator()
@@ -106,5 +123,31 @@ public class TeleportToMouse : MonoBehaviour
 
         teleportIndicatorInstance.SetActive(false);
         return true; // Successful teleport
+    }
+
+    void UpdateIndicatorColor()
+    {
+        if (teleportIndicatorRenderer == null)
+        {
+            return;
+        }
+
+        // Calculate cooldown progress (0: just teleported, 1: cooldown complete)
+        float elapsedTime = Time.time - lastTeleportTime;
+        float progress = Mathf.Clamp01(elapsedTime / cooldownTime);
+
+        // Lerp the color from red (teleport cooldown) to white (ready to teleport)
+        Color indicatorColor = Color.Lerp(Color.red, Color.white, progress);
+        teleportIndicatorRenderer.color = indicatorColor;
+
+        // Update crosshair color
+        if (crosshairImage != null)
+        {
+            crosshairImage.color = indicatorColor;
+        }
+        else if (crosshairSpriteRenderer != null)
+        {
+            crosshairSpriteRenderer.color = indicatorColor;
+        }
     }
 }

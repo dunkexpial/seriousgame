@@ -6,6 +6,7 @@ public class FinalBossMovement : MonoBehaviour
     [Header("Teleportation Settings")]
     public string teleportTargetTag = "TeleportTarget";
     public GameObject teleportEffectPrefab;
+    public GameObject teleportModePrefab; // Prefab to spawn during teleport mode
     public float baseTeleportInterval = 2f;
     public float teleportIntervalRandomnessPercentage = 0.5f;
     public float teleportYOffset = 2f;
@@ -16,12 +17,14 @@ public class FinalBossMovement : MonoBehaviour
     private float minMovementSpeed = 1f;
 
     [Header("Mode Switching Settings")]
-    public float modeSwitchInterval = 10f; // Time interval to switch between modes
+    public float modeSwitchInterval = 10f;
 
     private GameObject[] teleportTargets;
     private GameObject[] movementTargets;
     private Transform currentMovementTarget;
     private bool isTeleportMode = false;
+
+    private GameObject activeTeleportModePrefab; // Reference to the active prefab
 
     private SoundManager soundManager;
     private AttributesManager attributesManager;
@@ -47,11 +50,19 @@ public class FinalBossMovement : MonoBehaviour
         if (!isTeleportMode)
         {
             Debug.Log("Switching to Movement Mode");
+            if (activeTeleportModePrefab != null)
+            {
+                Destroy(activeTeleportModePrefab);
+            }
             StartCoroutine(MoveToRandomTarget());
         }
         else
         {
             Debug.Log("Switching to Teleport Mode");
+            if (teleportModePrefab != null)
+            {
+                activeTeleportModePrefab = Instantiate(teleportModePrefab, transform.position, Quaternion.identity, transform);
+            }
             InvokeRepeating(nameof(Teleport), 0f, GetRandomizedTeleportInterval());
         }
     }
@@ -61,6 +72,10 @@ public class FinalBossMovement : MonoBehaviour
         if (isTeleportMode)
         {
             Debug.Log("Starting in Teleport Mode");
+            if (teleportModePrefab != null)
+            {
+                activeTeleportModePrefab = Instantiate(teleportModePrefab, transform.position, Quaternion.identity, transform);
+            }
             InvokeRepeating(nameof(Teleport), 0f, GetRandomizedTeleportInterval());
         }
         else

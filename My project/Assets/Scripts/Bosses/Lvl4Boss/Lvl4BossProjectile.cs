@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Lvl4BossProjectile : MonoBehaviour
 {
-    public float speed = 10f; // Speed of the projectile
-    public float inaccuracy = 10f; // Angle of inaccuracy in degrees
-    public float lifetime = 1f; // Lifetime of the projectile in seconds
-    private bool hasRicocheted = false; // To ensure the ricochet happens only once
-    private Vector2 direction; // Current movement direction of the projectile
-    private float lifetimeTimer; // Tracks elapsed time since the projectile was spawned
+    public float speed = 10f;
+    public float inaccuracy = 10f;
+    public float lifetime = 1f;
+    private bool hasRicocheted = false;
+    private Vector2 direction;
+    private float lifetimeTimer;
 
     void Start()
     {
@@ -23,7 +23,6 @@ public class Lvl4BossProjectile : MonoBehaviour
         }
         else
         {
-            // Default to east if no player is found
             direction = Vector2.right;
         }
     }
@@ -51,23 +50,23 @@ public class Lvl4BossProjectile : MonoBehaviour
             {
                 hasRicocheted = true;
 
-                // Calculate a new inaccurate direction toward the player after ricochet
-                GameObject player = GameObject.FindWithTag("Player");
-                if (player != null)
-                {
-                    Vector2 playerDirection = (player.transform.position - transform.position).normalized;
-                    direction = Quaternion.Euler(0, 0, Random.Range(-inaccuracy, inaccuracy)) * playerDirection;
+                // Calculate the ricochet direction
+                Vector2 collisionNormal = collider.GetComponent<Collider2D>().ClosestPoint(transform.position) - (Vector2)transform.position;
+                collisionNormal = collisionNormal.normalized;
+                direction = Vector2.Reflect(direction, collisionNormal);
 
-                    // Clone the projectile, but only if there are fewer than 20 projectiles
-                    if (CountActiveProjectiles() < 20)
+                // Apply some inaccuracy to the ricochet direction
+                direction = Quaternion.Euler(0, 0, Random.Range(-inaccuracy, inaccuracy)) * direction;
+
+                // Clone the projectile, but only if there are fewer than 20 projectiles
+                if (CountActiveProjectiles() < 20)
+                {
+                    GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
+                    Lvl4BossProjectile cloneScript = clone.GetComponent<Lvl4BossProjectile>();
+                    if (cloneScript != null)
                     {
-                        GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
-                        Lvl4BossProjectile cloneScript = clone.GetComponent<Lvl4BossProjectile>();
-                        if (cloneScript != null)
-                        {
-                            cloneScript.hasRicocheted = true; // Prevent the clone from ricocheting again
-                            cloneScript.direction = Quaternion.Euler(0, 0, Random.Range(-inaccuracy, inaccuracy)) * playerDirection;
-                        }
+                        cloneScript.hasRicocheted = true; // Prevent the clone from ricocheting again
+                        cloneScript.direction = Quaternion.Euler(0, 0, Random.Range(-inaccuracy, inaccuracy)) * direction;
                     }
                 }
             }
@@ -93,7 +92,6 @@ public class Lvl4BossProjectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Helper method to count how many projectiles are active
     private int CountActiveProjectiles()
     {
         return FindObjectsOfType<Lvl4BossProjectile>().Length;

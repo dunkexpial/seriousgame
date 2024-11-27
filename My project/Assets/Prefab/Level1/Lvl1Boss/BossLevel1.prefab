@@ -15245,13 +15245,12 @@ GameObject:
   - component: {fileID: 2696220758812435028}
   - component: {fileID: 5038595099649796297}
   - component: {fileID: 6596967054849553842}
-  - component: {fileID: 3167010863002005006}
   - component: {fileID: 261959951287513171}
   - component: {fileID: 2432346507215949226}
   - component: {fileID: 5415866734245788487}
   m_Layer: 7
   m_Name: BossForceFieldHeadBottom
-  m_TagString: Enemy
+  m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15353,29 +15352,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &3167010863002005006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3227844472392802577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossDrop: []
-  health: 9999
-  attack: 0
-  damageColorDuration: 0
-  dropChance: 1
 --- !u!114 &261959951287513171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15431,13 +15413,12 @@ GameObject:
   - component: {fileID: 3154455350091745020}
   - component: {fileID: 5194254011959767571}
   - component: {fileID: 8420362368693723639}
-  - component: {fileID: 9181240417793029776}
   - component: {fileID: 3018089548799980902}
   - component: {fileID: 7908649162506974748}
   - component: {fileID: 5399888168256601104}
   m_Layer: 7
   m_Name: BossForceField
-  m_TagString: Enemy
+  m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15539,29 +15520,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &9181240417793029776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3309555029072938735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossDrop: []
-  health: 9999
-  attack: 0
-  damageColorDuration: 0
-  dropChance: 1
 --- !u!114 &3018089548799980902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21459,8 +21423,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.2
-  shootingIntervalVariance: 0.1
+  baseShootingInterval: 0.5
+  shootingIntervalVariance: 0.5
   ignoreTag: Boss1Head
   checkForTags: 1
   shootSound: Boss1ProjectileLaser
@@ -31642,13 +31606,12 @@ GameObject:
   - component: {fileID: 5115102756268703902}
   - component: {fileID: 4290922770360546411}
   - component: {fileID: 6365301141800713293}
-  - component: {fileID: 4459666703471168006}
   - component: {fileID: 7316941271660850873}
   - component: {fileID: 8765637581963255992}
   - component: {fileID: 935025002800058313}
   m_Layer: 7
   m_Name: BossForceFieldHeadTop
-  m_TagString: Enemy
+  m_TagString: ProjObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31750,29 +31713,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &4459666703471168006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7942540470606386039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossDrop: []
-  health: 9999
-  attack: 0
-  damageColorDuration: 0
-  dropChance: 1
 --- !u!114 &7316941271660850873
 MonoBehaviour:
   m_ObjectHideFlags: 0

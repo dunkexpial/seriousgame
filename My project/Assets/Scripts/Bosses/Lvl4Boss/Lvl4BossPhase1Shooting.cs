@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Lvl4BossPhase1Shooting : MonoBehaviour
 {
-    public GameObject[] projectiles; // Array of projectile prefabs
+    public GameObject[] projectiles;
     public float baseShootingInterval = 1f; // Base time between shots
     public float shootingIntervalVariance = 0.5f; // Variance for shooting interval
     private float nextShootTime; // Time when the next shot can be fired
     private GameObject player; // Reference to the player
-    public string ignoreTag = "IgnoreTag";  // Optional tag to ignore for starting shooting
+    public string ignoreTag = "IgnoreTag";
     public bool checkForTags = true;  // Flag to enable/disable checking for objects with the ignoreTag
 
     private Lvl4BossPhase1Movement bossMovement; // Reference to Lvl4BossPhase1Movement

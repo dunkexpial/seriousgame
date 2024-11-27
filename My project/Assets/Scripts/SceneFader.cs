@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Include the TextMeshPro namespace
+using TMPro;
 using System.Collections;
 
 public class SceneFader : MonoBehaviour
