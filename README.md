@@ -41,10 +41,11 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas:
 
 ## 🚀 **Como Jogar**
 
-    Clone o repositório: git clone https://github.com/dunkexpial/seriousgame.git
+**Clone o repositório:** 
+    git clone https://github.com/dunkexpial/seriousgame.git
 
-    Abra o projeto no Unity. 
-    Compile e execute o jogo diretamente no editor ou exporte para sua plataforma preferida.
+Abra o projeto no Unity. 
+Compile e execute o jogo diretamente no editor ou exporte para sua plataforma preferida.
     
 ## 🧠 **Créditos**
 
