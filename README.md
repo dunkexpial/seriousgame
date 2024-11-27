@@ -30,7 +30,7 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas:
    - Kit de Desenvolvimento: .NET C# Dev Kit
    - Controle de Versão: Git e GitHub
    - Colaboração: Trello e Google Drive para organização e gerenciamento de tarefas
-   - Design de Arte 2.5D: Ferramentas como Photoshop e Blender para a criação de assets visuais.
+   - Design de Arte 2.5D: Ferramentas do Photoshop para a criação de assets visuais.
 
 ## 🌟 **Características**
 
