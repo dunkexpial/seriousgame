@@ -76,6 +76,28 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    public void EnergyBeamClusterfuck()
+    {
+        if (!isInvincible)
+        {
+            HealthManager.health--;
+            soundManager.PlaySoundBasedOnCollision("PlayerQueimando");
+            activeDoubleDamageEffect = Instantiate(doubleDamageEffectPrefab, transform);
+            StartCoroutine(DoubleDamageSequence());
+        }
+        if (HealthManager.health <= 0)
+        {
+            GetComponent<Animator>().SetLayerWeight(1, 0);
+            HandleGameOverCleanup();
+            PlayerManager.GameOver = true;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(TakeDamage());
+        }
+    }
+
     private void HandleSpecialProjectileEffects(GameObject projectile)
     {
         // Slow effect for IceProjectile
@@ -128,7 +150,7 @@ public class PlayerCollision : MonoBehaviour
         Destroy(projectile);
     }
 
-    private IEnumerator TakeDamage()
+    public IEnumerator TakeDamage()
     {
         isInvincible = true;
         GetComponent<Animator>().SetLayerWeight(1, 1);

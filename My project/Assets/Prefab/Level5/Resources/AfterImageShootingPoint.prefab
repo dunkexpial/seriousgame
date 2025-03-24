@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: c73fa11fb0095454e94fac4864e9aa1d, type: 3}
-  baseShootingInterval: 0.5
-  shootingIntervalVariance: 0
+  baseShootingInterval: 1
+  shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
   shootSound: Boss4Projectile

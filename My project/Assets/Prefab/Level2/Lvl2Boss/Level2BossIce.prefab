@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 2
   shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -4898,7 +4898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 2
   shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -9748,7 +9748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 2
   shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -14598,7 +14598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 2
   shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -24530,7 +24530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 2
   shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -29522,6 +29522,11 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: 183
   rotationSpeed: 5
+  rotationSpeed360: 60
+  minSwitchInterval: 10
+  maxSwitchInterval: 10
+  enableAlternation: 0
+  startRotationAngle: 0
 --- !u!1 &6269414798776143356
 GameObject:
   m_ObjectHideFlags: 0
@@ -29643,6 +29648,7 @@ Transform:
   - {fileID: 6551102861374099967}
   - {fileID: 1146288245466496058}
   - {fileID: 1383735393931770381}
+  - {fileID: 6594960300063880172}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7528355737601230444
@@ -29658,7 +29664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Boss2IMP
-  maxSpeed: 400
+  maxSpeed: 350
 --- !u!114 &798980405524667630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29833,6 +29839,11 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: 176
   rotationSpeed: 5
+  rotationSpeed360: 60
+  minSwitchInterval: 10
+  maxSwitchInterval: 10
+  enableAlternation: 0
+  startRotationAngle: 0
 --- !u!1 &7231803975515803204
 GameObject:
   m_ObjectHideFlags: 0
@@ -39709,7 +39720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 198a0082c61863745a6f6978893b9e47, type: 3}
-  baseShootingInterval: 1
+  baseShootingInterval: 2
   shootingIntervalVariance: 0.25
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -44629,3 +44640,53 @@ MonoBehaviour:
   playerTag: Player
   animator: {fileID: 0}
   spriteRenderer: {fileID: 5069392714713763612}
+--- !u!1 &8391608228382310134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6594960300063880172}
+  - component: {fileID: 4858926840943130365}
+  m_Layer: 7
+  m_Name: IceMachine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6594960300063880172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391608228382310134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.19749999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6105397250275586604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4858926840943130365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391608228382310134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dfcd457158cee4faa502c09f863397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 637174100589294369, guid: 05ffb6b199c91cb4381a6da803f1411a, type: 3}
+  minShootDelay: 4
+  maxShootDelay: 6
+  projectileSpeed: 200
+  spawnPrefab: {fileID: 7815082324772889371, guid: 05916f443ca4dc64b91807ae6026266f, type: 3}
+  spawnerTag: SpawnLoc

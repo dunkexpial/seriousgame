@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9b476fea3e934f8519c69c25c65b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
+  speed: 40
   radius: 999
   hasLineOfSight: 0
   layerMask:
@@ -311,14 +311,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628b8830e6b7cd345bb783dc2be9f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpDuration: 1.5
+  powerUpDuration: 1
   spawnRate: 0.15
   powerUpCooldown: 4
   prefabUp: {fileID: 5397887125862687942, guid: 17fafe0e50d190f4eb2a30dcdce2a630, type: 3}
   prefabDown: {fileID: 5397887125862687942, guid: 77b9650a0c6fdc04f97d4a4c1951f983, type: 3}
   prefabLeft: {fileID: 5397887125862687942, guid: 5ef6f3083793ce847b5f336e415a162b, type: 3}
   prefabRight: {fileID: 5397887125862687942, guid: 50f1e1251311ef044ae2c82ffafabb7e, type: 3}
-  multiplier: 2
+  multiplier: 2.5
 --- !u!114 &7709751548794272514
 MonoBehaviour:
   m_ObjectHideFlags: 0

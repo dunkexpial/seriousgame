@@ -14705,8 +14705,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 0.4
+  shootingIntervalVariance: 0.25
   ignoreTag: MagnetBottom
   checkForTags: 1
   shootSound: Boss1ProjectileLaser
@@ -14929,6 +14929,11 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: -90
   rotationSpeed: 5
+  rotationSpeed360: 30
+  minSwitchInterval: 10
+  maxSwitchInterval: 10
+  enableAlternation: 0
+  startRotationAngle: 0
 --- !u!114 &8665617856954728823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15190,6 +15195,11 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: -90
   rotationSpeed: 5
+  rotationSpeed360: 30
+  minSwitchInterval: 10
+  maxSwitchInterval: 10
+  enableAlternation: 0
+  startRotationAngle: 0
 --- !u!114 &6036936809115334191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15673,6 +15683,11 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: -90
   rotationSpeed: 5
+  rotationSpeed360: 30
+  minSwitchInterval: 10
+  maxSwitchInterval: 10
+  enableAlternation: 0
+  startRotationAngle: 0
 --- !u!114 &9206474308368062674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16056,6 +16071,11 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: -90
   rotationSpeed: 5
+  rotationSpeed360: 30
+  minSwitchInterval: 10
+  maxSwitchInterval: 10
+  enableAlternation: 0
+  startRotationAngle: 0
 --- !u!114 &5124863673740701782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16586,7 +16606,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -21371,8 +21391,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.5
-  shootingIntervalVariance: 0.5
+  baseShootingInterval: 0.4
+  shootingIntervalVariance: 0.25
   ignoreTag: MagnetTop
   checkForTags: 1
   shootSound: Boss1ProjectileLaser
@@ -21816,7 +21836,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0

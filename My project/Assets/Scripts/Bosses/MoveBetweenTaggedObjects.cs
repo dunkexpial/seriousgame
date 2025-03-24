@@ -7,7 +7,7 @@ public class MoveBetweenTaggedObjects : MonoBehaviour
     public string targetTag = "Boss2FMP";  // Tag of the objects to move to
     private GameObject[] targets;        // Array to hold all objects with the specified tag
     private Transform currentTarget;     // The current target object
-    public float maxSpeed = 400f;       // Maximum speed
+    public float maxSpeed = 800f;       // Maximum speed
     private float minSpeed = 1f;         // Minimum speed to avoid stopping
     private bool isMoving = false;
 

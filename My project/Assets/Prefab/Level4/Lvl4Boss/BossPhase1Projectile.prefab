@@ -5139,7 +5139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  inaccuracy: 40
+  inaccuracy: 50
   lifetime: 5
 --- !u!212 &3743394196544266827
 SpriteRenderer:
