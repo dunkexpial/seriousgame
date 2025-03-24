@@ -4,6 +4,8 @@ OmniPhysis é um jogo educativo em arte 2.5D (top-down) desenvolvido no Unity, c
 
 Inspirado pelo clássico Zombies Ate My Neighbors do Super Nintendo, o jogo combina mecânicas divertidas com aprendizado para tornar a física acessível a crianças e estudantes do ensino médio.
 
+# [JOGUE AGORA](https://dunkexpial.itch.io/omniphysis)
+
 ## 🎮 **Sobre o Jogo**
 
 No OmniPhysis, o jogador controla Kelvin Celsius, um estudante apaixonado por sorvete que embarca em uma jornada para recuperar as peças da sua máquina de sorvete, enfrentando chefes temáticos que representam diferentes áreas da física:
