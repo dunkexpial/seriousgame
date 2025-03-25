@@ -29,7 +29,7 @@ public class MagnetMotion : MonoBehaviour
         rotationProgress = startRotationAngle; // Set the initial rotation to the startRotationAngle
 
         // Calculate the duration for a full 360-degree rotation based on the speed
-        rotationDuration = 360f / rotationSpeed360;
+        rotationDuration = 560f / rotationSpeed360;
     }
 
     void Update()

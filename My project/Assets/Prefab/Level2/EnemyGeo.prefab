@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  health: 20
+  health: 28
   attack: 1
   damageColorDuration: 0.1
   dropChance: 0.1

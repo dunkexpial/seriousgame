@@ -98,6 +98,29 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+        public void IceGroundClusterfuck()
+    {
+        if (!isInvincible)
+        {
+            HealthManager.health--;
+            soundManager.PlaySoundBasedOnCollision("FicaFrioAi");
+            playerMovement.moveSpeed = 50f; // Halve the speed
+            playerMovement.isSlowed = true;
+            activeSlowEffect = Instantiate(slowEffectPrefab, transform);
+        }
+        if (HealthManager.health <= 0)
+        {
+            GetComponent<Animator>().SetLayerWeight(1, 0);
+            HandleGameOverCleanup();
+            PlayerManager.GameOver = true;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(TakeDamage());
+        }
+    }
+
     private void HandleSpecialProjectileEffects(GameObject projectile)
     {
         // Slow effect for IceProjectile

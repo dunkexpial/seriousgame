@@ -10353,7 +10353,7 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: 176
   rotationSpeed: 5
-  rotationSpeed360: 60
+  rotationSpeed360: 90
   minSwitchInterval: 10
   maxSwitchInterval: 10
   enableAlternation: 1
@@ -10623,7 +10623,7 @@ MonoBehaviour:
   playerTag: Player
   angleOffset: 183
   rotationSpeed: 5
-  rotationSpeed360: 60
+  rotationSpeed360: 90
   minSwitchInterval: 10
   maxSwitchInterval: 10
   enableAlternation: 1
