@@ -38,6 +38,7 @@ TagManager:
   - PlayerRaycast
   - Key
   - Key2
+  - BossLvl3
   layers:
   - Default
   - TransparentFX

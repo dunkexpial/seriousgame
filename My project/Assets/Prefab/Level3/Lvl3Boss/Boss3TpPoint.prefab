@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4167870519951852021}
   - component: {fileID: 1448594768195840662}
   - component: {fileID: 8972661184180209260}
+  - component: {fileID: -2428631176165928843}
   m_Layer: 0
   m_Name: Boss3TpPoint
   m_TagString: Boss3TpPoint
@@ -127,6 +128,20 @@ MonoBehaviour:
   destroySmokePrefab: {fileID: 870109813840410523, guid: eb4b003a78d65234fbb1f5259751e789, type: 3}
   createSmokeLifetime: 0.5
   destroySmokeLifetime: 99999
+--- !u!114 &-2428631176165928843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870109813840410523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7df064a357978f49945d7ca7715c4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredTags:
+  - BossLvl3
 --- !u!1 &3524887519194947900
 GameObject:
   m_ObjectHideFlags: 0
