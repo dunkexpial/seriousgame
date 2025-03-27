@@ -9,16 +9,21 @@ public class EnemyProjectile : MonoBehaviour
     public float speed;
     public float lifespan = 5f;
     private SoundManager soundManager;
+    private float difficulty;
+    private float reverseDifficulty;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         soundManager = FindObjectOfType<SoundManager>();
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         Vector3 direction = (player.transform.position - transform.position).normalized;
 
-        rb.velocity = direction * speed;
+        rb.velocity = direction * (speed * Mathf.Pow(difficulty, 0.5f));
 
         // Calculate the rotation to face the direction of movement
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

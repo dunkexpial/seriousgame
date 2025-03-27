@@ -12,6 +12,8 @@ public class BossShooting : MonoBehaviour
     public bool checkForTags = true;
     public string shootSound;
     private SoundManager soundManager;
+    private float difficulty;
+    private float reverseDifficulty;
 
     private bool isFrozen = false; // Flag to control shooting freeze
 
@@ -20,6 +22,8 @@ public class BossShooting : MonoBehaviour
         nextShootTime = Time.time + Random.Range(0, baseShootingInterval);
         player = GameObject.FindGameObjectWithTag("Player");
         soundManager = FindAnyObjectByType<SoundManager>();
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
     }
 
     void Update()
@@ -35,7 +39,7 @@ public class BossShooting : MonoBehaviour
         if (Time.time >= nextShootTime)
         {
             Shoot();
-            nextShootTime = Time.time + baseShootingInterval + Random.Range(-shootingIntervalVariance, shootingIntervalVariance);
+            nextShootTime = Time.time + ((baseShootingInterval + Random.Range(-shootingIntervalVariance, shootingIntervalVariance)) * Mathf.Pow(reverseDifficulty, 0.5f));
         }
     }
 

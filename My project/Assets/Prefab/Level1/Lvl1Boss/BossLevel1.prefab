@@ -56,8 +56,8 @@ MonoBehaviour:
   - {fileID: 6575538174001441986, guid: 2dd3464ece4b4da4ebbf710596d48aa3, type: 3}
   - {fileID: 5072361273653957839, guid: f7508516852758141a5a6907f20c29bc, type: 3}
   - {fileID: 5874283152640871176, guid: d65fe57041b1f3f4e9641c30bf53e75a, type: 3}
-  baseShootingInterval: 2
-  shootingIntervalVariance: 2
+  baseShootingInterval: 2.5
+  shootingIntervalVariance: 2.5
   ignoreTag: Ignore
   checkForTags: 0
   shootSound: Boss1ProjectileMetal
@@ -4998,8 +4998,8 @@ MonoBehaviour:
   - {fileID: 6575538174001441986, guid: 2dd3464ece4b4da4ebbf710596d48aa3, type: 3}
   - {fileID: 5072361273653957839, guid: f7508516852758141a5a6907f20c29bc, type: 3}
   - {fileID: 5874283152640871176, guid: d65fe57041b1f3f4e9641c30bf53e75a, type: 3}
-  baseShootingInterval: 2
-  shootingIntervalVariance: 2
+  baseShootingInterval: 2.5
+  shootingIntervalVariance: 2.5
   ignoreTag: Ignore
   checkForTags: 0
   shootSound: Boss1ProjectileMetal
@@ -9856,8 +9856,8 @@ MonoBehaviour:
   - {fileID: 6575538174001441986, guid: 2dd3464ece4b4da4ebbf710596d48aa3, type: 3}
   - {fileID: 5072361273653957839, guid: f7508516852758141a5a6907f20c29bc, type: 3}
   - {fileID: 5874283152640871176, guid: d65fe57041b1f3f4e9641c30bf53e75a, type: 3}
-  baseShootingInterval: 2
-  shootingIntervalVariance: 2
+  baseShootingInterval: 2.5
+  shootingIntervalVariance: 2.5
   ignoreTag: Ignore
   checkForTags: 0
   shootSound: Boss1ProjectileMetal
@@ -14705,7 +14705,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.4
+  baseShootingInterval: 0.6
   shootingIntervalVariance: 0.25
   ignoreTag: MagnetBottom
   checkForTags: 1
@@ -21391,7 +21391,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.4
+  baseShootingInterval: 0.6
   shootingIntervalVariance: 0.25
   ignoreTag: MagnetTop
   checkForTags: 1
@@ -21443,7 +21443,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5874283152640871176, guid: b2dbe6bf617724247b1c307f4ac4a3a0, type: 3}
   - {fileID: 5874283152640871176, guid: ba691dac551faae4cbd376a24624e498, type: 3}
-  baseShootingInterval: 0.5
+  baseShootingInterval: 0.75
   shootingIntervalVariance: 0.5
   ignoreTag: Boss1Head
   checkForTags: 1
@@ -26729,8 +26729,8 @@ MonoBehaviour:
   - {fileID: 6575538174001441986, guid: 2dd3464ece4b4da4ebbf710596d48aa3, type: 3}
   - {fileID: 5072361273653957839, guid: f7508516852758141a5a6907f20c29bc, type: 3}
   - {fileID: 5874283152640871176, guid: d65fe57041b1f3f4e9641c30bf53e75a, type: 3}
-  baseShootingInterval: 2
-  shootingIntervalVariance: 2
+  baseShootingInterval: 2.5
+  shootingIntervalVariance: 2.5
   ignoreTag: Ignore
   checkForTags: 0
   shootSound: Boss1ProjectileMetal

@@ -24,8 +24,8 @@ public class DifficultyManager : MonoBehaviour
         switch (index)
         {
             case 0:
-                difficulty = 0.5f;
-                reverseDifficulty = 2.0f;
+                difficulty = 0.75f;
+                reverseDifficulty = 1.5f;
                 break;
             case 1:
                 difficulty = 1.0f;

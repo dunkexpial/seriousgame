@@ -15,6 +15,8 @@ public class TeleportOnProximity : MonoBehaviour
     private Transform playerTransform;
     private BasicAI basicAI; // Reference to the BasicAI component
     private SoundManager soundManager;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
@@ -40,13 +42,16 @@ public class TeleportOnProximity : MonoBehaviour
         {
             Debug.LogError("Player or BasicAI component not found!");
         }
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
+
     }
 
     private IEnumerator TeleportCheckRoutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f); // Wait for 1 second between teleport checks
+            yield return new WaitForSeconds(0.5f * Mathf.Pow(reverseDifficulty, 1.0f)); // Wait for 1 second between teleport checks
 
             if (playerTransform != null && Vector2.Distance(transform.position, playerTransform.position) <= teleportRadius)
             {

@@ -13,12 +13,16 @@ public class MoveBetweenObjects : MonoBehaviour
     private float minSpeed = 10f;            // Minimum speed to avoid stopping
     private float moveSpeed;                // Speed that will be applied during movement
     private bool isMoving = false;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
         // Find the target objects by name
         target1 = GameObject.Find(objectName1)?.transform;
         target2 = GameObject.Find(objectName2)?.transform;
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // Debug if the objects are found
         if (target1 == null)
@@ -57,7 +61,7 @@ public class MoveBetweenObjects : MonoBehaviour
         if (!isMoving)
         {
             // Randomize the move speed each time the object starts moving
-            moveSpeed = Random.Range(minSpeed*20, maxSpeed);
+            moveSpeed = Random.Range(minSpeed*20, maxSpeed * difficulty);
             isMoving = true;
         }
     }

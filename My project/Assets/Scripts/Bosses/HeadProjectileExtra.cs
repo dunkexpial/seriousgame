@@ -17,12 +17,16 @@ public class HeadProjectileExtra : MonoBehaviour
     private Rigidbody2D rb;  // Rigidbody2D reference for movement
 
     public float shootingInaccuracy = 0.1f;  // Inaccuracy factor (higher value = more inaccuracy)
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
         // Find the player (set by the BossShooting script)
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
         playerCollision = playerTransform?.GetComponent<PlayerCollision>();
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // Get the particle system child object (assuming it's the first child)
         particleSystemChild = transform.GetChild(0);
@@ -46,7 +50,7 @@ public class HeadProjectileExtra : MonoBehaviour
             direction = AddInaccuracy(direction);
 
             // Apply the velocity towards the player immediately
-            rb.velocity = direction * speed;
+            rb.velocity = direction * (speed * Mathf.Pow(difficulty, 0.5f));
 
             // Debugging log to check initial velocity
             Debug.Log("Initial velocity set to: " + rb.velocity);
@@ -67,7 +71,7 @@ public class HeadProjectileExtra : MonoBehaviour
                 // Add inaccuracy to the direction
                 direction = AddInaccuracy(direction);
 
-                speed = increasedSpeed;  // Change speed when detecting player
+                speed = increasedSpeed * Mathf.Pow(difficulty, 0.5f);  // Change speed when detecting player
                 hasUpdatedDirection = true;  // Ensure this only happens once
 
                 // Instantiate the child object

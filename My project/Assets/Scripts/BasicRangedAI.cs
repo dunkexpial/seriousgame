@@ -40,15 +40,15 @@ public class BasicRangedAI : MonoBehaviour
     private AudioSource audioSource;
 
     public AudioClip enemyshoot;
-    public float difficulty;
-    public float reverseDifficulty;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerRaycast");
         lastSeenPosition = Vector2.zero;
-        difficulty = PlayerPrefs.GetFloat("Difficulty", 1f);
-        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty", 1f);
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // Initialize the AudioSource
         audioSource = GetComponent<AudioSource>();
@@ -161,7 +161,7 @@ public class BasicRangedAI : MonoBehaviour
             if (sightTimer >= sightDelay)
             {
                 shootTimer += Time.deltaTime;
-                if (shootTimer >= (shootCooldown * reverseDifficulty))
+                if (shootTimer >= (shootCooldown * Mathf.Pow(reverseDifficulty, 0.55f)))
                 {
                     shoot();
                     shootTimer = 0;
@@ -171,7 +171,7 @@ public class BasicRangedAI : MonoBehaviour
         else
         {
             sightTimer = 0;
-            shootTimer = shootCooldown * reverseDifficulty;
+            shootTimer = shootCooldown * Mathf.Pow(reverseDifficulty, 0.50f);
         }
 
         hadLineOfSightLastFrame = hasLineOfSight;

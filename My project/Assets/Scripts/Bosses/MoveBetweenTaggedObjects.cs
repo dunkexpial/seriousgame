@@ -10,11 +10,15 @@ public class MoveBetweenTaggedObjects : MonoBehaviour
     public float maxSpeed = 800f;       // Maximum speed
     private float minSpeed = 1f;         // Minimum speed to avoid stopping
     private bool isMoving = false;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
         // Find all objects with the specified tag and store them in the array
         targets = GameObject.FindGameObjectsWithTag(targetTag);
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // Start the movement coroutine
         StartCoroutine(MoveToRandomTarget());
@@ -49,12 +53,12 @@ public class MoveBetweenTaggedObjects : MonoBehaviour
                 // Gradually increase the speed until the halfway point
                 if (distanceTraveled < halfwayPoint)
                 {
-                    currentSpeed = Mathf.Lerp(0f, maxSpeed, distanceTraveled / halfwayPoint);
+                    currentSpeed = Mathf.Lerp(0f, maxSpeed * difficulty, distanceTraveled / halfwayPoint);
                 }
                 else
                 {
                     // Gradually decrease the speed after the halfway point
-                    currentSpeed = Mathf.Lerp(maxSpeed, minSpeed, (distanceTraveled - halfwayPoint) / (journeyLength - halfwayPoint));
+                    currentSpeed = Mathf.Lerp(maxSpeed * difficulty, minSpeed, (distanceTraveled - halfwayPoint) / (journeyLength - halfwayPoint));
                 }
 
                 // Ensure that the speed doesn't drop below the minimum threshold

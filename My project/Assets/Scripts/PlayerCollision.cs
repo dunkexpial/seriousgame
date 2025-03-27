@@ -13,13 +13,16 @@ public class PlayerCollision : MonoBehaviour
     private GameObject activeSlowEffect;
     private GameObject activeDoubleDamageEffect;
     private SoundManager soundManager;
-
+    private float difficulty;
+    private float reverseDifficulty;
     void Start()
     {
         soundManager = FindObjectOfType<SoundManager>();
         healthManager = FindObjectOfType<HealthManager>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
     }
 
     private void OnTriggerStay2D(Collider2D collider)
@@ -178,7 +181,7 @@ public class PlayerCollision : MonoBehaviour
         isInvincible = true;
         GetComponent<Animator>().SetLayerWeight(1, 1);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2 * Mathf.Pow(reverseDifficulty, 0.35f));
 
         // Cleanup effects if invincibility ends and the player didn’t die
         CleanupEffects();

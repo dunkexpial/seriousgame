@@ -13,6 +13,8 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
     public float spreadVariance = 10f; // Amount of angle variation for projectile spread
     public string ignoreTag = "IgnoreTag";
     public bool checkForTags = true;
+    private float difficulty;
+    private float reverseDifficulty;
 
     private Lvl4BossPhase2Movement bossMovement;
     private SoundManager soundManager;
@@ -22,6 +24,8 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
         soundManager = FindAnyObjectByType<SoundManager>();
         // Add a random initial delay for the first shot
         nextShootTime = Time.time + Random.Range(0, baseShootingInterval);
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
     }
 
     void Update()
@@ -49,7 +53,7 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
         {
             Shoot();
             // Calculate the next shooting time with some randomness
-            nextShootTime = Time.time + baseShootingInterval + Random.Range(-shootingIntervalVariance, shootingIntervalVariance);
+            nextShootTime = Time.time + ((baseShootingInterval + Random.Range(-shootingIntervalVariance, shootingIntervalVariance)) * Mathf.Pow(reverseDifficulty, 0.5f));
         }
     }
 
@@ -93,7 +97,7 @@ public class Lvl4BossPhase2Shooting : MonoBehaviour
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = direction * projectileSpeed;
+                rb.velocity = direction * (projectileSpeed * Mathf.Pow(difficulty, 0.5f));
             }
 
             // Adjust the rotation of the projectile to match its movement direction

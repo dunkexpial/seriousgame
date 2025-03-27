@@ -15,11 +15,16 @@ public class BossProjectile : MonoBehaviour
 
     // Inaccuracy settings
     public float inaccuracyAngle = 5f; // Maximum angle of inaccuracy in degrees
+    private float difficulty;
+    private float reverseDifficulty;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // Calculate the direction from the projectile to the player
         Vector3 direction = (player.transform.position - transform.position).normalized;
@@ -34,7 +39,7 @@ public class BossProjectile : MonoBehaviour
         Vector3 inaccurateDirection = new Vector3(rotatedX, rotatedY, 0).normalized;
 
         // Set the velocity of the projectile towards the player with inaccuracy
-        rb.velocity = inaccurateDirection * speed;
+        rb.velocity = inaccurateDirection * (speed * Mathf.Pow(difficulty, 0.5f));
 
         // Calculate the rotation to face the direction of movement
         float angle = Mathf.Atan2(inaccurateDirection.y, inaccurateDirection.x) * Mathf.Rad2Deg;

@@ -108,8 +108,16 @@ public class Lvl3BossLogic : MonoBehaviour
     public void Teleport()
     {
         Debug.Log("Teleporting...");
+
         // Find all objects with the target tag
         GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(targetTag);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+        {
+            Debug.LogError("Player not found!");
+            return;
+        }
 
         // If there are no objects with the tag, exit early
         if (targetObjects.Length == 0)
@@ -119,33 +127,35 @@ public class Lvl3BossLogic : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
-        // Filter out the object the boss is already on
-        GameObject currentTarget = null;
-        foreach (GameObject obj in targetObjects)
+
+        // Find the closest target to the player that is NOT the boss's current position
+        GameObject closestTarget = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject target in targetObjects)
         {
-            if (obj.transform.position == transform.position)
+            if (target.transform.position == transform.position) continue; // skip if boss is already on it
+
+            float distance = Vector3.Distance(target.transform.position, player.transform.position);
+            if (distance < closestDistance)
             {
-                currentTarget = obj;
-                break;
+                closestDistance = distance;
+                closestTarget = target;
             }
         }
 
-        // If the only available object is the current one, do nothing
-        if (targetObjects.Length == 1 && currentTarget != null) return;
-
-        // Choose a random target object that isn't the current one
-        GameObject newTarget;
-        do
+        // If there is no valid target (could happen if the only target is under the boss)
+        if (closestTarget == null)
         {
-            newTarget = targetObjects[UnityEngine.Random.Range(0, targetObjects.Length)];
-        } while (newTarget.transform.position == transform.position);
+            Debug.Log("No valid teleport target found.");
+            return;
+        }
 
         // Save the current position of the boss
         Vector3 oldPosition = transform.position;
 
         // Move the boss to the new target's position, applying the Y offset
-        Vector3 targetPosition = newTarget.transform.position;
+        Vector3 targetPosition = closestTarget.transform.position;
         soundManager.PlaySoundBasedOnCollision("teleportSound");
         transform.position = new Vector3(targetPosition.x, targetPosition.y + teleportYOffset, targetPosition.z);
 

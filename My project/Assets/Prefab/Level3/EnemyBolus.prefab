@@ -5018,6 +5018,8 @@ MonoBehaviour:
   playerTargetPositionOffset: {x: 0, y: 0}
   useLastSeenPosition: 1
   reflexDelay: 1
+  difficulty: 0
+  reverseDifficulty: 0
 --- !u!114 &6577907230321732277
 MonoBehaviour:
   m_ObjectHideFlags: 0

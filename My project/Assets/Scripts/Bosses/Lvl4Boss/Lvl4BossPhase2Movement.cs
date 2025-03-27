@@ -9,11 +9,15 @@ public class Lvl4BossPhase2Movement : MonoBehaviour
     public float maxSpeed = 1000f;          // Maximum speed
     private float minSpeed = 1f;            // Minimum speed to avoid stopping
     public bool canShoot = false;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
         // Find the object with the specified tag
         target = GameObject.FindGameObjectWithTag(targetTag);
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // If a target is found, move to it
         if (target != null)
@@ -50,12 +54,12 @@ public class Lvl4BossPhase2Movement : MonoBehaviour
             // Gradually increase the speed until the halfway point
             if (distanceTraveled < halfwayPoint)
             {
-                currentSpeed = Mathf.Lerp(0f, maxSpeed, distanceTraveled / halfwayPoint);
+                currentSpeed = Mathf.Lerp(0f, maxSpeed * Mathf.Pow(difficulty, 0.5f), distanceTraveled / halfwayPoint);
             }
             else
             {
                 // Gradually decrease the speed after the halfway point
-                currentSpeed = Mathf.Lerp(maxSpeed, minSpeed, (distanceTraveled - halfwayPoint) / (journeyLength - halfwayPoint));
+                currentSpeed = Mathf.Lerp(maxSpeed * Mathf.Pow(difficulty, 0.5f), minSpeed, (distanceTraveled - halfwayPoint) / (journeyLength - halfwayPoint));
             }
 
             // Ensure that the speed doesn't drop below the minimum threshold

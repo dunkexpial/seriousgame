@@ -8,11 +8,16 @@ public class Lvl4BossProjectile : MonoBehaviour
     private bool hasRicocheted = false;
     private Vector2 direction;
     private float lifetimeTimer;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
         // Initialize the lifetime timer
         lifetimeTimer = lifetime;
+
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
 
         // Set the initial direction toward the player with some inaccuracy
         GameObject player = GameObject.FindWithTag("Player");
@@ -30,7 +35,7 @@ public class Lvl4BossProjectile : MonoBehaviour
     void Update()
     {
         // Move the projectile in the current direction
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        transform.Translate(direction * (Mathf.Pow(difficulty, 0.5f) * speed) * Time.deltaTime, Space.World);
 
         // Decrease the lifetime timer
         lifetimeTimer -= Time.deltaTime;

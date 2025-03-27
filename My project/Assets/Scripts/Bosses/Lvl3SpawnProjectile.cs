@@ -9,11 +9,19 @@ public class Lvl3SpawnProjectile : MonoBehaviour
     [Header("Collision Settings")]
     public string targetTag = "Target";
     public GameObject spawnPrefab;
+    private float difficulty;
+    private float reverseDifficulty;
+
+    private void Start()
+    {
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
+    }
 
     private void Update()
     {
         // Move the projectile in the assigned direction (2D)
-        transform.position += (Vector3)direction * speed * Time.deltaTime;
+        transform.position += (Vector3)direction * (speed * Mathf.Pow(difficulty, 0.5f)) * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

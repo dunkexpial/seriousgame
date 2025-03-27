@@ -17,6 +17,8 @@ public class MagnetMotion : MonoBehaviour
     public float startRotationAngle = 0f; // Starting angle for the 360 rotation
     private float rotationStartTime; // Time when the rotation starts
     private float rotationDuration; // Duration to complete one full rotation
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
@@ -25,11 +27,15 @@ public class MagnetMotion : MonoBehaviour
         {
             playerTransform = player.transform;
         }
+        
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
+
         SetRandomSwitchInterval(); // Set the initial random switch interval
         rotationProgress = startRotationAngle; // Set the initial rotation to the startRotationAngle
 
         // Calculate the duration for a full 360-degree rotation based on the speed
-        rotationDuration = 560f / rotationSpeed360;
+        rotationDuration = 560f * Mathf.Pow(difficulty, 0.5f) / rotationSpeed360;
     }
 
     void Update()
@@ -67,7 +73,7 @@ public class MagnetMotion : MonoBehaviour
             // Perform full 360-degree rotation with smooth transition
             if (Time.time - rotationStartTime < rotationDuration) // Check if the rotation time is not over
             {
-                float rotationStep = rotationSpeed360 * Time.deltaTime; // Use independent speed
+                float rotationStep = rotationSpeed360 * Mathf.Pow(difficulty, 0.5f) * Time.deltaTime; // Use independent speed
                 rotationProgress += rotationStep;
 
                 // Interpolate the rotation for smoother transition

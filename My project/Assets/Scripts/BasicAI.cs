@@ -32,8 +32,8 @@ public class BasicAI : MonoBehaviour
     private Vector2 lastRaycastHitPoint; // Store the exact point where the raycast hit
     private float maxTimeToChaseLastSeenPosition = 3f; // Time in seconds
     private float timeSinceLastSeen = 0f; // Timer for tracking how long AI is moving to the last seen position
-    public float difficulty;
-    public float reverseDifficulty;
+    private float difficulty;
+    private float reverseDifficulty;
 
     void Start()
     {
