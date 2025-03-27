@@ -9,15 +9,19 @@ public class MaxProjectile : MonoBehaviour
     public float speed;
     public float lifespan = 5f;
     private int obstacleHitCount = 0; // Counter for obstacle hits
+    public float difficulty;
+    public float reverseDifficulty;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        difficulty = PlayerPrefs.GetFloat("Difficulty", 1f);
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty", 1f);
 
         Vector3 direction = (player.transform.position - transform.position).normalized;
 
-        rb.velocity = direction * speed;
+        rb.velocity = direction * (speed * Mathf.Pow(difficulty, 0.5f));
 
         Destroy(gameObject, lifespan);
     }
@@ -48,7 +52,7 @@ public class MaxProjectile : MonoBehaviour
 
         Vector3 newDirection = (player.transform.position - transform.position).normalized;
 
-        rb.velocity = newDirection * speed;
+        rb.velocity = newDirection * (speed * Mathf.Pow(difficulty, 0.5f));
     }
 
     private void DetachParticles()

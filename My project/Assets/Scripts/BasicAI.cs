@@ -32,12 +32,15 @@ public class BasicAI : MonoBehaviour
     private Vector2 lastRaycastHitPoint; // Store the exact point where the raycast hit
     private float maxTimeToChaseLastSeenPosition = 3f; // Time in seconds
     private float timeSinceLastSeen = 0f; // Timer for tracking how long AI is moving to the last seen position
-
+    public float difficulty;
+    public float reverseDifficulty;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerRaycast");
         lastSeenPosition = Vector2.zero;  // Initial value (could be anything, but we want to avoid using this as a "last known position")
+        difficulty = PlayerPrefs.GetFloat("Difficulty");
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
     }
 
     void Update()
@@ -57,22 +60,26 @@ public class BasicAI : MonoBehaviour
             hasFirstSightedPlayer = true; // Skip reflex delay since we're focusing on proximity
             timeSinceLastSeen = 0f; // Reset the timer for the last seen position
 
-            // Move towards the player's center position
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            // Only move if the distance to the player is greater than the minimum follow distance
+            if (Vector2.Distance(transform.position, player.transform.position) > 10f)
+            {
+                // Move towards the player's center position
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
-            lastX = direction.x;
-            lastY = direction.y;
+                lastX = direction.x;
+                lastY = direction.y;
 
-            // Update animator
-            animator.SetFloat("enemyX", direction.x);
-            animator.SetFloat("enemyY", direction.y);
-            animator.SetFloat("Moving", 1);
+                // Update animator
+                animator.SetFloat("enemyX", direction.x);
+                animator.SetFloat("enemyY", direction.y);
+                animator.SetFloat("Moving", 1);
 
-            // Store the player's position when seen
-            lastSeenPosition = player.transform.position;
-            hasSeenPlayer = true; // Mark that the AI has seen the player
+                // Store the player's position when seen
+                lastSeenPosition = player.transform.position;
+                hasSeenPlayer = true; // Mark that the AI has seen the player
+            }
         }
-        else if (distance < radius && hasLineOfSight)
+        else if (distance < (radius * difficulty) && hasLineOfSight)
         {
             timeSeenPlayer += Time.deltaTime; // Increment the timer since AI has line of sight to the player
 
@@ -88,7 +95,7 @@ public class BasicAI : MonoBehaviour
             if (hasFirstSightedPlayer) // Once the reflex delay is over, move towards the raycast hit point
             {
                 // Move towards the raycast hit point (not the player center)
-                transform.position = Vector2.MoveTowards(this.transform.position, lastRaycastHitPoint, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(this.transform.position, lastRaycastHitPoint, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
                 lastX = direction.x;
                 lastY = direction.y;
@@ -115,7 +122,7 @@ public class BasicAI : MonoBehaviour
             if (timeSinceLastSeen < maxTimeToChaseLastSeenPosition) // Only move for the set duration
             {
                 // Move to the last seen position
-                transform.position = Vector2.MoveTowards(this.transform.position, lastSeenPosition, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(this.transform.position, lastSeenPosition, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
                 // Check if the AI has reached the last seen position
                 if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
@@ -178,7 +185,7 @@ public class BasicAI : MonoBehaviour
             foreach (Vector2 playerCorner in playerCorners)
             {
                 Vector2 direction = playerCorner - aiCorner;
-                RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, radius, layerMask); // Limit to AI radius
+                RaycastHit2D hit = Physics2D.Raycast(aiCorner, direction, radius * difficulty, layerMask); // Limit to AI radius
 
                 if (hit.collider != null)
                 {

@@ -5042,10 +5042,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   animator: {fileID: 3914986122140214406}
-  shootCooldown: 1.5
+  shootCooldown: 2.5
   sightDelay: 0.3
   useLastSeenPosition: 0
   enemyshoot: {fileID: 8300000, guid: 830732500639dc64f906af2975d321a4, type: 3}
+  difficulty: 0
+  reverseDifficulty: 0
 --- !u!114 &8260175634477121688
 MonoBehaviour:
   m_ObjectHideFlags: 0

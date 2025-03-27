@@ -40,11 +40,15 @@ public class BasicRangedAI : MonoBehaviour
     private AudioSource audioSource;
 
     public AudioClip enemyshoot;
+    public float difficulty;
+    public float reverseDifficulty;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerRaycast");
         lastSeenPosition = Vector2.zero;
+        difficulty = PlayerPrefs.GetFloat("Difficulty", 1f);
+        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty", 1f);
 
         // Initialize the AudioSource
         audioSource = GetComponent<AudioSource>();
@@ -63,22 +67,26 @@ public class BasicRangedAI : MonoBehaviour
 
         if (distance <= 30f)
         {
-            // Follow the player's center when within 30f
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, player.transform.position) > 10f)
+            {
+                // Move towards the player's center position
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
-            lastX = direction.x;
-            lastY = direction.y;
+                lastX = direction.x;
+                lastY = direction.y;
 
-            animator.SetFloat("enemyX", direction.x);
-            animator.SetFloat("enemyY", direction.y);
-            animator.SetFloat("Moving", 1);
+                // Update animator
+                animator.SetFloat("enemyX", direction.x);
+                animator.SetFloat("enemyY", direction.y);
+                animator.SetFloat("Moving", 1);
 
-            lastSeenPosition = player.transform.position;
-            hasSeenPlayer = true;
-
+                // Store the player's position when seen
+                lastSeenPosition = player.transform.position;
+                hasSeenPlayer = true; // Mark that the AI has seen the player
+            }
             sightTimer = 0f; // Reset sight timer since AI is actively following the player
         }
-        else if (distance < radius && hasLineOfSight)
+        else if (distance < (radius * difficulty) && hasLineOfSight)
         {
             // Reset the time since the player was last seen
             timeSinceLastSeen = 0f;
@@ -95,7 +103,7 @@ public class BasicRangedAI : MonoBehaviour
 
             if (hasFirstSightedPlayer)
             {
-                transform.position = Vector2.MoveTowards(transform.position, lastRaycastHitPoint, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, lastRaycastHitPoint, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
                 lastX = direction.x;
                 lastY = direction.y;
@@ -117,7 +125,7 @@ public class BasicRangedAI : MonoBehaviour
 
             if (timeSinceLastSeen <= timeBeforeGivingUp)
             {
-                transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
                 if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
                 {
@@ -146,14 +154,14 @@ public class BasicRangedAI : MonoBehaviour
             timeSinceLastSeen += Time.deltaTime; // Increment time since the player was last seen
         }
 
-        if (distance < radius && hasLineOfSight)
+        if (distance < (radius * difficulty) && hasLineOfSight)
         {
             sightTimer += Time.deltaTime;
 
             if (sightTimer >= sightDelay)
             {
                 shootTimer += Time.deltaTime;
-                if (shootTimer >= shootCooldown)
+                if (shootTimer >= (shootCooldown * reverseDifficulty))
                 {
                     shoot();
                     shootTimer = 0;
@@ -163,7 +171,7 @@ public class BasicRangedAI : MonoBehaviour
         else
         {
             sightTimer = 0;
-            shootTimer = shootCooldown;
+            shootTimer = shootCooldown * reverseDifficulty;
         }
 
         hadLineOfSightLastFrame = hasLineOfSight;
