@@ -47,58 +47,56 @@ public class Lvl3BossLogic : MonoBehaviour
         // Get the list of objects with the target tag
         GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(targetTag);
 
-        // Disable stop range functionality if there are 1 or fewer target objects
-        if (targetObjects.Length <= 1)
-        {
-            // Skip stop range logic when there are 1 or fewer targets
-            return;
-        }
-
         // Access the AttributesManager component
         var attributesManager = GetComponent<AttributesManager>();
+        var playOnCreateAndDestroy = GetComponent<PlayOnCreateAndDestroy>();
         if (attributesManager != null && targetObjects.Length <= 0)
         {
             attributesManager.health = targetObjects.Length == 0 ? 0 : attributesManager.health;
             attributesManager.itemDrop();
+            playOnCreateAndDestroy.PlayDestroySmokeEffect();
             Destroy(gameObject);
         }
 
+        if (targetObjects.Length > 1)
+        {
         // Existing logic for handling projectiles
         GameObject[] projectiles = GameObject.FindGameObjectsWithTag("ProjectileTag");
 
-        foreach (GameObject projectile in projectiles)
-        {
-            if (projectile.GetComponent<ProjectilePrefabFlag>() == null)
+            foreach (GameObject projectile in projectiles)
             {
-                Vector3 delta = projectile.transform.position - (transform.position + stopRangeOffset);
-                float normalizedX = delta.x / stopRangeX;
-                float normalizedY = delta.y / stopRangeY;
-
-                // Check if within elliptical range
-                if ((normalizedX * normalizedX + normalizedY * normalizedY) <= 1f)
+                if (projectile.GetComponent<ProjectilePrefabFlag>() == null)
                 {
-                    // Add first script
-                    if (scriptTypeToAdd1 != null && projectile.GetComponent(scriptTypeToAdd1) == null)
-                        projectile.AddComponent(scriptTypeToAdd1);
+                    Vector3 delta = projectile.transform.position - (transform.position + stopRangeOffset);
+                    float normalizedX = delta.x / stopRangeX;
+                    float normalizedY = delta.y / stopRangeY;
 
-                    // Add second script
-                    if (scriptTypeToAdd2 != null && projectile.GetComponent(scriptTypeToAdd2) == null)
-                        projectile.AddComponent(scriptTypeToAdd2);
-
-                    // Remove old script
-                    if (scriptTypeToRemove != null)
+                    // Check if within elliptical range
+                    if ((normalizedX * normalizedX + normalizedY * normalizedY) <= 1f)
                     {
-                        Component existingComponent = projectile.GetComponent(scriptTypeToRemove);
-                        if (existingComponent != null)
-                            Destroy(existingComponent);
-                    }
+                        // Add first script
+                        if (scriptTypeToAdd1 != null && projectile.GetComponent(scriptTypeToAdd1) == null)
+                            projectile.AddComponent(scriptTypeToAdd1);
 
-                    // Spawn prefab as child
-                    if (prefabToSpawn != null)
-                    {
-                        GameObject spawnedPrefab = Instantiate(prefabToSpawn, projectile.transform.position, Quaternion.identity);
-                        spawnedPrefab.transform.SetParent(projectile.transform);
-                        projectile.AddComponent<ProjectilePrefabFlag>();
+                        // Add second script
+                        if (scriptTypeToAdd2 != null && projectile.GetComponent(scriptTypeToAdd2) == null)
+                            projectile.AddComponent(scriptTypeToAdd2);
+
+                        // Remove old script
+                        if (scriptTypeToRemove != null)
+                        {
+                            Component existingComponent = projectile.GetComponent(scriptTypeToRemove);
+                            if (existingComponent != null)
+                                Destroy(existingComponent);
+                        }
+
+                        // Spawn prefab as child
+                        if (prefabToSpawn != null)
+                        {
+                            GameObject spawnedPrefab = Instantiate(prefabToSpawn, projectile.transform.position, Quaternion.identity);
+                            spawnedPrefab.transform.SetParent(projectile.transform);
+                            projectile.AddComponent<ProjectilePrefabFlag>();
+                        }
                     }
                 }
             }
@@ -119,14 +117,6 @@ public class Lvl3BossLogic : MonoBehaviour
             return;
         }
 
-        // If there are no objects with the tag, exit early
-        if (targetObjects.Length == 0)
-        {
-            attributesManager.itemDrop();
-            playOnCreateAndDestroy.PlayDestroySmokeEffect();
-            Destroy(gameObject);
-            return;
-        }
 
         // Find the closest target to the player that is NOT the boss's current position
         GameObject closestTarget = null;
