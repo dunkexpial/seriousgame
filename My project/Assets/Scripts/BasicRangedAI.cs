@@ -43,6 +43,10 @@ public class BasicRangedAI : MonoBehaviour
     private float difficulty;
     private float reverseDifficulty;
 
+    // How much space to keep from obstacles
+    [SerializeField]
+    private float wallAvoidanceDistance = 10f;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerRaycast");
@@ -65,15 +69,20 @@ public class BasicRangedAI : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        if (distance <= 30f)
+        if (distance <= 20f)
         {
             if (Vector2.Distance(transform.position, player.transform.position) > 10f)
             {
-                // Move towards the player's center position
-                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
+                // Move towards the player's center position, but avoid obstacles
+                Vector2 targetPos = player.transform.position;
+                Vector2 moveDir = (targetPos - (Vector2)transform.position).normalized;
+                Vector2 avoidance = GetWallAvoidanceVector();
+                Vector2 finalDir = (moveDir + avoidance).normalized;
 
-                lastX = direction.x;
-                lastY = direction.y;
+                transform.position = Vector2.MoveTowards(this.transform.position, (Vector2)transform.position + finalDir, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
+
+                lastX = moveDir.x;
+                lastY = moveDir.y;
 
                 // Update animator
                 animator.SetFloat("enemyX", direction.x);
@@ -103,10 +112,16 @@ public class BasicRangedAI : MonoBehaviour
 
             if (hasFirstSightedPlayer)
             {
-                transform.position = Vector2.MoveTowards(transform.position, lastRaycastHitPoint, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
+                // Move towards the lastRaycastHitPoint, but avoid obstacles
+                Vector2 targetPos = lastRaycastHitPoint;
+                Vector2 moveDir = (targetPos - (Vector2)transform.position).normalized;
+                Vector2 avoidance = GetWallAvoidanceVector();
+                Vector2 finalDir = (moveDir + avoidance).normalized;
 
-                lastX = direction.x;
-                lastY = direction.y;
+                transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + finalDir, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
+
+                lastX = moveDir.x;
+                lastY = moveDir.y;
 
                 animator.SetFloat("enemyX", direction.x);
                 animator.SetFloat("enemyY", direction.y);
@@ -125,7 +140,13 @@ public class BasicRangedAI : MonoBehaviour
 
             if (timeSinceLastSeen <= timeBeforeGivingUp)
             {
-                transform.position = Vector2.MoveTowards(transform.position, lastSeenPosition, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
+                // Move towards the last seen position, but avoid obstacles
+                Vector2 targetPos = lastSeenPosition;
+                Vector2 moveDir = (targetPos - (Vector2)transform.position).normalized;
+                Vector2 avoidance = GetWallAvoidanceVector();
+                Vector2 finalDir = (moveDir + avoidance).normalized;
+
+                transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + finalDir, speed * Mathf.Pow(difficulty, 0.75f) * Time.deltaTime);
 
                 if (Vector2.Distance(transform.position, lastSeenPosition) < 0.1f)
                 {
@@ -270,5 +291,29 @@ public class BasicRangedAI : MonoBehaviour
         {
             Debug.LogWarning("No shooting point assigned for ghostProjPos!");
         }
+    }
+
+    // Returns a vector to steer away from nearby obstacles
+    private Vector2 GetWallAvoidanceVector()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, wallAvoidanceDistance);
+        Vector2 avoidance = Vector2.zero;
+        int count = 0;
+        foreach (var hit in hits)
+        {
+            if (hit.gameObject != this.gameObject && hit.CompareTag("ProjObstacle"))
+            {
+                Vector2 diff = (Vector2)transform.position - (Vector2)hit.ClosestPoint(transform.position);
+                float dist = diff.magnitude;
+                if (dist > 0)
+                {
+                    avoidance += diff.normalized / dist; // Stronger repulsion when closer
+                    count++;
+                }
+            }
+        }
+        if (count > 0)
+            avoidance = avoidance.normalized;
+        return avoidance;
     }
 }

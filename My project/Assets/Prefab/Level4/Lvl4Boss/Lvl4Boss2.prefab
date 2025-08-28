@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: c00fbe7d735f0fb4daf174387fb270fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd3e85ea17c76d645bb5a5bff0d4da7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -354,7 +354,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
+        key0: {r: 0, g: 0, b: 1, a: 1}
         key1: {r: 1, g: 1, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -362,7 +362,7 @@ ParticleSystem:
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 62644
+        ctime0: 52428
         ctime1: 65535
         ctime2: 0
         ctime3: 0
@@ -9740,7 +9740,7 @@ GameObject:
   - component: {fileID: 9053044694517613091}
   m_Layer: 7
   m_Name: Visual
-  m_TagString: Untagged
+  m_TagString: IceBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9947,7 +9947,7 @@ GameObject:
   - component: {fileID: 9030186860450199794}
   - component: {fileID: 5992518425853836899}
   m_Layer: 7
-  m_Name: Lvl4Boss
+  m_Name: Lvl4Boss2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10009,9 +10009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f8502ee2d95148b439de78f57e3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDrop:
-  - {fileID: 8555524994121831088, guid: 1792e3bc40a5e5445b055a69c6fb7476, type: 3}
-  health: 1000
+  bossDrop: []
+  health: 500
   attack: 1
   damageColorDuration: 0.1
   dropChance: 1
@@ -10079,7 +10078,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.22
+  m_Radius: 0.2
 --- !u!114 &6535111322427668579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10122,7 +10121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 637174100589294369, guid: 5c102e1c47e15b84d87c38c48f546fde, type: 3}
-  baseShootingInterval: 0.1
+  baseShootingInterval: 0.2
   shootingIntervalVariance: 0
   ignoreTag: IgnoreTag
   checkForTags: 0
@@ -10139,8 +10138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 637174100589294369, guid: 310c6798e35267d49beb248fedd67669, type: 3}
-  baseShootingInterval: 0.4
+  - {fileID: 637174100589294369, guid: 6bb3fb656d9147341bc995836400bc8e, type: 3}
+  baseShootingInterval: 0.8
   shootingIntervalVariance: 0.1
   projectilesPerShot: 25
   projectileSpeed: 200
@@ -10221,7 +10220,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: fc23cac30e7b73f46873c890f3a5c8df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 489d2f176f57bb244bfa4781a3c24468, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

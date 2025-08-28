@@ -222,10 +222,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
+  - {fileID: 2079528813372127085, guid: 349fc6038925e994a90dea619ab80491, type: 3}
+  - {fileID: 2079528813372127085, guid: 62016f1e8ae41e64fb895e2b10578b4b, type: 3}
+  - {fileID: 2079528813372127085, guid: 117003f9e82a62f459d2fec8bf940fe4, type: 3}
   health: 10
   attack: 1
   damageColorDuration: 0.1
-  hitsound: {fileID: 8300000, guid: 632b113cbd0394d41a4540368c3f571d, type: 3}
   dropChance: 0.1
 --- !u!114 &3868203795233203398
 MonoBehaviour:
@@ -249,6 +251,7 @@ MonoBehaviour:
   playerTargetPositionOffset: {x: 0, y: 0}
   useLastSeenPosition: 0
   reflexDelay: 0.5
+  wallAvoidanceDistance: 15
 --- !u!114 &1549463768266137196
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class MobSpawner : MonoBehaviour
     [SerializeField] private float spawnRangeY = 30f; // Vertical range of spawn area
     [SerializeField] private float minDistanceToPlayer = 30f; // Minimum distance to player
     [SerializeField] private float obstacleDetectionRadius = 2f; // Configurable radius for obstacle detection
-    [SerializeField] private float minDistanceToOtherEnemies = 10f; // Minimum distance from other enemies
+    private float minDistanceToOtherEnemies = 50f; // Minimum distance from other enemies
 
     private int maxEnemiesInScene = 10; // Maximum enemies allowed in the scene
     private Transform playerTransform; // Reference to player's Transform

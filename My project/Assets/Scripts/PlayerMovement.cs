@@ -44,10 +44,14 @@ public class PlayerMovement : MonoBehaviour
     private float powerUpTimer = 0f;
     private float cooldownTimer = 0f;
     private float lastAfterimageTime = 0f;
+    private float moveEnableTime; // Time after which movement is allowed
 
     void Start()
     {
         soundManager = FindAnyObjectByType<SoundManager>();
+        moveEnableTime = Time.unscaledTime + 2f;
+
+        Application.targetFrameRate = 300;
     }
     void Update()
     {
@@ -55,6 +59,14 @@ public class PlayerMovement : MonoBehaviour
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;
+        }
+
+        // Only allow movement after 2 seconds since instantiation
+        if (Time.unscaledTime < moveEnableTime)
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat("Speed", 0);
+            return;
         }
 
         if (isFrozen)
@@ -112,6 +124,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Only allow movement after 2 seconds since instantiation
+        if (Time.unscaledTime < moveEnableTime)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         if (isFrozen)
         {
             rb.velocity = Vector2.zero;
@@ -202,8 +221,15 @@ public class PlayerMovement : MonoBehaviour
 
         isPowerUpActive = true;
         powerUpTimer = powerUpDuration;
-        moveSpeed = 400;
-        animator.speed = 400;
+
+        // Slow down the game by half
+        Time.timeScale = 0.5f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale; // adjust fixed delta for physics
+
+        // Speed player and animator relative to slowed time
+        moveSpeed = 200;          // half of original 400, because game is slowed 0.5x
+        animator.speed = 2;       // double to compensate for slowed game
+
         soundManager.PlaySoundBasedOnCollision("PlayerSonicSpeed");
 
         cooldownTimer = cooldownDuration;
@@ -211,7 +237,9 @@ public class PlayerMovement : MonoBehaviour
 
     void HandlePowerUp()
     {
-        powerUpTimer -= Time.deltaTime;
+        if (!isPowerUpActive) return;
+
+        powerUpTimer -= Time.unscaledDeltaTime; // use unscaledDeltaTime so timer respects real time
 
         if (powerUpTimer <= 0)
         {
@@ -219,10 +247,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Time.time - lastAfterimageTime >= afterimageInterval)
+            if (Time.unscaledTime - lastAfterimageTime >= afterimageInterval)
             {
                 SpawnAfterimage();
-                lastAfterimageTime = Time.time;
+                lastAfterimageTime = Time.unscaledTime;
             }
         }
     }
@@ -230,8 +258,13 @@ public class PlayerMovement : MonoBehaviour
     void DeactivatePowerUp()
     {
         isPowerUpActive = false;
-        moveSpeed = 100;
-        animator.speed = 1;
+
+        // Reset game speed
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+        moveSpeed = 100;      // normal speed
+        animator.speed = 1;   // normal speed
 
         afterimages.Clear();
     }

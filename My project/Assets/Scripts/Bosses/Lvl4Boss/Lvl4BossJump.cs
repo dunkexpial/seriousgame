@@ -88,6 +88,17 @@ public class BossJumpSlam : MonoBehaviour
 
     public void StartJumpSlam()
     {
+        // Check if any BossJumpSlam in the scene is currently jumping
+        BossJumpSlam[] allBosses = FindObjectsOfType<BossJumpSlam>();
+        foreach (var boss in allBosses)
+        {
+            if (boss.isJumping)
+            {
+                // If any boss is jumping, do not start another jump
+                return;
+            }
+        }
+
         if (!isJumping && player != null)
         {
             StartCoroutine(JumpSlamRoutine());

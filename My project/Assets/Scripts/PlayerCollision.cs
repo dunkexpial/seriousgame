@@ -13,16 +13,12 @@ public class PlayerCollision : MonoBehaviour
     private GameObject activeSlowEffect;
     private GameObject activeDoubleDamageEffect;
     private SoundManager soundManager;
-    private float difficulty;
-    private float reverseDifficulty;
     void Start()
     {
         soundManager = FindObjectOfType<SoundManager>();
         healthManager = FindObjectOfType<HealthManager>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
-        difficulty = PlayerPrefs.GetFloat("Difficulty");
-        reverseDifficulty = PlayerPrefs.GetFloat("ReverseDifficulty");
     }
 
     private void OnTriggerStay2D(Collider2D collider)
@@ -101,26 +97,41 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-        public void IceGroundClusterfuck()
+    public void IceGroundClusterfuck()
     {
-        if (!isInvincible)
+        if (!isInvincible) 
         {
-            HealthManager.health--;
             soundManager.PlaySoundBasedOnCollision("FicaFrioAi");
             playerMovement.moveSpeed = 50f; // Halve the speed
             playerMovement.isSlowed = true;
-            activeSlowEffect = Instantiate(slowEffectPrefab, transform);
+
+            // Spawn slow effect if not already active
+            if (activeSlowEffect == null)
+            {
+                activeSlowEffect = Instantiate(slowEffectPrefab, transform);
+            }
+
+            // Start expiration
+            StartCoroutine(ClearIceGroundSlowAfterDelay(2f)); // adjust duration as needed
         }
-        if (HealthManager.health <= 0)
+    }
+
+    private IEnumerator ClearIceGroundSlowAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Reset only if player isn’t under another effect
+        if (!playerMovement.isPowerUpActive) 
         {
-            GetComponent<Animator>().SetLayerWeight(1, 0);
-            HandleGameOverCleanup();
-            PlayerManager.GameOver = true;
-            gameObject.SetActive(false);
+            playerMovement.moveSpeed = 100f; // Reset to normal speed
         }
-        else
+
+        playerMovement.isSlowed = false;
+
+        if (activeSlowEffect != null)
         {
-            StartCoroutine(TakeDamage());
+            Destroy(activeSlowEffect);
+            activeSlowEffect = null;
         }
     }
 
@@ -181,7 +192,7 @@ public class PlayerCollision : MonoBehaviour
         isInvincible = true;
         GetComponent<Animator>().SetLayerWeight(1, 1);
 
-        yield return new WaitForSeconds(2 * Mathf.Pow(reverseDifficulty, 0.35f));
+        yield return new WaitForSeconds(2f); // Fixed invincibility time
 
         // Cleanup effects if invincibility ends and the player didn’t die
         CleanupEffects();

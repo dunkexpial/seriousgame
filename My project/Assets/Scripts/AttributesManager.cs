@@ -54,14 +54,13 @@ public class AttributesManager : MonoBehaviour
     public void itemDrop()
     {
         // Check if the drop chance is met
-        if (Random.value <= dropChance)
+        if (Random.value <= dropChance && bossDrop.Length > 0)
         {
-            for (int i = 0; i < bossDrop.Length; i++)
+            // Pick a random prefab
+            GameObject prefabToDrop = bossDrop[Random.Range(0, bossDrop.Length)];
+            if (prefabToDrop)
             {
-                if (bossDrop[i])
-                {
-                    Instantiate(bossDrop[i], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-                }
+                Instantiate(prefabToDrop, transform.position + Vector3.up, Quaternion.identity);
             }
         }
     }

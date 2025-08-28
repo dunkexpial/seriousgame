@@ -457,8 +457,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 0, g: 0, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5125,8 +5125,8 @@ MonoBehaviour:
   teleportTargetTag: Boss3TpPoint
   teleportEffectPrefab: {fileID: 5397887125862687942, guid: ff9011b1262e3b24dbc2748cc3c50171, type: 3}
   teleportModePrefab: {fileID: 7932840307853992168, guid: c4ddf6dacc735e84aafe28959fb8c637, type: 3}
-  baseTeleportInterval: 1
-  teleportIntervalRandomnessPercentage: 0
+  baseTeleportInterval: 2
+  teleportIntervalRandomnessPercentage: 0.25
   teleportYOffset: 0
   movementTargetTag: Boss3TpPoint
   maxMovementSpeed: 1000
@@ -5174,7 +5174,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &2622665540662672871
 BoxCollider2D:

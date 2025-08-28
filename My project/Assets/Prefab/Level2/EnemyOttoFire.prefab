@@ -4969,10 +4969,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
+  - {fileID: 2079528813372127085, guid: 349fc6038925e994a90dea619ab80491, type: 3}
+  - {fileID: 2079528813372127085, guid: 62016f1e8ae41e64fb895e2b10578b4b, type: 3}
+  - {fileID: 2079528813372127085, guid: 117003f9e82a62f459d2fec8bf940fe4, type: 3}
+  - {fileID: 2079528813372127085, guid: 6c9f6a2f28abae440a595d200e28184f, type: 3}
   health: 10
   attack: 1
   damageColorDuration: 0.1
-  dropChance: 0.1
+  dropChance: 0.15
 --- !u!114 &1898974432627063396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4995,6 +4999,7 @@ MonoBehaviour:
   playerTargetPositionOffset: {x: 0, y: 0}
   useLastSeenPosition: 1
   reflexDelay: 0.2
+  wallAvoidanceDistance: 15
 --- !u!114 &5553679590851043727
 MonoBehaviour:
   m_ObjectHideFlags: 0

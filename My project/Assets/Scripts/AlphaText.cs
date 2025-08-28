@@ -9,9 +9,20 @@ public class LevelSelector : MonoBehaviour
     public Button[] levelButtons; // Array to store buttons corresponding to levels
     public Image fadeImage; // Image to use for fade effect
     public float fadeDuration = 1f; // Duration of the fade
+    public float difficulty;
+    public float reverseDifficulty;
 
     void Start()
     {
+        if (!PlayerPrefs.HasKey("Difficulty"))
+        {
+            PlayerPrefs.SetFloat("Difficulty", 1f);
+            PlayerPrefs.SetFloat("ReverseDifficulty", 1f);
+            PlayerPrefs.Save();
+        }
+
+        Application.targetFrameRate = 300;
+
         PauseMenu.isPaused = false;
         if (levelButtons.Length != levelNames.Length)
         {

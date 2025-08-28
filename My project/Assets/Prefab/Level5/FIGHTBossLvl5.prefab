@@ -169,8 +169,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78120a87f144c44b859c36129e2ac01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
-  spawnInterval: 20
+  prefabs:
+  - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
+  - {fileID: 2079528813372127085, guid: 349fc6038925e994a90dea619ab80491, type: 3}
+  - {fileID: 2079528813372127085, guid: 62016f1e8ae41e64fb895e2b10578b4b, type: 3}
+  - {fileID: 2079528813372127085, guid: 117003f9e82a62f459d2fec8bf940fe4, type: 3}
+  - {fileID: 2079528813372127085, guid: 6c9f6a2f28abae440a595d200e28184f, type: 3}
+  - {fileID: 2079528813372127085, guid: 336cd1d69870bcf43b86379855ee0389, type: 3}
+  spawnInterval: 5
   areaSize: {x: 560, y: 260}
   gizmoColor: {r: 0, g: 1, b: 0, a: 0.3}
 --- !u!1 &5754087838920956192
@@ -217,7 +223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 280187369572923392, guid: 0140fffe99c8e8c4d80aa9973f1184ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 280187369572923392, guid: 0140fffe99c8e8c4d80aa9973f1184ca, type: 3}
       propertyPath: m_LocalPosition.y

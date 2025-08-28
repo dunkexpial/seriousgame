@@ -10936,7 +10936,7 @@ Transform:
   m_GameObject: {fileID: 198893276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -543.7878, y: 609.90454, z: -10}
+  m_LocalPosition: {x: -543.88885, y: 609.90454, z: -10}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11502,11 +11502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -712
+      value: -732
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 658.7
+      value: 664
       objectReference: {fileID: 0}
     - target: {fileID: 4520937234451353811, guid: 54ac73fd26417604c8c596a23be3857e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50489,6 +50489,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 46915865438088265, guid: 121e170344442a449bd3b6918d976e8d, type: 3}
   m_PrefabInstance: {fileID: 1717978984}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1721956083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721956085}
+  - component: {fileID: 1721956084}
+  m_Layer: 0
+  m_Name: SpawnerLv3Ammo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1721956084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721956083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd21d96fa3afc246be29c02844ce4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCount: 25
+  ammoPrefabs:
+  - {fileID: 2079528813372127085, guid: 349fc6038925e994a90dea619ab80491, type: 3}
+  - {fileID: 2079528813372127085, guid: 62016f1e8ae41e64fb895e2b10578b4b, type: 3}
+  - {fileID: 2079528813372127085, guid: 117003f9e82a62f459d2fec8bf940fe4, type: 3}
+  - {fileID: 2079528813372127085, guid: 6c9f6a2f28abae440a595d200e28184f, type: 3}
+  - {fileID: 2079528813372127085, guid: 336cd1d69870bcf43b86379855ee0389, type: 3}
+  spawnRangeX: 1337
+  spawnRangeY: 374.4
+  obstacleDetectionRadius: 5
+--- !u!4 &1721956085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721956083}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 574, y: 318, z: -1.2108939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1726297285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72917,6 +72971,12 @@ MonoBehaviour:
   dialogueUI: {fileID: 247108300}
   projectileManager: {fileID: 541317843}
   animator: {fileID: 2134763144}
+  defaultAmmoPerType: 1e0000003c0000000f0000002800000032000000
+  maxAmmoPerType: 5a000000b40000002d0000007800000096000000
+  ammoCounts: 
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  emptyColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
   shootClips:
   - {fileID: 8300000, guid: 4b061195c75bf4042a0babfa43b8c580, type: 3}
   - {fileID: 8300000, guid: 5cc9b016f66661b4b82e21f245a6abba, type: 3}
@@ -73099,7 +73159,7 @@ Transform:
   m_GameObject: {fileID: 2134763138}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -712, y: 658.7, z: 0}
+  m_LocalPosition: {x: -732, y: 664, z: 0}
   m_LocalScale: {x: 100, y: 97.408585, z: 143.96776}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -73941,6 +74001,7 @@ SceneRoots:
   - {fileID: 316382361}
   - {fileID: 2129047988}
   - {fileID: 91009021}
+  - {fileID: 1721956085}
   - {fileID: 198893281}
   - {fileID: 888655386}
   - {fileID: 2040150820}

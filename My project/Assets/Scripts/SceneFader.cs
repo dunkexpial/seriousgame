@@ -9,7 +9,7 @@ public class SceneFader : MonoBehaviour
     public float waitTime = 1f;
     private Image fadeImage;
     private TextMeshProUGUI fadeText;
-    private bool isFading;
+    private bool isFading;  
 
     private void Awake()
     {

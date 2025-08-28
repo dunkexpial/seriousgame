@@ -306,10 +306,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDrop:
   - {fileID: 2079528813372127085, guid: 1d177fa660333024e82678eccf1a40b3, type: 3}
+  - {fileID: 2079528813372127085, guid: 349fc6038925e994a90dea619ab80491, type: 3}
+  - {fileID: 2079528813372127085, guid: 62016f1e8ae41e64fb895e2b10578b4b, type: 3}
+  - {fileID: 2079528813372127085, guid: 117003f9e82a62f459d2fec8bf940fe4, type: 3}
+  - {fileID: 2079528813372127085, guid: 6c9f6a2f28abae440a595d200e28184f, type: 3}
+  - {fileID: 2079528813372127085, guid: 336cd1d69870bcf43b86379855ee0389, type: 3}
   health: 45
   attack: 1
   damageColorDuration: 0.1
-  dropChance: 0.1
+  dropChance: 0.2
 --- !u!114 &4038795889444573922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +352,7 @@ MonoBehaviour:
   sightDelay: 0.75
   useLastSeenPosition: 1
   enemyshoot: {fileID: 8300000, guid: 3ea563069223ed54f9c03a23584a6c04, type: 3}
+  wallAvoidanceDistance: 15
 --- !u!114 &4284225252280845413
 MonoBehaviour:
   m_ObjectHideFlags: 0

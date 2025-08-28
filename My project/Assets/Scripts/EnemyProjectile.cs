@@ -12,6 +12,8 @@ public class EnemyProjectile : MonoBehaviour
     private float difficulty;
     private float reverseDifficulty;
 
+    // Store last hit object for logging
+    private string lastHitObjectName = "None";
 
     void Start()
     {
@@ -33,13 +35,21 @@ public class EnemyProjectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
-    {   
+    {
+        // Save the object name for logging
+        lastHitObjectName = collider.gameObject.name;
         if (collider.CompareTag("ProjObstacle"))
         {
+
             // Only detach particles here if the projectile hits an obstacle
             DetachParticles();
             Destroy(gameObject); // Destroy on obstacle hit
         }
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log($"Projectile destroyed. Last hit object: {lastHitObjectName}");
     }
 
     private void DetachParticles()

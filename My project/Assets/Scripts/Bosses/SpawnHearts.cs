@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpawnHearts : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    public GameObject heartPrefab; // Prefab to spawn
+    public GameObject[] prefabs; // Array of prefabs to spawn
     public float spawnInterval = 10f; // Time in seconds between spawns
 
     [Header("Spawn Area")]
@@ -23,14 +23,14 @@ public class SpawnHearts : MonoBehaviour
 
         if (timer <= 0)
         {
-            SpawnHeart();
+            SpawnPrefab();
             timer = spawnInterval; // Reset timer
         }
     }
 
-    private void SpawnHeart()
+    private void SpawnPrefab()
     {
-        if (heartPrefab != null)
+        if (prefabs != null && prefabs.Length > 0)
         {
             while (true)
             {
@@ -45,15 +45,18 @@ public class SpawnHearts : MonoBehaviour
 
                 if (hit == null || (hit.CompareTag("Obstacle") == false && hit.CompareTag("ProjObstacle") == false))
                 {
-                    // Valid position, spawn the heart and break the loop
-                    Instantiate(heartPrefab, (Vector2)transform.position + spawnPosition, Quaternion.identity);
+                    // Pick a random prefab from the array
+                    GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Length)];
+
+                    // Spawn it
+                    Instantiate(prefabToSpawn, (Vector2)transform.position + spawnPosition, Quaternion.identity);
                     return;
                 }
             }
         }
         else
         {
-            Debug.LogWarning("Heart Prefab is not assigned!");
+            Debug.LogWarning("No prefabs assigned in SpawnHearts!");
         }
     }
 
